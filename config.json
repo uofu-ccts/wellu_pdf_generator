@@ -1,0 +1,44 @@
+{
+  "name": "PDF Generator - DEV",
+
+  "namespace": "Utah\\PDFGenerator",
+
+  "description": "This is an external module that generates a PDF file within REDCap.",
+
+  "documentation": "README.md",
+
+  "authors": [
+    {
+      "name": "Sumon Chattopadhyay",
+      "email": "sumon.chattopadhyay@utah.edu",
+      "institution": "University of Utah BMIC"
+    }
+  ],
+
+  "framework-version": 12,
+
+  "links": {
+    "project": [
+        {
+            "name": "Generate PDF",
+            "icon": "fa-solid fa-screwdriver-wrench",
+            "url": "pages/pdfgenerator.php",
+            "show-header-and-footer": true
+        }
+    ],
+    "control-center": []
+  },
+
+  "no-auth-pages": [],
+
+  "crons": [],
+
+  "project-settings": [],
+
+  "compatibility": {
+    "php-version-min": "",
+    "php-version-max": "",
+    "redcap-version-min": "",
+    "redcap-version-max": ""
+  }
+}

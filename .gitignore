@@ -1,0 +1,6 @@
+# Ignore phive and associated tools
+.phive/
+tools/
+
+# Ignore all PHPUnit tests
+tests/
