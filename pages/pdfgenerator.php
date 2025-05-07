@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </script>
 
 <script>
-    // import { jsPDF } from "js/jspdf.umd.min.js";
+    const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
     doc.text("Hello world!", 10, 10);

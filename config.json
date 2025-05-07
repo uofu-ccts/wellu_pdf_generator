@@ -21,7 +21,7 @@
     "project": [
         {
             "name": "Generate PDF",
-            "icon": "fa-solid fa-screwdriver-wrench",
+            "icon": "fa-solid fa-file-pdf",
             "url": "pages/pdfgenerator.php",
             "show-header-and-footer": true
         }

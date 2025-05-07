@@ -16,9 +16,7 @@ class PDFGenerator extends AbstractExternalModule {
 
     // This is generally where your module's hooks will live
     function redcap_every_page_top($project_id) {
-        $this->loadREDCapJS();
-        $this->includeJs('js/jspdf.umd.min.js');
-        (app_path_webroot+"Resources/js/Libraries/jspdf.umd.min.js");
+        echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>';
     }
 
     // Get all records for this project
@@ -64,15 +62,8 @@ class PDFGenerator extends AbstractExternalModule {
         return $string;
     }
 
-    function loadjsPDF(){
-		?>
-		<script src='<?=APP_PATH_WEBROOT?>Resources/webpack/js/bundle.js'></script>
-		<?php
-	}
-
     private function includeJs($path){
         echo "<script type='text/javascript' src={$this->getUrl($path)}></script>";
-        $output = "<script type=\"text/javascript\" src=\"{$js_file}\"{$async}></script>\n";
     }
 
     public function console_log($data) {
