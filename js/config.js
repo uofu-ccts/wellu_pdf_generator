@@ -24,6 +24,7 @@ PDF.addEventHandlers = function() {
 
 PDF.generatePDF = function() {
     // Default export is a4 paper, portrait, using millimeters for units
+    const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
     doc.text("Hello world!", 10, 10);

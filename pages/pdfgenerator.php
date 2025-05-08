@@ -1,4 +1,5 @@
 <?php
+
 namespace Utah\PDFGenerator;
 
 $user = $module->getUser();
@@ -72,7 +73,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <form id="action-form" name="action" class="hidden" method="POST"></form>
 </body>
 
-<script src="<?php echo $module->getUrl('js/jspdf.umd.min.js'); ?>"></script>
 <script src="<?php echo $module->getUrl('js/config.js'); ?>"></script>
 
 <script>

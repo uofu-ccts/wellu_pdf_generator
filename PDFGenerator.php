@@ -2,12 +2,9 @@
 
 namespace Utah\PDFGenerator;
 
-use ExternalModules\AbstractExternalModule;
-use ExternalModules\ExternalModules;
-use REDCap;
+use \REDCap as REDCap;
 
-class PDFGenerator extends AbstractExternalModule {
-
+class PDFGenerator extends \ExternalModules\AbstractExternalModule {
     public $list_of_records = array();
 
     public function __construct() {
@@ -16,6 +13,9 @@ class PDFGenerator extends AbstractExternalModule {
 
     // This is generally where your module's hooks will live
     function redcap_every_page_top($project_id) {
+        $this->emLog("redcap_every_page_top is importing the jsPDF library.");
+        $this->simpleLog("redcap_every_page_top is importing the jsPDF library.");
+        $this->console_log("redcap_every_page_top is importing the jsPDF library.");
         echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>';
     }
 
@@ -69,6 +69,13 @@ class PDFGenerator extends AbstractExternalModule {
     public function console_log($data) {
         $output = json_encode($data);
         echo "<script>console.log($output);</script>";
+    }
+
+    public function simpleLog($message, $level = 'INFO') {
+        $logFile = __DIR__ . '/pdf_generator_log.txt';
+        $timestamp = date('Y-m-d H:i:s');
+        $formattedMessage = "[$timestamp][$level] $message\n";
+        file_put_contents($logFile, $formattedMessage, FILE_APPEND);
     }
 
 }

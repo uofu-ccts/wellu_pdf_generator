@@ -4,3 +4,7 @@ tools/
 
 # Ignore all PHPUnit tests
 tests/
+
+# Ignore log files
+*.log
+*_log.txt
