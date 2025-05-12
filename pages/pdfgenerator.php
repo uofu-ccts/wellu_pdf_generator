@@ -8,27 +8,23 @@ $username = $user->getUsername();
 // Handle calls from the generator page
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $module->console_log($_POST);
 
     // Parse required fields
-	$form_id = !empty($_POST['form_id'])  ? htmlspecialchars( $_POST['field_name'], ENT_QUOTES) : "";
-	$action     = !empty($_POST['action'])      ? htmlspecialchars( $_POST['action'], ENT_QUOTES)     : "";
+    $doc        = !empty($_POST['doc'])         ? htmlspecialchars( $_POST['doc'], ENT_QUOTES) : "";
+    $record_id  = !empty($_POST['record_id'])   ? htmlspecialchars( $_POST['record_id'], ENT_QUOTES) : "";
+    $name       = !empty($_POST['name'])        ? htmlspecialchars( $_POST['name'], ENT_QUOTES) : "";
+    $action     = !empty($_POST['action'])      ? htmlspecialchars( $_POST['action'], ENT_QUOTES) : "";
 
-    // Get form information
-    global $Proj;
-    $module->console_log($Proj->forms);
-    $module->console_log("project info after POST");
+    if ($action == 'generate_pdf') {
+        $module->console_log("Generating PDF for record: " . $record_id . " with name: " . $name);
+        $module->console_log("Document: " . $doc);
+        $module->console_log("Action: " . $action);
 
-    if ($action == 'add_ema') {
-        $instrument = $_POST['instrument'];
-        $event_id = $_POST['event_id'];
-        $event_name = $_POST['event_name'];
-
-        $module->addEMA($instrument, $event_id, $event_name);
-    } else if ($action == 'remove_ema') {
-        $instrument = $_POST['instrument'];
-        $event_id = $_POST['event_id'];
-
-        $module->removeEMA($instrument, $event_id);
+        $doc_id = $module->saveToEdocs($record_id, $doc);
+        $module->console_log("Document ID: " . $doc_id);
+    } else {
+        $module->console_log("Unknown action: " . $action);
     }
 }
 
@@ -77,14 +73,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <script>
     PDF.addEventHandlers();
-</script>
-
-<script>
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-
-    doc.text("Hello world!", 10, 10);
-    doc.save("a4.pdf");
 </script>
 
 <!-- TODO: add $_SERVER['REQUEST_METHOD']=='POST' handler, and add more PHP in this page -->

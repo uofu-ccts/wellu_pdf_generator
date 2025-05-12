@@ -5,6 +5,7 @@ namespace Utah\PDFGenerator;
 use \REDCap as REDCap;
 
 class PDFGenerator extends \ExternalModules\AbstractExternalModule {
+    public $project_id = null;
     public $list_of_records = array();
 
     public function __construct() {
@@ -13,20 +14,17 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
 
     // This is generally where your module's hooks will live
     function redcap_every_page_top($project_id) {
-        $this->emLog("redcap_every_page_top is importing the jsPDF library.");
-        $this->simpleLog("redcap_every_page_top is importing the jsPDF library.");
+        $this->project_id = $project_id;
         $this->console_log("redcap_every_page_top is importing the jsPDF library.");
         echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>';
     }
 
     // Get all records for this project
     function getRecords() {
-        global $Proj;
-
         $params = array(
-            'project_id' => $Proj->project_id,
+            'project_id' => $this->project_id,
             'return_format' => 'json',
-            'fields' => 'record_id'
+            // 'fields' => 'record_id'
           );
         $records = json_decode(\REDCap::getData($params), true);
         $this->list_of_records = $records;
@@ -35,21 +33,31 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
     public function getOptions() {
         if (empty($this->list_of_records)) $this->getRecords();
 
-        $this->console_log($this->list_of_records);
-
         $html = '';
 	    foreach ($this->list_of_records as $record) {
 
-            $this->console_log($record);
-
             $record_id= $record['record_id'];
+            $name = $record['name'];
 
-	        $html .= "<a class='dropdown-item' data-record-id='$record_id' 'href='#'>" . $record_id . "</a>";
+	        $html .= "<a class='dropdown-item' data-record-id='$record_id' data-name='$name' 'href='#'>" . $record_id . "</a>";
         }
         $html .= "<div class='dropdown-divider'></div>";
-		$html .= "<div class='dropdown-header ema-descriptive'>Create a record to have it appear here.</div>";
+		$html .= "<div class='dropdown-header pdf-descriptive'>Create a record to have it appear here.</div>";
         return $html;
     }
+
+    // Save PDF to REDCap edocs
+    public function saveToEdocs($record_id, $doc) {
+        $file_path = __DIR__ . $record_id . '.pdf';
+        file_put_contents($file_path, $doc);
+
+        $doc_id = \REDCap::storeFile($file_path, $this->project_id);
+        return json_decode($doc_id, true);
+    }
+
+    // TODO: Save PDF (with docid) to file field
+    // TODO: Have EM triggered by survey completion 
+    // TODO: Set up emailing of PDF to user after generation
 
     function returnProcessedString($string) {
         $length = 50;
@@ -66,12 +74,14 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         echo "<script type='text/javascript' src={$this->getUrl($path)}></script>";
     }
 
-    public function console_log($data) {
+    public function console_log($data, $level = 'INFO') {
         $output = json_encode($data);
         echo "<script>console.log($output);</script>";
+
+        $this->simple_log($output, $level);
     }
 
-    public function simpleLog($message, $level = 'INFO') {
+    public function simple_log($message, $level = 'INFO') {
         $logFile = __DIR__ . '/pdf_generator_log.txt';
         $timestamp = date('Y-m-d H:i:s');
         $formattedMessage = "[$timestamp][$level] $message\n";

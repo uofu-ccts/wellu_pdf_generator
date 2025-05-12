@@ -1,32 +1,43 @@
 // CREATE PDF GENERATOR OBJECT
 if(typeof PDF === 'undefined') { var PDF = {}; }
 
-//TODO: also add POST javascript method to call on config.php page
-PDF.post = function(action, form_id) {
+PDF.post = function(action, doc, record_id, name) {
     // console.log("Creating " + field_name);
     var action = $('<input>')
         .attr('name','action')
         .val(action);
-    var form_id = $('<input>')
-        .attr('name','form_id')
-        .val(form_id);
-    var form = $('#action-form').append(action).append(form_id).submit();
+    var doc = $('<input>')
+        .attr('name','doc')
+        .val(doc);
+    var record_id = $('<input>')
+        .attr('name','record_id')
+        .val(record_id);
+    var name = $('<input>')
+        .attr('name','name')
+        .val(name);
+    var form = $('#action-form').append(action).append(doc).append(record_id).append(name).submit();
 };
-
-//TODO: create event handler for config.php page
 
 PDF.addEventHandlers = function() {
     // Handle the ADD button
     $('.generate-pdf a').on('click', function() {
-        PDF.generatePDF();
+        var record_id = $(this).attr("data-record-id");
+        var name = $(this).attr("data-name");
+
+        PDF.generatePDF(record_id, name);
     });
 }
 
-PDF.generatePDF = function() {
+PDF.generatePDF = function(record_id, name) {
     // Default export is a4 paper, portrait, using millimeters for units
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
     doc.text("Hello world!", 10, 10);
-    doc.save("a4.pdf");
+    doc.text("This PDF was generated for " + name, 10, 20);
+    doc.text("Record ID: " + record_id, 10, 30);
+
+    PDF.post("generate_pdf", doc, record_id, name);
+
+    // doc.save("test" + record_id + ".pdf");
 }
