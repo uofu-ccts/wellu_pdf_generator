@@ -8,21 +8,31 @@ $username = $user->getUsername();
 // Handle calls from the generator page
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $module->console_log($_POST);
+    // $module->console_log($_POST);
 
     // Parse required fields
-    $doc        = !empty($_POST['doc'])         ? htmlspecialchars( $_POST['doc'], ENT_QUOTES) : "";
+    $pdfData    = !empty($_POST['pdfData'])     ? htmlspecialchars( $_POST['pdfData'], ENT_QUOTES) : "";
     $record_id  = !empty($_POST['record_id'])   ? htmlspecialchars( $_POST['record_id'], ENT_QUOTES) : "";
     $name       = !empty($_POST['name'])        ? htmlspecialchars( $_POST['name'], ENT_QUOTES) : "";
     $action     = !empty($_POST['action'])      ? htmlspecialchars( $_POST['action'], ENT_QUOTES) : "";
 
     if ($action == 'generate_pdf') {
         $module->console_log("Generating PDF for record: " . $record_id . " with name: " . $name);
-        $module->console_log("Document: " . $doc);
         $module->console_log("Action: " . $action);
 
-        $doc_id = $module->saveToEdocs($record_id, $doc);
-        $module->console_log("Document ID: " . $doc_id);
+        $module->console_log("PDF Data: " . $pdfData);
+
+        $pdfFilePath = __DIR__ . '/' . $record_id . '.pdf';
+
+        $response = $module->savePdfFile($pdfData, $pdfFilePath);
+        $module->console_log("PDF file saved to: " . $pdfFilePath);
+        if ($response === false) {
+            $module->console_log("Failed to save PDF file.");
+        } else {
+            $module->console_log("PDF file saved successfully.");
+        }
+        // $doc_id = $module->saveToEdocs($record_id, $doc);
+        // $module->console_log("Document ID: " . $doc_id);
     } else {
         $module->console_log("Unknown action: " . $action);
     }

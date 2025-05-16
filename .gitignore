@@ -8,3 +8,6 @@ tests/
 # Ignore log files
 *.log
 *_log.txt
+
+# Ignore random files
+.DS_Store
