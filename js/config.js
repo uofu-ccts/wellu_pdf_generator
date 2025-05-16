@@ -21,7 +21,6 @@ PDF.post = function(action, pdfData, record_id, name) {
 PDF.addEventHandlers = function() {
     // Handle the ADD button
     $('.generate-pdf').on('click', function() {
-        console.log("Button was clicked");
         var record_id = $(this).attr("data-record-id");
         var name = $(this).attr("data-name");
 
@@ -38,11 +37,8 @@ PDF.generatePDF = function(record_id, name) {
     doc.text("This PDF was generated for " + name, 10, 20);
     doc.text("Record ID: " + record_id, 10, 30);
 
-    // doc.save("test" + record_id + ".pdf");
     doc.output('dataurlnewwindow');
     const pdfData = doc.output('datauristring');
-
-    // console.log("PDF output from client:", pdfData);
 
     PDF.post("generate_pdf", pdfData, record_id, name);
 }

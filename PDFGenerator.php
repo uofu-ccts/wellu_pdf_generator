@@ -15,17 +15,9 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
     // This is generally where your module's hooks will live
     function redcap_every_page_top($project_id) {
         $this->project_id = $project_id;
-        // $this->console_log("redcap_every_page_top is importing the jsPDF library.");
-        // echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>';
     }
 
     function redcap_survey_page($project_id, $record, $instrument) {
-        $this->console_log($project_id);
-        $this->console_log($instrument);
-        $this->console_log($record);
-        
-        // echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>';
-
         if ($instrument == 'pdf_placeholder') {
             echo $this->renderDownloadButton($record);
         }
