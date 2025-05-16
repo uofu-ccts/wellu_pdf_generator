@@ -20,7 +20,7 @@ PDF.post = function(action, pdfData, record_id, name) {
 
 PDF.addEventHandlers = function() {
     // Handle the ADD button
-    $('.generate-pdf a').on('click', function() {
+    $('.generate-pdf').on('click', function() {
         console.log("Button was clicked");
         var record_id = $(this).attr("data-record-id");
         var name = $(this).attr("data-name");

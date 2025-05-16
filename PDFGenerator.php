@@ -15,9 +15,84 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
     // This is generally where your module's hooks will live
     function redcap_every_page_top($project_id) {
         $this->project_id = $project_id;
-        $this->console_log("redcap_every_page_top is importing the jsPDF library.");
-        echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>';
-    } 
+        // $this->console_log("redcap_every_page_top is importing the jsPDF library.");
+        // echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>';
+    }
+
+    function redcap_survey_page($project_id, $record, $instrument) {
+        $this->console_log($project_id);
+        $this->console_log($instrument);
+        $this->console_log($record);
+        
+        // echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>';
+
+        if ($instrument == 'pdf_placeholder') {
+            echo $this->renderDownloadButton($record);
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // $module->console_log($_POST);
+
+            // Parse required fields
+            $pdfData    = !empty($_POST['pdfData'])     ? htmlspecialchars( $_POST['pdfData'], ENT_QUOTES) : "";
+            $record_id  = !empty($_POST['record_id'])   ? htmlspecialchars( $_POST['record_id'], ENT_QUOTES) : "";
+            $name       = !empty($_POST['name'])        ? htmlspecialchars( $_POST['name'], ENT_QUOTES) : "";
+            $action     = !empty($_POST['action'])      ? htmlspecialchars( $_POST['action'], ENT_QUOTES) : "";
+
+            if ($action == 'generate_pdf') {
+                $this->console_log("Generating PDF for record: " . $record_id . " with name: " . $name);
+                $this->console_log("Action: " . $action);
+
+                $this->console_log("PDF Data: " . $pdfData);
+
+                $pdfFilePath = __DIR__ . '/generated_pdfs' . '/' . $record_id . '.pdf';
+
+                $response = $this->savePdfFile($pdfData, $pdfFilePath);
+                $this->console_log("PDF file saved to: " . $pdfFilePath);
+                if ($response === false) {
+                    $this->console_log("Failed to save PDF file.");
+                } else {
+                    $this->console_log("PDF file saved successfully.");
+                }
+                // $doc_id = $module->saveToEdocs($record_id, $doc);
+                // $module->console_log("Document ID: " . $doc_id);
+            } else {
+                $this->console_log("Unknown action: " . $action);
+            }
+        }
+    }
+
+    function renderDownloadButton($record_id) {
+        $this->console_log("redcap_survey_page is importing the jsPDF library.");
+        $this->console_log("Rendering the PDF generation button.");
+
+        $jsUrl = $this->getUrl('js/config.js');
+
+        $record = $this->getCurrentRecordData($record_id);
+        $this->console_log($record);
+
+        $name = $record[0]['first_name'] . " " . $record[0]['last_name'];
+        $this->console_log($name);
+
+        $html  = '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>';
+        $html .= "<button type='button' class='btn btn-primary generate-pdf' data-record-id='$record_id' data-name='$name'>Download PDF</button>";
+        $html .= "<form id='action-form' name='action' class='hidden' method='POST'></form>";
+        $html .= "<script src='$jsUrl'></script>";
+        $html .= "<script>PDF.addEventHandlers();</script>";
+
+        return $html;
+    }
+
+    function getCurrentRecordData($record_id) {
+        $params = array(
+            'project_id' => $this->project_id,
+            'records' => $record_id,
+            'return_format' => 'json',
+            // 'fields' => 'record_id'
+          );
+        $record = json_decode(\REDCap::getData($params), true);
+        return $record;
+    }
 
     // Get all records for this project
     function getRecords() {
@@ -39,7 +114,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             $record_id= $record['record_id'];
             $name = $record['name'];
 
-	        $html .= "<a class='dropdown-item' data-record-id='$record_id' data-name='$name' 'href='#'>" . $record_id . "</a>";
+	        $html .= "<a class='dropdown-item' data-record-id='$record_id' data-name='$name' href='#'>" . $record_id . "</a>";
         }
         $html .= "<div class='dropdown-divider'></div>";
 		$html .= "<div class='dropdown-header pdf-descriptive'>Create a record to have it appear here.</div>";

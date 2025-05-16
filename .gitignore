@@ -9,5 +9,8 @@ tests/
 *.log
 *_log.txt
 
+Ignore generated PDFs
+*.pdf
+
 # Ignore random files
 .DS_Store
