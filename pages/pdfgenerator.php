@@ -1,5 +1,9 @@
 <?php
 
+/* this page remains here for testing purposes       */
+/* it is not used in the final version of the module */
+/* will delete once jsPDF testing is complete        */
+
 namespace Utah\PDFGenerator;
 
 $user = $module->getUser();

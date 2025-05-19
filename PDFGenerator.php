@@ -86,6 +86,44 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         return $record;
     }
 
+    function savePdfFile($base64Data, $filePath) {
+        // Extract the base64 part (remove the data:application/pdf;base64, prefix)
+        $base64Data = preg_replace('/^data:application\/pdf;filename=generated.pdf;base64,/', '', $base64Data);
+        
+        // Decode the base64 string
+        $pdfContent = base64_decode($base64Data);
+        
+        // Save to file
+        return file_put_contents($filePath, $pdfContent);
+    }
+
+    // Save PDF to REDCap edocs
+    public function saveToEdocs($filePath) {
+        $doc_id = \REDCap::storeFile($filePath, $this->project_id);
+        return json_decode($doc_id, true);
+    }
+
+    // TODO: Save PDF (with docid) to file field
+    // TODO: Have EM triggered by survey completion 
+    // TODO: Set up emailing of PDF to user after generation
+
+    public function console_log($data, $level = 'INFO') {
+        $output = json_encode($data);
+        echo "<script>console.log($output);</script>";
+
+        $this->simple_log($output, $level);
+    }
+
+    public function simple_log($message, $level = 'INFO') {
+        $logFile = __DIR__ . '/pdf_generator_log.txt';
+        $timestamp = date('Y-m-d H:i:s');
+        $formattedMessage = "[$timestamp][$level] $message\n";
+        file_put_contents($logFile, $formattedMessage, FILE_APPEND);
+    }
+
+    /* methods below are needed for the page/pdfgenerator.php page to work */
+    /* will delete once jsPDF testing is complete                          */
+
     // Get all records for this project
     function getRecords() {
         $params = array(
@@ -113,27 +151,6 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         return $html;
     }
 
-    function savePdfFile($base64Data, $filePath) {
-        // Extract the base64 part (remove the data:application/pdf;base64, prefix)
-        $base64Data = preg_replace('/^data:application\/pdf;filename=generated.pdf;base64,/', '', $base64Data);
-        
-        // Decode the base64 string
-        $pdfContent = base64_decode($base64Data);
-        
-        // Save to file
-        return file_put_contents($filePath, $pdfContent);
-    }
-
-    // Save PDF to REDCap edocs
-    public function saveToEdocs($filePath) {
-        $doc_id = \REDCap::storeFile($filePath, $this->project_id);
-        return json_decode($doc_id, true);
-    }
-
-    // TODO: Save PDF (with docid) to file field
-    // TODO: Have EM triggered by survey completion 
-    // TODO: Set up emailing of PDF to user after generation
-
     function returnProcessedString($string) {
         $length = 50;
 
@@ -147,20 +164,6 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
 
     private function includeJs($path){
         echo "<script type='text/javascript' src={$this->getUrl($path)}></script>";
-    }
-
-    public function console_log($data, $level = 'INFO') {
-        $output = json_encode($data);
-        echo "<script>console.log($output);</script>";
-
-        $this->simple_log($output, $level);
-    }
-
-    public function simple_log($message, $level = 'INFO') {
-        $logFile = __DIR__ . '/pdf_generator_log.txt';
-        $timestamp = date('Y-m-d H:i:s');
-        $formattedMessage = "[$timestamp][$level] $message\n";
-        file_put_contents($logFile, $formattedMessage, FILE_APPEND);
     }
 
 }
