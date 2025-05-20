@@ -18,7 +18,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
     }
 
     function redcap_survey_page($project_id, $record, $instrument) {
-        if ($instrument == 'pdf_placeholder') {
+        if ($instrument == 'pdf_placeholder' || $instrument == 'final_report') {
             echo $this->renderDownloadButton($record);
         }
 
@@ -55,22 +55,22 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
     }
 
     function renderDownloadButton($record_id) {
-        $this->console_log("redcap_survey_page is importing the jsPDF library.");
-        $this->console_log("Rendering the PDF generation button.");
-
         $jsUrl = $this->getUrl('js/config.js');
 
         $record = $this->getCurrentRecordData($record_id);
-        $this->console_log($record);
 
         $name = $record[0]['first_name'] . " " . $record[0]['last_name'];
-        $this->console_log($name);
+        global $Proj;
+        $projJson = json_encode($Proj);
 
         $html  = '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>';
+        $html .= '<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>';
+        $html .= '<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.2.6/purify.min.js"></script>';
         $html .= "<button type='button' class='btn btn-primary generate-pdf' data-record-id='$record_id' data-name='$name'>Download PDF</button>";
         $html .= "<form id='action-form' name='action' class='hidden' method='POST'></form>";
         $html .= "<script src='$jsUrl'></script>";
-        $html .= "<script>PDF.addEventHandlers();</script>";
+        $html .= "<script>PDF.addEventHandlers($projJson);</script>";
+        $html .= "<script>window.onload = function() {console.log('Page has fully loaded!');};</script>";
 
         return $html;
     }
@@ -89,10 +89,10 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
     function savePdfFile($base64Data, $filePath) {
         // Extract the base64 part (remove the data:application/pdf;base64, prefix)
         $base64Data = preg_replace('/^data:application\/pdf;filename=generated.pdf;base64,/', '', $base64Data);
-        
+
         // Decode the base64 string
         $pdfContent = base64_decode($base64Data);
-        
+
         // Save to file
         return file_put_contents($filePath, $pdfContent);
     }
@@ -104,7 +104,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
     }
 
     // TODO: Save PDF (with docid) to file field
-    // TODO: Have EM triggered by survey completion 
+    // TODO: Have EM triggered by survey completion
     // TODO: Set up emailing of PDF to user after generation
 
     public function console_log($data, $level = 'INFO') {
