@@ -23,7 +23,6 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         }
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            // $module->console_log($_POST);
 
             // Parse required fields
             $pdfData    = !empty($_POST['pdfData'])     ? htmlspecialchars( $_POST['pdfData'], ENT_QUOTES) : "";
@@ -46,8 +45,6 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
                 } else {
                     $this->console_log("PDF file saved successfully.");
                 }
-                // $doc_id = $module->saveToEdocs($record_id, $doc);
-                // $module->console_log("Document ID: " . $doc_id);
             } else {
                 $this->console_log("Unknown action: " . $action);
             }
@@ -55,22 +52,20 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
     }
 
     function renderDownloadButton($record_id) {
-        $this->console_log("redcap_survey_page is importing the jsPDF library.");
-        $this->console_log("Rendering the PDF generation button.");
-
         $jsUrl = $this->getUrl('js/config.js');
 
         $record = $this->getCurrentRecordData($record_id);
-        $this->console_log($record);
 
         $name = $record[0]['first_name'] . " " . $record[0]['last_name'];
-        $this->console_log($name);
+        global $Proj;
+        $projJson = json_encode($Proj);
 
         $html  = '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>';
+        $html .= '<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>';
+        $html .= '<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.2.6/purify.min.js"></script>';
         $html .= "<button type='button' class='btn btn-primary generate-pdf' data-record-id='$record_id' data-name='$name'>Download PDF</button>";
         $html .= "<form id='action-form' name='action' class='hidden' method='POST'></form>";
         $html .= "<script src='$jsUrl'></script>";
-        $html .= "<script>PDF.addEventHandlers();</script>";
 
         return $html;
     }
@@ -89,10 +84,10 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
     function savePdfFile($base64Data, $filePath) {
         // Extract the base64 part (remove the data:application/pdf;base64, prefix)
         $base64Data = preg_replace('/^data:application\/pdf;filename=generated.pdf;base64,/', '', $base64Data);
-        
+
         // Decode the base64 string
         $pdfContent = base64_decode($base64Data);
-        
+
         // Save to file
         return file_put_contents($filePath, $pdfContent);
     }
@@ -104,7 +99,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
     }
 
     // TODO: Save PDF (with docid) to file field
-    // TODO: Have EM triggered by survey completion 
+    // TODO: Have EM triggered by survey completion
     // TODO: Set up emailing of PDF to user after generation
 
     public function console_log($data, $level = 'INFO') {
