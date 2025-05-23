@@ -36,7 +36,10 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
 
                 $this->console_log("PDF Data: " . $pdfData);
 
-                $pdfFilePath = __DIR__ . '/generated_pdfs' . '/' . $record_id . '.pdf';
+                $currentDateTime = preg_replace('/[ :]/', '_', gmdate("Y-m-d H:i:s")) . '_UTC';
+                $this->console_log("Current Date and Time: " . $currentDateTime);
+
+                $pdfFilePath = __DIR__ . '/generated_pdfs' . '/' . $record_id . '_' . $name . '_' . $currentDateTime. '.pdf';
 
                 $response = $this->savePdfFile($pdfData, $pdfFilePath);
                 $this->console_log("PDF file saved to: " . $pdfFilePath);
