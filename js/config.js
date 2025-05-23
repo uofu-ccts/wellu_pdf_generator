@@ -68,79 +68,58 @@ PDF.generatePDF = async function (record_id, name) {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
 
-  doc.setFont(styles.font);
-  doc.setFontSize(styles.h1.fontSize);
-  // doc.setFont(styles.font, headerStyles.fontStyle);
-
   let coordinates = [10, 10];
 
-  coordinates = await createHTML(
+  coordinates = createHeader(
     doc,
-    proj.metadata.all_instruct.element_label,
+    "Thank you for completing your WellU Health Risk Assessment.",
     coordinates,
-    80
-  );
-
-  coordinates = await createHTML(
-    doc,
-    proj.metadata.pathway_confirm_2.element_label,
-    coordinates,
+    "h2",
     20
   );
+  coordinates = createHeader(
+    doc,
+    "You will find your personalized action plan below!",
+    coordinates,
+    "h3",
+    15
+  );
+  coordinates = createText(doc, "Next steps:", coordinates, 5);
+  coordinates = createText(
+    doc,
+    "1. Please take your time and review your personalized action plan.",
+    coordinates
+  );
+  coordinates = createBullet(
+    doc,
+    "All recommendations are based off of your specific health profile identified from your responses on the HRA.",
+    [coordinates[0], coordinates[1]]
+  );
+  coordinates = createText(
+    doc,
+    "2. If you have indicated that you wanted help connecting with a provider or employee assistance program, you will be contacted to schedule an appointment.",
+    coordinates
+  );
+  coordinates = createText(
+    doc,
+    "3. Please use the links included in your action plan to register or learn more about any of the recommended programs and services.",
+    coordinates
+  );
+  coordinates = createText(
+    doc,
+    "Additionally, you chose not to enroll in a Tailored Care Pathway, if you change your mind and want some help creating a custom health and well-being plan, please contact us at wellness@utah.edu.",
+    coordinates
+  );
 
-  // coordinates = createHeader(
-  //   doc,
-  //   "Thank you for completing your WellU Health Risk Assessment.",
-  //   coordinates,
-  //   "h2",
-  //   20
-  // );
-  // coordinates = createHeader(
-  //   doc,
-  //   "You will find your personalized action plan below!",
-  //   coordinates,
-  //   "h3",
-  //   15
-  // );
-  // coordinates = createText(doc, "Next steps:", coordinates, 5);
-  // coordinates = createText(
-  //   doc,
-  //   "1. Please take your time and review your personalized action plan.",
-  //   coordinates
-  // );
-  // coordinates = createBullet(
-  //   doc,
-  //   "All recommendations are based off of your specific health profile identified from your responses on the HRA.",
-  //   [coordinates[0], coordinates[1]]
-  // );
-  // coordinates = createText(
-  //   doc,
-  //   "2. If you have indicated that you wanted help connecting with a provider or employee assistance program, you will be contacted to schedule an appointment.",
-  //   coordinates
-  // );
-  // coordinates = createText(
-  //   doc,
-  //   "3. Please use the links included in your action plan to register or learn more about any of the recommended programs and services.",
-  //   coordinates
-  // );
-  // coordinates = createText(
-  //   doc,
-  //   "Additionally, you chose not to enroll in a Tailored Care Pathway, if you change your mind and want some help creating a custom health and well-being plan, please contact us at wellness@utah.edu.",
-  //   coordinates
-  // );
+  coordinates = [coordinates[0], coordinates[1] + 5];
 
-  // coordinates = [coordinates[0], coordinates[1] + 5];
-
-  // coordinates = createHeader(
-  //   doc,
-  //   name + "'s WellU Action Plan:",
-  //   coordinates,
-  //   "h2",
-  //   20
-  // );
-
-  await createHTML(doc, proj.metadata.meta_1.element_label, coordinates, 80);
-  await createHTML(doc, proj.metadata.risk_key.element_label, coordinates, 80);
+  coordinates = createHeader(
+    doc,
+    name + "'s WellU Action Plan:",
+    coordinates,
+    "h2",
+    20
+  );
 
   doc.output("dataurlnewwindow");
   const pdfData = doc.output("datauristring");
@@ -158,7 +137,6 @@ const createHeader = function (
   title = doc.splitTextToSize(title, 180);
   const headerStyles = styles[headerType];
   doc.setFontSize(headerStyles.fontSize);
-  // doc.setFont(styles.font, headerStyles.fontStyle);
   doc.text(title, coordinates[0], coordinates[1]);
   coordinates[1] += coordinateHeight;
   return coordinates;
@@ -180,32 +158,5 @@ const createBullet = function (doc, text, coordinates, coordinateHeight = 6) {
   doc.setFont(styles.font, styles.p.fontStyle);
   doc.text(text, coordinates[0] + 10, coordinates[1]);
   coordinates[1] += coordinateHeight * text.length;
-  return coordinates;
-};
-
-const createHTML = async function (doc, html, coordinates, coordinateHeight) {
-  // Strip the outer div from the HTML
-  html = html.replace(/<\/?div[^>]*>/g, "");
-  // Adding a wrapper with CSS to control the font size
-  const wrappedHTML = `
-    <div style="font-size: 12px; font-family: Helvetica, sans-serif; width: 180mm;">
-      ${html}
-    </div>
-  `;
-
-  await doc.html(wrappedHTML, {
-    x: coordinates[0],
-    y: coordinates[1],
-    width: 180, // Set width to control text wrapping
-    windowWidth: 800, // Reference width for rendering
-    html2canvas: {
-      scale: 0.28, // Adjust scale to control size
-    },
-  });
-
-  // Estimate the height of the HTML content to adjust coordinates
-  // You might need to fine-tune this based on your content
-  coordinates[1] += coordinateHeight; // Approximate height adjustment
-  console.log("coordinates: ", coordinates);
   return coordinates;
 };

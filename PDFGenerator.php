@@ -18,12 +18,11 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
     }
 
     function redcap_survey_page($project_id, $record, $instrument) {
-        if ($instrument == 'pdf_placeholder' || $instrument == 'final_report') {
+        if ($instrument == 'pdf_placeholder') {
             echo $this->renderDownloadButton($record);
         }
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            // $module->console_log($_POST);
 
             // Parse required fields
             $pdfData    = !empty($_POST['pdfData'])     ? htmlspecialchars( $_POST['pdfData'], ENT_QUOTES) : "";
@@ -46,8 +45,6 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
                 } else {
                     $this->console_log("PDF file saved successfully.");
                 }
-                // $doc_id = $module->saveToEdocs($record_id, $doc);
-                // $module->console_log("Document ID: " . $doc_id);
             } else {
                 $this->console_log("Unknown action: " . $action);
             }
@@ -69,8 +66,6 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         $html .= "<button type='button' class='btn btn-primary generate-pdf' data-record-id='$record_id' data-name='$name'>Download PDF</button>";
         $html .= "<form id='action-form' name='action' class='hidden' method='POST'></form>";
         $html .= "<script src='$jsUrl'></script>";
-        $html .= "<script>PDF.addEventHandlers($projJson);</script>";
-        $html .= "<script>window.onload = function() {console.log('Page has fully loaded!');};</script>";
 
         return $html;
     }
