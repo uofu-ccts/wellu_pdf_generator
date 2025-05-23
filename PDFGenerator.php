@@ -42,11 +42,30 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
                 $pdfFilePath = __DIR__ . '/generated_pdfs' . '/' . $record_id . '_' . $name . '_' . $currentDateTime. '.pdf';
 
                 $response = $this->savePdfFile($pdfData, $pdfFilePath);
-                $this->console_log("PDF file saved to: " . $pdfFilePath);
+                
                 if ($response === false) {
                     $this->console_log("Failed to save PDF file.");
+                    return;
                 } else {
-                    $this->console_log("PDF file saved successfully.");
+                    $this->console_log("PDF file saved to following filesystem location: " . $pdfFilePath);
+
+                    // Save the PDF to REDCap edocs
+                    $doc_id = $this->saveToEdocs($pdfFilePath);
+                    $this->console_log("PDF file saved to REDCap edocs with ID: " . $doc_id);
+                }
+
+                if (!$doc_id) {
+                    $this->console_log("Failed to save PDF to REDCap edocs.");
+                    return;
+                } else {
+                    $this->console_log("PDF file saved successfully to REDCap edocs.");
+                    $response = $this->savePdfToFileField($record_id, $doc_id);
+                }
+
+                if ($response === false) {
+                    $this->console_log("Failed to save PDF to file field.");
+                } else {
+                    $this->console_log("PDF file saved successfully to file field.");
                 }
             } else {
                 $this->console_log("Unknown action: " . $action);
@@ -100,6 +119,20 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
     public function saveToEdocs($filePath) {
         $doc_id = \REDCap::storeFile($filePath, $this->project_id);
         return json_decode($doc_id, true);
+    }
+
+    // Save PDF with docid to file field
+    public function savePdfToFileField($record_id, $doc_id) {
+        $field_name = 'wellu_pdf';
+        $event_id = $this->getEventId();
+
+        return \REDCap::addFileToField(
+            $doc_id,
+            $this->project_id,
+            $record_id,
+            $field_name,
+            $event_id
+        );
     }
 
     // TODO: Save PDF (with docid) to file field
