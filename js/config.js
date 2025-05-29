@@ -35,8 +35,8 @@ const styles = {
     fontStyle: "normal",
   },
   box: {
-    backgroundColor: "#e57373",
-    headerBackgroundColor: "#a11a33",
+    backgroundColor: "#2196d9",
+    headerBackgroundColor: "#1b8cbd",
     font: "helvetica",
     textColor: "#FFF",
     fontSize: 12,
@@ -87,42 +87,6 @@ PDF.generatePDF = async function (record_id, name) {
     coordinates,
     "h3",
     15
-  );
-  coordinates = createText(doc, "Next steps:", coordinates, 5);
-  coordinates = createText(
-    doc,
-    "1. Please take your time and review your personalized action plan.",
-    coordinates
-  );
-  coordinates = createBullet(
-    doc,
-    "All recommendations are based off of your specific health profile identified from your responses on the HRA.",
-    [coordinates[0], coordinates[1]]
-  );
-  coordinates = createText(
-    doc,
-    "2. If you have indicated that you wanted help connecting with a provider or employee assistance program, you will be contacted to schedule an appointment.",
-    coordinates
-  );
-  coordinates = createText(
-    doc,
-    "3. Please use the links included in your action plan to register or learn more about any of the recommended programs and services.",
-    coordinates
-  );
-  coordinates = createText(
-    doc,
-    "Additionally, you chose not to enroll in a Tailored Care Pathway, if you change your mind and want some help creating a custom health and well-being plan, please contact us at wellness@utah.edu.",
-    coordinates
-  );
-
-  coordinates = [coordinates[0], coordinates[1] + 5];
-
-  coordinates = createHeader(
-    doc,
-    name + "'s WellU Action Plan:",
-    coordinates,
-    "h2",
-    20
   );
 
   const boxX = coordinates[0];
@@ -216,7 +180,7 @@ const createBullet = function (doc, text, coordinates, coordinateHeight = 6) {
 };
 
 const createBox = function (doc, text, header, coordinates, width, height) {
-  const headerHeight = 12; // Height for the header
+  const headerHeight = 8; // Height for the header
   doc.setFillColor(styles.box.headerBackgroundColor);
   doc.rect(coordinates[0], coordinates[1], width, headerHeight, "F");
   doc.setFillColor(styles.box.backgroundColor);
@@ -234,7 +198,7 @@ const createBox = function (doc, text, header, coordinates, width, height) {
   doc.setTextColor(styles.box.textColor);
   doc.setFontSize(styles.box.fontSize);
   doc.setFont(styles.box.font, styles.box.fontStyle);
-  doc.text(headerText, textX, coordinates[1] + 8);
+  doc.text(headerText, textX, coordinates[1] + 5.33);
   coordinates[1] += headerHeight; // Move down for the text
 
   // Add text to the box
