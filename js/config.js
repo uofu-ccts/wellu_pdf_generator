@@ -50,6 +50,18 @@ const styles = {
     fontSize: 12,
     fontStyle: "normal",
   },
+  prioritiesSection: {
+    headerColor: "#2c3e50", // dark blue
+    headerTextColor: "#fff", // white
+    bodyTextColor: "#333", // dark gray
+    fontSizeBody: 10,
+  },
+  riskKey: {
+    low: "#2dc26b",
+    medium: "#f1c40f",
+    high: "#e03e2d",
+    unknown: "#b96ad9",
+  },
 };
 
 PDF.post = function (action, pdfData, record_id, name) {
@@ -153,7 +165,8 @@ PDF.generatePDF = async function (record_id, name) {
     100
   );
 
-  coordinates = [coordinates[0], coordinates[1] + 10];
+  doc.addPage();
+  coordinates = [startingX, startingY];
 
   coordinates = createPrioritiesSectionBox(
     doc,
@@ -161,6 +174,61 @@ PDF.generatePDF = async function (record_id, name) {
     coordinates,
     pageWidth - 20,
     100
+  );
+
+  doc.addPage();
+  coordinates = [startingX, startingY];
+
+  const labels = [
+    "Height",
+    "Weight",
+    "BMI",
+    "Waist",
+    "Cholesterol",
+    "HDL",
+    "LDL",
+    "Triglycerides",
+  ];
+  const referenceRange = [
+    "4'9\" - 7'0\"",
+    "150 - 180 lbs",
+    "18.5 - 24.9",
+    "31 - 37 inches",
+    "< 200 mg/dL",
+    "> 40 mg/dL",
+    "< 130 mg/dL",
+    "< 150 mg/dL",
+  ];
+  const individualData = [
+    "5'11\"",
+    "160 lbs",
+    "23 kg/m²",
+    "32 inches",
+    "160 mg/dL",
+    "55 mg/dL",
+    "150 mg/dL",
+    "130 mg/dL",
+  ];
+  const riskKeys = [
+    "low",
+    "medium",
+    "high",
+    "unknown",
+    "low",
+    "medium",
+    "high",
+    "unknown",
+  ];
+
+  coordinates = summaryTable(
+    doc,
+    "Summary Table",
+    labels,
+    referenceRange,
+    individualData,
+    riskKeys,
+    coordinates,
+    pageWidth - 20
   );
 
   doc.output("dataurlnewwindow");
@@ -345,10 +413,10 @@ const createPrioritiesSectionBox = function (
   doc.text(headerText, textX, coordinates[1] + 5.33);
   coordinates[1] += headerHeight; // Move down for the text
 
-  createSubsection(
+  coordinates[1] = createSubsection(
     doc,
     1,
-    "Your Priorities",
+    "Hemoglobin A1c",
     [
       {
         type: "paragraph",
@@ -365,7 +433,55 @@ const createPrioritiesSectionBox = function (
     ],
     [coordinates[0] + 10, coordinates[1] + 10],
     width - 20,
-    height - headerHeight - 20
+    height,
+    "#c0392b" // red badge color
+  );
+
+  coordinates[1] = createSubsection(
+    doc,
+    2,
+    "Depression",
+    [
+      {
+        type: "paragraph",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      },
+      {
+        type: "bullet",
+        text: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      },
+      {
+        type: "bullet",
+        text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      },
+    ],
+    [coordinates[0] + 10, coordinates[1]],
+    width - 20,
+    height,
+    "#f39c12" // orange badge color
+  );
+  coordinates[1] = createSubsection(
+    doc,
+    3,
+    "Allergies",
+    [
+      {
+        type: "paragraph",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      },
+      {
+        type: "bullet",
+        text: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      },
+      {
+        type: "bullet",
+        text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      },
+    ],
+    [coordinates[0] + 10, coordinates[1]],
+    width - 20,
+    height,
+    "#27ae60" // green badge color
   );
 
   return coordinates;
@@ -378,27 +494,24 @@ const createSubsection = function (
   content,
   coordinates,
   width,
-  height
+  height,
+  badgeColor
 ) {
   const headerH = 10;
   const badgeW = 10;
-  const badgeColor = "#c0392b"; // red
-  const headerColor = "#2c3e50"; // dark blue
-  const headerTextC = "#fff"; // white
-  const bodyTextC = "#333"; // dark gray
-  const bulletColor = "#333";
-  const fontSizeBody = 10;
+  const headerColor = styles.prioritiesSection.headerColor; // dark blue
+  const headerTextColor = styles.prioritiesSection.headerTextColor; // white
+  const bodyTextColor = styles.prioritiesSection.bodyTextColor; // dark gray
+  const fontSizeBody = styles.prioritiesSection.fontSizeBody;
   const lineHeight = fontSizeBody * 1.2;
-  const gapAfterItem = 4;
   let x = coordinates[0];
   let y = coordinates[1];
   const w = width;
-  const h = height;
 
   // ——— Badge box ———
   doc.setFillColor(badgeColor);
   doc.rect(x, y, badgeW, headerH, "F");
-  doc.setTextColor(headerTextC);
+  doc.setTextColor(headerTextColor);
   doc.setFontSize(12);
   doc.text(String(num), x + badgeW / 2, y + headerH / 2 + 1, {
     align: "center",
@@ -414,7 +527,7 @@ const createSubsection = function (
   let cursorY = y + headerH + 6;
   doc.setFont("helvetica", "normal");
   doc.setFontSize(fontSizeBody);
-  doc.setTextColor(bodyTextC);
+  doc.setTextColor(bodyTextColor);
 
   content.forEach((item) => {
     if (item.type === "paragraph") {
@@ -423,8 +536,6 @@ const createSubsection = function (
       doc.text(lines, x, cursorY);
       cursorY += lines.length * lineHeight;
     } else if (item.type === "bullet") {
-      const indentBullet = 5;
-      const indentText = 10;
       let ignoredX;
       [ignoredX, cursorY] = createBullet(
         doc,
@@ -432,16 +543,93 @@ const createSubsection = function (
         [x, cursorY],
         lineHeight
       );
-      // small filled circle
-      // doc.setDrawColor(bulletColor);
-      // doc.circle(x + indentBullet, cursorY - lineHeight / 2 + 2, 1, "F");
-      // // wrapped text after indent
-      // const lines = doc.splitTextToSize(item.text, w - indentText);
-      // doc.text(lines, x + indentText, cursorY - lineHeight / 2 + 3);
-      // cursorY += lines.length * lineHeight;
     }
-    // cursorY += gapAfterItem;
   });
 
   return cursorY;
+};
+
+const drawRiskBox = function (doc, riskKey, x, y) {
+  console.log("Drawing risk box for: ", riskKey);
+  const boxWidth = 40;
+  const boxHeight = 4;
+
+  const color = styles.riskKey[riskKey]; // Default to unknown if riskKey is not defined
+  doc.setFillColor(color);
+  doc.rect(x, y, boxWidth, boxHeight, "F");
+};
+
+const summaryTable = function (
+  doc,
+  title,
+  labels,
+  referenceRange,
+  individualData,
+  riskKeys,
+  coordinates,
+  width
+) {
+  const originX = coordinates[0];
+  const originY = coordinates[1];
+  const rowHeight = 10;
+  const cellPadding = 4;
+
+  // Draw table header
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(12);
+  doc.text(title, originX, originY);
+
+  // Label the columns
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(10);
+  doc.text("Metric", originX + cellPadding, originY + 10);
+  doc.text("Reference Range", originX + width / 4 + cellPadding, originY + 10);
+  doc.text("Score", originX + (2 * width) / 4 + cellPadding, originY + 10);
+  doc.text("Risk", originX + (3 * width) / 4 + cellPadding, originY + 10);
+  // Draw horizontal line after header
+  doc.line(originX, originY + 12, originX + width, originY + 12);
+  // Draw vertical lines
+  const verticalLineHeight = 10 + labels.length * rowHeight + cellPadding / 2;
+  doc.line(originX, originY + 12, originX, originY + verticalLineHeight);
+  doc.line(
+    originX + width / 4,
+    originY + 12,
+    originX + width / 4,
+    originY + verticalLineHeight
+  );
+  doc.line(
+    originX + (2 * width) / 4,
+    originY + 12,
+    originX + (2 * width) / 4,
+    originY + verticalLineHeight
+  );
+  doc.line(
+    originX + (3 * width) / 4,
+    originY + 12,
+    originX + (3 * width) / 4,
+    originY + verticalLineHeight
+  );
+  doc.line(
+    originX + width,
+    originY + 12,
+    originX + width,
+    originY + verticalLineHeight
+  );
+  // Draw outer box
+
+  // Draw table rows
+  let yStart = originY + 20; // Start y position for rows
+  labels.forEach((label, index) => {
+    const y = yStart + index * rowHeight;
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
+    doc.text(label, originX + cellPadding, y);
+    doc.text(referenceRange[index], originX + width / 4 + cellPadding, y);
+    doc.text(individualData[index], originX + (2 * width) / 4 + cellPadding, y);
+    // Draw risk box
+    const riskKey = riskKeys[index].toLowerCase();
+    drawRiskBox(doc, riskKey, originX + (3 * width) / 4 + cellPadding, y - 5);
+    // Draw horizontal line for each row
+    doc.line(originX, y + 2, originX + width, y + 2);
+  });
 };
