@@ -3,10 +3,9 @@ if (typeof PDF === "undefined") {
   var PDF = {};
 }
 
-var proj;
-
 const styles = {
   font: "helvetica",
+  textColor: "#000",
   h1: {
     fontSize: 22,
     fontStyle: "bold",
@@ -35,10 +34,17 @@ const styles = {
     fontSize: 12,
     fontStyle: "normal",
   },
+  box: {
+    backgroundColor: "#e57373",
+    headerBackgroundColor: "#a11a33",
+    font: "helvetica",
+    textColor: "#FFF",
+    fontSize: 12,
+    fontStyle: "normal",
+  },
 };
 
 PDF.post = function (action, pdfData, record_id, name) {
-  // console.log("Creating " + field_name);
   var action = $("<input>").attr("name", "action").val(action);
   var pdfData = $("<input>").attr("name", "pdfData").val(pdfData);
   var record_id = $("<input>").attr("name", "record_id").val(record_id);
@@ -51,10 +57,8 @@ PDF.post = function (action, pdfData, record_id, name) {
     .submit();
 };
 
-PDF.addEventHandlers = function (projData) {
+PDF.addEventHandlers = function () {
   // Handle the ADD button
-  proj = projData;
-  console.log("proj: ", proj.metadata.risk_key.element_label);
   $(".generate-pdf").on("click", function () {
     var record_id = $(this).attr("data-record-id");
     var name = $(this).attr("data-name");
@@ -121,6 +125,54 @@ PDF.generatePDF = async function (record_id, name) {
     20
   );
 
+  const boxX = coordinates[0];
+  const boxY = coordinates[1];
+  const boxWidth = 40; // Width of the box
+  const boxHeight = 50; // Height of the box
+
+  coordinates = createBox(
+    doc,
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "A1c",
+    coordinates,
+    boxWidth,
+    boxHeight
+  );
+
+  coordinates = createBox(
+    doc,
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "Depression",
+    [coordinates[0] + boxWidth + 10, boxY],
+    boxWidth,
+    boxHeight
+  );
+
+  coordinates = createBox(
+    doc,
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "Allergies",
+    [coordinates[0] + boxWidth + 10, boxY],
+    boxWidth,
+    boxHeight
+  );
+
+  coordinates = createBox(
+    doc,
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "Cancer",
+    [coordinates[0] + boxWidth + 10, boxY],
+    boxWidth,
+    boxHeight
+  );
+
+  coordinates = [boxX, coordinates[1]];
+  coordinates = createText(
+    doc,
+    "Coordinates at end of box creation",
+    coordinates
+  );
+
   doc.output("dataurlnewwindow");
   const pdfData = doc.output("datauristring");
 
@@ -136,6 +188,7 @@ const createHeader = function (
 ) {
   title = doc.splitTextToSize(title, 180);
   const headerStyles = styles[headerType];
+  doc.setTextColor(styles.textColor);
   doc.setFontSize(headerStyles.fontSize);
   doc.text(title, coordinates[0], coordinates[1]);
   coordinates[1] += coordinateHeight;
@@ -143,8 +196,8 @@ const createHeader = function (
 };
 
 const createText = function (doc, text, coordinates, coordinateHeight = 6) {
-  console.log("text: ", text);
   text = doc.splitTextToSize(text, 180);
+  doc.setTextColor(styles.textColor);
   doc.setFontSize(styles.p.fontSize);
   doc.setFont(styles.font, styles.p.fontStyle);
   doc.text(text, coordinates[0], coordinates[1]);
@@ -154,9 +207,43 @@ const createText = function (doc, text, coordinates, coordinateHeight = 6) {
 
 const createBullet = function (doc, text, coordinates, coordinateHeight = 6) {
   text = doc.splitTextToSize("\u2022 " + text, 160);
+  doc.setTextColor(styles.textColor);
   doc.setFontSize(styles.p.fontSize);
   doc.setFont(styles.font, styles.p.fontStyle);
   doc.text(text, coordinates[0] + 10, coordinates[1]);
   coordinates[1] += coordinateHeight * text.length;
+  return coordinates;
+};
+
+const createBox = function (doc, text, header, coordinates, width, height) {
+  const headerHeight = 12; // Height for the header
+  doc.setFillColor(styles.box.headerBackgroundColor);
+  doc.rect(coordinates[0], coordinates[1], width, headerHeight, "F");
+  doc.setFillColor(styles.box.backgroundColor);
+  doc.rect(
+    coordinates[0],
+    coordinates[1] + headerHeight,
+    width,
+    height - headerHeight,
+    "F"
+  );
+
+  // Add header to the box
+  const textX = coordinates[0] + 4;
+  const headerText = doc.splitTextToSize(header, width - 8);
+  doc.setTextColor(styles.box.textColor);
+  doc.setFontSize(styles.box.fontSize);
+  doc.setFont(styles.box.font, styles.box.fontStyle);
+  doc.text(headerText, textX, coordinates[1] + 8);
+  coordinates[1] += headerHeight; // Move down for the text
+
+  // Add text to the box
+  text = doc.splitTextToSize(text, width - 8);
+  doc.setTextColor(styles.box.textColor);
+  doc.setFontSize(styles.box.fontSize);
+  doc.setFont(styles.box.font, styles.box.fontStyle);
+  doc.text(text, textX, coordinates[1] + 6);
+
+  coordinates[1] += height;
   return coordinates;
 };
