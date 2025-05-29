@@ -206,6 +206,7 @@ PDF.generatePDF = async function (record_id, name) {
 
   coordinates = summaryTable(
     doc,
+    "Summary Table",
     labels,
     referenceRange,
     individualData,
@@ -533,6 +534,7 @@ const createSubsection = function (
 
 const summaryTable = function (
   doc,
+  title,
   labels,
   referenceRange,
   individualData,
@@ -547,7 +549,7 @@ const summaryTable = function (
   // Draw table header
   doc.setFont("helvetica", "bold");
   doc.setFontSize(12);
-  doc.text("Summary Table", originX, originY);
+  doc.text(title, originX, originY);
 
   // Label the columns
   doc.setFont("helvetica", "normal");
