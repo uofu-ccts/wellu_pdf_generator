@@ -56,6 +56,12 @@ const styles = {
     bodyTextColor: "#333", // dark gray
     fontSizeBody: 10,
   },
+  riskKey: {
+    low: "#2dc26b",
+    medium: "#f1c40f",
+    high: "#e03e2d",
+    unknown: "#b96ad9",
+  },
 };
 
 PDF.post = function (action, pdfData, record_id, name) {
@@ -203,6 +209,16 @@ PDF.generatePDF = async function (record_id, name) {
     "150 mg/dL",
     "130 mg/dL",
   ];
+  const riskKeys = [
+    "low",
+    "medium",
+    "high",
+    "unknown",
+    "low",
+    "medium",
+    "high",
+    "unknown",
+  ];
 
   coordinates = summaryTable(
     doc,
@@ -210,6 +226,7 @@ PDF.generatePDF = async function (record_id, name) {
     labels,
     referenceRange,
     individualData,
+    riskKeys,
     coordinates,
     pageWidth - 20
   );
@@ -532,12 +549,23 @@ const createSubsection = function (
   return cursorY;
 };
 
+const drawRiskBox = function (doc, riskKey, x, y) {
+  console.log("Drawing risk box for: ", riskKey);
+  const boxWidth = 40;
+  const boxHeight = 4;
+
+  const color = styles.riskKey[riskKey]; // Default to unknown if riskKey is not defined
+  doc.setFillColor(color);
+  doc.rect(x, y, boxWidth, boxHeight, "F");
+};
+
 const summaryTable = function (
   doc,
   title,
   labels,
   referenceRange,
   individualData,
+  riskKeys,
   coordinates,
   width
 ) {
@@ -555,23 +583,30 @@ const summaryTable = function (
   doc.setFont("helvetica", "normal");
   doc.setFontSize(10);
   doc.text("Metric", originX + cellPadding, originY + 10);
-  doc.text("Reference Range", originX + width / 3 + cellPadding, originY + 10);
-  doc.text("Score", originX + (2 * width) / 3 + cellPadding, originY + 10);
+  doc.text("Reference Range", originX + width / 4 + cellPadding, originY + 10);
+  doc.text("Score", originX + (2 * width) / 4 + cellPadding, originY + 10);
+  doc.text("Risk", originX + (3 * width) / 4 + cellPadding, originY + 10);
   // Draw horizontal line after header
   doc.line(originX, originY + 12, originX + width, originY + 12);
   // Draw vertical lines
   const verticalLineHeight = 10 + labels.length * rowHeight + cellPadding / 2;
   doc.line(originX, originY + 12, originX, originY + verticalLineHeight);
   doc.line(
-    originX + width / 3,
+    originX + width / 4,
     originY + 12,
-    originX + width / 3,
+    originX + width / 4,
     originY + verticalLineHeight
   );
   doc.line(
-    originX + (2 * width) / 3,
+    originX + (2 * width) / 4,
     originY + 12,
-    originX + (2 * width) / 3,
+    originX + (2 * width) / 4,
+    originY + verticalLineHeight
+  );
+  doc.line(
+    originX + (3 * width) / 4,
+    originY + 12,
+    originX + (3 * width) / 4,
     originY + verticalLineHeight
   );
   doc.line(
@@ -589,8 +624,11 @@ const summaryTable = function (
     doc.setFont("helvetica", "normal");
     doc.setFontSize(10);
     doc.text(label, originX + cellPadding, y);
-    doc.text(referenceRange[index], originX + width / 3 + cellPadding, y);
-    doc.text(individualData[index], originX + (2 * width) / 3 + cellPadding, y);
+    doc.text(referenceRange[index], originX + width / 4 + cellPadding, y);
+    doc.text(individualData[index], originX + (2 * width) / 4 + cellPadding, y);
+    // Draw risk box
+    const riskKey = riskKeys[index].toLowerCase();
+    drawRiskBox(doc, riskKey, originX + (3 * width) / 4 + cellPadding, y - 5);
     // Draw horizontal line for each row
     doc.line(originX, y + 2, originX + width, y + 2);
   });
