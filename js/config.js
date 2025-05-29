@@ -439,8 +439,8 @@ const createSubsection = function (
   const headerH = 10;
   const badgeW = 10;
   const headerColor = styles.prioritiesSection.headerColor; // dark blue
-  const headerTextC = styles.prioritiesSection.headerTextColor; // white
-  const bodyTextC = styles.prioritiesSection.bodyTextColor; // dark gray
+  const headerTextColor = styles.prioritiesSection.headerTextColor; // white
+  const bodyTextColor = styles.prioritiesSection.bodyTextColor; // dark gray
   const fontSizeBody = styles.prioritiesSection.fontSizeBody;
   const lineHeight = fontSizeBody * 1.2;
   let x = coordinates[0];
@@ -450,7 +450,7 @@ const createSubsection = function (
   // ——— Badge box ———
   doc.setFillColor(badgeColor);
   doc.rect(x, y, badgeW, headerH, "F");
-  doc.setTextColor(headerTextC);
+  doc.setTextColor(headerTextColor);
   doc.setFontSize(12);
   doc.text(String(num), x + badgeW / 2, y + headerH / 2 + 1, {
     align: "center",
@@ -466,7 +466,7 @@ const createSubsection = function (
   let cursorY = y + headerH + 6;
   doc.setFont("helvetica", "normal");
   doc.setFontSize(fontSizeBody);
-  doc.setTextColor(bodyTextC);
+  doc.setTextColor(bodyTextColor);
 
   content.forEach((item) => {
     if (item.type === "paragraph") {
