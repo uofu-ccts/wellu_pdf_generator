@@ -170,6 +170,49 @@ PDF.generatePDF = async function (record_id, name) {
     100
   );
 
+  doc.addPage();
+  coordinates = [startingX, startingY];
+
+  const labels = [
+    "Height",
+    "Weight",
+    "BMI",
+    "Waist",
+    "Cholesterol",
+    "HDL",
+    "LDL",
+    "Triglycerides",
+  ];
+  const referenceRange = [
+    "4'9\" - 7'0\"",
+    "150 - 180 lbs",
+    "18.5 - 24.9",
+    "31 - 37 inches",
+    "< 200 mg/dL",
+    "> 40 mg/dL",
+    "< 130 mg/dL",
+    "< 150 mg/dL",
+  ];
+  const individualData = [
+    "5'11\"",
+    "160 lbs",
+    "23 kg/m²",
+    "32 inches",
+    "160 mg/dL",
+    "55 mg/dL",
+    "150 mg/dL",
+    "130 mg/dL",
+  ];
+
+  coordinates = summaryTable(
+    doc,
+    labels,
+    referenceRange,
+    individualData,
+    coordinates,
+    pageWidth - 20
+  );
+
   doc.output("dataurlnewwindow");
   const pdfData = doc.output("datauristring");
 
@@ -486,4 +529,67 @@ const createSubsection = function (
   });
 
   return cursorY;
+};
+
+const summaryTable = function (
+  doc,
+  labels,
+  referenceRange,
+  individualData,
+  coordinates,
+  width
+) {
+  const originX = coordinates[0];
+  const originY = coordinates[1];
+  const rowHeight = 10;
+  const cellPadding = 4;
+
+  // Draw table header
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(12);
+  doc.text("Summary Table", originX, originY);
+
+  // Label the columns
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(10);
+  doc.text("Metric", originX + cellPadding, originY + 10);
+  doc.text("Reference Range", originX + width / 3 + cellPadding, originY + 10);
+  doc.text("Score", originX + (2 * width) / 3 + cellPadding, originY + 10);
+  // Draw horizontal line after header
+  doc.line(originX, originY + 12, originX + width, originY + 12);
+  // Draw vertical lines
+  const verticalLineHeight = 10 + labels.length * rowHeight + cellPadding / 2;
+  doc.line(originX, originY + 12, originX, originY + verticalLineHeight);
+  doc.line(
+    originX + width / 3,
+    originY + 12,
+    originX + width / 3,
+    originY + verticalLineHeight
+  );
+  doc.line(
+    originX + (2 * width) / 3,
+    originY + 12,
+    originX + (2 * width) / 3,
+    originY + verticalLineHeight
+  );
+  doc.line(
+    originX + width,
+    originY + 12,
+    originX + width,
+    originY + verticalLineHeight
+  );
+  // Draw outer box
+
+  // Draw table rows
+  let yStart = originY + 20; // Start y position for rows
+  labels.forEach((label, index) => {
+    const y = yStart + index * rowHeight;
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
+    doc.text(label, originX + cellPadding, y);
+    doc.text(referenceRange[index], originX + width / 3 + cellPadding, y);
+    doc.text(individualData[index], originX + (2 * width) / 3 + cellPadding, y);
+    // Draw horizontal line for each row
+    doc.line(originX, y + 2, originX + width, y + 2);
+  });
 };
