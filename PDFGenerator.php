@@ -42,7 +42,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
                 $pdfFilePath = __DIR__ . '/generated_pdfs' . '/' . $record_id . '_' . $name . '_' . $currentDateTime. '.pdf';
 
                 $response = $this->savePdfFile($pdfData, $pdfFilePath);
-                
+
                 if ($response === false) {
                     $this->console_log("Failed to save PDF file.");
                     return;
@@ -88,7 +88,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         $html .= "<button type='button' class='btn btn-primary generate-pdf' data-record-id='$record_id' data-name='$name'>Download PDF</button>";
         $html .= "<form id='action-form' name='action' class='hidden' method='POST'></form>";
         $html .= "<script src='$jsUrl'></script>";
-        $html .= "<script>PDF.addEventHandlers($projJson);</script>";
+        $html .= "<script>PDF.addEventHandlers();</script>";
 
         return $html;
     }
