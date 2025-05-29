@@ -50,6 +50,12 @@ const styles = {
     fontSize: 12,
     fontStyle: "normal",
   },
+  prioritiesSection: {
+    headerColor: "#2c3e50", // dark blue
+    headerTextColor: "#fff", // white
+    bodyTextColor: "#333", // dark gray
+    fontSizeBody: 10,
+  },
 };
 
 PDF.post = function (action, pdfData, record_id, name) {
@@ -153,7 +159,8 @@ PDF.generatePDF = async function (record_id, name) {
     100
   );
 
-  coordinates = [coordinates[0], coordinates[1] + 10];
+  doc.addPage();
+  coordinates = [startingX, startingY];
 
   coordinates = createPrioritiesSectionBox(
     doc,
@@ -345,10 +352,10 @@ const createPrioritiesSectionBox = function (
   doc.text(headerText, textX, coordinates[1] + 5.33);
   coordinates[1] += headerHeight; // Move down for the text
 
-  createSubsection(
+  coordinates[1] = createSubsection(
     doc,
     1,
-    "Your Priorities",
+    "Hemoglobin A1c",
     [
       {
         type: "paragraph",
@@ -365,7 +372,55 @@ const createPrioritiesSectionBox = function (
     ],
     [coordinates[0] + 10, coordinates[1] + 10],
     width - 20,
-    height - headerHeight - 20
+    height,
+    "#c0392b" // red badge color
+  );
+
+  coordinates[1] = createSubsection(
+    doc,
+    2,
+    "Depression",
+    [
+      {
+        type: "paragraph",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      },
+      {
+        type: "bullet",
+        text: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      },
+      {
+        type: "bullet",
+        text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      },
+    ],
+    [coordinates[0] + 10, coordinates[1]],
+    width - 20,
+    height,
+    "#f39c12" // orange badge color
+  );
+  coordinates[1] = createSubsection(
+    doc,
+    3,
+    "Allergies",
+    [
+      {
+        type: "paragraph",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      },
+      {
+        type: "bullet",
+        text: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      },
+      {
+        type: "bullet",
+        text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      },
+    ],
+    [coordinates[0] + 10, coordinates[1]],
+    width - 20,
+    height,
+    "#27ae60" // green badge color
   );
 
   return coordinates;
@@ -378,22 +433,19 @@ const createSubsection = function (
   content,
   coordinates,
   width,
-  height
+  height,
+  badgeColor
 ) {
   const headerH = 10;
   const badgeW = 10;
-  const badgeColor = "#c0392b"; // red
-  const headerColor = "#2c3e50"; // dark blue
-  const headerTextC = "#fff"; // white
-  const bodyTextC = "#333"; // dark gray
-  const bulletColor = "#333";
-  const fontSizeBody = 10;
+  const headerColor = styles.prioritiesSection.headerColor; // dark blue
+  const headerTextC = styles.prioritiesSection.headerTextColor; // white
+  const bodyTextC = styles.prioritiesSection.bodyTextColor; // dark gray
+  const fontSizeBody = styles.prioritiesSection.fontSizeBody;
   const lineHeight = fontSizeBody * 1.2;
-  const gapAfterItem = 4;
   let x = coordinates[0];
   let y = coordinates[1];
   const w = width;
-  const h = height;
 
   // ——— Badge box ———
   doc.setFillColor(badgeColor);
@@ -423,8 +475,6 @@ const createSubsection = function (
       doc.text(lines, x, cursorY);
       cursorY += lines.length * lineHeight;
     } else if (item.type === "bullet") {
-      const indentBullet = 5;
-      const indentText = 10;
       let ignoredX;
       [ignoredX, cursorY] = createBullet(
         doc,
@@ -432,15 +482,7 @@ const createSubsection = function (
         [x, cursorY],
         lineHeight
       );
-      // small filled circle
-      // doc.setDrawColor(bulletColor);
-      // doc.circle(x + indentBullet, cursorY - lineHeight / 2 + 2, 1, "F");
-      // // wrapped text after indent
-      // const lines = doc.splitTextToSize(item.text, w - indentText);
-      // doc.text(lines, x + indentText, cursorY - lineHeight / 2 + 3);
-      // cursorY += lines.length * lineHeight;
     }
-    // cursorY += gapAfterItem;
   });
 
   return cursorY;
