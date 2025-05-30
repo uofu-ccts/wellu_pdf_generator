@@ -12,7 +12,6 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         parent::__construct();
     }
 
-    // This is generally where your module's hooks will live
     function redcap_every_page_top($project_id) {
         $this->project_id = $project_id;
     }
@@ -49,7 +48,6 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
                 } else {
                     $this->console_log("PDF file saved to following filesystem location: " . $pdfFilePath);
 
-                    // Save the PDF to REDCap edocs
                     $doc_id = $this->saveToEdocs($pdfFilePath);
                     $this->console_log("PDF file saved to REDCap edocs with ID: " . $doc_id);
                 }
@@ -84,6 +82,8 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         $name = $record[0]['first_name'] . " " . $record[0]['last_name'];
         global $Proj;
         $projJson = json_encode($Proj);
+
+        $priorities = $this->extractPriorities($record);
 
         $html  = '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>';
         $html .= '<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>';
@@ -142,6 +142,51 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
      */
 
     // Might want some of the data in array format, so that it can be sorted
+
+    function extractPriorities($record) {
+        $priorities = [];
+        
+        // Define the priority fields with labels
+        $priorityLabels = [
+            'dbt_priority_numb_2' => 'History of Diabetes',
+            'a1c_priority_numb_2' => 'A1C',
+            'fastfood_priority_numb_2' => 'Fast Food / Snacks Intake',
+            'fruitveg_priority_numb_2' => 'Fruit & Vegetable Intake',
+            'sugarbev_priority_numb_2' => 'Sugar Sweetened Beverages Intake',
+            'artbev_priority_numb_2' => 'Artificially Sweetened Beverages Intake',
+            'phys_priority_numb_2' => 'Physical Activity',
+            'stress_priority_numb_2' => 'Stress',
+            'anxietypriority_numb_2' => 'Anxiety',
+            'depression_priority_numb_2' => 'Depression',
+            'alcohol_priority_numb_2' => 'Alcohol Consumption',
+            'drugs_priority_numb_2' => 'Drug Usage',
+            'tobacco_priority_numb_2' => 'Tobacco Usage',
+            'sleep_priority_numb_2' => 'Daytime Sleepiness',
+            'genhealth_priority_numb_2' => 'General Health Rating',
+            'pcp_priority_numb_2' => 'Primary Care Provider',
+            'no_answr' => 'No Answers Provided',
+        ];
+        
+        // Extract priority values for this record
+        foreach ($priorityLabels as $field => $label) {
+            // Using record[1] since that's the only event we're interested in 
+            if (!empty($record[1][$field])) {
+                $priorities[] = [
+                    'field' => $field,           // Original field name
+                    'label' => $label,           // Human-readable label
+                    'value' => (int)$record[1][$field]  // Priority value
+                ];
+            }
+        }
+
+        // Sort by priority value (lower number = higher priority)
+        // Probably don't need to sort, but doing it just in case
+        usort($priorities, function($a, $b) {
+            return $a['value'] - $b['value'];
+        });
+
+        return $priorities;
+    }
 
     function savePdfFile($base64Data, $filePath) {
         // Extract the base64 part (remove the data:application/pdf;base64, prefix)
