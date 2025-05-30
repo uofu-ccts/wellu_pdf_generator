@@ -80,8 +80,6 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         $this->console_log($record);
 
         $name = $record[0]['first_name'] . " " . $record[0]['last_name'];
-        global $Proj;
-        $projJson = json_encode($Proj);
 
         $priorities = $this->extractPriorities($record);
 
