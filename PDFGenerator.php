@@ -78,6 +78,9 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
 
         $record = $this->getCurrentRecordData($record_id);
 
+        $this->console_log("Record data for ID $record_id: ");
+        $this->console_log($record);
+
         $name = $record[0]['first_name'] . " " . $record[0]['last_name'];
         global $Proj;
         $projJson = json_encode($Proj);
@@ -97,12 +100,49 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         $params = array(
             'project_id' => $this->project_id,
             'records' => $record_id,
-            'return_format' => 'json',
-            // 'fields' => 'record_id'
+            'return_format' => 'array',
+            // 'fields' => array(
+            //             'record_id', 
+            //             'first_name',
+            //             'last_name',
+            //             'dbt_priority_numb_2',
+            //             'a1c_priority_numb_2',
+            //             'fastfood_priority_numb_2',
+            //             'fruitveg_priority_numb_2',
+            //             'sugarbev_priority_numb_2',
+            //             'artbev_priority_numb_2',
+            //             'phys_priority_numb_2',
+            //             'stress_priority_numb_2',
+            //             'anxietypriority_numb_2',
+            //             'depression_priority_numb_2',
+            //             'alcohol_priority_numb_2',
+            //             'drugs_priority_numb_2',
+            //             'tobacco_priority_numb_2',
+            //             'sleep_priority_numb_2',
+            //             'genhealth_priority_numb_2',
+            //             'php_priority_numb_2',
+            //             'no_answr',
+            //             'top_3'
+            //             )
           );
         $record = json_decode(\REDCap::getData($params), true);
         return $record;
     }
+
+    /**
+     * Process of "lookup" table
+     * 1. get the Dynamic Response priorities from the record
+     * 2. get the top_3 that are selected
+     * 3. for each top_3, determine priority selected by respondent
+     * 4. reorder top_3 based on selection
+     * 5. find first dynamic response priority not selected in top_3
+     * 6. add to top_3 as next item
+     * 7. repeat 5 and 6 until there are 4 items selected
+     * 8. pass selected items to PDF generator
+     */
+
+     // Might want some of the data in array format, so that it can be sorted
+
 
     function savePdfFile($base64Data, $filePath) {
         // Extract the base64 part (remove the data:application/pdf;base64, prefix)
@@ -134,10 +174,6 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             $event_id
         );
     }
-
-    // TODO: Save PDF (with docid) to file field
-    // TODO: Have EM triggered by survey completion
-    // TODO: Set up emailing of PDF to user after generation
 
     public function console_log($data, $level = 'INFO') {
         $output = json_encode($data);
