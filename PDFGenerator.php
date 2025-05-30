@@ -71,9 +71,9 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         ],
         'alcohol' => [
             'label' => 'Alcohol Consumption',
-            'priority_field' => 'alcohol_priority_numb_2',
+            'priority_field' => 'alchohol_priority_numb_2',
             'top_three_field' => 'top_3___11',
-            'ranking_field' => 'alcohol_priority',
+            'ranking_field' => 'alchohol_priority',
         ],
         'drugs' => [
             'label' => 'Drug Usage',
@@ -236,79 +236,93 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
 
     /**
      * Process of "lookup" table
-     * 1. get the Dynamic Response priorities from the record
-     * 2. get the top_3 that are selected
-     * 3. for each top_3, determine priority selected by respondent
-     * 4. reorder top_3 based on selection
-     * 5. find first dynamic response priority not selected in top_3
-     * 6. add to top_3 as next item
-     * 7. repeat 5 and 6 until there are 4 items selected
-     * 8. pass selected items to PDF generator
+     * 1. grab OCIH priority, top three, and ranking values
+     * 2. sort by priority value (lower number = higher priority)
+     * 3. sort by top three value (1 = top three, NULL = not in top three)
+     * 4. sort by ranking value (lower number = higher ranking, NULL = not ranked)
+     * 5. return array of processed priorities
      */
 
     // Might want some of the data in array format, so that it can be sorted
 
     function processPriorities($record) {
         $priorities = [];
-        $top_three = [];
-        $ranking = [];
 
         $lookup = $this->lookup;
         
         // Extract priority values for this record
-        foreach ($lookup as $element) {
+        foreach ($lookup as $key => $element) {
 
             $label = $element['label'];
             $priority_field = $element['priority_field'];
             $top_three_field = $element['top_three_field'];
             $ranking_field = $element['ranking_field'];
 
-            $this->console_log($element);
-            // Using record[1] since that's the only event we're interested in 
-            if (!empty($record[1][$ranking_field])) {
-                $ranking[] = [
-                    'field' => $ranking_field,           // Original field name
-                    'label' => $label,           // Human-readable label
-                    'value' => (int)$record[1][$ranking_field]  // Priority value
-                ];
-            }
-
-
+            // Using record[1] since that's the only event we're interested in
             if (!empty($record[1][$priority_field])) {
+                $priority_value = (int)$record[1][$priority_field];
+                $ranking_value = empty($record[1][$ranking_field]) ? NULL : (int)$record[1][$ranking_field];
+                $top_three_value = empty($record[1][$top_three_field]) ? NULL : (int)$record[1][$top_three_field];
+
                 $priorities[] = [
                     'field' => $priority_field,           // Original field name
                     'label' => $label,           // Human-readable label
-                    'value' => (int)$record[1][$priority_field]  // Priority value
-                ];
-            }
-
-            if (!empty($record[1][$top_three_field])) {
-                $top_three[] = [
-                    'field' => $top_three_field,           // Original field name
-                    'label' => $label,           // Human-readable label
-                    'value' => (int)$record[1][$top_three_field]  // Priority value
+                    'priority_value' => $priority_value,
+                    'ranking_value' => $ranking_value,
+                    'top_three_value' => $top_three_value
                 ];
             }
         }
 
         // Sort by priority value (lower number = higher priority)
         // Probably don't need to sort, but doing it just in case
+        // Sort by priority values with NULLs at the end
         usort($priorities, function($a, $b) {
-            return $a['value'] - $b['value'];
+            return $a['priority_value'] - $b['priority_value'];
         });
 
-        // Don't need to sort top three by value (should all be 1)
-        
-        // Sort ranking by value
-        usort($ranking, function($a, $b) {
-            return $a['value'] - $b['value'];
+        usort($priorities, function($a, $b) {
+            // If both values are NULL, consider them equal
+            if ($a['top_three_value'] === NULL && $b['top_three_value'] === NULL) {
+                return 0;
+            }
+            
+            // If only $a is NULL, move it to the end
+            if ($a['top_three_value'] === NULL) {
+                return 1;
+            }
+            
+            // If only $b is NULL, move it to the end
+            if ($b['top_three_value'] === NULL) {
+                return -1;
+            }
+            
+            // Both are non-NULL, sort normally
+            return $a['top_three_value'] - $b['top_three_value'];
         });
 
-        return array(
-            $priorities,
-            $top_three,
-            $ranking
-        );
+
+        usort($priorities, function($a, $b) {
+            // If both values are NULL, consider them equal
+            if ($a['ranking_value'] === NULL && $b['ranking_value'] === NULL) {
+                return 0;
+            }
+            
+            // If only $a is NULL, move it to the end
+            if ($a['ranking_value'] === NULL) {
+                return 1;
+            }
+            
+            // If only $b is NULL, move it to the end
+            if ($b['ranking_value'] === NULL) {
+                return -1;
+            }
+            
+            // Both are non-NULL, sort normally
+            return $a['ranking_value'] - $b['ranking_value'];
+        });
+
+        return $priorities;
     }
 
     function savePdfFile($base64Data, $filePath) {
