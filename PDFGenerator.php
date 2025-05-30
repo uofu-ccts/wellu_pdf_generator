@@ -8,6 +8,111 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
     public $project_id = null;
     public $list_of_records = array();
 
+    private $lookup = [
+        'dbt' => [
+            'label' => 'History of Diabetes',
+            'priority_field' => 'dbt_priority_numb_2',
+            'top_three_field' => 'top_3___1',
+            'ranking_field' => 'dbt_priority',
+        ],
+        'a1c' => [
+            'label' => 'A1C',
+            'priority_field' => 'a1c_priority_numb_2',
+            'top_three_field' => 'top_3___2',
+            'ranking_field' => 'a1c_priority',
+        ],
+        'fastfood' => [
+            'label' => 'Fast Food / Snacks Intake',
+            'priority_field' => 'fastfood_priority_numb_2',
+            'top_three_field' => 'top_3___3',
+            'ranking_field' => 'fastfood_priority',
+        ],
+        'fruitveg' => [
+            'label' => 'Fruit & Vegetable Intake',
+            'priority_field' => 'fruitveg_priority_numb_2',
+            'top_three_field' => 'top_3___4',
+            'ranking_field' => 'fruitveg_priority',
+        ],
+        'sugarbev' => [
+            'label' => 'Sugar Sweetened Beverages Intake',
+            'priority_field' => 'sugarbev_priority_numb_2',
+            'top_three_field' => 'top_3___5',
+            'ranking_field' => 'sugarbev_priority',
+        ],
+        'artbev' => [
+            'label' => 'Artificially Sweetened Beverages Intake',
+            'priority_field' => 'artbev_priority_numb_2',
+            'top_three_field' => 'top_3___6',
+            'ranking_field' => 'artbev_priority',
+        ],
+        'phys' => [
+            'label' => 'Physical Activity',
+            'priority_field' => 'phys_priority_numb_2',
+            'top_three_field' => 'top_3___7',
+            'ranking_field' => 'phys_priority',
+        ],
+        'stress' => [
+            'label' => 'Stress',
+            'priority_field' => 'stress_priority_numb_2',
+            'top_three_field' => 'top_3___8',
+            'ranking_field' => 'stress_priority',
+        ],
+        'anxiety' => [
+            'label' => 'Anxiety',
+            'priority_field' => 'anxietypriority_numb_2',
+            'top_three_field' => 'top_3___9',
+            'ranking_field' => 'anxiety_priority',
+        ],
+        'depression' => [
+            'label' => 'Depression',
+            'priority_field' => 'depression_priority_numb_2',
+            'top_three_field' => 'top_3___10',
+            'ranking_field' => 'depression_priority',
+        ],
+        'alcohol' => [
+            'label' => 'Alcohol Consumption',
+            'priority_field' => 'alcohol_priority_numb_2',
+            'top_three_field' => 'top_3___11',
+            'ranking_field' => 'alcohol_priority',
+        ],
+        'drugs' => [
+            'label' => 'Drug Usage',
+            'priority_field' => 'drugs_priority_numb_2',
+            'top_three_field' => 'top_3___12',
+            'ranking_field' => 'drugs_priority',
+        ],
+        'tobacco' => [
+            'label' => 'Tobacco Usage',
+            'priority_field' => 'tobacco_priority_numb_2',
+            'top_three_field' => 'top_3___13',
+            'ranking_field' => 'tobacco_priority',
+        ],
+        'sleep' => [
+            'label' => 'Daytime Sleepiness',
+            'priority_field' => 'sleep_priority_numb_2',
+            'top_three_field' => 'top_3___14',
+            'ranking_field' => 'sleep_priority',
+        ],
+        'genhealth' => [
+            'label' => 'General Health Rating',
+            'priority_field' => 'genhealth_priority_numb_2',
+            'top_three_field' => 'top_3___15',
+            'ranking_field' => 'genhealth_priority',
+        ],
+        'pcp' => [
+            'label' => 'Primary Care Provider',
+            'priority_field' => 'pcp_priority_numb_2',
+            'top_three_field' => 'top_3___16',
+            'ranking_field' => 'pcp_priority',
+        ],
+        'no_answr' => [
+            'label' => 'No Answers Provided',
+            'priority_field' => 'no_answr',
+            'top_three_field' => 'top_3___99',
+            'ranking_field' => NULL,
+        ],
+    ];
+
     public function __construct() {
         parent::__construct();
     }
@@ -81,7 +186,9 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
 
         $name = $record[0]['first_name'] . " " . $record[0]['last_name'];
 
-        $priorities = $this->extractPriorities($record);
+        $processed_data = $this->processPriorities($record);
+        $this->console_log("Processed priorities for record ID $record_id: ");
+        $this->console_log($processed_data);
 
         $html  = '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>';
         $html .= '<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>';
@@ -141,38 +248,45 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
 
     // Might want some of the data in array format, so that it can be sorted
 
-    function extractPriorities($record) {
+    function processPriorities($record) {
         $priorities = [];
-        
-        // Define the priority fields with labels
-        $priorityLabels = [
-            'dbt_priority_numb_2' => 'History of Diabetes',
-            'a1c_priority_numb_2' => 'A1C',
-            'fastfood_priority_numb_2' => 'Fast Food / Snacks Intake',
-            'fruitveg_priority_numb_2' => 'Fruit & Vegetable Intake',
-            'sugarbev_priority_numb_2' => 'Sugar Sweetened Beverages Intake',
-            'artbev_priority_numb_2' => 'Artificially Sweetened Beverages Intake',
-            'phys_priority_numb_2' => 'Physical Activity',
-            'stress_priority_numb_2' => 'Stress',
-            'anxietypriority_numb_2' => 'Anxiety',
-            'depression_priority_numb_2' => 'Depression',
-            'alcohol_priority_numb_2' => 'Alcohol Consumption',
-            'drugs_priority_numb_2' => 'Drug Usage',
-            'tobacco_priority_numb_2' => 'Tobacco Usage',
-            'sleep_priority_numb_2' => 'Daytime Sleepiness',
-            'genhealth_priority_numb_2' => 'General Health Rating',
-            'pcp_priority_numb_2' => 'Primary Care Provider',
-            'no_answr' => 'No Answers Provided',
-        ];
+        $top_three = [];
+        $ranking = [];
+
+        $lookup = $this->lookup;
         
         // Extract priority values for this record
-        foreach ($priorityLabels as $field => $label) {
+        foreach ($lookup as $element) {
+
+            $label = $element['label'];
+            $priority_field = $element['priority_field'];
+            $top_three_field = $element['top_three_field'];
+            $ranking_field = $element['ranking_field'];
+
+            $this->console_log($element);
             // Using record[1] since that's the only event we're interested in 
-            if (!empty($record[1][$field])) {
-                $priorities[] = [
-                    'field' => $field,           // Original field name
+            if (!empty($record[1][$ranking_field])) {
+                $ranking[] = [
+                    'field' => $ranking_field,           // Original field name
                     'label' => $label,           // Human-readable label
-                    'value' => (int)$record[1][$field]  // Priority value
+                    'value' => (int)$record[1][$ranking_field]  // Priority value
+                ];
+            }
+
+
+            if (!empty($record[1][$priority_field])) {
+                $priorities[] = [
+                    'field' => $priority_field,           // Original field name
+                    'label' => $label,           // Human-readable label
+                    'value' => (int)$record[1][$priority_field]  // Priority value
+                ];
+            }
+
+            if (!empty($record[1][$top_three_field])) {
+                $top_three[] = [
+                    'field' => $top_three_field,           // Original field name
+                    'label' => $label,           // Human-readable label
+                    'value' => (int)$record[1][$top_three_field]  // Priority value
                 ];
             }
         }
@@ -183,7 +297,18 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             return $a['value'] - $b['value'];
         });
 
-        return $priorities;
+        // Don't need to sort top three by value (should all be 1)
+        
+        // Sort ranking by value
+        usort($ranking, function($a, $b) {
+            return $a['value'] - $b['value'];
+        });
+
+        return array(
+            $priorities,
+            $top_three,
+            $ranking
+        );
     }
 
     function savePdfFile($base64Data, $filePath) {
