@@ -100,7 +100,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         $params = array(
             'project_id' => $this->project_id,
             'records' => $record_id,
-            'return_format' => 'array',
+            'return_format' => 'json',
             // 'fields' => array(
             //             'record_id', 
             //             'first_name',
@@ -120,7 +120,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             //             'tobacco_priority_numb_2',
             //             'sleep_priority_numb_2',
             //             'genhealth_priority_numb_2',
-            //             'php_priority_numb_2',
+            //             'pcp_priority_numb_2',
             //             'no_answr',
             //             'top_3'
             //             )
@@ -141,8 +141,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
      * 8. pass selected items to PDF generator
      */
 
-     // Might want some of the data in array format, so that it can be sorted
-
+    // Might want some of the data in array format, so that it can be sorted
 
     function savePdfFile($base64Data, $filePath) {
         // Extract the base64 part (remove the data:application/pdf;base64, prefix)
