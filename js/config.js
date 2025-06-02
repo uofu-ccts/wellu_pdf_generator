@@ -163,7 +163,7 @@ PDF.generatePDF = async function (record_id, name) {
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     "Your Numbers",
     coordinates,
-    pageWidth - 20,
+    pageWidth - 10,
     100
   );
 
@@ -174,7 +174,7 @@ PDF.generatePDF = async function (record_id, name) {
     doc,
     "Your Priorities",
     coordinates,
-    pageWidth - 20,
+    pageWidth - 10,
     100
   );
 
@@ -230,7 +230,7 @@ PDF.generatePDF = async function (record_id, name) {
     individualData,
     riskKeys,
     coordinates,
-    pageWidth - 20
+    pageWidth - 10
   );
 
   doc.output("dataurlnewwindow");
@@ -256,7 +256,7 @@ const createHeader = function (
 };
 
 const createText = function (doc, text, coordinates, coordinateHeight = 6) {
-  text = doc.splitTextToSize(text, 180);
+  text = doc.splitTextToSize(text, 200);
   doc.setTextColor(styles.textColor);
   doc.setFontSize(styles.p.fontSize);
   doc.setFont(styles.font, styles.p.fontStyle);
@@ -266,7 +266,7 @@ const createText = function (doc, text, coordinates, coordinateHeight = 6) {
 };
 
 const createBullet = function (doc, text, coordinates, coordinateHeight = 6) {
-  text = doc.splitTextToSize("\u2022 " + text, 160);
+  text = doc.splitTextToSize("\u2022 " + text, 180);
   doc.setTextColor(styles.textColor);
   doc.setFontSize(styles.p.fontSize);
   doc.setFont(styles.font, styles.p.fontStyle);
@@ -433,8 +433,8 @@ const createPrioritiesSectionBox = function (
         text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       },
     ],
-    [coordinates[0] + 10, coordinates[1] + 10],
-    width - 20,
+    [coordinates[0] + 5, coordinates[1] + 10],
+    width - 10,
     height,
     "#c0392b" // red badge color
   );
@@ -457,8 +457,8 @@ const createPrioritiesSectionBox = function (
         text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       },
     ],
-    [coordinates[0] + 10, coordinates[1]],
-    width - 20,
+    [coordinates[0] + 5, coordinates[1]],
+    width - 10,
     height,
     "#f39c12" // orange badge color
   );
@@ -480,8 +480,8 @@ const createPrioritiesSectionBox = function (
         text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       },
     ],
-    [coordinates[0] + 10, coordinates[1]],
-    width - 20,
+    [coordinates[0] + 5, coordinates[1]],
+    width - 10,
     height,
     "#27ae60" // green badge color
   );
