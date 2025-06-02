@@ -120,7 +120,7 @@ PDF.generatePDF = async function (record_id, name) {
   const boxWidth = 45; // Width of the box
   const boxHeight = 50; // Height of the box
 
-  coordinates = createBox(
+  coordinates = createGoalBox(
     doc,
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     "A1c",
@@ -129,7 +129,7 @@ PDF.generatePDF = async function (record_id, name) {
     boxHeight
   );
 
-  coordinates = createBox(
+  coordinates = createGoalBox(
     doc,
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     "Depression",
@@ -138,7 +138,7 @@ PDF.generatePDF = async function (record_id, name) {
     boxHeight
   );
 
-  coordinates = createBox(
+  coordinates = createGoalBox(
     doc,
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     "Allergies",
@@ -147,7 +147,7 @@ PDF.generatePDF = async function (record_id, name) {
     boxHeight
   );
 
-  coordinates = createBox(
+  coordinates = createGoalBox(
     doc,
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     "Cancer",
@@ -275,7 +275,7 @@ const createBullet = function (doc, text, coordinates, coordinateHeight = 6) {
   return coordinates;
 };
 
-const createBox = function (doc, text, header, coordinates, width, height) {
+const createGoalBox = function (doc, text, header, coordinates, width, height) {
   const headerHeight = 8; // Height for the header
   doc.setFillColor(styles.box.headerBackgroundColor);
   doc.rect(coordinates[0], coordinates[1], width, headerHeight, "F");
