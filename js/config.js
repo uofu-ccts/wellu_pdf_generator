@@ -5,7 +5,7 @@ if (typeof PDF === "undefined") {
 
 const styles = {
   font: "helvetica",
-  textColor: "#000",
+  textColor: "#39383a",
   h1: {
     fontSize: 22,
     fontStyle: "bold",
@@ -35,10 +35,10 @@ const styles = {
     fontStyle: "normal",
   },
   box: {
-    backgroundColor: "#2196d9",
-    headerBackgroundColor: "#1b8cbd",
+    backgroundColor: "#dff0ef",
+    headerBackgroundColor: "#94d3d1",
     font: "helvetica",
-    textColor: "#FFF",
+    headerTextColor: "#FFF",
     fontSize: 12,
     fontStyle: "normal",
   },
@@ -92,30 +92,32 @@ PDF.generatePDF = async function (record_id, name) {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
 
-  const startingX = 10; // Starting X coordinate
+  const startingX = 5; // Starting X coordinate
   const startingY = 10; // Starting Y coordinate
   let coordinates = [startingX, startingY];
   const pageWidth = doc.internal.pageSize.getWidth();
   const pageHeight = doc.internal.pageSize.getHeight();
 
+  coordinates = createText(doc, pageWidth, coordinates, 20);
+
   coordinates = createHeader(
     doc,
     "Thank you for completing your WellU Health Risk Assessment.",
-    coordinates,
-    "h2",
+    [pageWidth, coordinates[1]],
+    "h3",
     20
   );
   coordinates = createHeader(
     doc,
-    "You will find your personalized action plan below!",
+    "You’ve taken an important step in minimizing health risks. Below, you’ll find a personalized action plan based on your responses, your prioritized health areas and activities of interest that you selected.",
     coordinates,
-    "h3",
+    "h4",
     15
   );
 
   const boxX = coordinates[0];
   const boxY = coordinates[1];
-  const boxWidth = 40; // Width of the box
+  const boxWidth = 45; // Width of the box
   const boxHeight = 50; // Height of the box
 
   coordinates = createBox(
@@ -131,7 +133,7 @@ PDF.generatePDF = async function (record_id, name) {
     doc,
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     "Depression",
-    [coordinates[0] + boxWidth + 10, boxY],
+    [coordinates[0] + boxWidth + 5, boxY],
     boxWidth,
     boxHeight
   );
@@ -140,7 +142,7 @@ PDF.generatePDF = async function (record_id, name) {
     doc,
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     "Allergies",
-    [coordinates[0] + boxWidth + 10, boxY],
+    [coordinates[0] + boxWidth + 5, boxY],
     boxWidth,
     boxHeight
   );
@@ -149,7 +151,7 @@ PDF.generatePDF = async function (record_id, name) {
     doc,
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     "Cancer",
-    [coordinates[0] + boxWidth + 10, boxY],
+    [coordinates[0] + boxWidth + 5, boxY],
     boxWidth,
     boxHeight
   );
@@ -244,11 +246,11 @@ const createHeader = function (
   headerType = "h1",
   coordinateHeight = 10
 ) {
-  title = doc.splitTextToSize(title, 180);
+  title = doc.splitTextToSize(title, 200);
   const headerStyles = styles[headerType];
   doc.setTextColor(styles.textColor);
   doc.setFontSize(headerStyles.fontSize);
-  doc.text(title, coordinates[0], coordinates[1]);
+  doc.text(title, coordinates[0] / 2, coordinates[1], { align: "center" });
   coordinates[1] += coordinateHeight;
   return coordinates;
 };
@@ -289,7 +291,7 @@ const createBox = function (doc, text, header, coordinates, width, height) {
   // Add header to the box
   const textX = coordinates[0] + 4;
   const headerText = doc.splitTextToSize(header, width - 8);
-  doc.setTextColor(styles.box.textColor);
+  doc.setTextColor(styles.box.headerTextColor);
   doc.setFontSize(styles.box.fontSize);
   doc.setFont(styles.box.font, styles.box.fontStyle);
   doc.text(headerText, textX, coordinates[1] + 5.33);
@@ -297,7 +299,7 @@ const createBox = function (doc, text, header, coordinates, width, height) {
 
   // Add text to the box
   text = doc.splitTextToSize(text, width - 8);
-  doc.setTextColor(styles.box.textColor);
+  doc.setTextColor(styles.textColor);
   doc.setFontSize(styles.box.fontSize);
   doc.setFont(styles.box.font, styles.box.fontStyle);
   doc.text(text, textX, coordinates[1] + 6);
@@ -321,7 +323,7 @@ const createGridSectionBox = function (
   // Add header to the box
   const textX = coordinates[0] + 4;
   const headerText = doc.splitTextToSize(header, width - 8);
-  doc.setTextColor(styles.sectionBox.textColor);
+  doc.setTextColor(styles.textColor);
   doc.setFontSize(styles.sectionBox.fontSize);
   doc.setFont(styles.sectionBox.font, styles.sectionBox.fontStyle);
   doc.text(headerText, textX, coordinates[1] + 5.33);
@@ -375,7 +377,7 @@ const createGridSectionBox = function (
       // label
       doc.setFontSize(10);
       doc.setFont("helvetica", "normal");
-      doc.setTextColor("#666");
+      doc.setTextColor(styles.textColor);
       doc.text(labels[r][c], xCenter, yTop, { align: "center" });
 
       // value
@@ -407,7 +409,7 @@ const createPrioritiesSectionBox = function (
   // Add header to the box
   const textX = coordinates[0] + 4;
   const headerText = doc.splitTextToSize(header, width - 8);
-  doc.setTextColor(styles.sectionBox.textColor);
+  doc.setTextColor(styles.textColor);
   doc.setFontSize(styles.sectionBox.fontSize);
   doc.setFont(styles.sectionBox.font, styles.sectionBox.fontStyle);
   doc.text(headerText, textX, coordinates[1] + 5.33);
