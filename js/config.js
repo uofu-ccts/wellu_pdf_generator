@@ -51,6 +51,7 @@ const styles = {
     headerTextColor: "#FFF",
     fontSize: 12,
     fontStyle: "normal",
+    headerFontSize: 16,
   },
   sectionBox: {
     backgroundColor: "#fff",
@@ -131,11 +132,11 @@ PDF.generatePDF = async function (record_id, name) {
   const boxX = coordinates[0];
   const boxY = coordinates[1];
   const boxWidth = 45; // Width of the box
-  const boxHeight = 50; // Height of the box
+  const boxHeight = 60; // Height of the box
 
   coordinates = createGoalBox(
     doc,
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "??",
     "A1c",
     coordinates,
     boxWidth,
@@ -144,7 +145,7 @@ PDF.generatePDF = async function (record_id, name) {
 
   coordinates = createGoalBox(
     doc,
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "??",
     "Depression",
     [coordinates[0] + boxWidth + 5, boxY],
     boxWidth,
@@ -153,7 +154,7 @@ PDF.generatePDF = async function (record_id, name) {
 
   coordinates = createGoalBox(
     doc,
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "7-9 hours per night",
     "Allergies",
     [coordinates[0] + boxWidth + 5, boxY],
     boxWidth,
@@ -162,7 +163,7 @@ PDF.generatePDF = async function (record_id, name) {
 
   coordinates = createGoalBox(
     doc,
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "150-300+ minutes per week",
     "Cancer",
     [coordinates[0] + boxWidth + 5, boxY],
     boxWidth,
@@ -278,7 +279,7 @@ const createBullet = function (doc, text, coordinates, coordinateHeight = 6) {
 };
 
 const createGoalBox = function (doc, text, header, coordinates, width, height) {
-  const headerHeight = 8; // Height for the header
+  const headerHeight = 12; // Height for the header
   doc.setFillColor(styles.box.headerBackgroundColor);
   doc.rect(coordinates[0], coordinates[1], width, headerHeight, "F");
   doc.setFillColor(styles.box.backgroundColor);
@@ -291,20 +292,24 @@ const createGoalBox = function (doc, text, header, coordinates, width, height) {
   );
 
   // Add header to the box
-  const textX = coordinates[0] + 4;
+  const textX = coordinates[0];
   const headerText = doc.splitTextToSize(header, width - 8);
   doc.setTextColor(styles.box.headerTextColor);
-  doc.setFontSize(styles.box.fontSize);
+  doc.setFontSize(styles.box.headerFontSize);
   doc.setFont(styles.box.font, styles.box.fontStyle);
-  doc.text(headerText, textX, coordinates[1] + 5.33);
+  doc.text(headerText, textX + width / 2, coordinates[1] + 8, {
+    align: "center",
+  });
   coordinates[1] += headerHeight; // Move down for the text
 
   // Add text to the box
-  text = doc.splitTextToSize(text, width - 8);
+  text = doc.splitTextToSize(`Goal: ${text}`, width - 8);
   doc.setTextColor(styles.textColor);
   doc.setFontSize(styles.box.fontSize);
   doc.setFont(styles.box.font, styles.box.fontStyle);
-  doc.text(text, textX, coordinates[1] + 6);
+  doc.text(text, textX + width / 2, coordinates[1] + 6, {
+    align: "center",
+  });
 
   coordinates[1] += height;
   return coordinates;
