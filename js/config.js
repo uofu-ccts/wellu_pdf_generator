@@ -98,21 +98,19 @@ PDF.generatePDF = async function (record_id, name) {
   const pageWidth = doc.internal.pageSize.getWidth();
   const pageHeight = doc.internal.pageSize.getHeight();
 
-  coordinates = createText(doc, pageWidth, coordinates, 20);
-
   coordinates = createHeader(
     doc,
     "Thank you for completing your WellU Health Risk Assessment.",
     [pageWidth, coordinates[1]],
     "h3",
-    20
+    10
   );
   coordinates = createHeader(
     doc,
     "You’ve taken an important step in minimizing health risks. Below, you’ll find a personalized action plan based on your responses, your prioritized health areas and activities of interest that you selected.",
     coordinates,
     "h4",
-    15
+    10
   );
 
   const boxX = coordinates[0];
@@ -156,16 +154,16 @@ PDF.generatePDF = async function (record_id, name) {
     boxHeight
   );
 
-  coordinates = [startingX, coordinates[1]];
+  // coordinates = [startingX, coordinates[1]];
 
-  coordinates = createGridSectionBox(
-    doc,
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    "Your Numbers",
-    coordinates,
-    pageWidth - 10,
-    100
-  );
+  // coordinates = createGridSectionBox(
+  //   doc,
+  //   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  //   "Your Numbers",
+  //   coordinates,
+  //   pageWidth - 10,
+  //   100
+  // );
 
   doc.addPage();
   coordinates = [startingX, startingY];
