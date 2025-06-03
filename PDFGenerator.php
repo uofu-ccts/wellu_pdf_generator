@@ -178,6 +178,8 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
 
     function renderDownloadButton($record_id) {
         $jsUrl = $this->getUrl('js/config.js');
+        $centuryGothicNormalUrl = $this->getUrl('js/centurygothic-normal.js');
+        $centuryGothicBoldUrl = $this->getUrl('js/centurygothic_bold-bold.js');
 
         $record = $this->getCurrentRecordData($record_id);
 
@@ -193,6 +195,8 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         $html  = '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>';
         $html .= '<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>';
         $html .= '<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.2.6/purify.min.js"></script>';
+        $html .= '<script src="' . $centuryGothicNormalUrl . '" type="module"></script>';
+        $html .= '<script src="' . $centuryGothicBoldUrl . '" type="module"></script>';
         $html .= "<button type='button' class='btn btn-primary generate-pdf' data-record-id='$record_id' data-name='$name'>Download PDF</button>";
         $html .= "<form id='action-form' name='action' class='hidden' method='POST'></form>";
         $html .= "<script src='$jsUrl'></script>";
@@ -207,7 +211,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'records' => $record_id,
             'return_format' => 'json',
             // 'fields' => array(
-            //             'record_id', 
+            //             'record_id',
             //             'first_name',
             //             'last_name',
             //             'dbt_priority_numb_2',
@@ -249,7 +253,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         $priorities = [];
 
         $lookup = $this->lookup;
-        
+
         // Extract priority values for this record
         foreach ($lookup as $key => $element) {
 
@@ -286,17 +290,17 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             if ($a['top_three_value'] === NULL && $b['top_three_value'] === NULL) {
                 return 0;
             }
-            
+
             // If only $a is NULL, move it to the end
             if ($a['top_three_value'] === NULL) {
                 return 1;
             }
-            
+
             // If only $b is NULL, move it to the end
             if ($b['top_three_value'] === NULL) {
                 return -1;
             }
-            
+
             // Both are non-NULL, sort normally
             return $a['top_three_value'] - $b['top_three_value'];
         });
@@ -307,17 +311,17 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             if ($a['ranking_value'] === NULL && $b['ranking_value'] === NULL) {
                 return 0;
             }
-            
+
             // If only $a is NULL, move it to the end
             if ($a['ranking_value'] === NULL) {
                 return 1;
             }
-            
+
             // If only $b is NULL, move it to the end
             if ($b['ranking_value'] === NULL) {
                 return -1;
             }
-            
+
             // Both are non-NULL, sort normally
             return $a['ranking_value'] - $b['ranking_value'];
         });

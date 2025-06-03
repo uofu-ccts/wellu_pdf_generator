@@ -4,40 +4,50 @@ if (typeof PDF === "undefined") {
 }
 
 const styles = {
-  font: "helvetica",
+  font: "centurygothic",
+  fontStyle: "normal",
   textColor: "#39383a",
+  headerFont: "centurygothic_bold",
+  headerFontStyle: "bold",
   h1: {
+    font: "centurygothic_bold",
     fontSize: 22,
     fontStyle: "bold",
   },
   h2: {
+    font: "centurygothic_bold",
     fontSize: 18,
     fontStyle: "bold",
   },
   h3: {
+    font: "centurygothic_bold",
     fontSize: 16,
     fontStyle: "bold",
   },
   h4: {
+    font: "centurygothic_bold",
     fontSize: 14,
     fontStyle: "bold",
   },
   h5: {
+    font: "centurygothic_bold",
     fontSize: 12,
     fontStyle: "bold",
   },
   h6: {
+    font: "centurygothic_bold",
     fontSize: 10,
     fontStyle: "bold",
   },
   p: {
+    font: "centurygothic",
     fontSize: 12,
     fontStyle: "normal",
   },
   box: {
     backgroundColor: "#dff0ef",
     headerBackgroundColor: "#94d3d1",
-    font: "helvetica",
+    font: "centurygothic",
     headerTextColor: "#FFF",
     fontSize: 12,
     fontStyle: "normal",
@@ -45,7 +55,7 @@ const styles = {
   sectionBox: {
     backgroundColor: "#fff",
     headerBackgroundColor: "#e7e7e7",
-    font: "helvetica",
+    font: "centurygothic",
     textColor: "#000",
     fontSize: 12,
     fontStyle: "normal",
@@ -83,6 +93,7 @@ PDF.addEventHandlers = function () {
     var record_id = $(this).attr("data-record-id");
     var name = $(this).attr("data-name");
 
+    // PDF.loadFonts();
     PDF.generatePDF(record_id, name);
   });
 };
@@ -91,6 +102,9 @@ PDF.generatePDF = async function (record_id, name) {
   // Default export is a4 paper, portrait, using millimeters for units
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
+  doc.setFont("centurygothic", "normal");
+  doc.setFont("centurygothic_bold", "normal");
+  console.log("Fonts: ", doc.getFontList());
 
   const startingX = 5; // Starting X coordinate
   const startingY = 10; // Starting Y coordinate
@@ -237,6 +251,7 @@ const createHeader = function (
   const headerStyles = styles[headerType];
   doc.setTextColor(styles.textColor);
   doc.setFontSize(headerStyles.fontSize);
+  doc.setFont(headerStyles.font, headerStyles.fontStyle);
   doc.text(title, coordinates[0] / 2, coordinates[1], { align: "center" });
   coordinates[1] += coordinateHeight;
   return coordinates;
@@ -509,12 +524,12 @@ const createSubsection = function (
   // ——— Header bar ———
   doc.setFillColor(headerColor);
   doc.rect(x + badgeW, y, w - badgeW, headerH, "F");
-  doc.setFont("helvetica", "bold");
+  doc.setFont(styles.headerFont, styles.headerFontStyle);
   doc.text(header, x + badgeW + 6, y + headerH / 2 + 1);
 
   // ——— Content ———
   let cursorY = y + headerH + 6;
-  doc.setFont("helvetica", "normal");
+  doc.setFont(styles.font, styles.fontStyle);
   doc.setFontSize(fontSizeBody);
   doc.setTextColor(bodyTextColor);
 
