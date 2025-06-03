@@ -190,9 +190,22 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         $this->console_log("Processed priorities for record ID $record_id: ");
         $this->console_log($processed_data);
 
+        // loading libraries
         $html  = '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>';
         $html .= '<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>';
         $html .= '<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.2.6/purify.min.js"></script>';
+
+        // Add hidden inputs
+        $html .= "<input type='hidden' id='pdf_record_id' value='$record_id'>";
+        $html .= "<input type='hidden' id='pdf_name' value='$name'>";
+
+        // Add JavaScript variables before loading config.js
+        $html .= "<script>
+            var PDF_RECORD_ID = '" . htmlspecialchars($record_id, ENT_QUOTES) . "';
+            var PDF_NAME = '" . htmlspecialchars($name, ENT_QUOTES) . "';
+        </script>";
+    
+        //keep the button for manual triggering
         $html .= "<button type='button' class='btn btn-primary generate-pdf' data-record-id='$record_id' data-name='$name'>Download PDF</button>";
         $html .= "<form id='action-form' name='action' class='hidden' method='POST'></form>";
         $html .= "<script src='$jsUrl'></script>";
@@ -243,7 +256,10 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
      * 5. return array of processed priorities
      */
 
-    // Might want some of the data in array format, so that it can be sorted
+    // TODO: Will need to add default display for when no priorities are set
+    // TODO: dynamic header for employee identified goals vs OCIH goals ("This is a goal you selected" vs "We've identified this as a goal for you")
+
+    // when rendering the PDF, either top 4 of the priorities, or the length of the priorities array, whichever is smaller
 
     function processPriorities($record) {
         $priorities = [];

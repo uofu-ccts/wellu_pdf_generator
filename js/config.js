@@ -65,26 +65,43 @@ const styles = {
 };
 
 PDF.post = function (action, pdfData, record_id, name) {
-  var action = $("<input>").attr("name", "action").val(action);
-  var pdfData = $("<input>").attr("name", "pdfData").val(pdfData);
-  var record_id = $("<input>").attr("name", "record_id").val(record_id);
-  var name = $("<input>").attr("name", "name").val(name);
-  var form = $("#action-form")
-    .append(action)
-    .append(pdfData)
-    .append(record_id)
-    .append(name)
-    .submit();
+  console.log("Posting PDF data to server...");
+  
+  // Use AJAX instead of form submission to prevent reloading of survey page
+  $.ajax({
+    type: "POST",
+    url: window.location.href,
+    data: {
+      action: action,
+      pdfData: pdfData,
+      record_id: record_id,
+      name: name
+    },
+    success: function() {
+      console.log("PDF successfully saved to server");
+    },
+    error: function(error) {
+      console.error("Error saving PDF:", error);
+    }
+  });
 };
 
 PDF.addEventHandlers = function () {
-  // Handle the ADD button
-  $(".generate-pdf").on("click", function () {
-    var record_id = $(this).attr("data-record-id");
-    var name = $(this).attr("data-name");
+    // Handle the ADD button
+    $(".generate-pdf").on("click", function () {
+        var record_id = $(this).attr("data-record-id");
+        var name = $(this).attr("data-name");
 
-    PDF.generatePDF(record_id, name);
-  });
+        PDF.generatePDF(record_id, name);
+    });
+
+    // Auto-generate PDF when document is ready
+    $(document).ready(function () {
+        if (typeof PDF_RECORD_ID !== 'undefined' && typeof PDF_NAME !== 'undefined') {
+            console.log("Auto-generating PDF on page load");
+            PDF.generatePDF(PDF_RECORD_ID, PDF_NAME);
+        }
+    });
 };
 
 PDF.generatePDF = async function (record_id, name) {
