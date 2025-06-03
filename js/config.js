@@ -113,6 +113,7 @@ PDF.generatePDF = async function (record_id, name) {
     10
   );
 
+  coordinates = [startingX, coordinates[1] + 10];
   const boxX = coordinates[0];
   const boxY = coordinates[1];
   const boxWidth = 45; // Width of the box
@@ -154,30 +155,7 @@ PDF.generatePDF = async function (record_id, name) {
     boxHeight
   );
 
-  // coordinates = [startingX, coordinates[1]];
-
-  // coordinates = createGridSectionBox(
-  //   doc,
-  //   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  //   "Your Numbers",
-  //   coordinates,
-  //   pageWidth - 10,
-  //   100
-  // );
-
-  doc.addPage();
-  coordinates = [startingX, startingY];
-
-  coordinates = createPrioritiesSectionBox(
-    doc,
-    "Your Priorities",
-    coordinates,
-    pageWidth - 10,
-    100
-  );
-
-  doc.addPage();
-  coordinates = [startingX, startingY];
+  coordinates[0] = startingX; // Reset X coordinate for next section
 
   const labels = [
     "Height",
@@ -229,6 +207,17 @@ PDF.generatePDF = async function (record_id, name) {
     riskKeys,
     coordinates,
     pageWidth - 10
+  );
+
+  doc.addPage();
+  coordinates = [startingX, startingY];
+
+  coordinates = createPrioritiesSectionBox(
+    doc,
+    "Your Priorities",
+    coordinates,
+    pageWidth - 10,
+    100
   );
 
   doc.output("dataurlnewwindow");
