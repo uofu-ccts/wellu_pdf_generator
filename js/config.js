@@ -105,23 +105,12 @@ PDF.generatePDF = async function (record_id, name) {
   // Default export is a4 paper, portrait, using millimeters for units
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
-  // doc.setFont("centurygothic", "normal");
-  // doc.setFont("centurygothic_bold", "bold");
-  // doc.setFont("centurygothic_italic", "italic");
-  console.log("Fonts: ", doc.getFontList());
 
   const startingX = 5; // Starting X coordinate
   const startingY = 10; // Starting Y coordinate
   let coordinates = [startingX, startingY];
   const pageWidth = doc.internal.pageSize.getWidth();
   const pageHeight = doc.internal.pageSize.getHeight();
-
-  // coordinates = createText(
-  //   doc,
-  //   JSON.stringify(doc.getFontList()),
-  //   coordinates,
-  //   6
-  // );
 
   coordinates = createHeader(
     doc,
