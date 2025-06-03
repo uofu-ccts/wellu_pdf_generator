@@ -55,6 +55,13 @@ const styles = {
     fontStyle: "normal",
     headerFontSize: 16,
   },
+  goalSubbox: {
+    backgroundColor: "#358584",
+    font: "centurygothic",
+    textColor: "#fff",
+    fontSize: 10,
+    fontStyle: "normal",
+  },
   sectionBox: {
     backgroundColor: "#fff",
     headerBackgroundColor: "#e7e7e7",
@@ -170,6 +177,48 @@ PDF.generatePDF = async function (record_id, name) {
   );
 
   coordinates[0] = startingX; // Reset X coordinate for next section
+  coordinates[1] -= 10;
+  const subboxHeight = 20;
+
+  coordinates = createGoalSubbox(
+    doc,
+    "Click here to find a Diabetes Prevention Program cohort.",
+    coordinates,
+    boxWidth,
+    subboxHeight,
+    "https://en.wikipedia.org/wiki/Main_Page"
+  );
+
+  coordinates = createGoalSubbox(
+    doc,
+    "Click here to engage with the Employee Assistance Program.",
+    coordinates,
+    boxWidth,
+    subboxHeight,
+    "https://en.wikipedia.org/wiki/Main_Page"
+  );
+
+  coordinates = createGoalSubbox(
+    doc,
+    "Click here to engage with the Employee Assistance Program.",
+    coordinates,
+    boxWidth,
+    subboxHeight,
+    "https://en.wikipedia.org/wiki/Main_Page"
+  );
+
+  coordinates = createGoalSubbox(
+    doc,
+    "Click here to schedule your Personal Training Appointment​.",
+    coordinates,
+    boxWidth,
+    subboxHeight,
+    "https://en.wikipedia.org/wiki/Main_Page"
+  );
+
+  coordinates[0] = startingX; // Reset X coordinate for next section
+  coordinates[1] += 30; // Move down for the next section
+  doc.setTextColor(styles.textColor);
 
   const labels = [
     "Height",
@@ -311,6 +360,26 @@ const createGoalBox = function (doc, text, header, coordinates, width, height) {
   });
 
   coordinates[1] += height;
+  return coordinates;
+};
+
+const createGoalSubbox = function (doc, text, coordinates, width, height, url) {
+  doc.setFillColor(styles.goalSubbox.backgroundColor);
+  doc.rect(coordinates[0], coordinates[1], width, height, "F");
+
+  // Split text for wrapping
+  text = doc.splitTextToSize(text, width - 8);
+  // Add link if URL is provided
+  // Add text to the subbox
+  doc.setTextColor(styles.goalSubbox.textColor);
+  doc.setFontSize(styles.goalSubbox.fontSize);
+  doc.setFont(styles.goalSubbox.font, styles.goalSubbox.fontStyle);
+  doc.textWithLink(text, coordinates[0] + width / 2, coordinates[1] + 5.33, {
+    align: "center",
+    url: url,
+  });
+  coordinates[0] += width + 5; // Move right for the next box
+
   return coordinates;
 };
 
