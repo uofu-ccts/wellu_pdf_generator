@@ -25,9 +25,9 @@ const styles = {
     fontStyle: "bold",
   },
   h4: {
-    font: "centurygothic_bold",
+    font: "centurygothic",
     fontSize: 14,
-    fontStyle: "bold",
+    fontStyle: "normal",
   },
   h5: {
     font: "centurygothic_bold",
@@ -247,7 +247,7 @@ const createHeader = function (
   headerType = "h1",
   coordinateHeight = 10
 ) {
-  title = doc.splitTextToSize(title, 200);
+  title = doc.splitTextToSize(title, 210);
   const headerStyles = styles[headerType];
   doc.setTextColor(styles.textColor);
   doc.setFontSize(headerStyles.fontSize);
