@@ -579,12 +579,12 @@ const summaryTable = function (
   const cellPadding = 4;
 
   // Draw table header
-  doc.setFont("helvetica", "bold");
+  doc.setFont(styles.headerFont, styles.headerFontStyle);
   doc.setFontSize(12);
   doc.text(title, originX, originY);
 
   // Label the columns
-  doc.setFont("helvetica", "normal");
+  doc.setFont(styles.font, styles.fontStyle);
   doc.setFontSize(10);
   doc.text("Metric", originX + cellPadding, originY + 10);
   doc.text("Reference Range", originX + width / 4 + cellPadding, originY + 10);
@@ -625,7 +625,7 @@ const summaryTable = function (
   let yStart = originY + 20; // Start y position for rows
   labels.forEach((label, index) => {
     const y = yStart + index * rowHeight;
-    doc.setFont("helvetica", "normal");
+    doc.setFont(styles.font, styles.fontStyle);
     doc.setFontSize(10);
     doc.text(label, originX + cellPadding, y);
     doc.text(referenceRange[index], originX + width / 4 + cellPadding, y);
