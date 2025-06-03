@@ -180,6 +180,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         $jsUrl = $this->getUrl('js/config.js');
         $centuryGothicNormalUrl = $this->getUrl('js/centurygothic-normal.js');
         $centuryGothicBoldUrl = $this->getUrl('js/centurygothic_bold-bold.js');
+        $centuryGothicItalicUrl = $this->getUrl('js/centurygothic_italic-italic.js');
 
         $record = $this->getCurrentRecordData($record_id);
 
@@ -197,6 +198,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         $html .= '<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.2.6/purify.min.js"></script>';
         $html .= '<script src="' . $centuryGothicNormalUrl . '" type="module"></script>';
         $html .= '<script src="' . $centuryGothicBoldUrl . '" type="module"></script>';
+        $html .= '<script src="' . $centuryGothicItalicUrl . '" type="module"></script>';
         $html .= "<button type='button' class='btn btn-primary generate-pdf' data-record-id='$record_id' data-name='$name'>Download PDF</button>";
         $html .= "<form id='action-form' name='action' class='hidden' method='POST'></form>";
         $html .= "<script src='$jsUrl'></script>";

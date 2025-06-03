@@ -9,6 +9,8 @@ const styles = {
   textColor: "#39383a",
   headerFont: "centurygothic_bold",
   headerFontStyle: "bold",
+  fontItalic: "centurygothic_italic",
+  fontItalicStyle: "italic",
   h1: {
     font: "centurygothic_bold",
     fontSize: 22,
@@ -103,8 +105,9 @@ PDF.generatePDF = async function (record_id, name) {
   // Default export is a4 paper, portrait, using millimeters for units
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
-  doc.setFont("centurygothic", "normal");
-  doc.setFont("centurygothic_bold", "normal");
+  // doc.setFont("centurygothic", "normal");
+  // doc.setFont("centurygothic_bold", "bold");
+  // doc.setFont("centurygothic_italic", "italic");
   console.log("Fonts: ", doc.getFontList());
 
   const startingX = 5; // Starting X coordinate
@@ -112,6 +115,13 @@ PDF.generatePDF = async function (record_id, name) {
   let coordinates = [startingX, startingY];
   const pageWidth = doc.internal.pageSize.getWidth();
   const pageHeight = doc.internal.pageSize.getHeight();
+
+  // coordinates = createText(
+  //   doc,
+  //   JSON.stringify(doc.getFontList()),
+  //   coordinates,
+  //   6
+  // );
 
   coordinates = createHeader(
     doc,
@@ -306,7 +316,7 @@ const createGoalBox = function (doc, text, header, coordinates, width, height) {
   text = doc.splitTextToSize(`Goal: ${text}`, width - 8);
   doc.setTextColor(styles.textColor);
   doc.setFontSize(styles.box.fontSize);
-  doc.setFont(styles.box.font, styles.box.fontStyle);
+  doc.setFont(styles.fontItalic, styles.fontItalicStyle);
   doc.text(text, textX + width / 2, coordinates[1] + 6, {
     align: "center",
   });
