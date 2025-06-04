@@ -72,9 +72,10 @@ const styles = {
     fontStyle: "normal",
   },
   prioritiesSection: {
-    headerColor: "#2c3e50", // dark blue
+    headerColor: "#94d3d1", // dark blue
     headerTextColor: "#fff", // white
     bodyTextColor: "#333", // dark gray
+    headerFontSize: 14,
     fontSizeBody: 10,
   },
   riskKey: {
@@ -300,6 +301,14 @@ PDF.generatePDF = async function (record_id, name) {
   doc.addPage();
   coordinates = [startingX, startingY];
 
+  coordinates = createHeader(
+    doc,
+    "To learn more about your priority health areas, what the guidelines are, and how making small changes can improve your health, read the information below.",
+    coordinates,
+    "h4",
+    10
+  );
+
   coordinates = createPrioritiesSectionBox(
     doc,
     "Your Priorities",
@@ -322,7 +331,9 @@ const createHeader = function (
   coordinateHeight = 10
 ) {
   const pageWidth = doc.internal.pageSize.getWidth();
-  title = doc.splitTextToSize(title, 210);
+  const maxWidth = pageWidth - 20;
+
+  title = doc.splitTextToSize(title, maxWidth);
   const headerStyles = styles[headerType];
   doc.setTextColor(styles.textColor);
   doc.setFontSize(headerStyles.fontSize);
@@ -512,27 +523,26 @@ const createPrioritiesSectionBox = function (
   width,
   height
 ) {
-  const headerHeight = 8; // Height for the header
-  doc.setFillColor(styles.sectionBox.headerBackgroundColor);
-  doc.rect(coordinates[0], coordinates[1], width, headerHeight, "F");
+  // const headerHeight = 8; // Height for the header
+  // doc.setFillColor(styles.sectionBox.headerBackgroundColor);
+  // doc.rect(coordinates[0], coordinates[1], width, headerHeight, "F");
 
-  // Add header to the box
-  const textX = coordinates[0] + 4;
-  const headerText = doc.splitTextToSize(header, width - 8);
-  doc.setTextColor(styles.textColor);
-  doc.setFontSize(styles.sectionBox.fontSize);
-  doc.setFont(styles.sectionBox.font, styles.sectionBox.fontStyle);
-  doc.text(headerText, textX, coordinates[1] + 5.33);
-  coordinates[1] += headerHeight; // Move down for the text
+  // // Add header to the box
+  // const textX = coordinates[0] + 4;
+  // const headerText = doc.splitTextToSize(header, width - 8);
+  // doc.setTextColor(styles.textColor);
+  // doc.setFontSize(styles.sectionBox.fontSize);
+  // doc.setFont(styles.sectionBox.font, styles.sectionBox.fontStyle);
+  // doc.text(headerText, textX, coordinates[1] + 5.33);
+  // coordinates[1] += headerHeight; // Move down for the text
 
   coordinates[1] = createSubsection(
     doc,
-    1,
     "Hemoglobin A1c",
     [
       {
         type: "paragraph",
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        text: "Tangible information about guidelines and diabetes prevention.",
       },
       {
         type: "bullet",
@@ -543,20 +553,18 @@ const createPrioritiesSectionBox = function (
         text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       },
     ],
-    [coordinates[0] + 5, coordinates[1] + 10],
-    width - 10,
-    height,
-    "#c0392b" // red badge color
+    [coordinates[0], coordinates[1] + 10],
+    width,
+    height
   );
 
   coordinates[1] = createSubsection(
     doc,
-    2,
     "Depression",
     [
       {
         type: "paragraph",
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        text: "Tangible information about guidelines and diabetes prevention.",
       },
       {
         type: "bullet",
@@ -567,19 +575,17 @@ const createPrioritiesSectionBox = function (
         text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       },
     ],
-    [coordinates[0] + 5, coordinates[1]],
-    width - 10,
-    height,
-    "#f39c12" // orange badge color
+    [coordinates[0], coordinates[1]],
+    width,
+    height
   );
   coordinates[1] = createSubsection(
     doc,
-    3,
     "Allergies",
     [
       {
         type: "paragraph",
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        text: "Tangible information about guidelines and diabetes prevention.",
       },
       {
         type: "bullet",
@@ -590,10 +596,9 @@ const createPrioritiesSectionBox = function (
         text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       },
     ],
-    [coordinates[0] + 5, coordinates[1]],
-    width - 10,
-    height,
-    "#27ae60" // green badge color
+    [coordinates[0], coordinates[1]],
+    width,
+    height
   );
 
   return coordinates;
@@ -601,13 +606,11 @@ const createPrioritiesSectionBox = function (
 
 const createSubsection = function (
   doc,
-  num,
   header,
   content,
   coordinates,
   width,
-  height,
-  badgeColor
+  height
 ) {
   const headerH = 10;
   const badgeW = 10;
@@ -620,25 +623,18 @@ const createSubsection = function (
   let y = coordinates[1];
   const w = width;
 
-  // ——— Badge box ———
-  doc.setFillColor(badgeColor);
-  doc.rect(x, y, badgeW, headerH, "F");
-  doc.setTextColor(headerTextColor);
-  doc.setFontSize(12);
-  doc.text(String(num), x + badgeW / 2, y + headerH / 2 + 1, {
-    align: "center",
-  });
-
   // ——— Header bar ———
   doc.setFillColor(headerColor);
-  doc.rect(x + badgeW, y, w - badgeW, headerH, "F");
+  doc.rect(x, y, w, headerH, "F");
   doc.setFont(styles.headerFont, styles.headerFontStyle);
-  doc.text(header, x + badgeW + 6, y + headerH / 2 + 1);
+  doc.setTextColor(headerTextColor);
+  doc.setFontSize(styles.prioritiesSection.headerFontSize);
+  doc.text(header, x + 2, y + headerH / 2 + 2);
 
   // ——— Content ———
   let cursorY = y + headerH + 6;
   doc.setFont(styles.font, styles.fontStyle);
-  doc.setFontSize(fontSizeBody);
+  doc.setFontSize(12);
   doc.setTextColor(bodyTextColor);
 
   content.forEach((item) => {
