@@ -86,7 +86,7 @@ const styles = {
 
 PDF.post = function (action, pdfData, record_id, name) {
   console.log("Posting PDF data to server...");
-  
+
   // Use AJAX instead of form submission to prevent reloading of survey page
   $.ajax({
     type: "POST",
@@ -95,33 +95,38 @@ PDF.post = function (action, pdfData, record_id, name) {
       action: action,
       pdfData: pdfData,
       record_id: record_id,
-      name: name
+      name: name,
     },
-    success: function() {
+    success: function () {
       console.log("PDF successfully saved to server");
     },
-    error: function(error) {
+    error: function (error) {
       console.error("Error saving PDF:", error);
-    }
+    },
   });
 };
 
-PDF.addEventHandlers = function () {
-    // Handle the ADD button
-    $(".generate-pdf").on("click", function () {
-        var record_id = $(this).attr("data-record-id");
-        var name = $(this).attr("data-name");
+PDF.addEventHandlers = function (imagesBase64) {
+  console.log("Images Base64:", imagesBase64);
+  PDF.imagesBase64 = imagesBase64 || [];
+  // Handle the ADD button
+  $(".generate-pdf").on("click", function () {
+    var record_id = $(this).attr("data-record-id");
+    var name = $(this).attr("data-name");
 
-        PDF.generatePDF(record_id, name);
-    });
+    PDF.generatePDF(record_id, name);
+  });
 
-    // Auto-generate PDF when document is ready
-    $(document).ready(function () {
-        if (typeof PDF_RECORD_ID !== 'undefined' && typeof PDF_NAME !== 'undefined') {
-            console.log("Auto-generating PDF on page load");
-            PDF.generatePDF(PDF_RECORD_ID, PDF_NAME);
-        }
-    });
+  // Auto-generate PDF when document is ready
+  $(document).ready(function () {
+    if (
+      typeof PDF_RECORD_ID !== "undefined" &&
+      typeof PDF_NAME !== "undefined"
+    ) {
+      console.log("Auto-generating PDF on page load");
+      PDF.generatePDF(PDF_RECORD_ID, PDF_NAME);
+    }
+  });
 };
 
 PDF.generatePDF = async function (record_id, name) {
@@ -138,7 +143,7 @@ PDF.generatePDF = async function (record_id, name) {
   coordinates = createHeader(
     doc,
     "Thank you for completing your WellU Health Risk Assessment.",
-    [pageWidth, coordinates[1]],
+    coordinates,
     "h3",
     10
   );
@@ -233,22 +238,28 @@ PDF.generatePDF = async function (record_id, name) {
   );
 
   coordinates[0] = startingX; // Reset X coordinate for next section
-  coordinates[1] += 30; // Move down for the next section
+  coordinates[1] += 40; // Move down for the next section
   doc.setTextColor(styles.textColor);
 
+  coordinates = createHeader(
+    doc,
+    "Review the table below for a summary of national recommendations, your responses and associated health risk.​",
+    coordinates,
+    "h4",
+    10
+  );
+
+  coordinates[0] = startingX; // Reset X coordinate for next section
+
   const labels = [
-    "Height",
-    "Weight",
     "BMI",
-    "Waist",
-    "Cholesterol",
-    "HDL",
-    "LDL",
-    "Triglycerides",
+    "Diabetes",
+    "A1c",
+    "Fast Food / Snacks",
+    "Fruit & Vegetable Intake",
+    "Sugar Sweetened Beverages",
   ];
   const referenceRange = [
-    "4'9\" - 7'0\"",
-    "150 - 180 lbs",
     "18.5 - 24.9",
     "31 - 37 inches",
     "< 200 mg/dL",
@@ -257,8 +268,6 @@ PDF.generatePDF = async function (record_id, name) {
     "< 150 mg/dL",
   ];
   const individualData = [
-    "5'11\"",
-    "160 lbs",
     "23 kg/m²",
     "32 inches",
     "160 mg/dL",
@@ -266,16 +275,7 @@ PDF.generatePDF = async function (record_id, name) {
     "150 mg/dL",
     "130 mg/dL",
   ];
-  const riskKeys = [
-    "low",
-    "medium",
-    "high",
-    "unknown",
-    "low",
-    "medium",
-    "high",
-    "unknown",
-  ];
+  const riskKeys = ["high", "unknown", "low", "medium", "high", "unknown"];
 
   coordinates = summaryTable(
     doc,
@@ -312,12 +312,13 @@ const createHeader = function (
   headerType = "h1",
   coordinateHeight = 10
 ) {
+  const pageWidth = doc.internal.pageSize.getWidth();
   title = doc.splitTextToSize(title, 210);
   const headerStyles = styles[headerType];
   doc.setTextColor(styles.textColor);
   doc.setFontSize(headerStyles.fontSize);
   doc.setFont(headerStyles.font, headerStyles.fontStyle);
-  doc.text(title, coordinates[0] / 2, coordinates[1], { align: "center" });
+  doc.text(title, pageWidth / 2, coordinates[1], { align: "center" });
   coordinates[1] += coordinateHeight;
   return coordinates;
 };
@@ -366,12 +367,21 @@ const createGoalBox = function (doc, text, header, coordinates, width, height) {
   });
   coordinates[1] += headerHeight; // Move down for the text
 
+  const imgBase64 = PDF.imagesBase64[0];
+  // Read the image from the URL
+  // const img = new Image();
+  // Read image data from the URL
+  // img.src = imgBase64;
+  const imgX = coordinates[0] + width / 2 - 10; // Center image
+  const imgY = coordinates[1] + 3;
+  doc.addImage(imgBase64, "PNG", imgX, imgY, 20, 20);
+
   // Add text to the box
   text = doc.splitTextToSize(`Goal: ${text}`, width - 8);
   doc.setTextColor(styles.textColor);
   doc.setFontSize(styles.box.fontSize);
   doc.setFont(styles.fontItalic, styles.fontItalicStyle);
-  doc.text(text, textX + width / 2, coordinates[1] + 6, {
+  doc.text(text, textX + width / 2, coordinates[1] + 30, {
     align: "center",
   });
 
