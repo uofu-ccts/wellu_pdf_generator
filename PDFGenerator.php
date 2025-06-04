@@ -182,6 +182,21 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         $centuryGothicBoldUrl = $this->getUrl('js/centurygothic_bold-bold.js');
         $centuryGothicItalicUrl = $this->getUrl('js/centurygothic_italic-italic.js');
 
+        $imageFileNames = array(
+            "a1c.png",
+            "mental_health.png",
+            "movement.png",
+            "sleep.png",
+        );
+
+        $imageUrls = array();
+        foreach ($imageFileNames as $fileName) {
+            $imageUrls[] = $this->getUrl('js/img/' . $fileName);
+        }
+        $imagesBase64 = array_map(function($url) {
+            return "data:image/png;base64," . base64_encode(file_get_contents($url));
+        }, $imageUrls);
+
         $record = $this->getCurrentRecordData($record_id);
 
         $this->console_log("Record data for ID $record_id: ");
@@ -209,12 +224,12 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             var PDF_RECORD_ID = '" . htmlspecialchars($record_id, ENT_QUOTES) . "';
             var PDF_NAME = '" . htmlspecialchars($name, ENT_QUOTES) . "';
         </script>";
-    
+
         //keep the button for manual triggering
         $html .= "<button type='button' class='btn btn-primary generate-pdf' data-record-id='$record_id' data-name='$name'>Download PDF</button>";
         $html .= "<form id='action-form' name='action' class='hidden' method='POST'></form>";
         $html .= "<script src='$jsUrl'></script>";
-        $html .= "<script>PDF.addEventHandlers();</script>";
+        $html .= "<script>PDF.addEventHandlers(" . json_encode($imagesBase64) . ");</script>";
 
         return $html;
     }
