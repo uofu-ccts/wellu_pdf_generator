@@ -681,11 +681,11 @@ const createSubsection = function (
 
 const drawRiskBox = function (doc, riskKey, x, y) {
   const boxWidth = 43;
-  const boxHeight = 8;
+  const boxHeight = 6;
 
   const color = styles.riskKey[riskKey]; // Default to unknown if riskKey is not defined
   doc.setFillColor(color);
-  doc.rect(x, y, boxWidth, boxHeight, "F");
+  doc.rect(x, y + 2, boxWidth, boxHeight, "F");
 };
 
 const summaryTable = function (
@@ -700,7 +700,7 @@ const summaryTable = function (
 ) {
   let originX = coordinates[0];
   let originY = coordinates[1];
-  const rowHeight = 15;
+  const rowHeight = 12;
   const cellPadding = 4;
 
   // Draw table header
@@ -762,7 +762,7 @@ const summaryTable = function (
 
   // Draw horizontal line after column headers
   doc.setDrawColor(256, 256, 256); // White color for lines
-  doc.setLineWidth(2); // Set line width
+  doc.setLineWidth(1); // Set line width
   doc.line(originX, originY + rowHeight, originX + width, originY + rowHeight);
 
   // Draw vertical lines for the entire table (including header row + data rows)
@@ -814,21 +814,21 @@ const summaryTable = function (
     const indDataOffset = (indDataLines.length - 1) * 2.5;
 
     // Draw cell content with proper centering
-    doc.text(labelLines, originX + width / 8, y - labelOffset, {
+    doc.text(labelLines, originX + width / 8, y - labelOffset + 2, {
       align: "center",
     });
 
     doc.text(
       refRangeLines,
       originX + width / 4 + width / 8,
-      y - refRangeOffset,
+      y - refRangeOffset + 2,
       { align: "center" }
     );
 
     doc.text(
       indDataLines,
       originX + (2 * width) / 4 + width / 8,
-      y - indDataOffset,
+      y - indDataOffset + 2,
       { align: "center" }
     );
 
