@@ -428,14 +428,18 @@ const createGoalBox = function (doc, text, header, coordinates, width, height) {
 };
 
 const createGoalSubbox = function (doc, text, coordinates, width, height, url) {
-  doc.setFillColor(styles.goalSubbox.backgroundColor);
-  doc.rect(coordinates[0], coordinates[1], width, height, "F");
+  // Set the outline color to match the background color that was previously used
+  doc.setDrawColor(styles.goalSubbox.backgroundColor);
+  doc.setLineWidth(1); // Set border thickness
+
+  // Draw a rectangle with an outline but no fill ('S' instead of 'F')
+  doc.rect(coordinates[0], coordinates[1], width, height, "S");
 
   // Split text for wrapping
   text = doc.splitTextToSize(text, width - 8);
   // Add link if URL is provided
   // Add text to the subbox
-  doc.setTextColor(styles.goalSubbox.textColor);
+  doc.setTextColor(styles.textColor);
   doc.setFontSize(styles.goalSubbox.fontSize);
   doc.setFont(styles.goalSubbox.font, styles.goalSubbox.fontStyle);
   doc.textWithLink(text, coordinates[0] + width / 2, coordinates[1] + 5.33, {
