@@ -346,10 +346,35 @@ PDF.generatePDF = async function (record_id, name) {
     100
   );
 
-  doc.output("dataurlnewwindow");
-  const pdfData = doc.output("datauristring");
+  try {
+    // Generate PDF data first - this will work even if browser preview fails
+    const pdfData = doc.output("datauristring");
 
-  PDF.post("generate_pdf", pdfData, record_id, name);
+    // Save the PDF to the server first (this is reliable)
+    PDF.post("generate_pdf", pdfData, record_id, name);
+
+    // Then try to open in a new window - if this fails, we've already saved the PDF
+    // Use a setTimeout to allow the save operation to complete first
+    setTimeout(() => {
+      try {
+        const pdfBlob = doc.output("blob");
+        const blobUrl = URL.createObjectURL(pdfBlob);
+        window.open(blobUrl, "_blank");
+      } catch (e) {
+        console.error("Error opening PDF preview: ", e);
+        alert(
+          "PDF has been generated and saved. You can access it from your records."
+        );
+      }
+    }, 100);
+  } catch (e) {
+    console.error("Error in PDF generation: ", e);
+  }
+
+  // Remove this line as we're handling the output differently
+  // doc.output("dataurlnewwindow");
+  // const pdfData = doc.output("datauristring");
+  // PDF.post("generate_pdf", pdfData, record_id, name);
 };
 
 const createHeaderImage = function (doc, coordinates, width) {
