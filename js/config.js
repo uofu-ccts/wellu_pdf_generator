@@ -253,7 +253,15 @@ PDF.generatePDF = async function (record_id, name) {
 
   coordinates = createHeader(
     doc,
-    "Review the table below for a summary of national recommendations, your responses and associated health risk.​",
+    "Review the table below for a summary of national recommendations, your",
+    coordinates,
+    "h4",
+    10
+  );
+  coordinates[1] -= 5;
+  coordinates = createHeader(
+    doc,
+    "responses and associated health risk.​",
     coordinates,
     "h4",
     10
@@ -303,11 +311,21 @@ PDF.generatePDF = async function (record_id, name) {
 
   coordinates = createHeader(
     doc,
-    "To learn more about your priority health areas, what the guidelines are, and how making small changes can improve your health, read the information below.",
+    "To learn more about your priority health areas, what the guidelines are, and",
     coordinates,
     "h4",
     10
   );
+  coordinates[1] -= 5; // Adjust for spacing
+  coordinates = createHeader(
+    doc,
+    "how making small changes can improve your health, read the information",
+    coordinates,
+    "h4",
+    10
+  );
+  coordinates[1] -= 5; // Adjust for spacing
+  coordinates = createHeader(doc, "below.", coordinates, "h4", 10);
 
   coordinates = createPrioritiesSectionBox(
     doc,
