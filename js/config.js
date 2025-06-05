@@ -165,7 +165,7 @@ PDF.generatePDF = async function (record_id, name) {
     10
   );
 
-  coordinates = [startingX, coordinates[1] + 10];
+  coordinates = [startingX, coordinates[1] + 5];
   const boxX = coordinates[0];
   const boxY = coordinates[1];
   const boxWidth = 45; // Width of the box
@@ -248,7 +248,7 @@ PDF.generatePDF = async function (record_id, name) {
   );
 
   coordinates[0] = startingX; // Reset X coordinate for next section
-  coordinates[1] += 40; // Move down for the next section
+  coordinates[1] += 30; // Move down for the next section
   doc.setTextColor(styles.textColor);
 
   coordinates = createHeader(
@@ -268,6 +268,7 @@ PDF.generatePDF = async function (record_id, name) {
   );
 
   coordinates[0] = startingX; // Reset X coordinate for next section
+  coordinates[1] -= 7; // Move down for the next section
 
   const labels = [
     "BMI",
@@ -334,6 +335,9 @@ PDF.generatePDF = async function (record_id, name) {
     pageWidth - 10,
     100
   );
+
+  coordinates[1] = pageHeight - 70; // Position it near the bottom of page
+  coordinates = createTailoredCareSection(doc, coordinates, pageWidth);
 
   doc.output("dataurlnewwindow");
   const pdfData = doc.output("datauristring");
@@ -849,5 +853,83 @@ const summaryTable = function (
 
   // Update coordinates for next element
   coordinates[1] = originY + (labels.length + 1) * rowHeight + 10;
+  return coordinates;
+};
+
+const createTailoredCareSection = function (doc, coordinates, width) {
+  const sectionHeight = 45;
+  const backgroundColor = "#BBBBBB"; // Light gray background
+  const sectionX = coordinates[0];
+  const sectionY = coordinates[1];
+
+  // Create gray background rectangle
+  doc.setFillColor(backgroundColor);
+  doc.rect(0, sectionY, width, sectionHeight, "F");
+
+  // Add left side title text
+  doc.setFont(styles.headerFont, styles.headerFontStyle);
+  doc.setTextColor("#FFFFFF"); // White text
+  doc.setFontSize(16);
+  doc.text("Qualified for", sectionX + 30, sectionY + 10, { align: "center" });
+  doc.text("Tailored Care Pathway", sectionX + 30, sectionY + 15, {
+    align: "center",
+  });
+
+  // Add checkbox section
+  doc.setFont(styles.font, styles.fontStyle);
+  doc.setTextColor("#000000"); // Black text
+  doc.setFontSize(20);
+  doc.text("YES", sectionX + 2, sectionY + 33);
+
+  // Draw the YES checkbox (checked)
+  doc.setDrawColor("#FFFFFF"); // White outline
+  doc.setLineWidth(1);
+  doc.rect(sectionX + 16, sectionY + 25, 10, 10, "S");
+
+  // Draw checkmark in the YES box
+  doc.setDrawColor("#BE0000"); // Red checkmark
+  doc.setLineWidth(2);
+  doc.line(sectionX + 15, sectionY + 28, sectionX + 20, sectionY + 33);
+  doc.line(sectionX + 19, sectionY + 33, sectionX + 31, sectionY + 22);
+
+  // Draw the NO checkbox (unchecked)
+  doc.setDrawColor("#FFFFFF"); // White outline
+  doc.setLineWidth(1);
+  doc.setTextColor("#000000"); // Black text
+  doc.text("NO", sectionX + 33, sectionY + 33);
+  doc.rect(sectionX + 47, sectionY + 25, 10, 10, "S");
+
+  // Add right side description text
+  doc.setFont(styles.font, styles.fontStyle);
+  doc.setFontSize(14);
+  doc.setTextColor("#FFFFFF");
+  const descText = doc.splitTextToSize(
+    "If you opt in, a member of the OCIH team will reach out and help you put this plan into action with individual support and tailored recommendations.",
+    width / 2 + 20
+  );
+  doc.text(descText, sectionX + width / 2 + 30, sectionY + 10, {
+    align: "center",
+  });
+
+  // Add enrollment button
+  doc.setFillColor("#FFFFFF");
+  doc.roundedRect(sectionX + width / 2, sectionY + 25, 60, 10, 3, 3, "F");
+
+  // Add enrollment link
+  doc.setTextColor("#990000"); // Dark red text
+  doc.setFont(styles.font, styles.fontStyle);
+  doc.textWithLink(
+    "Click here to enroll!",
+    sectionX + width / 2 + 30,
+    sectionY + 32,
+    {
+      align: "center",
+      url: "https://example.com/enroll",
+    }
+  );
+
+  // Update Y coordinate for elements after this section
+  coordinates[1] += sectionHeight + 10;
+
   return coordinates;
 };
