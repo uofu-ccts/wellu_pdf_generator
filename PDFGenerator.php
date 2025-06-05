@@ -194,9 +194,6 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         foreach ($imageFileNames as $fileName) {
             $imageUrls[] = $this->getUrl('js/img/' . $fileName);
         }
-        $imagesBase64 = array_map(function($url) {
-            return "data:image/png;base64," . base64_encode(file_get_contents($url));
-        }, $imageUrls);
 
         $record = $this->getCurrentRecordData($record_id);
 
@@ -230,7 +227,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         $html .= "<button type='button' class='btn btn-primary generate-pdf' data-record-id='$record_id' data-name='$name'>Download PDF</button>";
         $html .= "<form id='action-form' name='action' class='hidden' method='POST'></form>";
         $html .= "<script src='$jsUrl'></script>";
-        $html .= "<script>PDF.addEventHandlers(" . json_encode($imagesBase64) . ");</script>";
+        $html .= "<script>PDF.addEventHandlers(" . json_encode($imageUrls) . ");</script>";
 
         return $html;
     }

@@ -116,9 +116,9 @@ PDF.post = function (action, pdfData, record_id, name) {
   });
 };
 
-PDF.addEventHandlers = function (imagesBase64) {
-  console.log("Images Base64:", imagesBase64);
-  PDF.imagesBase64 = imagesBase64 || [];
+PDF.addEventHandlers = function (imageUrls) {
+  console.log("Image Urls:", imageUrls);
+  PDF.imageUrls = imageUrls || [];
   // Handle the ADD button
   $(".generate-pdf").on("click", function () {
     var record_id = $(this).attr("data-record-id");
@@ -353,7 +353,7 @@ PDF.generatePDF = async function (record_id, name) {
 };
 
 const createHeaderImage = function (doc, coordinates, width) {
-  const headerImage = PDF.imagesBase64[1]; // Assuming the first image is the header
+  const headerImage = PDF.imageUrls[1]; // Assuming the first image is the header
   if (headerImage) {
     doc.addImage(headerImage, "PNG", 0, 0, width, 30);
     coordinates[1] += 23; // Move down after header
@@ -425,14 +425,14 @@ const createGoalBox = function (doc, text, header, coordinates, width, height) {
   });
   coordinates[1] += headerHeight; // Move down for the text
 
-  const imgBase64 = PDF.imagesBase64[0];
+  const img = PDF.imageUrls[0];
   // Read the image from the URL
   // const img = new Image();
   // Read image data from the URL
   // img.src = imgBase64;
   const imgX = coordinates[0] + width / 2 - 10; // Center image
   const imgY = coordinates[1] + 3;
-  doc.addImage(imgBase64, "PNG", imgX, imgY, 20, 20);
+  doc.addImage(img, "PNG", imgX, imgY, 20, 20);
 
   // Add text to the box
   text = doc.splitTextToSize(`Goal: ${text}`, width - 8);
