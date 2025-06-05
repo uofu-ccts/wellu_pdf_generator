@@ -49,7 +49,7 @@ const styles = {
   },
   box: {
     backgroundColor: "#dff0ef",
-    headerBackgroundColor: "#94d3d1",
+    headerBackgroundColor: "#4d838c",
     font: "centurygothic",
     headerTextColor: "#FFF",
     fontSize: 12,
@@ -158,21 +158,35 @@ PDF.generatePDF = async function (record_id, name) {
     "Thank you for completing your WellU Health Risk Assessment.",
     coordinates,
     "h3",
-    10
+    10,
+    "bold"
   );
   coordinates = createHeader(
     doc,
-    "You’ve taken an important step in minimizing health risks. Below, you’ll find a personalized WellU action plan based on your responses, prioritized health areas and activities of interest that you selected. Completing these recommended activities will help you achieve the greatest impact on your health.",
+    "You’ve taken an important step in minimizing health risks. Below, you’ll find a personalized WellU action plan to help you achieve your health goals.",
     coordinates,
     "h4",
     10
   );
 
-  coordinates = [startingX, coordinates[1] + 15];
+  coordinates[1] += 3; // Add some space after the header
+
+  coordinates = createHeader(
+    doc,
+    "Click on any of the icons to get started!",
+    coordinates,
+    "h4",
+    10,
+    "bold"
+  );
+
+  coordinates[1] -= 5; // Add some space after the header
+
+  coordinates = [startingX, coordinates[1]];
   const boxX = coordinates[0];
   const boxY = coordinates[1];
   const boxWidth = 45; // Width of the box
-  const boxHeight = 60; // Height of the box
+  const boxHeight = 40; // Height of the box
 
   coordinates = createGoalBox(
     doc,
@@ -216,7 +230,7 @@ PDF.generatePDF = async function (record_id, name) {
 
   coordinates = createGoalSubbox(
     doc,
-    "Click here to find a Diabetes Prevention Program cohort.",
+    "Find a Diabetes Prevention Program cohort.",
     coordinates,
     boxWidth,
     subboxHeight,
@@ -225,7 +239,7 @@ PDF.generatePDF = async function (record_id, name) {
 
   coordinates = createGoalSubbox(
     doc,
-    "Click here to engage with the Employee Assistance Program.",
+    "Engage with the Employee Assistance Program.",
     coordinates,
     boxWidth,
     subboxHeight,
@@ -234,7 +248,7 @@ PDF.generatePDF = async function (record_id, name) {
 
   coordinates = createGoalSubbox(
     doc,
-    "Click here to engage with the Employee Assistance Program.",
+    "Enroll in a CBT program for insomnia.",
     coordinates,
     boxWidth,
     subboxHeight,
@@ -243,7 +257,7 @@ PDF.generatePDF = async function (record_id, name) {
 
   coordinates = createGoalSubbox(
     doc,
-    "Click here to schedule your Personal Training Appointment​.",
+    "Schedule your Personal Training Appointment​.",
     coordinates,
     boxWidth,
     subboxHeight,
@@ -256,26 +270,25 @@ PDF.generatePDF = async function (record_id, name) {
 
   coordinates = createTailoredCareSection(doc, coordinates, pageWidth);
 
-  coordinates[1] -= 5;
-
-  coordinates = createHeader(
-    doc,
-    "Review the table below for a summary of national recommendations, your",
-    coordinates,
-    "h4",
-    10
-  );
-  coordinates[1] -= 5;
-  coordinates = createHeader(
-    doc,
-    "responses and associated health risk.​",
-    coordinates,
-    "h4",
-    10
-  );
-
   coordinates[0] = startingX; // Reset X coordinate for next section
-  coordinates[1] -= 7; // Move down for the next section
+  coordinates[1] -= 2; // Move down for the next section
+  coordinates = createHeader(
+    doc,
+    "Results at a Glance",
+    coordinates,
+    "h3",
+    10,
+    "bold"
+  );
+
+  const summaryTableYCoordinates = coordinates[1];
+
+  coordinates[1] -= 5; // Move down for the next section
+  coordinates = createMetricBox(doc, 29, "BMI", coordinates);
+  coordinates = createMetricBox(doc, "<5.7", "A1C", coordinates);
+  coordinates = createMetricBox(doc, "2", "GAD-7", coordinates);
+  coordinates = createMetricBox(doc, "3", "PHQ-9", coordinates);
+  coordinates = createMetricBox(doc, "0", "Audit-C", coordinates);
 
   const labels = [
     "BMI",
@@ -303,16 +316,16 @@ PDF.generatePDF = async function (record_id, name) {
   ];
   const riskKeys = ["high", "unknown", "low", "medium", "high", "unknown"];
 
-  coordinates = summaryTable(
-    doc,
-    "Summary Table",
-    labels,
-    referenceRange,
-    individualData,
-    riskKeys,
-    coordinates,
-    pageWidth - 10
-  );
+  // coordinates = summaryTable(
+  //   doc,
+  //   "Summary Table",
+  //   labels,
+  //   referenceRange,
+  //   individualData,
+  //   riskKeys,
+  //   coordinates,
+  //   pageWidth - 10
+  // );
 
   doc.addPage();
   coordinates = [startingX, startingY];
@@ -380,8 +393,8 @@ PDF.generatePDF = async function (record_id, name) {
 const createHeaderImage = function (doc, coordinates, width) {
   const headerImage = PDF.imageUrls[1]; // Assuming the first image is the header
   if (headerImage) {
-    doc.addImage(headerImage, "PNG", 0, 0, width, 30);
-    coordinates[1] += 23; // Move down after header
+    doc.addImage(headerImage, "PNG", 0, 0, width, 40);
+    coordinates[1] += 38; // Move down after header
   }
   return coordinates;
 };
@@ -391,16 +404,18 @@ const createHeader = function (
   title,
   coordinates,
   headerType = "h1",
-  coordinateHeight = 10
+  coordinateHeight = 10,
+  headerFontStyle = "normal"
 ) {
   const pageWidth = doc.internal.pageSize.getWidth();
-  const maxWidth = pageWidth - 20;
+  const maxWidth = pageWidth;
 
   title = doc.splitTextToSize(title, maxWidth);
   const headerStyles = styles[headerType];
   doc.setTextColor(styles.textColor);
   doc.setFontSize(headerStyles.fontSize);
-  doc.setFont(headerStyles.font, headerStyles.fontStyle);
+  const font = headerFontStyle == "bold" ? styles.headerFont : styles.font;
+  doc.setFont(font, headerFontStyle);
   doc.text(title, pageWidth / 2, coordinates[1], { align: "center" });
   coordinates[1] += coordinateHeight;
   return coordinates;
@@ -451,22 +466,18 @@ const createGoalBox = function (doc, text, header, coordinates, width, height) {
   coordinates[1] += headerHeight; // Move down for the text
 
   const img = PDF.imageUrls[0];
-  // Read the image from the URL
-  // const img = new Image();
-  // Read image data from the URL
-  // img.src = imgBase64;
   const imgX = coordinates[0] + width / 2 - 10; // Center image
   const imgY = coordinates[1] + 3;
   doc.addImage(img, "PNG", imgX, imgY, 20, 20);
 
-  // Add text to the box
-  text = doc.splitTextToSize(`Goal: ${text}`, width - 8);
-  doc.setTextColor(styles.textColor);
-  doc.setFontSize(styles.box.fontSize);
-  doc.setFont(styles.fontItalic, styles.fontItalicStyle);
-  doc.text(text, textX + width / 2, coordinates[1] + 30, {
-    align: "center",
-  });
+  // // Add text to the box
+  // text = doc.splitTextToSize(`Goal: ${text}`, width - 8);
+  // doc.setTextColor(styles.textColor);
+  // doc.setFontSize(styles.box.fontSize);
+  // doc.setFont(styles.fontItalic, styles.fontItalicStyle);
+  // doc.text(text, textX + width / 2, coordinates[1] + 30, {
+  //   align: "center",
+  // });
 
   coordinates[1] += height;
   return coordinates;
@@ -478,10 +489,10 @@ const createGoalSubbox = function (doc, text, coordinates, width, height, url) {
   doc.setLineWidth(1); // Set border thickness
 
   // Draw a rectangle with an outline but no fill ('S' instead of 'F')
-  doc.rect(coordinates[0], coordinates[1], width, height, "S");
+  doc.rect(coordinates[0] + 0.5, coordinates[1], width - 1, height, "S");
 
   // Split text for wrapping
-  text = doc.splitTextToSize(text, width - 8);
+  text = doc.splitTextToSize(text, width - 2);
   // Add link if URL is provided
   // Add text to the subbox
   doc.setTextColor(styles.textColor);
@@ -492,6 +503,58 @@ const createGoalSubbox = function (doc, text, coordinates, width, height, url) {
     url: url,
   });
   coordinates[0] += width + 5; // Move right for the next box
+
+  return coordinates;
+};
+
+const createMetricBox = function (doc, metric, label, coordinates, width = 25) {
+  // Box settings
+  const boxHeight = 15;
+  const boxRadius = 3;
+  const backgroundColor = "#B5CFD1"; // Light blue background color
+  const metricColor = "#FFFFFF"; // White text color for metric
+  const labelColor = "#333333"; // Dark gray text color for label
+
+  // Save the original x coordinate to return to later
+  const originalX = coordinates[0];
+
+  // Draw rounded rectangle with light blue background
+  doc.setFillColor(backgroundColor);
+  doc.roundedRect(
+    coordinates[0],
+    coordinates[1],
+    width,
+    boxHeight,
+    boxRadius,
+    boxRadius,
+    "F"
+  );
+
+  // Add the metric number
+  doc.setFont(styles.font, styles.fontStyle);
+  doc.setFontSize(26);
+  doc.setTextColor(metricColor);
+  doc.text(
+    metric.toString(),
+    coordinates[0] + width / 2,
+    coordinates[1] + boxHeight / 2,
+    {
+      align: "center",
+      baseline: "middle",
+    }
+  );
+
+  // Add the label below the box
+  doc.setFont(styles.font, styles.fontStyle);
+  doc.setFontSize(14);
+  doc.setTextColor(labelColor);
+  doc.text(label, coordinates[0] + width / 2, coordinates[1] + boxHeight + 7, {
+    align: "center",
+  });
+
+  // Move coordinates down past the label for next element
+  coordinates[1] += boxHeight + 10;
+  coordinates[0] = originalX;
 
   return coordinates;
 };
@@ -898,7 +961,7 @@ const summaryTable = function (
 };
 
 const createTailoredCareSection = function (doc, coordinates, width) {
-  const sectionHeight = 35;
+  const sectionHeight = 14;
   const backgroundColor = "#BBBBBB"; // Light gray background
   const sectionX = coordinates[0];
   const sectionY = coordinates[1];
@@ -911,58 +974,22 @@ const createTailoredCareSection = function (doc, coordinates, width) {
   doc.setFont(styles.headerFont, styles.headerFontStyle);
   doc.setTextColor("#FFFFFF"); // White text
   doc.setFontSize(16);
-  doc.text("Qualified for", sectionX + 30, sectionY + 7, { align: "center" });
-  doc.text("Tailored Care Pathway", sectionX + 30, sectionY + 12, {
-    align: "center",
-  });
-
-  // Add checkbox section
-  doc.setFont(styles.font, styles.fontStyle);
-  doc.setTextColor("#000000"); // Black text
-  doc.setFontSize(20);
-  doc.text("YES", sectionX + 2, sectionY + 30);
-
-  // Draw the YES checkbox (checked)
-  doc.setDrawColor("#FFFFFF"); // White outline
-  doc.setLineWidth(1);
-  doc.rect(sectionX + 16, sectionY + 22, 10, 10, "S");
-
-  // Draw checkmark in the YES box
-  doc.setDrawColor("#BE0000"); // Red checkmark
-  doc.setLineWidth(2);
-  doc.line(sectionX + 15, sectionY + 25, sectionX + 20, sectionY + 30);
-  doc.line(sectionX + 19, sectionY + 30, sectionX + 31, sectionY + 19);
-
-  // Draw the NO checkbox (unchecked)
-  doc.setDrawColor("#FFFFFF"); // White outline
-  doc.setLineWidth(1);
-  doc.setTextColor("#000000"); // Black text
-  doc.text("NO", sectionX + 33, sectionY + 30);
-  doc.rect(sectionX + 47, sectionY + 22, 10, 10, "S");
-
-  // Add right side description text
-  doc.setFont(styles.font, styles.fontStyle);
-  doc.setFontSize(14);
-  doc.setTextColor("#FFFFFF");
-  const descText = doc.splitTextToSize(
-    "If you opt in, a member of the OCIH team will reach out and help you put this plan into action with individual support and tailored recommendations.",
-    width / 2 + 20
+  doc.text(
+    "You qualified for a tailored care pathway:",
+    sectionX + 10,
+    sectionY + 9
   );
-  doc.text(descText, sectionX + width / 2 + 30, sectionY + 7, {
-    align: "center",
-  });
-
   // Add enrollment button
   doc.setFillColor("#FFFFFF");
-  doc.roundedRect(sectionX + width / 2, sectionY + 22, 60, 10, 3, 3, "F");
+  doc.roundedRect(sectionX + width / 2 + 20, sectionY + 2, 60, 10, 3, 3, "F");
 
   // Add enrollment link
   doc.setTextColor("#990000"); // Dark red text
   doc.setFont(styles.font, styles.fontStyle);
   doc.textWithLink(
     "Click here to enroll!",
-    sectionX + width / 2 + 30,
-    sectionY + 28,
+    sectionX + width / 2 + 50,
+    sectionY + 9,
     {
       align: "center",
       url: "https://example.com/enroll",
