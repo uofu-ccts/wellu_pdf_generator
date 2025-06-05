@@ -150,6 +150,13 @@ PDF.generatePDF = async function (record_id, name) {
   const pageWidth = doc.internal.pageSize.getWidth();
   const pageHeight = doc.internal.pageSize.getHeight();
 
+  // Add header image
+  const headerImage = PDF.imagesBase64[1]; // Assuming the first image is the header
+  if (headerImage) {
+    doc.addImage(headerImage, "PNG", 0, 0, pageWidth, 30);
+    coordinates[1] += 23; // Move down after header
+  }
+
   coordinates = createHeader(
     doc,
     "Thank you for completing your WellU Health Risk Assessment.",
@@ -248,10 +255,12 @@ PDF.generatePDF = async function (record_id, name) {
   );
 
   coordinates[0] = startingX; // Reset X coordinate for next section
-  coordinates[1] += 25; // Move down for the next section
+  coordinates[1] += 22; // Move down for the next section
   doc.setTextColor(styles.textColor);
 
   coordinates = createTailoredCareSection(doc, coordinates, pageWidth);
+
+  coordinates[1] -= 5;
 
   coordinates = createHeader(
     doc,
@@ -856,7 +865,7 @@ const summaryTable = function (
 };
 
 const createTailoredCareSection = function (doc, coordinates, width) {
-  const sectionHeight = 45;
+  const sectionHeight = 35;
   const backgroundColor = "#BBBBBB"; // Light gray background
   const sectionX = coordinates[0];
   const sectionY = coordinates[1];
@@ -869,8 +878,8 @@ const createTailoredCareSection = function (doc, coordinates, width) {
   doc.setFont(styles.headerFont, styles.headerFontStyle);
   doc.setTextColor("#FFFFFF"); // White text
   doc.setFontSize(16);
-  doc.text("Qualified for", sectionX + 30, sectionY + 10, { align: "center" });
-  doc.text("Tailored Care Pathway", sectionX + 30, sectionY + 15, {
+  doc.text("Qualified for", sectionX + 30, sectionY + 7, { align: "center" });
+  doc.text("Tailored Care Pathway", sectionX + 30, sectionY + 12, {
     align: "center",
   });
 
@@ -878,25 +887,25 @@ const createTailoredCareSection = function (doc, coordinates, width) {
   doc.setFont(styles.font, styles.fontStyle);
   doc.setTextColor("#000000"); // Black text
   doc.setFontSize(20);
-  doc.text("YES", sectionX + 2, sectionY + 33);
+  doc.text("YES", sectionX + 2, sectionY + 30);
 
   // Draw the YES checkbox (checked)
   doc.setDrawColor("#FFFFFF"); // White outline
   doc.setLineWidth(1);
-  doc.rect(sectionX + 16, sectionY + 25, 10, 10, "S");
+  doc.rect(sectionX + 16, sectionY + 22, 10, 10, "S");
 
   // Draw checkmark in the YES box
   doc.setDrawColor("#BE0000"); // Red checkmark
   doc.setLineWidth(2);
-  doc.line(sectionX + 15, sectionY + 28, sectionX + 20, sectionY + 33);
-  doc.line(sectionX + 19, sectionY + 33, sectionX + 31, sectionY + 22);
+  doc.line(sectionX + 15, sectionY + 25, sectionX + 20, sectionY + 30);
+  doc.line(sectionX + 19, sectionY + 30, sectionX + 31, sectionY + 19);
 
   // Draw the NO checkbox (unchecked)
   doc.setDrawColor("#FFFFFF"); // White outline
   doc.setLineWidth(1);
   doc.setTextColor("#000000"); // Black text
-  doc.text("NO", sectionX + 33, sectionY + 33);
-  doc.rect(sectionX + 47, sectionY + 25, 10, 10, "S");
+  doc.text("NO", sectionX + 33, sectionY + 30);
+  doc.rect(sectionX + 47, sectionY + 22, 10, 10, "S");
 
   // Add right side description text
   doc.setFont(styles.font, styles.fontStyle);
@@ -906,13 +915,13 @@ const createTailoredCareSection = function (doc, coordinates, width) {
     "If you opt in, a member of the OCIH team will reach out and help you put this plan into action with individual support and tailored recommendations.",
     width / 2 + 20
   );
-  doc.text(descText, sectionX + width / 2 + 30, sectionY + 10, {
+  doc.text(descText, sectionX + width / 2 + 30, sectionY + 7, {
     align: "center",
   });
 
   // Add enrollment button
   doc.setFillColor("#FFFFFF");
-  doc.roundedRect(sectionX + width / 2, sectionY + 25, 60, 10, 3, 3, "F");
+  doc.roundedRect(sectionX + width / 2, sectionY + 22, 60, 10, 3, 3, "F");
 
   // Add enrollment link
   doc.setTextColor("#990000"); // Dark red text
@@ -920,7 +929,7 @@ const createTailoredCareSection = function (doc, coordinates, width) {
   doc.textWithLink(
     "Click here to enroll!",
     sectionX + width / 2 + 30,
-    sectionY + 32,
+    sectionY + 30,
     {
       align: "center",
       url: "https://example.com/enroll",

@@ -184,6 +184,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
 
         $imageFileNames = array(
             "a1c.png",
+            "header.png",
             "mental_health.png",
             "movement.png",
             "sleep.png",
