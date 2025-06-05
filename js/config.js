@@ -151,11 +151,7 @@ PDF.generatePDF = async function (record_id, name) {
   const pageHeight = doc.internal.pageSize.getHeight();
 
   // Add header image
-  const headerImage = PDF.imagesBase64[1]; // Assuming the first image is the header
-  if (headerImage) {
-    doc.addImage(headerImage, "PNG", 0, 0, pageWidth, 30);
-    coordinates[1] += 23; // Move down after header
-  }
+  coordinates = createHeaderImage(doc, coordinates, pageWidth);
 
   coordinates = createHeader(
     doc,
@@ -321,6 +317,9 @@ PDF.generatePDF = async function (record_id, name) {
   doc.addPage();
   coordinates = [startingX, startingY];
 
+  // Add header image
+  coordinates = createHeaderImage(doc, coordinates, pageWidth);
+
   coordinates = createHeader(
     doc,
     "To learn more about your priority health areas, what the guidelines are, and",
@@ -351,6 +350,15 @@ PDF.generatePDF = async function (record_id, name) {
   const pdfData = doc.output("datauristring");
 
   PDF.post("generate_pdf", pdfData, record_id, name);
+};
+
+const createHeaderImage = function (doc, coordinates, width) {
+  const headerImage = PDF.imagesBase64[1]; // Assuming the first image is the header
+  if (headerImage) {
+    doc.addImage(headerImage, "PNG", 0, 0, width, 30);
+    coordinates[1] += 23; // Move down after header
+  }
+  return coordinates;
 };
 
 const createHeader = function (
@@ -929,7 +937,7 @@ const createTailoredCareSection = function (doc, coordinates, width) {
   doc.textWithLink(
     "Click here to enroll!",
     sectionX + width / 2 + 30,
-    sectionY + 30,
+    sectionY + 28,
     {
       align: "center",
       url: "https://example.com/enroll",
