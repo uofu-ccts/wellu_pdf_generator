@@ -159,13 +159,13 @@ PDF.generatePDF = async function (record_id, name) {
   );
   coordinates = createHeader(
     doc,
-    "You’ve taken an important step in minimizing health risks. Below, you’ll find a personalized action plan based on your responses, your prioritized health areas and activities of interest that you selected.",
+    "You’ve taken an important step in minimizing health risks. Below, you’ll find a personalized WellU action plan based on your responses, prioritized health areas and activities of interest that you selected. Completing these recommended activities will help you achieve the greatest impact on your health.",
     coordinates,
     "h4",
     10
   );
 
-  coordinates = [startingX, coordinates[1] + 5];
+  coordinates = [startingX, coordinates[1] + 15];
   const boxX = coordinates[0];
   const boxY = coordinates[1];
   const boxWidth = 45; // Width of the box
@@ -208,7 +208,7 @@ PDF.generatePDF = async function (record_id, name) {
   );
 
   coordinates[0] = startingX; // Reset X coordinate for next section
-  coordinates[1] -= 10;
+  coordinates[1] -= 12;
   const subboxHeight = 20;
 
   coordinates = createGoalSubbox(
@@ -248,8 +248,10 @@ PDF.generatePDF = async function (record_id, name) {
   );
 
   coordinates[0] = startingX; // Reset X coordinate for next section
-  coordinates[1] += 30; // Move down for the next section
+  coordinates[1] += 25; // Move down for the next section
   doc.setTextColor(styles.textColor);
+
+  coordinates = createTailoredCareSection(doc, coordinates, pageWidth);
 
   coordinates = createHeader(
     doc,
@@ -335,9 +337,6 @@ PDF.generatePDF = async function (record_id, name) {
     pageWidth - 10,
     100
   );
-
-  coordinates[1] = pageHeight - 70; // Position it near the bottom of page
-  coordinates = createTailoredCareSection(doc, coordinates, pageWidth);
 
   doc.output("dataurlnewwindow");
   const pdfData = doc.output("datauristring");
