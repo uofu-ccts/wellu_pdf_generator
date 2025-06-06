@@ -194,7 +194,8 @@ PDF.generatePDF = async function (record_id, name) {
     "A1c",
     coordinates,
     boxWidth,
-    boxHeight
+    boxHeight,
+    "https://en.wikipedia.org/wiki/Main_Page"
   );
 
   coordinates = createGoalBox(
@@ -203,7 +204,8 @@ PDF.generatePDF = async function (record_id, name) {
     "Depression",
     [coordinates[0] + boxWidth + 5, boxY],
     boxWidth,
-    boxHeight
+    boxHeight,
+    "https://en.wikipedia.org/wiki/Main_Page"
   );
 
   coordinates = createGoalBox(
@@ -212,7 +214,8 @@ PDF.generatePDF = async function (record_id, name) {
     "Allergies",
     [coordinates[0] + boxWidth + 5, boxY],
     boxWidth,
-    boxHeight
+    boxHeight,
+    "https://en.wikipedia.org/wiki/Main_Page"
   );
 
   coordinates = createGoalBox(
@@ -221,7 +224,8 @@ PDF.generatePDF = async function (record_id, name) {
     "Cancer",
     [coordinates[0] + boxWidth + 5, boxY],
     boxWidth,
-    boxHeight
+    boxHeight,
+    "https://en.wikipedia.org/wiki/Main_Page"
   );
 
   coordinates[0] = startingX; // Reset X coordinate for next section
@@ -486,7 +490,15 @@ const createBullet = function (doc, text, coordinates, coordinateHeight = 6) {
   return coordinates;
 };
 
-const createGoalBox = function (doc, text, header, coordinates, width, height) {
+const createGoalBox = function (
+  doc,
+  text,
+  header,
+  coordinates,
+  width,
+  height,
+  url
+) {
   const headerHeight = 12; // Height for the header
   doc.setFillColor(styles.box.headerBackgroundColor);
   doc.rect(coordinates[0], coordinates[1], width, headerHeight, "F");
@@ -513,7 +525,13 @@ const createGoalBox = function (doc, text, header, coordinates, width, height) {
   const img = PDF.imageUrls[0];
   const imgX = coordinates[0] + width / 2 - 10; // Center image
   const imgY = coordinates[1] + 3;
-  doc.addImage(img, "PNG", imgX, imgY, 20, 20);
+  const imgW = 20;
+  const imgH = 20;
+  doc.addImage(img, "PNG", imgX, imgY, imgW, imgH);
+  // Make the image a link
+  if (url) {
+    doc.link(imgX, imgY, imgW, imgH, { url: url });
+  }
 
   coordinates[1] += height;
   return coordinates;
