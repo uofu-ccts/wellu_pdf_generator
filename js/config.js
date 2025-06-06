@@ -226,7 +226,7 @@ PDF.generatePDF = async function (record_id, name) {
 
   coordinates[0] = startingX; // Reset X coordinate for next section
   coordinates[1] -= 12;
-  const subboxHeight = 20;
+  const subboxHeight = 16;
 
   coordinates = createGoalSubbox(
     doc,
@@ -271,7 +271,7 @@ PDF.generatePDF = async function (record_id, name) {
   coordinates = createTailoredCareSection(doc, coordinates, pageWidth);
 
   coordinates[0] = startingX; // Reset X coordinate for next section
-  coordinates[1] -= 2; // Move down for the next section
+  coordinates[1] -= 4; // Move down for the next section
   coordinates = createHeader(
     doc,
     "Results at a Glance",
@@ -510,16 +510,22 @@ const createGoalSubbox = function (doc, text, coordinates, width, height, url) {
   doc.rect(coordinates[0] + 0.5, coordinates[1], width - 1, height, "S");
 
   // Split text for wrapping
-  text = doc.splitTextToSize(text, width - 2);
+  let splitText = doc.splitTextToSize(text, width - 1);
+  if (splitText.length > 3) splitText = doc.splitTextToSize(text, width);
   // Add link if URL is provided
   // Add text to the subbox
   doc.setTextColor(styles.textColor);
   doc.setFontSize(styles.goalSubbox.fontSize);
   doc.setFont(styles.goalSubbox.font, styles.goalSubbox.fontStyle);
-  doc.textWithLink(text, coordinates[0] + width / 2, coordinates[1] + 5.33, {
-    align: "center",
-    url: url,
-  });
+  doc.textWithLink(
+    splitText,
+    coordinates[0] + width / 2,
+    coordinates[1] + 5.33,
+    {
+      align: "center",
+      url: url,
+    }
+  );
   coordinates[0] += width + 5; // Move right for the next box
 
   return coordinates;
