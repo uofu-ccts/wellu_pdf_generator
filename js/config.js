@@ -269,13 +269,13 @@ PDF.generatePDF = async function (record_id, name) {
   );
 
   coordinates[0] = startingX; // Reset X coordinate for next section
-  coordinates[1] += 22; // Move down for the next section
+  coordinates[1] += 20; // Move down for the next section
   doc.setTextColor(styles.textColor);
 
   coordinates = createTailoredCareSection(doc, coordinates, pageWidth);
 
   coordinates[0] = startingX; // Reset X coordinate for next section
-  coordinates[1] -= 0; // Move down for the next section
+  coordinates[1] -= 3; // Move down for the next section
   coordinates = createHeader(
     doc,
     "Results at a Glance",
@@ -1019,7 +1019,7 @@ const summaryTable = function (
 };
 
 const createTailoredCareSection = function (doc, coordinates, width) {
-  const sectionHeight = 25;
+  const sectionHeight = 30;
   const backgroundColor = "#BBBBBB"; // Light gray background
   const sectionX = coordinates[0];
   const sectionY = coordinates[1];
@@ -1031,23 +1031,39 @@ const createTailoredCareSection = function (doc, coordinates, width) {
   // Add left side title text
   doc.setFont(styles.headerFont, styles.headerFontStyle);
   doc.setTextColor("#FFFFFF"); // White text
-  doc.setFontSize(16);
+  doc.setFontSize(14);
   doc.text(
     "You qualified for a tailored care pathway:",
-    sectionX + 10,
-    sectionY + 9
+    sectionX + width / 2,
+    sectionY + 5,
+    { align: "center" }
+  );
+
+  doc.setFont(styles.font, styles.fontStyle);
+  doc.text(
+    "IIf you enroll, a member of the OCIH team will reach out to help you further",
+    sectionX + width / 2,
+    sectionY + 12,
+    { align: "center" }
+  );
+  doc.text(
+    "tailor this plan and put it into action with individual support.",
+    sectionX + width / 2,
+    sectionY + 17,
+    { align: "center" }
   );
   // Add enrollment button
   doc.setFillColor("#FFFFFF");
-  doc.roundedRect(sectionX + width / 2 + 20, sectionY + 2, 60, 10, 3, 3, "F");
+  doc.roundedRect(sectionX + width / 2 - 25, sectionY + 20, 50, 8, 3, 3, "F");
 
   // Add enrollment link
   doc.setTextColor("#990000"); // Dark red text
+  doc.setFontSize(12);
   doc.setFont(styles.font, styles.fontStyle);
   doc.textWithLink(
     "Click here to enroll!",
-    sectionX + width / 2 + 50,
-    sectionY + 9,
+    sectionX + width / 2,
+    sectionY + 25,
     {
       align: "center",
       url: "https://example.com/enroll",
