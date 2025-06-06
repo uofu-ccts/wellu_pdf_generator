@@ -284,11 +284,29 @@ PDF.generatePDF = async function (record_id, name) {
   const summaryTableYCoordinates = coordinates[1];
 
   // coordinates[1] -= 5; // Move down for the next section
-  coordinates = createMetricBox(doc, 29, "BMI", coordinates);
-  coordinates = createMetricBox(doc, "<5.7", "A1C", coordinates);
-  coordinates = createMetricBox(doc, "2", "GAD-7", coordinates);
-  coordinates = createMetricBox(doc, "3", "PHQ-9", coordinates);
-  coordinates = createMetricBox(doc, "0", "Audit-C", coordinates);
+  coordinates = createMetricBox(doc, "<5.7", "A1C", coordinates, "low");
+  coordinates = createMetricBox(
+    doc,
+    "0",
+    "Alcohol Screening",
+    coordinates,
+    "low"
+  );
+  coordinates = createMetricBox(
+    doc,
+    "",
+    "Anxiety Screening",
+    coordinates,
+    "medium"
+  );
+  coordinates = createMetricBox(
+    doc,
+    "",
+    "Depression Screening",
+    coordinates,
+    "medium"
+  );
+  coordinates = createMetricBox(doc, 29, "BMI", coordinates, "high");
 
   const labels = [
     "Primary Care Provider",
@@ -531,50 +549,73 @@ const createGoalSubbox = function (doc, text, coordinates, width, height, url) {
   return coordinates;
 };
 
-const createMetricBox = function (doc, metric, label, coordinates, width = 25) {
+const createMetricBox = function (doc, metric, label, coordinates, riskLevel) {
   // Box settings
+  const boxWidth = 25;
   const boxHeight = 15;
   const boxRadius = 3;
-  const backgroundColor = "#B5CFD1"; // Light blue background color
+  let color = null;
+  if (riskLevel) {
+    // Use risk level color if provided
+    color = styles.riskKey[riskLevel.toLowerCase()];
+  }
+  const backgroundColor = color || "#B5CFD1"; // Light blue background color
   const metricColor = "#FFFFFF"; // White text color for metric
   const labelColor = "#333333"; // Dark gray text color for label
 
   // Save the original x coordinate to return to later
   const originalX = coordinates[0];
 
-  // Draw rounded rectangle with light blue background
-  doc.setFillColor(backgroundColor);
-  doc.roundedRect(
-    coordinates[0],
-    coordinates[1],
-    width,
-    boxHeight,
-    boxRadius,
-    boxRadius,
-    "F"
-  );
-
   // Add the metric number
-  doc.setFont(styles.font, styles.fontStyle);
-  doc.setFontSize(26);
-  doc.setTextColor(metricColor);
-  doc.text(
-    metric.toString(),
-    coordinates[0] + width / 2,
-    coordinates[1] + boxHeight / 2,
-    {
-      align: "center",
-      baseline: "middle",
-    }
-  );
+  // If metric is a blank string, make a circle instead
+  if (metric === "" || metric === null || metric === undefined) {
+    doc.setFillColor(backgroundColor); // White circle for empty metric
+    doc.circle(
+      coordinates[0] + boxWidth / 2,
+      coordinates[1] + boxHeight / 2,
+      boxHeight / 2,
+      "F"
+    );
+    metric = "?"; // Display a question mark for empty metrics
+  } else {
+    // Draw rounded rectangle with light blue background
+    doc.setFillColor(backgroundColor);
+    doc.roundedRect(
+      coordinates[0],
+      coordinates[1],
+      boxWidth,
+      boxHeight,
+      boxRadius,
+      boxRadius,
+      "F"
+    );
+    doc.setFont(styles.font, styles.fontStyle);
+    doc.setFontSize(26);
+    doc.setTextColor(metricColor);
+    doc.text(
+      metric.toString(),
+      coordinates[0] + boxWidth / 2,
+      coordinates[1] + boxHeight / 2,
+      {
+        align: "center",
+        baseline: "middle",
+      }
+    );
+  }
 
   // Add the label below the box
   doc.setFont(styles.font, styles.fontStyle);
-  doc.setFontSize(14);
+  doc.setFontSize(10);
   doc.setTextColor(labelColor);
-  doc.text(label, coordinates[0] + width / 2, coordinates[1] + boxHeight + 7, {
-    align: "center",
-  });
+  const text = doc.splitTextToSize(label, boxWidth);
+  doc.text(
+    text,
+    coordinates[0] + boxWidth / 2,
+    coordinates[1] + boxHeight + 4,
+    {
+      align: "center",
+    }
+  );
 
   // Move coordinates down past the label for next element
   coordinates[1] += boxHeight + 10;
