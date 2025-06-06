@@ -283,7 +283,7 @@ PDF.generatePDF = async function (record_id, name) {
 
   const summaryTableYCoordinates = coordinates[1];
 
-  coordinates[1] -= 5; // Move down for the next section
+  // coordinates[1] -= 5; // Move down for the next section
   coordinates = createMetricBox(doc, 29, "BMI", coordinates);
   coordinates = createMetricBox(doc, "<5.7", "A1C", coordinates);
   coordinates = createMetricBox(doc, "2", "GAD-7", coordinates);
@@ -291,41 +291,73 @@ PDF.generatePDF = async function (record_id, name) {
   coordinates = createMetricBox(doc, "0", "Audit-C", coordinates);
 
   const labels = [
-    "BMI",
+    "Primary Care Provider",
     "Diabetes",
-    "A1c",
     "Fast Food / Snacks",
     "Fruit & Vegetable Intake",
     "Sugar Sweetened Beverages",
+    "Physical Activity",
+    "Stress",
+    "Sleepiness",
+    "Tabacco / Nicotine Use",
+    "Drug Use",
+    "General Health",
   ];
-  const referenceRange = [
-    "18.5 - 24.9",
-    "31 - 37 inches",
-    "< 200 mg/dL",
-    "> 40 mg/dL",
-    "< 130 mg/dL",
-    "< 150 mg/dL",
+  const recommendations = [
+    "Yes",
+    "No History",
+    "Less than 1",
+    "1.5-2 cups fruit\n2-3 cups vegetable",
+    "Limit intake",
+    "Minimum: 150 minutes/week\nOptimal Health: 300+ minutes/week",
+    "Less than 5",
+    "Never/Rarely Sleepy",
+    "No",
+    "Never",
+    "Good to Excellent",
   ];
   const individualData = [
-    "23 kg/m²",
-    "32 inches",
-    "160 mg/dL",
-    "55 mg/dL",
-    "150 mg/dL",
-    "130 mg/dL",
+    "No",
+    "No History",
+    "3",
+    "2",
+    "1",
+    "1",
+    "100",
+    "5=moderate",
+    "Sometimes",
+    "No",
+    "Never",
+    "Very Good",
   ];
-  const riskKeys = ["high", "unknown", "low", "medium", "high", "unknown"];
+  const riskKeys = [
+    "low",
+    "medium",
+    "high",
+    "unknown",
+    "low",
+    "medium",
+    "high",
+    "unknown",
+    "low",
+    "medium",
+    "high",
+    "unknown",
+  ];
 
-  // coordinates = summaryTable(
-  //   doc,
-  //   "Summary Table",
-  //   labels,
-  //   referenceRange,
-  //   individualData,
-  //   riskKeys,
-  //   coordinates,
-  //   pageWidth - 10
-  // );
+  coordinates[0] += 30;
+  coordinates[1] = summaryTableYCoordinates - 5;
+
+  coordinates = summaryTable(
+    doc,
+    "Summary Table",
+    labels,
+    recommendations,
+    individualData,
+    riskKeys,
+    coordinates,
+    pageWidth - 40
+  );
 
   doc.addPage();
   coordinates = [startingX, startingY];
@@ -383,11 +415,6 @@ PDF.generatePDF = async function (record_id, name) {
   } catch (e) {
     console.error("Error in PDF generation: ", e);
   }
-
-  // Remove this line as we're handling the output differently
-  // doc.output("dataurlnewwindow");
-  // const pdfData = doc.output("datauristring");
-  // PDF.post("generate_pdf", pdfData, record_id, name);
 };
 
 const createHeaderImage = function (doc, coordinates, width) {
@@ -469,15 +496,6 @@ const createGoalBox = function (doc, text, header, coordinates, width, height) {
   const imgX = coordinates[0] + width / 2 - 10; // Center image
   const imgY = coordinates[1] + 3;
   doc.addImage(img, "PNG", imgX, imgY, 20, 20);
-
-  // // Add text to the box
-  // text = doc.splitTextToSize(`Goal: ${text}`, width - 8);
-  // doc.setTextColor(styles.textColor);
-  // doc.setFontSize(styles.box.fontSize);
-  // doc.setFont(styles.fontItalic, styles.fontItalicStyle);
-  // doc.text(text, textX + width / 2, coordinates[1] + 30, {
-  //   align: "center",
-  // });
 
   coordinates[1] += height;
   return coordinates;
@@ -653,19 +671,6 @@ const createPrioritiesSectionBox = function (
   width,
   height
 ) {
-  // const headerHeight = 8; // Height for the header
-  // doc.setFillColor(styles.sectionBox.headerBackgroundColor);
-  // doc.rect(coordinates[0], coordinates[1], width, headerHeight, "F");
-
-  // // Add header to the box
-  // const textX = coordinates[0] + 4;
-  // const headerText = doc.splitTextToSize(header, width - 8);
-  // doc.setTextColor(styles.textColor);
-  // doc.setFontSize(styles.sectionBox.fontSize);
-  // doc.setFont(styles.sectionBox.font, styles.sectionBox.fontStyle);
-  // doc.text(headerText, textX, coordinates[1] + 5.33);
-  // coordinates[1] += headerHeight; // Move down for the text
-
   coordinates[1] = createSubsection(
     doc,
     "Hemoglobin A1c",
@@ -787,13 +792,13 @@ const createSubsection = function (
   return cursorY;
 };
 
-const drawRiskBox = function (doc, riskKey, x, y) {
-  const boxWidth = 43;
-  const boxHeight = 6;
+const drawRiskBox = function (doc, riskKey, x, y, height) {
+  const boxWidth = 40;
+  const boxHeight = 4;
 
   const color = styles.riskKey[riskKey]; // Default to unknown if riskKey is not defined
   doc.setFillColor(color);
-  doc.rect(x, y + 2, boxWidth, boxHeight, "F");
+  doc.rect(x, y + height / 4, boxWidth, boxHeight, "F");
 };
 
 const summaryTable = function (
@@ -808,155 +813,139 @@ const summaryTable = function (
 ) {
   let originX = coordinates[0];
   let originY = coordinates[1];
-  const rowHeight = 12;
-  const cellPadding = 4;
+  const minRowHeight = 10; // Minimum row height
+  const cellPadding = 1;
+  const headerHeight = 12;
 
   // Draw table header
+  doc.setFillColor("#5c8d8e"); // Teal header color as shown in the image
+  doc.rect(originX, originY, width, headerHeight, "F");
+
+  // Header text (white)
   doc.setFont(styles.font, styles.fontStyle);
-  doc.setFontSize(styles.summaryTable.headerFontSize);
-  doc.setTextColor(styles.headerTextColor);
-  doc.setFillColor(styles.summaryTable.headerBackgroundColor);
-  doc.rect(originX, originY, width, 10, "F");
-  doc.text(title, doc.internal.pageSize.getWidth() / 2, originY + 7, {
+  doc.setFontSize(12);
+  doc.setTextColor("#FFFFFF");
+
+  // Draw headers
+  doc.text("Category", originX + width / 8, originY + headerHeight / 2 + 1, {
     align: "center",
   });
-
-  originY += rowHeight; // Move originY down for the table body
-
-  // Draw alternating row colors for header row + data rows
-  for (let i = 0; i <= labels.length; i++) {
-    if (i % 2 === 0) {
-      doc.setFillColor(styles.summaryTable.oddBackgroundColor);
-    } else {
-      doc.setFillColor(styles.summaryTable.evenBackgroundColor);
-    }
-    doc.rect(originX, originY + i * rowHeight, width, rowHeight, "F");
-  }
-
-  doc.setTextColor(styles.textColor);
-  // Label the columns (header row)
-  doc.setFont(styles.font, styles.fontStyle);
-  doc.setFontSize(10);
-  // Center headers and allow for multiple lines
-  const categoryHeader = "Category";
-  const recommendationHeader = doc.splitTextToSize(
-    "National Recommendation",
-    width / 4 - cellPadding * 2
+  doc.text(
+    "Recommendation",
+    originX + (3 * width) / 8,
+    originY + headerHeight / 2 + 1,
+    { align: "center" }
   );
-  const scoreHeader = "Your Score";
-  const riskHeader = doc.splitTextToSize(
-    "Health Risk for your Answer",
-    width / 4 - cellPadding * 2
+  doc.text(
+    "Your Score",
+    originX + (5 * width) / 8,
+    originY + headerHeight / 2 + 1,
+    { align: "center" }
+  );
+  doc.text(
+    "Health Risk",
+    originX + (7 * width) / 8,
+    originY + headerHeight / 2 + 1,
+    { align: "center" }
   );
 
-  // Calculate vertical position for proper centering
-  const headerY =
-    originY +
-    rowHeight / 2 -
-    (Math.max(recommendationHeader.length, riskHeader.length) * 3.5) / 2 +
-    3.5;
+  // Store current Y position after header
+  let currentY = originY + headerHeight;
 
-  // Draw each header centered in its column
-  doc.text(categoryHeader, originX + width / 8, headerY, { align: "center" });
-  doc.text(recommendationHeader, originX + width / 4 + width / 8, headerY, {
-    align: "center",
-  });
-  doc.text(scoreHeader, originX + (2 * width) / 4 + width / 8, headerY, {
-    align: "center",
-  });
-  doc.text(riskHeader, originX + (3 * width) / 4 + width / 8, headerY, {
-    align: "center",
-  });
-
-  // Draw horizontal line after column headers
-  doc.setDrawColor(256, 256, 256); // White color for lines
-  doc.setLineWidth(1); // Set line width
-  doc.line(originX, originY + rowHeight, originX + width, originY + rowHeight);
-
-  // Draw vertical lines for the entire table (including header row + data rows)
-  const totalTableHeight = (labels.length + 1) * rowHeight;
-  doc.line(
-    originX + width / 4,
-    originY,
-    originX + width / 4,
-    originY + totalTableHeight
-  ); // First column
-  doc.line(
-    originX + (2 * width) / 4,
-    originY,
-    originX + (2 * width) / 4,
-    originY + totalTableHeight
-  ); // Second column
-  doc.line(
-    originX + (3 * width) / 4,
-    originY,
-    originX + (3 * width) / 4,
-    originY + totalTableHeight
-  ); // Third column
-
-  // Draw data rows
+  // Calculate row heights in advance
+  const rowHeights = [];
   for (let i = 0; i < labels.length; i++) {
-    const y = originY + rowHeight + i * rowHeight + rowHeight / 2; // Base vertical position
-
-    doc.setFont(styles.font, styles.fontStyle);
-    doc.setFontSize(10);
-    doc.setTextColor(styles.textColor);
-
-    // Process text into multiline arrays
+    // Split text to calculate height needed
     const labelLines = doc.splitTextToSize(
       labels[i],
       width / 4 - cellPadding * 2
     );
-    const refRangeLines = doc.splitTextToSize(
+    const refLines = doc.splitTextToSize(
       referenceRange[i],
       width / 4 - cellPadding * 2
     );
-    const indDataLines = doc.splitTextToSize(
+    const dataLines = doc.splitTextToSize(
       individualData[i],
       width / 4 - cellPadding * 2
     );
 
-    // Calculate vertical offsets to center text
-    const labelOffset = (labelLines.length - 1) * 2.5;
-    const refRangeOffset = (refRangeLines.length - 1) * 2.5;
-    const indDataOffset = (indDataLines.length - 1) * 2.5;
+    // Find maximum number of lines in any column
+    const maxLines = Math.max(
+      labelLines.length,
+      refLines.length,
+      dataLines.length
+    );
 
-    // Draw cell content with proper centering
-    doc.text(labelLines, originX + width / 8, y - labelOffset + 2, {
+    // Calculate needed height (minimum 10)
+    const rowHeight = Math.max(minRowHeight, maxLines * 4.5);
+    rowHeights.push(rowHeight);
+  }
+
+  // Draw data rows
+  for (let i = 0; i < labels.length; i++) {
+    const rowHeight = rowHeights[i];
+    doc.setLineWidth(0.1);
+
+    // Add horizontal line at the bottom of each row
+    doc.line(
+      originX,
+      currentY + rowHeight,
+      originX + width,
+      currentY + rowHeight
+    );
+
+    // Reset text color
+    doc.setTextColor("#333333");
+    doc.setFontSize(10);
+
+    // Split text into lines to handle wrapping
+    const labelLines = doc.splitTextToSize(
+      labels[i],
+      width / 4 - cellPadding * 2
+    );
+    const refLines = doc.splitTextToSize(
+      referenceRange[i],
+      width / 4 - cellPadding * 2
+    );
+    const dataLines = doc.splitTextToSize(
+      individualData[i],
+      width / 4 - cellPadding * 2
+    );
+
+    // Center text vertically in the row
+    let labelY = currentY + rowHeight / 2;
+    let refY = currentY + rowHeight / 2;
+    let dataY = currentY + rowHeight / 2;
+    labelY += labelLines.length === 1 ? 2 : -2 * labelLines.length + 3;
+    refY += refLines.length === 1 ? 2 : -2 * refLines.length + 3;
+    dataY += dataLines.length === 1 ? 2 : -2 * dataLines.length + 3;
+
+    // Draw text content for this row
+    doc.text(labelLines, originX + width / 8, labelY, { align: "center" });
+    doc.text(refLines, originX + (3 * width) / 8, refY, {
+      align: "center",
+    });
+    doc.text(dataLines, originX + (5 * width) / 8, dataY, {
       align: "center",
     });
 
-    doc.text(
-      refRangeLines,
-      originX + width / 4 + width / 8,
-      y - refRangeOffset + 2,
-      { align: "center" }
-    );
-
-    doc.text(
-      indDataLines,
-      originX + (2 * width) / 4 + width / 8,
-      y - indDataOffset + 2,
-      { align: "center" }
-    );
-
     // Draw risk box
     const riskKey = riskKeys[i].toLowerCase();
-    drawRiskBox(doc, riskKey, originX + (3 * width) / 4 + cellPadding, y - 5);
+    const riskBoxY = currentY + 1;
+    const riskBoxX = originX + (3 * width) / 4 + cellPadding;
+    drawRiskBox(doc, riskKey, riskBoxX, riskBoxY, rowHeight);
 
-    // Draw horizontal line after each data row (except the last one)
-    if (i < labels.length - 1) {
-      doc.line(
-        originX,
-        originY + rowHeight + (i + 1) * rowHeight,
-        originX + width,
-        originY + rowHeight + (i + 1) * rowHeight
-      );
-    }
+    // Move to next row
+    currentY += rowHeight;
   }
 
-  // Update coordinates for next element
-  coordinates[1] = originY + (labels.length + 1) * rowHeight + 10;
+  // Add outer border to the whole table
+  doc.setDrawColor("#4d838c");
+  doc.setLineWidth(0.3);
+  doc.rect(originX, originY, width, currentY - originY, "S");
+
+  // Update coordinates for the next element
+  // coordinates[1] = currentY + 10;
   return coordinates;
 };
 
