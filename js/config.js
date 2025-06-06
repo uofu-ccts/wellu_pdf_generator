@@ -858,7 +858,7 @@ const createSubsection = function (
 };
 
 const drawRiskBox = function (doc, riskKey, x, y, height) {
-  const boxWidth = 40;
+  const boxWidth = 10;
   const boxHeight = 4;
 
   const color = styles.riskKey[riskKey]; // Default to unknown if riskKey is not defined
@@ -894,25 +894,30 @@ const summaryTable = function (
   doc.setTextColor("#FFFFFF");
 
   // Draw headers
-  doc.text("Category", originX + width / 8, originY + headerHeight / 2 + 1, {
-    align: "center",
-  });
+  doc.text(
+    "Category",
+    originX + width / 8 + 3,
+    originY + headerHeight / 2 + 1,
+    {
+      align: "center",
+    }
+  );
   doc.text(
     "Recommendation",
-    originX + (3 * width) / 8,
+    originX + (5.5 * width) / 12,
     originY + headerHeight / 2 + 1,
     { align: "center" }
   );
   doc.text(
     "Your Score",
-    originX + (5 * width) / 8,
+    originX + (9 * width) / 12,
     originY + headerHeight / 2 + 1,
     { align: "center" }
   );
   doc.text(
-    "Health Risk",
-    originX + (7 * width) / 8,
-    originY + headerHeight / 2 + 1,
+    "Health\nRisk",
+    originX + (10.8 * width) / 12 + 6,
+    originY + headerHeight / 2 - 1,
     { align: "center" }
   );
 
@@ -970,10 +975,7 @@ const summaryTable = function (
       labels[i],
       width / 4 - cellPadding * 2
     );
-    const refLines = doc.splitTextToSize(
-      referenceRange[i],
-      width / 4 - cellPadding * 2
-    );
+    const refLines = doc.splitTextToSize(referenceRange[i], width / 4);
     const dataLines = doc.splitTextToSize(
       individualData[i],
       width / 4 - cellPadding * 2
@@ -988,19 +990,19 @@ const summaryTable = function (
     dataY += dataLines.length === 1 ? 2 : -2 * dataLines.length + 3;
 
     // Draw text content for this row
-    doc.text(labelLines, originX + width / 8, labelY, { align: "center" });
-    doc.text(refLines, originX + (3 * width) / 8, refY, {
+    doc.text(labelLines, originX + width / 8 + 3, labelY, { align: "center" });
+    doc.text(refLines, originX + (5.5 * width) / 12, refY, {
       align: "center",
     });
-    doc.text(dataLines, originX + (5 * width) / 8, dataY, {
+    doc.text(dataLines, originX + (9 * width) / 12, dataY, {
       align: "center",
     });
 
     // Draw risk box
     const riskKey = riskKeys[i].toLowerCase();
     const riskBoxY = currentY + 1;
-    const riskBoxX = originX + (3 * width) / 4 + cellPadding;
-    drawRiskBox(doc, riskKey, riskBoxX, riskBoxY, rowHeight);
+    const riskBoxX = originX + (10 * width) / 12 + cellPadding;
+    drawRiskBox(doc, riskKey, riskBoxX + 12, riskBoxY, rowHeight);
 
     // Move to next row
     currentY += rowHeight;
