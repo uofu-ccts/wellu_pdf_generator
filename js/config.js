@@ -817,8 +817,10 @@ const summaryTable = function (
   const cellPadding = 1;
   const headerHeight = 12;
 
+  const fillColor = "#adcbd0";
+
   // Draw table header
-  doc.setFillColor("#5c8d8e"); // Teal header color as shown in the image
+  doc.setFillColor(fillColor);
   doc.rect(originX, originY, width, headerHeight, "F");
 
   // Header text (white)
@@ -940,7 +942,7 @@ const summaryTable = function (
   }
 
   // Add outer border to the whole table
-  doc.setDrawColor("#4d838c");
+  doc.setDrawColor(fillColor);
   doc.setLineWidth(0.3);
   doc.rect(originX, originY, width, currentY - originY, "S");
 
