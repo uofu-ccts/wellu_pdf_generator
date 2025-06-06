@@ -275,7 +275,7 @@ PDF.generatePDF = async function (record_id, name) {
   coordinates = createTailoredCareSection(doc, coordinates, pageWidth);
 
   coordinates[0] = startingX; // Reset X coordinate for next section
-  coordinates[1] -= 4; // Move down for the next section
+  coordinates[1] -= 0; // Move down for the next section
   coordinates = createHeader(
     doc,
     "Results at a Glance",
@@ -287,7 +287,7 @@ PDF.generatePDF = async function (record_id, name) {
 
   const summaryTableYCoordinates = coordinates[1];
 
-  // coordinates[1] -= 5; // Move down for the next section
+  coordinates[1] -= 6; // Move down for the next section
   coordinates = createMetricBox(doc, "<5.7", "A1C", coordinates, "low");
   coordinates = createMetricBox(
     doc,
@@ -327,11 +327,11 @@ PDF.generatePDF = async function (record_id, name) {
   ];
   const recommendations = [
     "Yes",
-    "No History",
+    "",
     "Less than 1",
     "1.5-2 cups fruit\n2-3 cups vegetable",
     "Limit intake",
-    "Minimum: 150 minutes/week\nOptimal Health: 300+ minutes/week",
+    "Min: 150 min/wk\nOptimal: 300+ min/wk",
     "Less than 5",
     "Never/Rarely Sleepy",
     "No",
@@ -368,7 +368,7 @@ PDF.generatePDF = async function (record_id, name) {
   ];
 
   coordinates[0] += 30;
-  coordinates[1] = summaryTableYCoordinates - 5;
+  coordinates[1] = summaryTableYCoordinates - 6;
 
   coordinates = summaryTable(
     doc,
@@ -878,7 +878,7 @@ const summaryTable = function (
 ) {
   let originX = coordinates[0];
   let originY = coordinates[1];
-  const minRowHeight = 10; // Minimum row height
+  const minRowHeight = 9;
   const cellPadding = 1;
   const headerHeight = 12;
 
@@ -1019,7 +1019,7 @@ const summaryTable = function (
 };
 
 const createTailoredCareSection = function (doc, coordinates, width) {
-  const sectionHeight = 14;
+  const sectionHeight = 25;
   const backgroundColor = "#BBBBBB"; // Light gray background
   const sectionX = coordinates[0];
   const sectionY = coordinates[1];
