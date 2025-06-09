@@ -184,10 +184,16 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
 
         $imageFileNames = array(
             "a1c.png",
+            "diabetes.png",
+            "general_health.png",
             "header.png",
             "mental_health.png",
             "movement.png",
+            "nutrition.png",
+            "physical_activity.png",
+            "primary_care_provider.png",
             "sleep.png",
+            "substance_use.png",
         );
 
         $imageUrls = array();
