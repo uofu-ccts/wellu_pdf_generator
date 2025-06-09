@@ -440,7 +440,7 @@ PDF.generatePDF = async function (record_id, name) {
 };
 
 const createHeaderImage = function (doc, coordinates, width) {
-  const headerImage = PDF.imageUrls[1]; // Assuming the first image is the header
+  const headerImage = PDF.imageUrls[3]; // Assuming the first image is the header
   if (headerImage) {
     doc.addImage(headerImage, "PNG", 0, 0, width, 40);
     coordinates[1] += 38; // Move down after header
