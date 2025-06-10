@@ -122,8 +122,8 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
     }
 
     function redcap_survey_page($project_id, $record, $instrument) {
-        if ($instrument == 'pdf_placeholder') {
-            echo $this->renderDownloadButton($record);
+        if ($instrument == 'final_report') {
+            echo $this->prepPdfGenerator($record);
         }
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -176,7 +176,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         }
     }
 
-    function renderDownloadButton($record_id) {
+    function prepPdfGenerator($record_id) {
         $jsUrl = $this->getUrl('js/config.js');
         $centuryGothicNormalUrl = $this->getUrl('js/centurygothic-normal.js');
         $centuryGothicBoldUrl = $this->getUrl('js/centurygothic_bold-bold.js');
@@ -229,7 +229,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             var PDF_NAME = '" . htmlspecialchars($name, ENT_QUOTES) . "';
         </script>";
 
-        //keep the button for manual triggering
+        //keep the button for manual triggering, will remove this once testing is done
         $html .= "<button type='button' class='btn btn-primary generate-pdf' data-record-id='$record_id' data-name='$name'>Download PDF</button>";
         $html .= "<form id='action-form' name='action' class='hidden' method='POST'></form>";
         $html .= "<script src='$jsUrl'></script>";
