@@ -3,6 +3,23 @@ if (typeof PDF === "undefined") {
   var PDF = {};
 }
 
+const choiceToText = {
+  sleepy_day: {
+    1: "Never",
+    2: "Rarely",
+    3: "Sometimes",
+    4: "Often",
+    5: "Always",
+  },
+  general_health: {
+    1: "Excellent",
+    2: "Very Good",
+    3: "Good",
+    4: "Fair",
+    5: "Poor",
+  },
+};
+
 const styles = {
   font: "centurygothic",
   fontStyle: "normal",
@@ -116,9 +133,13 @@ PDF.post = function (action, pdfData, record_id, name) {
   });
 };
 
-PDF.addEventHandlers = function (imageUrls) {
+PDF.addEventHandlers = function (imageUrls, goalsContent, record) {
   console.log("Image Urls:", imageUrls);
+  console.log("Goals Content:", goalsContent);
+  console.log("Record:", record);
   PDF.imageUrls = imageUrls || [];
+  PDF.goalsContent = goalsContent || {};
+  PDF.record = record || {};
   // Handle the ADD button
   $(".generate-pdf").on("click", function () {
     var record_id = $(this).attr("data-record-id");
@@ -327,7 +348,7 @@ PDF.generatePDF = async function (record_id, name) {
   ];
   const recommendations = [
     "Yes",
-    "",
+    "--",
     "Less than 1",
     "1.5-2 cups fruit\n2-3 cups vegetable",
     "Limit intake",
@@ -338,20 +359,7 @@ PDF.generatePDF = async function (record_id, name) {
     "Never",
     "Good to Excellent",
   ];
-  const individualData = [
-    "No",
-    "No History",
-    "3",
-    "2",
-    "1",
-    "1",
-    "100",
-    "5=moderate",
-    "Sometimes",
-    "No",
-    "Never",
-    "Very Good",
-  ];
+  const individualData = calculateIndividualData();
   const riskKeys = [
     "low",
     "medium",
@@ -1074,4 +1082,37 @@ const createTailoredCareSection = function (doc, coordinates, width) {
   coordinates[1] += sectionHeight + 10;
 
   return coordinates;
+};
+
+const calculateIndividualData = function () {
+  record = PDF.record[1] || {};
+  const hasPrimaryCareProvider =
+    record.provider == 1 || record.provider == 2 ? "Yes" : "No";
+  const hasDiabetesHistory = record.dbt_p_score == 2 ? "No History" : "History";
+  const fastFoodSnacks =
+    record.fast_food_snacks == 7 ? "7 or more" : record.fast_food_snacks;
+  const cupsFruitVeg =
+    record.cups_fruit_veg == 6 ? "6 or more" : record.cups_fruit_veg;
+  const sugarSweetened =
+    record.sugar_sweetened == 6 ? "More than 5" : record.sugar_sweetened;
+  const physicalActivity = record.phys_minutes_weekly;
+  const stress = record.slider;
+  const sleepiness = choiceToText.sleepy_day[record.sleepy_day];
+  const tobaccoUse = record.tobacco == 1 ? "Yes" : "No";
+  const drugUse = record.drug_rx_nonmed == 0 ? "No" : "Yes";
+  const generalHealth =
+    choiceToText.general_health[record.general_health] || "Unknown";
+  return [
+    hasPrimaryCareProvider,
+    hasDiabetesHistory,
+    fastFoodSnacks,
+    cupsFruitVeg,
+    sugarSweetened,
+    physicalActivity,
+    stress,
+    sleepiness,
+    tobaccoUse,
+    drugUse,
+    generalHealth,
+  ];
 };
