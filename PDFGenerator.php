@@ -212,7 +212,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         $this->console_log("Processed priorities for record ID $record_id: ");
         $this->console_log($processed_data);
 
-        $this->getPdfContent($record);
+        $goalsContent = $this->getPdfContent($record);
 
         // loading libraries
         $html  = '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>';
@@ -235,7 +235,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         $html .= "<button type='button' class='btn btn-primary generate-pdf' data-record-id='$record_id' data-name='$name'>Download PDF</button>";
         $html .= "<form id='action-form' name='action' class='hidden' method='POST'></form>";
         $html .= "<script src='$jsUrl'></script>";
-        $html .= "<script>PDF.addEventHandlers(" . json_encode($imageUrls) . ");</script>";
+        $html .= "<script>PDF.addEventHandlers(" . json_encode($imageUrls) . "," . json_encode($goalsContent) . "," . json_encode($record) . ");</script>";
 
         return $html;
     }
@@ -388,18 +388,22 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             $this->console_log("Resources file not found: " . $resourcesFilePath, 'ERROR');
             return '';
         }
-        
+
         $this->console_log("Lookup and resources data loaded successfully.");
 
+        $goalsContent =  array();
         foreach ($lookupData as $key => $value) {
             $user_choice = $record[1][$key];
 
             $this->console_log("Processing key: $key");
             $this->console_log("The user chose: " . $user_choice);
-            $this->console_log("The user will see: " . $value[$user_choice]);;
+            $this->console_log("The user will see: " . $value[$user_choice]);
             $this->console_log("The content is: ");
-            $this->console_log($resourcesData[$value[$user_choice]]);
+            $this->console_log(json_encode($resourcesData[$value[$user_choice]]));
+            $goalsContent[$key] = $resourcesData[$value[$user_choice]];
         }
+
+        return $goalsContent;
 
     }
 
