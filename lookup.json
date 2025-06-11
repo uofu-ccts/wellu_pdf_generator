@@ -37,7 +37,7 @@
             "5": "pcp",
             "6": "lifestyle_medicine"
         },
-        "act_action": {
+        "activity_action": {
             "green": "fitness_assessment",
             "noaction": "peak_activity",
             "no_answ": "health_coaching",
@@ -70,5 +70,52 @@
             "5": "anx_own_plan",
             "6": "mindfulness_class"
         },
+        "phq_action": {
+            "1": "mental_health_provider",
+            "2": "eap",
+            "3": "pcp",
+            "4": "lifestyle_medicine",
+            "5": "anx_own_plan",
+            "6": "mindfulness_class"
+        },
+        "sleep_action": {
+            "1": "insomnia_class",
+            "2": "sleep_own_plan",
+            "3": "health_coaching",
+            "4": "ollie_class",
+            "5": "pcp",
+            "6": "lifestyle_medicine"
+        },
+        "tobacco_action": {
+            "1": "tobacco_quit_line",
+            "2": "pcp",
+            "3": "tobacco_own_plan",
+            "4": "combination_therapy_contact",
+            "5": "lifestyle_medicine",
+            "6": "addiction_recovery_resource_link"
+        },
+        "alcohol_action": {
+            "1": "eap",
+            "2": "addiction_recovery_resource_link",
+            "3": "pcp",
+            "4": "addiction_own_plan",
+            "5": "lifestyle_medicine",
+            "6": "addiction_recovery_resource_link"
+        },
+        "drug_action": {
+            "1": "eap",
+            "2": "addiction_recovery_resource_link",
+            "3": "pcp",
+            "4": "addiction_own_plan",
+            "5": "lifestyle_medicine",
+            "6": "addiction_recovery_resource_link"
+        },
+        "gen_action": {
+            "1": "health_coaching",
+            "2": "lifestyle_medicine",
+            "3": "ilp",
+            "4": "pcp"
+        }
+
     }
 }

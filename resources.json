@@ -1085,7 +1085,7 @@
                 }
             ]
         },
-        "combination_therapy_contact?": {
+        "combination_therapy_contact": {
             "name": "Combination Therapy Contact?",
             "link": "Combination Therapy Contact?",
             "pdf_box": "",
