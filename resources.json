@@ -455,47 +455,19 @@
                     "content": "During this 60-minute session, we'll assess key areas of your fitness, including:"
                 },
                 {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "content": "Cardiovascular endurance"
                 },
                 {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "content": "Muscular strength and endurance"
                 },
                 {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "content": "Flexibility"
                 },
                 {
-                    "type": "paragraph",
-                    "content": "Body composition"
-                },
-                {
-                    "type": "paragraph",
-                    "content": "You'll receive a detailed report comparing your results to age-based norms, along with expert recommendations to help you improve or maintain your fitness."
-                },
-                {
-                    "type": "paragraph",
-                    "content": "You've been putting in the work - now it's time to see the results. A PEAK Fitness Assessment is a great way to evaluate your current fitness level and set meaningful, personalized goals for the future."
-                },
-                {
-                    "type": "paragraph",
-                    "content": "During this 60-minute session, we'll assess key areas of your fitness, including:"
-                },
-                {
-                    "type": "paragraph",
-                    "content": "Cardiovascular endurance"
-                },
-                {
-                    "type": "paragraph",
-                    "content": "Muscular strength and endurance"
-                },
-                {
-                    "type": "paragraph",
-                    "content": "Flexibility"
-                },
-                {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "content": "Body composition"
                 },
                 {
@@ -529,15 +501,15 @@
                     "content": "Looking for a fun and convenient way to stay active? Join a fitness class right here on campus! Whether you prefer in-person or virtual workouts, there's something for everyone:"
                 },
                 {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "content": "PEAK Health and Fitness offers a wide variety of employee-only fitness classes - available both virtually and at locations across campus."
                 },
                 {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "content": "Student Life Center provides access to dynamic group fitness classes with a membership."
                 },
                 {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "content": "Tanner Dance features adult fitness classes that blend movement and creativity."
                 },
                 {
@@ -564,7 +536,7 @@
                     "content": "Mindfulness-Based Stress Reduction (MBSR)"
                 },
                 {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "content": "An evidence-based program designed to help you manage stress, anxiety, and chronic pain through meditation, gentle movement, and self-awareness practices."
                 },
                 {
@@ -572,7 +544,7 @@
                     "content": "Everyday Mindfulness"
                 },
                 {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "content": "Perfect for beginners or those looking to build a consistent practice. Learn simple, effective techniques to bring mindfulness into your daily life - at work, at home, and everywhere in between."
                 },
                 {
@@ -580,7 +552,7 @@
                     "content": "Flourishing in Medicine"
                 },
                 {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "content": "Created specifically for medical team members, this class focuses on resilience, emotional well-being, and connection in high-stress healthcare environments."
                 },
                 {
@@ -622,7 +594,7 @@
                     "content": "Mindfulness-Based Stress Reduction (MBSR)"
                 },
                 {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "content": "An evidence-based program designed to help you manage stress, anxiety, and chronic pain through meditation, gentle movement, and self-awareness practices."
                 },
                 {
@@ -630,7 +602,7 @@
                     "content": "Everyday Mindfulness"
                 },
                 {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "content": "Perfect for beginners or those looking to build a consistent practice. Learn simple, effective techniques to bring mindfulness into your daily life - at work, at home, and everywhere in between."
                 },
                 {
@@ -638,44 +610,8 @@
                     "content": "Flourishing in Medicine"
                 },
                 {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "content": "Created specifically for medical team members, this class focuses on resilience, emotional well-being, and connection in high-stress healthcare environments."
-                },
-                {
-                    "type": "paragraph",
-                    "content": "Each class is guided by experienced instructors and offers a supportive, welcoming environment to help you grow your practice and improve your well-being."
-                },
-                {
-                    "type": "paragraph",
-                    "content": "Feeling overwhelmed, stressed, or simply looking to reconnect with yourself? Our Mindfulness Classes offer practical tools to help you slow down, breathe deeply, and live more intentionally - no matter your background or experience level."
-                },
-                {
-                    "type": "paragraph",
-                    "content": "We offer three unique class options to meet your needs:"
-                },
-                {
-                    "type": "paragraph",
-                    "content": "Mindfulness-Based Stress Reduction (MBSR)"
-                },
-                {
-                    "type": "paragraph",
-                    "content": "An evidence-based program designed to help you manage stress, anxiety, and chronic pain through meditation, gentle movement, and self-awareness practices."
-                },
-                {
-                    "type": "paragraph",
-                    "content": "Everyday Mindfulness"
-                },
-                {
-                    "type": "paragraph",
-                    "content": "Perfect for beginners or those looking to build a consistent practice. Learn simple, effective techniques to bring mindfulness into your daily life - at work, at home, and everywhere in between."
-                },
-                {
-                    "type": "paragraph",
-                    "content": "Flourishing in Medicine"
-                },
-                {
-                    "type": "paragraph",
-                    "content": "Created specifically for medical provider teams, this class focuses on resilience, emotional well-being, and connection in high-stress healthcare environments."
                 },
                 {
                     "type": "paragraph",
@@ -701,7 +637,7 @@
                     "content": "Mindfulness-Based Stress Reduction (MBSR)"
                 },
                 {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "content": "An evidence-based program designed to help you manage stress, anxiety, and chronic pain through meditation, gentle movement, and self-awareness practices."
                 },
                 {
@@ -709,7 +645,7 @@
                     "content": "Everyday Mindfulness"
                 },
                 {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "content": "Perfect for beginners or those looking to build a consistent practice. Learn simple, effective techniques to bring mindfulness into your daily life - at work, at home, and everywhere in between."
                 },
                 {
@@ -717,7 +653,7 @@
                     "content": "Flourishing in Medicine"
                 },
                 {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "content": "Created specifically for medical provider teams, this class focuses on resilience, emotional well-being, and connection in high-stress healthcare environments."
                 },
                 {
@@ -791,19 +727,19 @@
                     "content": "In this one-on-one session, you'll:"
                 },
                 {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "content": "Explore how you currently spend your time"
                 },
                 {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "content": "Identify gaps, stress points, and opportunities for joy"
                 },
                 {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "content": "Reframe your mindset around rest and productivity"
                 },
                 {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "content": "Build a personalized plan for meaningful, energizing leisure"
                 },
                 {
@@ -830,19 +766,19 @@
                     "content": "Whether you're dealing with stress, anxiety, relationship issues, grief, or work-life balance, SupportLinc provides:"
                 },
                 {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "content": "24/7 access to licensed counselors"
                 },
                 {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "content": "Short-term, solution-focused therapy"
                 },
                 {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "content": "Legal, financial, and family support resources"
                 },
                 {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "content": "Self-guided tools and wellness content"
                 },
                 {
@@ -869,7 +805,7 @@
                     "content": "When you're ready, we're here to support you. In the meantime, here are some helpful resources you can explore at your own pace - no pressure, just possibilities."
                 },
                 {
-                    "type": "",
+                    "type": "paragraph",
                     "content": "Mental Health and Well-being Resources: https://officeforfaculty.utah.edu/home-template-2-2/resources-links/mentalhealth/"
                 },
                 {
@@ -892,19 +828,19 @@
                     "content": "Whether you're feeling overwhelmed, stuck, anxious, or simply need someone to talk to, connecting with a mental health professional can help you:"
                 },
                 {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "content": "Gain clarity and emotional balance"
                 },
                 {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "content": "Build resilience and coping strategies"
                 },
                 {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "content": "Improve relationships and self-understanding"
                 },
                 {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "content": "Feel more supported and less alone"
                 },
                 {
@@ -984,7 +920,7 @@
                 },
                 {
                     "type": "bullet",
-                    "text": "When you're ready, we’re here to support you. In the meantime, here are some helpful resources you can explore at your own pace—no pressure, just possibilities."
+                    "text": "When you're ready, we're here to support you. In the meantime, here are some helpful resources you can explore at your own pace—no pressure, just possibilities."
                 }
             ]
         },
@@ -996,7 +932,7 @@
             [
                 {
                     "type": "paragraph",
-                    "text": "Sleep isn’t a luxury—it’s a vital part of your health and performance. Just like exercise and nutrition, quality sleep is essential for energy, focus, mood, and long-term well-being."
+                    "text": "Sleep isn't a luxury—it's a vital part of your health and performance. Just like exercise and nutrition, quality sleep is essential for energy, focus, mood, and long-term well-being."
                 },
                 {
                     "type": "bullet",
@@ -1147,7 +1083,14 @@
                 {
                     "type": "paragraph",
                     "content": "When you're ready, we're here to support you. In the meantime, here are some helpful resources you can explore at your own pace - no pressure, just possibilities."
-                },
+                }
+            ]
+        },
+        "addiction_recovery_skipped": {
+            "name": "Addiction Recovery Resource Link",
+            "link": "Addiction Recovery Resource Link",
+            "pdf_box": "",
+            "full": [
                 {
                     "type": "paragraph",
                     "content": "Looks like you skipped this question. Here are some helpful articles that you might find helpful. http://www.wellbeing.place/"
@@ -1230,7 +1173,7 @@
                     "text": "The University of Utah has a partnership with The Utah Transit Authority (UTA) to offer students, staff, and faculty transit at no cost, on the majority of UTA services."
                 },
                 {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "text": "U of U Ride UTA Pass: https://www.rideuta.com/Fares-And-Passes/Pass-Programs/UTA-School-Pass-Programs/University-of-Utah"
                 },
                 {
@@ -1238,7 +1181,7 @@
                     "text": "The University of Utah's food pantry provides non-perishable, nourishing food for all students, faculty, and staff with a current U of U ID: "
                 },
                 {
-                    "type": "paragraph",
+                    "type": "bullet",
                     "text": "The Feed U Pantry: https://basicneeds.utah.edu/food-resources.php"
                 },
                 {
