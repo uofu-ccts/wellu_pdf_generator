@@ -371,6 +371,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
     function getPdfContent($record) {
         // save contents of lookup.json file into variable
         $lookupFilePath = __DIR__ . '/resources/lookup.json';
+        $resourcesFilePath = __DIR__ . '/resources/resources.json';
 
         if (file_exists($lookupFilePath)) {
             $lookupContent = file_get_contents($lookupFilePath);
@@ -379,13 +380,25 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             $this->console_log("Lookup file not found: " . $lookupFilePath, 'ERROR');
             return '';
         }
+
+        if (file_exists($resourcesFilePath)) {
+            $resourcesContent = file_get_contents($resourcesFilePath);
+            $resourcesData = json_decode($resourcesContent, true);
+        } else {
+            $this->console_log("Resources file not found: " . $resourcesFilePath, 'ERROR');
+            return '';
+        }
         
-        $this->console_log("Lookup data loaded successfully.");
+        $this->console_log("Lookup and resources data loaded successfully.");
 
         foreach ($lookupData as $key => $value) {
+            $user_choice = $record[1][$key];
+
             $this->console_log("Processing key: $key");
-            $this->console_log("The user chose: " . $record[1][$key]);
-            $this->console_log("The user will see: " . $value[$record[1][$key]]);
+            $this->console_log("The user chose: " . $user_choice);
+            $this->console_log("The user will see: " . $value[$user_choice]);;
+            $this->console_log("The content is: ");
+            $this->console_log($resourcesData[$value[$user_choice]]);
         }
 
     }
