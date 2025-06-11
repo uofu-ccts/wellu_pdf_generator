@@ -1,10 +1,16 @@
 {
     "resources": {
         "red_butte": {
-        "name": "Red Butte Walk",
-        "link": "Red Butte Walk",
-        "pdf_box": "Take a walk at Red Butte Garden.",
-        "full": []
+            "name": "Red Butte Walk",
+            "link": "Red Butte Walk",
+            "pdf_box": "Take a walk at Red Butte Garden.",
+            "full": 
+            [
+                {
+                    "type": "paragraph",
+                    "text": "Getting out for a brisk walk after eating can help lower blood sugar levels and keep your A1c levels low. A great place to walk around campus is the Red Butte Garden. Employees enjoy free access to Red Butte Garden and if you scan your card 10 times and go for a walk through the beautiful gardens you will earn credit towards your premium reduction!"
+                }
+            ]
         },
         "weight_management": {
             "name": "Weight Management Resource Link",
@@ -312,7 +318,7 @@
                 }
             ]
         },
-        "free_exercise": {
+        "exercise_prescription": {
             "name": "I want to schedule a free Exercise Prescription",
             "link": "https://booknow.appointment-plus.com/165ehg4e/10#Appointment",
             "pdf_box": "Schedule your free exercise prescription.",
@@ -383,6 +389,25 @@
                 {
                     "type": "paragraph",
                     "content": "Check out our current workshops and register today:Join a Nutrition Workshop to learn how to make  nutritious meals, fun and easy.  https://app.healthcare.utah.edu/peakCourseRegistration/byCategory?categoryPrimaryId=6"
+                }
+            ]
+        },
+        "nutrition_resource": {
+            "name": "Nutrition Resource",
+            "link": "",
+            "pdf_box": "",
+            "full": [
+                {
+                    "type": "paragraph",
+                    "content": "We understand that making changes to your health can feel overwhelming, and sometimes the first step is simply giving yourself time."
+                },
+                {
+                    "type": "paragraph",
+                    "content": "When you're ready, we're here to support you. In the meantime, here are some helpful resources you can explore at your own pace-no pressure, just possibilities."
+                },
+                {
+                    "type": "paragraph",
+                    "content": "Nutrition Resource Link"
                 }
             ]
         },
@@ -476,7 +501,7 @@
                 }
             ]
         },
-        "physical_activity_resource_template": {
+        "peak_activity": {
             "name": "Physical Activity Resource Template",
             "link": "https://health.utah.edu/peak",
             "pdf_box": "",
@@ -491,7 +516,7 @@
                 }
             ]
         },
-        "activity_fitness": {
+        "fitness_class": {
             "name": "I want to register for an activity/fitness class",
             "link": "https://peak.webapps.med.utah.edu/category/132",
             "pdf_box": "Click HERE to resister for a PEAK fitness class",
@@ -853,7 +878,7 @@
                 }
             ]
         },
-        "own_plan": {
+        "anx_own_plan": {
             "name": "I want to make my own plan to address my Mental Health",
             "link": "supportllinc.com (group code: uofu)",
             "pdf_box": "Create your own plan. Click HERE to access Supportlinc resources (Use group code: uofu)",

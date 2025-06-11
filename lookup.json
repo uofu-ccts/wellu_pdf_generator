@@ -1,12 +1,74 @@
 {
     "lookup": {
         "bmi_action": {
+            "green": "red_butte",
+            "noaction": "weight_management",
+            "no_answ": "peak_nutrition",
             "1": "peak_nutrition",
             "2": "personal_training",
             "3": "pcp",
             "4": "health_coaching",
             "5": "noom",
             "6": "lifestyle_medicine"
-        }
+        },
+        "dbt_action": {
+            "noansw": "peak_nutrition"
+        },
+        "meta_action": {
+            "green": "red_butte",
+            "noaction": "metabolic_health",
+            "no_answ": "peak_nutrition",
+            "1": "ndpp",
+            "1b": "ilp",
+            "2": "peak_nutrition",
+            "3": "exercise_prescription",
+            "4": "pcp",
+            "5": "health_coaching",
+            "6": "lifestyle_medicine"
+        },
+        "nutr_action": {
+            "green": "nutrition_workshop",
+            "noaction": "nutrition_resource",
+            "no_answ": "health_coaching",
+            "1": "peak_nutrition",
+            "2": "health_coaching",
+            "3": "nutrition_workshop",
+            "4": "intuitive_eating",
+            "5": "pcp",
+            "6": "lifestyle_medicine"
+        },
+        "act_action": {
+            "green": "fitness_assessment",
+            "noaction": "peak_activity",
+            "no_answ": "health_coaching",
+            "1": "fitness_class",
+            "2": "personal_training",
+            "3": "exercise_prescription",
+            "4": "fitness_assessment",
+            "5": "red_butte",
+            "6": "health_coaching"
+        },
+        "stress_action": {
+            "green": "mindfulness_curalinc",
+            "noaction": "stress_template",
+            "no_answ": "mindfulness_no_answ",
+            "1": "mindfulness_class",
+            "2": "stress_eap",
+            "3": "joy_in_work",
+            "4": "flourishing_in_medicine",
+            "5": "lifestyle_medicine",
+            "6": "leisure"
+        },
+        "anx_action": {
+            "green": "eap",
+            "noaction": "hmhi_crisis_line_safeut",
+            "no_answ": "hmhi_crisis_line_safeut",
+            "1": "mental_health_provider",
+            "2": "eap",
+            "3": "pcp",
+            "4": "lifestyle_medicine",
+            "5": "anx_own_plan",
+            "6": "mindfulness_class"
+        },
     }
 }
