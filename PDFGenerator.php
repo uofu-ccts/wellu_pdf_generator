@@ -381,10 +381,11 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         }
         
         $this->console_log("Lookup data loaded successfully.");
-        $this->console_log($lookupData);
 
         foreach ($lookupData as $key => $value) {
             $this->console_log("Processing key: $key");
+            $this->console_log("The user chose: " . $record[1][$key]);
+            $this->console_log("The user will see: " . $value[$record[1][$key]]);
         }
 
     }
