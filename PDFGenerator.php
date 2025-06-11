@@ -212,6 +212,8 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         $this->console_log("Processed priorities for record ID $record_id: ");
         $this->console_log($processed_data);
 
+        $this->getPdfContent($record);
+
         // loading libraries
         $html  = '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>';
         $html .= '<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>';
@@ -363,6 +365,28 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         });
 
         return $priorities;
+    }
+
+
+    function getPdfContent($record) {
+        // save contents of lookup.json file into variable
+        $lookupFilePath = __DIR__ . '/resources/lookup.json';
+
+        if (file_exists($lookupFilePath)) {
+            $lookupContent = file_get_contents($lookupFilePath);
+            $lookupData = json_decode($lookupContent, true);
+        } else {
+            $this->console_log("Lookup file not found: " . $lookupFilePath, 'ERROR');
+            return '';
+        }
+        
+        $this->console_log("Lookup data loaded successfully.");
+        $this->console_log($lookupData);
+
+        foreach ($lookupData as $key => $value) {
+            $this->console_log("Processing key: $key");
+        }
+
     }
 
     function savePdfFile($base64Data, $filePath) {
