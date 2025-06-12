@@ -15,6 +15,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'top_three_field' => 'top_3___15',
             'ranking_field' => 'dbt_priority',
             'image' => 'diabetes.png',
+            'lookup_content' => 'meta_action'
         ],
         'a1c' => [
             'label' => 'A1C',
@@ -22,6 +23,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'top_three_field' => 'top_3___2',
             'ranking_field' => 'a1c_priority',
             'image' => 'a1c.png',
+            'lookup_content' => 'meta_action'
         ],
         'fastfood' => [
             'label' => 'Fast Food / Snacks Intake',
@@ -29,6 +31,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'top_three_field' => 'top_3___12',
             'ranking_field' => 'fastfood_priority',
             'image' => 'nutrition.png',
+            'lookup_content' => 'nutr_action'
         ],
         'fruitveg' => [
             'label' => 'Fruit & Vegetable Intake',
@@ -36,6 +39,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'top_three_field' => 'top_3___11',
             'ranking_field' => 'fruitveg_priority',
             'image' => 'nutrition.png',
+            'lookup_content' => 'nutr_action'
         ],
         'sugarbev' => [
             'label' => 'Sugar Sweetened Beverages Intake',
@@ -43,6 +47,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'top_three_field' => 'top_3___13',
             'ranking_field' => 'sugarbev_priority',
             'image' => 'nutrition.png',
+            'lookup_content' => 'nutr_action'
         ],
         'artbev' => [
             'label' => 'Artificially Sweetened Beverages Intake',
@@ -50,6 +55,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'top_three_field' => 'top_3___14',
             'ranking_field' => 'artbev_priority',
             'image' => 'nutrition.png',
+            'lookup_content' => 'nutr_action'
         ],
         'phys' => [
             'label' => 'Physical Activity',
@@ -57,6 +63,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'top_three_field' => 'top_3___10',
             'ranking_field' => 'phys_priority',
             'image' => 'physical_activity.png',
+            'lookup_content' => 'activity_action'
         ],
         'stress' => [
             'label' => 'Stress',
@@ -64,6 +71,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'top_three_field' => 'top_3___9',
             'ranking_field' => 'stress_priority',
             'image' => 'mental_health.png',
+            'lookup_content' => 'stress_action'
         ],
         'anxiety' => [
             'label' => 'Anxiety',
@@ -71,6 +79,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'top_three_field' => 'top_3___8',
             'ranking_field' => 'anxiety_priority',
             'image' => 'mental_health.png',
+            'lookup_content' => 'anx_action'
         ],
         'depression' => [
             'label' => 'Depression',
@@ -78,6 +87,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'top_three_field' => 'top_3___1',
             'ranking_field' => 'depression_priority',
             'image' => 'mental_health.png',
+            'lookup_content' => 'phq_action'
         ],
         'alcohol' => [
             'label' => 'Alcohol Consumption',
@@ -85,6 +95,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'top_three_field' => 'top_3___5',
             'ranking_field' => 'alchohol_priority',
             'image' => 'substance_use.png',
+            'lookup_content' => 'alcohol_action'
         ],
         'drugs' => [
             'label' => 'Drug Usage',
@@ -92,6 +103,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'top_three_field' => 'top_3___3',
             'ranking_field' => 'drugs_priority',
             'image' => 'substance_use.png',
+            'lookup_content' => 'drug_action'
         ],
         'tobacco' => [
             'label' => 'Tobacco Usage',
@@ -99,6 +111,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'top_three_field' => 'top_3___6',
             'ranking_field' => 'tobacco_priority',
             'image' => 'substance_use.png',
+            'lookup_content' => 'tobacco_action'
         ],
         'sleep' => [
             'label' => 'Daytime Sleepiness',
@@ -106,6 +119,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'top_three_field' => 'top_3___7',
             'ranking_field' => 'sleep_priority',
             'image' => 'sleep.png',
+            'lookup_content' => 'sleep_action'
         ],
         'genhealth' => [
             'label' => 'General Health Rating',
@@ -113,6 +127,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'top_three_field' => 'top_3___16',
             'ranking_field' => 'genhealth_priority',
             'image' => 'general_health.png',
+            'lookup_content' => 'gen_action'
         ],
         'pcp' => [
             'label' => 'Primary Care Provider',
@@ -120,12 +135,14 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'top_three_field' => 'top_3___4',
             'ranking_field' => 'pcp_priority',
             'image' => 'primary_care_provider.png',
+            'lookup_content' => 'gen_action'
         ],
         'no_answr' => [
             'label' => 'No Answers Provided',
             'priority_field' => 'no_answr',
             'top_three_field' => 'top_3___99',
             'ranking_field' => NULL,
+            'lookup_content' => 'gen_action'
         ],
     ];
 
@@ -316,6 +333,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             $top_three_field = $element['top_three_field'];
             $ranking_field = $element['ranking_field'];
             $image_field = $element['image'];
+            $lookup_content = $element['lookup_content'];
 
             // Using record[1] since that's the only event we're interested in
             if (!empty($record[1][$priority_field])) {
@@ -330,6 +348,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
                     'ranking_value' => $ranking_value,
                     'top_three_value' => $top_three_value,
                     'image' => $image_field,
+                    'lookup_content' => $lookup_content,
                 ];
             }
         }

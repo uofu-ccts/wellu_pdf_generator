@@ -232,8 +232,7 @@ PDF.generatePDF = async function (record_id, name) {
       PDF.processedData[i],
       [boxX + i * (boxWidth + 5), boxY],
       boxWidth,
-      boxHeight,
-      "https://en.wikipedia.org/wiki/Main_Page"
+      boxHeight
     );
   }
 
@@ -486,8 +485,7 @@ const createBullet = function (doc, text, coordinates, coordinateHeight = 6) {
   return coordinates;
 };
 
-const createGoalBox = function (doc, goal, coordinates, width, height, url) {
-  console.log("Creating goal box for:", goal);
+const createGoalBox = function (doc, goal, coordinates, width, height) {
   const headerHeight = 14; // Height for the header
   doc.setFillColor(styles.box.headerBackgroundColor);
   doc.rect(coordinates[0], coordinates[1], width, headerHeight, "F");
@@ -521,6 +519,7 @@ const createGoalBox = function (doc, goal, coordinates, width, height, url) {
   doc.addImage(img, "PNG", imgX, imgY, imgW, imgH);
 
   // TODO: Retrieve the URL from the goal object
+  const url = PDF.goalsContent[goal.lookup_content]?.link || null;
   if (url) {
     doc.link(imgX, imgY, imgW, imgH, { url: url });
   }
