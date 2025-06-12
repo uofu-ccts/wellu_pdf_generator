@@ -225,6 +225,7 @@ PDF.generatePDF = async function (record_id, name) {
   const boxY = coordinates[1];
   const boxWidth = 46; // Width of the box
   const boxHeight = 35; // Height of the box
+  const subboxHeight = 16;
 
   for (let i = 0; i < 4; i++) {
     coordinates = createGoalBox(
@@ -234,47 +235,14 @@ PDF.generatePDF = async function (record_id, name) {
       boxWidth,
       boxHeight
     );
+    coordinates = createGoalSubbox(
+      doc,
+      PDF.processedData[i],
+      [boxX + i * (boxWidth + 5), boxY + boxHeight],
+      boxWidth,
+      subboxHeight
+    );
   }
-
-  coordinates[0] = startingX; // Reset X coordinate for next section
-  coordinates[1] -= 13.5;
-  const subboxHeight = 16;
-
-  coordinates = createGoalSubbox(
-    doc,
-    "Find a Diabetes Prevention Program cohort.",
-    coordinates,
-    boxWidth,
-    subboxHeight,
-    "https://en.wikipedia.org/wiki/Main_Page"
-  );
-
-  coordinates = createGoalSubbox(
-    doc,
-    "Engage with the Employee Assistance Program.",
-    coordinates,
-    boxWidth,
-    subboxHeight,
-    "https://en.wikipedia.org/wiki/Main_Page"
-  );
-
-  coordinates = createGoalSubbox(
-    doc,
-    "Enroll in a CBT program for insomnia.",
-    coordinates,
-    boxWidth,
-    subboxHeight,
-    "https://en.wikipedia.org/wiki/Main_Page"
-  );
-
-  coordinates = createGoalSubbox(
-    doc,
-    "Schedule your Personal Training Appointment​.",
-    coordinates,
-    boxWidth,
-    subboxHeight,
-    "https://en.wikipedia.org/wiki/Main_Page"
-  );
 
   coordinates[0] = startingX; // Reset X coordinate for next section
   coordinates[1] += 20; // Move down for the next section
@@ -528,7 +496,7 @@ const createGoalBox = function (doc, goal, coordinates, width, height) {
   return coordinates;
 };
 
-const createGoalSubbox = function (doc, text, coordinates, width, height, url) {
+const createGoalSubbox = function (doc, goal, coordinates, width, height) {
   // Set the outline color to match the background color that was previously used
   doc.setDrawColor(styles.goalSubbox.backgroundColor);
   doc.setLineWidth(1); // Set border thickness
@@ -536,24 +504,17 @@ const createGoalSubbox = function (doc, text, coordinates, width, height, url) {
   // Draw a rectangle with an outline but no fill ('S' instead of 'F')
   doc.rect(coordinates[0] + 0.5, coordinates[1], width - 1, height, "S");
 
-  // Split text for wrapping
-  let splitText = doc.splitTextToSize(text, width - 1);
-  if (splitText.length > 3) splitText = doc.splitTextToSize(text, width);
-  // Add link if URL is provided
-  // Add text to the subbox
-  doc.setTextColor(styles.textColor);
+  // Set text color and font
+  doc.setTextColor("#000000");
   doc.setFontSize(styles.goalSubbox.fontSize);
   doc.setFont(styles.goalSubbox.font, styles.goalSubbox.fontStyle);
-  doc.textWithLink(
-    splitText,
-    coordinates[0] + width / 2,
-    coordinates[1] + 5.33,
-    {
-      align: "center",
-      url: url,
-    }
-  );
-  coordinates[0] += width + 5; // Move right for the next box
+  // Split text for wrapping
+  const text = PDF.goalsContent[goal.lookup_content]?.pdf_box || "";
+  let splitText = doc.splitTextToSize(text, width - 1);
+  if (splitText.length > 3) splitText = doc.splitTextToSize(text, width);
+  doc.text(splitText, coordinates[0] + width / 2, coordinates[1] + 5.33, {
+    align: "center",
+  });
 
   return coordinates;
 };
