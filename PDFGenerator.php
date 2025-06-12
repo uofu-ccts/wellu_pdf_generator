@@ -10,100 +10,116 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
 
     private $lookup = [
         'dbt' => [
-            'label' => 'History of Diabetes',
+            'label' => 'Diabetes',
             'priority_field' => 'dbt_priority_numb_2',
             'top_three_field' => 'top_3___15',
             'ranking_field' => 'dbt_priority',
+            'image' => 'diabetes.png',
         ],
         'a1c' => [
             'label' => 'A1C',
             'priority_field' => 'a1c_priority_numb_2',
             'top_three_field' => 'top_3___2',
             'ranking_field' => 'a1c_priority',
+            'image' => 'a1c.png',
         ],
         'fastfood' => [
             'label' => 'Fast Food / Snacks Intake',
             'priority_field' => 'fastfood_priority_numb_2',
             'top_three_field' => 'top_3___12',
             'ranking_field' => 'fastfood_priority',
+            'image' => 'nutrition.png',
         ],
         'fruitveg' => [
             'label' => 'Fruit & Vegetable Intake',
             'priority_field' => 'fruitveg_priority_numb_2',
             'top_three_field' => 'top_3___11',
             'ranking_field' => 'fruitveg_priority',
+            'image' => 'nutrition.png',
         ],
         'sugarbev' => [
             'label' => 'Sugar Sweetened Beverages Intake',
             'priority_field' => 'sugarbev_priority_numb_2',
             'top_three_field' => 'top_3___13',
             'ranking_field' => 'sugarbev_priority',
+            'image' => 'nutrition.png',
         ],
         'artbev' => [
             'label' => 'Artificially Sweetened Beverages Intake',
             'priority_field' => 'artbev_priority_numb_2',
             'top_three_field' => 'top_3___14',
             'ranking_field' => 'artbev_priority',
+            'image' => 'nutrition.png',
         ],
         'phys' => [
             'label' => 'Physical Activity',
             'priority_field' => 'phys_priority_numb_2',
             'top_three_field' => 'top_3___10',
             'ranking_field' => 'phys_priority',
+            'image' => 'physical_activity.png',
         ],
         'stress' => [
             'label' => 'Stress',
             'priority_field' => 'stress_priority_numb_2',
             'top_three_field' => 'top_3___9',
             'ranking_field' => 'stress_priority',
+            'image' => 'mental_health.png',
         ],
         'anxiety' => [
             'label' => 'Anxiety',
             'priority_field' => 'anxietypriority_numb_2',
             'top_three_field' => 'top_3___8',
             'ranking_field' => 'anxiety_priority',
+            'image' => 'mental_health.png',
         ],
         'depression' => [
             'label' => 'Depression',
             'priority_field' => 'depression_priority_numb_2',
             'top_three_field' => 'top_3___1',
             'ranking_field' => 'depression_priority',
+            'image' => 'mental_health.png',
         ],
         'alcohol' => [
             'label' => 'Alcohol Consumption',
             'priority_field' => 'alchohol_priority_numb_2',
             'top_three_field' => 'top_3___5',
             'ranking_field' => 'alchohol_priority',
+            'image' => 'substance_use.png',
         ],
         'drugs' => [
             'label' => 'Drug Usage',
             'priority_field' => 'drugs_priority_numb_2',
             'top_three_field' => 'top_3___3',
             'ranking_field' => 'drugs_priority',
+            'image' => 'substance_use.png',
         ],
         'tobacco' => [
             'label' => 'Tobacco Usage',
             'priority_field' => 'tobacco_priority_numb_2',
             'top_three_field' => 'top_3___6',
             'ranking_field' => 'tobacco_priority',
+            'image' => 'substance_use.png',
         ],
         'sleep' => [
             'label' => 'Daytime Sleepiness',
             'priority_field' => 'sleep_priority_numb_2',
             'top_three_field' => 'top_3___7',
             'ranking_field' => 'sleep_priority',
+            'image' => 'sleep.png',
         ],
         'genhealth' => [
             'label' => 'General Health Rating',
             'priority_field' => 'genhealth_priority_numb_2',
             'top_three_field' => 'top_3___16',
             'ranking_field' => 'genhealth_priority',
+            'image' => 'general_health.png',
         ],
         'pcp' => [
             'label' => 'Primary Care Provider',
             'priority_field' => 'pcp_priority_numb_2',
             'top_three_field' => 'top_3___4',
             'ranking_field' => 'pcp_priority',
+            'image' => 'primary_care_provider.png',
         ],
         'no_answr' => [
             'label' => 'No Answers Provided',
@@ -235,7 +251,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         $html .= "<button type='button' class='btn btn-primary generate-pdf' data-record-id='$record_id' data-name='$name'>Download PDF</button>";
         $html .= "<form id='action-form' name='action' class='hidden' method='POST'></form>";
         $html .= "<script src='$jsUrl'></script>";
-        $html .= "<script>PDF.addEventHandlers(" . json_encode($imageUrls) . "," . json_encode($goalsContent) . "," . json_encode($record) . ");</script>";
+        $html .= "<script>PDF.addEventHandlers(" . json_encode($record) . "," . json_encode($imageUrls) . "," . json_encode($goalsContent) . "," . json_encode($processed_data) . ");</script>";
 
         return $html;
     }
@@ -299,6 +315,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             $priority_field = $element['priority_field'];
             $top_three_field = $element['top_three_field'];
             $ranking_field = $element['ranking_field'];
+            $image_field = $element['image'];
 
             // Using record[1] since that's the only event we're interested in
             if (!empty($record[1][$priority_field])) {
@@ -311,7 +328,8 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
                     'label' => $label,           // Human-readable label
                     'priority_value' => $priority_value,
                     'ranking_value' => $ranking_value,
-                    'top_three_value' => $top_three_value
+                    'top_three_value' => $top_three_value,
+                    'image' => $image_field,
                 ];
             }
         }

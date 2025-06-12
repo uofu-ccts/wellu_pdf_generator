@@ -20,6 +20,20 @@ const choiceToText = {
   },
 };
 
+const imageToIndex = {
+  "a1c.png": 0,
+  "diabetes.png": 1,
+  "general_health.png": 2,
+  "header.png": 3,
+  "mental_health.png": 4,
+  "movement.png": 5,
+  "nutrition.png": 6,
+  "physical_activity.png": 7,
+  "primary_care_provider.png": 8,
+  "sleep.png": 9,
+  "substance_use.png": 10,
+};
+
 const styles = {
   font: "centurygothic",
   fontStyle: "normal",
@@ -89,7 +103,7 @@ const styles = {
     fontStyle: "normal",
   },
   prioritiesSection: {
-    headerColor: "#94d3d1", // dark blue
+    headerColor: "#4d838c", // dark blue
     headerTextColor: "#fff", // white
     bodyTextColor: "#333", // dark gray
     headerFontSize: 14,
@@ -133,13 +147,16 @@ PDF.post = function (action, pdfData, record_id, name) {
   });
 };
 
-PDF.addEventHandlers = function (imageUrls, goalsContent, record) {
-  console.log("Image Urls:", imageUrls);
-  console.log("Goals Content:", goalsContent);
-  console.log("Record:", record);
+PDF.addEventHandlers = function (
+  record,
+  imageUrls,
+  goalsContent,
+  processedData
+) {
   PDF.imageUrls = imageUrls || [];
   PDF.goalsContent = goalsContent || {};
   PDF.record = record || {};
+  PDF.processedData = processedData || {};
   // Handle the ADD button
   $(".generate-pdf").on("click", function () {
     var record_id = $(this).attr("data-record-id");
@@ -206,51 +223,22 @@ PDF.generatePDF = async function (record_id, name) {
   coordinates = [startingX, coordinates[1]];
   const boxX = coordinates[0];
   const boxY = coordinates[1];
-  const boxWidth = 45; // Width of the box
-  const boxHeight = 40; // Height of the box
+  const boxWidth = 46; // Width of the box
+  const boxHeight = 35; // Height of the box
 
-  coordinates = createGoalBox(
-    doc,
-    "??",
-    "A1c",
-    coordinates,
-    boxWidth,
-    boxHeight,
-    "https://en.wikipedia.org/wiki/Main_Page"
-  );
-
-  coordinates = createGoalBox(
-    doc,
-    "??",
-    "Depression",
-    [coordinates[0] + boxWidth + 5, boxY],
-    boxWidth,
-    boxHeight,
-    "https://en.wikipedia.org/wiki/Main_Page"
-  );
-
-  coordinates = createGoalBox(
-    doc,
-    "7-9 hours per night",
-    "Allergies",
-    [coordinates[0] + boxWidth + 5, boxY],
-    boxWidth,
-    boxHeight,
-    "https://en.wikipedia.org/wiki/Main_Page"
-  );
-
-  coordinates = createGoalBox(
-    doc,
-    "150-300+ minutes per week",
-    "Cancer",
-    [coordinates[0] + boxWidth + 5, boxY],
-    boxWidth,
-    boxHeight,
-    "https://en.wikipedia.org/wiki/Main_Page"
-  );
+  for (let i = 0; i < 4; i++) {
+    coordinates = createGoalBox(
+      doc,
+      PDF.processedData[i],
+      [boxX + i * (boxWidth + 5), boxY],
+      boxWidth,
+      boxHeight,
+      "https://en.wikipedia.org/wiki/Main_Page"
+    );
+  }
 
   coordinates[0] = startingX; // Reset X coordinate for next section
-  coordinates[1] -= 12;
+  coordinates[1] -= 13.5;
   const subboxHeight = 16;
 
   coordinates = createGoalSubbox(
@@ -498,16 +486,9 @@ const createBullet = function (doc, text, coordinates, coordinateHeight = 6) {
   return coordinates;
 };
 
-const createGoalBox = function (
-  doc,
-  text,
-  header,
-  coordinates,
-  width,
-  height,
-  url
-) {
-  const headerHeight = 12; // Height for the header
+const createGoalBox = function (doc, goal, coordinates, width, height, url) {
+  console.log("Creating goal box for:", goal);
+  const headerHeight = 14; // Height for the header
   doc.setFillColor(styles.box.headerBackgroundColor);
   doc.rect(coordinates[0], coordinates[1], width, headerHeight, "F");
   doc.setFillColor(styles.box.backgroundColor);
@@ -521,22 +502,25 @@ const createGoalBox = function (
 
   // Add header to the box
   const textX = coordinates[0];
-  const headerText = doc.splitTextToSize(header, width - 8);
+  const headerText = doc.splitTextToSize(goal.label, width - 2);
   doc.setTextColor(styles.box.headerTextColor);
   doc.setFontSize(styles.box.headerFontSize);
   doc.setFont(styles.box.font, styles.box.fontStyle);
-  doc.text(headerText, textX + width / 2, coordinates[1] + 8, {
+  const yCoord =
+    headerText.length > 1 ? coordinates[1] + 6 : coordinates[1] + 9;
+  doc.text(headerText, textX + width / 2, yCoord, {
     align: "center",
   });
   coordinates[1] += headerHeight; // Move down for the text
 
-  const img = PDF.imageUrls[0];
+  const img = PDF.imageUrls[imageToIndex[goal.image]];
   const imgX = coordinates[0] + width / 2 - 10; // Center image
-  const imgY = coordinates[1] + 3;
-  const imgW = 20;
-  const imgH = 20;
+  const imgY = coordinates[1] + 1.5;
+  const imgW = 18;
+  const imgH = 18;
   doc.addImage(img, "PNG", imgX, imgY, imgW, imgH);
-  // Make the image a link
+
+  // TODO: Retrieve the URL from the goal object
   if (url) {
     doc.link(imgX, imgY, imgW, imgH, { url: url });
   }
