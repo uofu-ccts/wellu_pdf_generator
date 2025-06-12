@@ -156,7 +156,9 @@ PDF.addEventHandlers = function (
   PDF.imageUrls = imageUrls || [];
   PDF.goalsContent = goalsContent || {};
   PDF.record = record || {};
+  PDF.logicRecord = record[record.length - 1] || {};
   PDF.processedData = processedData || {};
+  console.log("Record: ", PDF.record);
   // Handle the ADD button
   $(".generate-pdf").on("click", function () {
     var record_id = $(this).attr("data-record-id");
@@ -181,6 +183,31 @@ PDF.generatePDF = async function (record_id, name) {
   // Default export is a4 paper, portrait, using millimeters for units
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
+  const record = PDF.logicRecord;
+
+  console.log("Seeing if record qualifies for TCP: ", record);
+  const qualifiedTCP =
+    record.bmi >= 35 ||
+    (record.bmi >= 30 &&
+      (record.prev_diags___5 == 1 ||
+        record.prev_diags___6 == 1 ||
+        record.prev_diags___7 == 1 ||
+        record.prev_diags___8 == 1 ||
+        record.prev_diags___9 == 1)) ||
+    record.prev_diags___1 == 1 ||
+    record.prev_diags___2 == 1 ||
+    record.prev_diags___3 == 1 ||
+    record.gad_total >= 10 ||
+    record.phq9_total_score >= 10 ||
+    record.drug_rx_nonmed == 2 ||
+    record.drinks_occasion >= 2 ||
+    (record.prev_diags___4 == 1 &&
+      record.a1c_12m == 1 &&
+      record.recent_a1c > 0);
+
+  console.log("Qualified for TCP: ", qualifiedTCP);
+
+  const extraPadding = !qualifiedTCP ? 5 : 0;
 
   const startingX = 5; // Starting X coordinate
   const startingY = 10; // Starting Y coordinate
@@ -199,6 +226,7 @@ PDF.generatePDF = async function (record_id, name) {
     10,
     "bold"
   );
+  coordinates[1] += extraPadding;
   coordinates = createHeader(
     doc,
     "You’ve taken an important step in minimizing health risks. Below, you’ll find a personalized WellU action plan to help you achieve your health goals.",
@@ -207,7 +235,7 @@ PDF.generatePDF = async function (record_id, name) {
     10
   );
 
-  coordinates[1] += 3; // Add some space after the header
+  coordinates[1] += 3 + extraPadding;
 
   coordinates = createHeader(
     doc,
@@ -218,11 +246,11 @@ PDF.generatePDF = async function (record_id, name) {
     "bold"
   );
 
-  coordinates[1] -= 5; // Add some space after the header
+  coordinates[1] -= 5 + extraPadding;
 
   coordinates = [startingX, coordinates[1]];
   const boxX = coordinates[0];
-  const boxY = coordinates[1];
+  const boxY = coordinates[1] + extraPadding;
   const boxWidth = 46; // Width of the box
   const boxHeight = 35; // Height of the box
   const subboxHeight = 16;
@@ -245,10 +273,16 @@ PDF.generatePDF = async function (record_id, name) {
   }
 
   coordinates[0] = startingX; // Reset X coordinate for next section
-  coordinates[1] += 20; // Move down for the next section
+  coordinates[1] += 20 + extraPadding; // Move down for the next section
   doc.setTextColor(styles.textColor);
 
-  coordinates = createTailoredCareSection(doc, coordinates, pageWidth);
+  console.log("Rendering section for tailored care pathway");
+
+  if (qualifiedTCP) {
+    coordinates = createTailoredCareSection(doc, coordinates, pageWidth);
+  } else {
+    coordinates[1] += extraPadding;
+  }
 
   coordinates[0] = startingX; // Reset X coordinate for next section
   coordinates[1] -= 3; // Move down for the next section
@@ -261,32 +295,46 @@ PDF.generatePDF = async function (record_id, name) {
     "bold"
   );
 
-  const summaryTableYCoordinates = coordinates[1];
+  const summaryTableYCoordinates = coordinates[1] + extraPadding;
+
+  const riskLevelsBubbles = calculateRiskKeyBubbles();
 
   coordinates[1] -= 6; // Move down for the next section
-  coordinates = createMetricBox(doc, "<5.7", "A1C", coordinates, "low");
   coordinates = createMetricBox(
     doc,
-    "0",
+    calculateA1CValue(),
+    "A1C",
+    coordinates,
+    riskLevelsBubbles[0]
+  );
+  coordinates = createMetricBox(
+    doc,
+    PDF.logicRecord.alc_total,
     "Alcohol Screening",
     coordinates,
-    "low"
+    riskLevelsBubbles[1]
   );
   coordinates = createMetricBox(
     doc,
     "",
     "Anxiety Screening",
     coordinates,
-    "medium"
+    riskLevelsBubbles[2]
   );
   coordinates = createMetricBox(
     doc,
     "",
     "Depression Screening",
     coordinates,
-    "medium"
+    riskLevelsBubbles[3]
   );
-  coordinates = createMetricBox(doc, 29, "BMI", coordinates, "high");
+  coordinates = createMetricBox(
+    doc,
+    PDF.logicRecord.bmi,
+    "BMI",
+    coordinates,
+    riskLevelsBubbles[4]
+  );
 
   const labels = [
     "Primary Care Provider",
@@ -315,20 +363,7 @@ PDF.generatePDF = async function (record_id, name) {
     "Good to Excellent",
   ];
   const individualData = calculateIndividualData();
-  const riskKeys = [
-    "low",
-    "medium",
-    "high",
-    "unknown",
-    "low",
-    "medium",
-    "high",
-    "unknown",
-    "low",
-    "medium",
-    "high",
-    "unknown",
-  ];
+  const riskKeysTable = calculateRiskKeysTable();
 
   coordinates[0] += 30;
   coordinates[1] = summaryTableYCoordinates - 6;
@@ -339,7 +374,7 @@ PDF.generatePDF = async function (record_id, name) {
     labels,
     recommendations,
     individualData,
-    riskKeys,
+    riskKeysTable,
     coordinates,
     pageWidth - 40
   );
@@ -560,7 +595,7 @@ const createMetricBox = function (doc, metric, label, coordinates, riskLevel) {
       "F"
     );
     doc.setFont(styles.font, styles.fontStyle);
-    doc.setFontSize(26);
+    doc.setFontSize(20);
     doc.setTextColor(metricColor);
     doc.text(
       metric.toString(),
@@ -1029,7 +1064,7 @@ const createTailoredCareSection = function (doc, coordinates, width) {
 };
 
 const calculateIndividualData = function () {
-  record = PDF.record[1] || {};
+  const record = PDF.logicRecord;
   const hasPrimaryCareProvider =
     record.provider == 1 || record.provider == 2 ? "Yes" : "No";
   const hasDiabetesHistory = record.dbt_p_score == 2 ? "No History" : "History";
@@ -1060,3 +1095,367 @@ const calculateIndividualData = function () {
     generalHealth,
   ];
 };
+
+function calculateRiskKeyBubbles() {
+  const record = PDF.logicRecord;
+  let a1cRisk;
+  switch (true) {
+    case record.a1c_12m == "" &&
+      record.recent_a1c == "" &&
+      record.pre_diabetes_care == "" &&
+      record.recent_a1c_type12 == "" &&
+      record.type1_diabetes_care == "" &&
+      record.type2_diabetes_care == "":
+      a1cRisk = "unknown";
+      break;
+    case (record.a1c_12m == "1" && record.recent_a1c == "2") ||
+      (record.recent_a1c == "1" && record.pre_diabetes_care == "0") ||
+      (record.recent_a1c == "2" && record.pre_diabetes_care == "1") ||
+      (record.recent_a1c_type12 == "1" && record.type1_diabetes_care == "0") ||
+      (record.recent_a1c_type12 == "2" && record.type1_diabetes_care == "1") ||
+      (record.recent_a1c_type12 == "1" && record.type2_diabetes_care == "0") ||
+      (record.recent_a1c_type12 == "2" && record.type2_diabetes_care == "1"):
+      a1cRisk = "high";
+      break;
+    case (record.recent_a1c == "0" && record.pre_diabetes_care == "0") ||
+      (record.recent_a1c == "1" && record.pre_diabetes_care == "1") ||
+      (record.a1c_12m == "1" && record.recent_a1c == "1") ||
+      (record.recent_a1c_type12 == "0" && record.type1_diabetes_care == "0") ||
+      (record.recent_a1c_type12 == "1" && record.type1_diabetes_care == "1") ||
+      (record.recent_a1c_type12 == "0" && record.type2_diabetes_care == "0") ||
+      (record.recent_a1c_type12 == "1" && record.type2_diabetes_care == "1"):
+      a1cRisk = "medium";
+      break;
+    case (record.recent_a1c == "0" && record.pre_diabetes_care == "1") ||
+      (record.a1c_12m == "1" && record.recent_a1c == "0") ||
+      (record.recent_a1c_type12 == "0" && record.type1_diabetes_care == "1") ||
+      (record.recent_a1c_type12 == "0" && record.type2_diabetes_care == "1"):
+      a1cRisk = "low";
+      break;
+    default:
+      a1cRisk = "unknown";
+  }
+  let alcRisk;
+  switch (true) {
+    case record.alc_total == "":
+      alcRisk = "unknown";
+      break;
+    case record.alc_total >= 5 && record.birth_gender != 1:
+      alcRisk = "high";
+      break;
+    case record.alc_total >= 6 && record.birth_gender == 1:
+      alcRisk = "high";
+      break;
+    case record.alc_total >= 3 && record.birth_gender != 1:
+      alcRisk = "medium";
+      break;
+    case record.alc_total == 4:
+      alcRisk = "medium";
+      break;
+    case record.alc_total < 4:
+      alcRisk = "low";
+      break;
+    default:
+      alcRisk = "unknown";
+  }
+
+  let anxRisk;
+  switch (true) {
+    case record.gad_total == "":
+      anxRisk = "unknown";
+      break;
+    case record.gad_total >= 15:
+      anxRisk = "high";
+      break;
+    case record.gad_total >= 4:
+      anxRisk = "medium";
+      break;
+    case record.gad_total < 4:
+      anxRisk = "low";
+      break;
+    default:
+      anxRisk = "unknown";
+  }
+
+  let depRisk;
+  switch (true) {
+    case record.phq9_total_score == "":
+      depRisk = "unknown";
+      break;
+    case record.phq9_total_score >= 15:
+      depRisk = "high";
+      break;
+    case record.phq9_total_score >= 4:
+      depRisk = "medium";
+      break;
+    case record.phq9_total_score < 4:
+      depRisk = "low";
+      break;
+    default:
+      depRisk = "unknown";
+  }
+
+  let bmiRisk;
+  switch (true) {
+    case record.bmi == "":
+      bmiRisk = "unknown";
+      break;
+    case record.bmi >= 30:
+      bmiRisk = "high";
+      break;
+    case record.bmi >= 25 || record.bmi < 18.5:
+      bmiRisk = "medium";
+      break;
+    case record.bmi >= 18.5:
+      bmiRisk = "low";
+      break;
+    default:
+      bmiRisk = "unknown";
+  }
+
+  const riskKeys = [a1cRisk, alcRisk, anxRisk, depRisk, bmiRisk];
+  return riskKeys;
+}
+
+function calculateRiskKeysTable() {
+  const record = PDF.logicRecord;
+  let providerRisk;
+  switch (true) {
+    case record.provider == 3:
+      providerRisk = "high";
+      break;
+    case record.provider == 2 || record.provider == 1:
+      providerRisk = "low";
+      break;
+    default:
+      providerRisk = "unknown";
+  }
+
+  let diabetesRisk;
+  switch (true) {
+    case record.prev_diags___1 == 1 ||
+      record.prev_diags___2 == 1 ||
+      record.prev_diags___3 == 1 ||
+      record.prev_diags___10 == 1:
+      diabetesRisk = "medium";
+      break;
+    case record.prev_diags___4 == 1 ||
+      (record.prev_diags___1 == 0 &&
+        record.prev_diags___2 == 0 &&
+        record.prev_diags___3 == 0 &&
+        record.prev_diags___10 == 0):
+      diabetesRisk = "low";
+      break;
+    default:
+      diabetesRisk = "unknown";
+  }
+
+  let fastFoodSnacksRisk;
+  switch (true) {
+    case record.fast_food_snacks == "":
+      fastFoodSnacksRisk = "unknown";
+      break;
+    case record.fast_food_snacks >= 4:
+      fastFoodSnacksRisk = "high";
+      break;
+    case record.fast_food_snacks >= 1:
+      fastFoodSnacksRisk = "medium";
+      break;
+    case record.fast_food_snacks == 0:
+      fastFoodSnacksRisk = "low";
+      break;
+    default:
+      fastFoodSnacksRisk = "unknown";
+  }
+
+  let fruitVegIntakeRisk;
+  switch (true) {
+    case record.cups_fruit_veg == "":
+      fruitVegIntakeRisk = "unknown";
+      break;
+    case record.cups_fruit_veg <= 2:
+      fruitVegIntakeRisk = "high";
+      break;
+    case record.cups_fruit_veg < 4:
+      fruitVegIntakeRisk = "medium";
+      break;
+    case record.cups_fruit_veg >= 5:
+      fruitVegIntakeRisk = "low";
+      break;
+    default:
+      fruitVegIntakeRisk = "unknown";
+  }
+
+  let sugarSweetenedBeveragesRisk;
+  switch (true) {
+    case record.sugar_sweetened == "":
+      sugarSweetenedBeveragesRisk = "unknown";
+      break;
+    case record.sugar_sweetened >= 4:
+      sugarSweetenedBeveragesRisk = "high";
+      break;
+    case record.sugar_sweetened <= 3:
+      sugarSweetenedBeveragesRisk = "medium";
+      break;
+    case record.sugar_sweetened < 0:
+      sugarSweetenedBeveragesRisk = "low";
+      break;
+    default:
+      sugarSweetenedBeveragesRisk = "unknown";
+  }
+
+  let physicalActivityRisk;
+  switch (true) {
+    case record.exercise_7_days != "" &&
+      (record.exercise_7_days == 0 || record.phys_minutes_weekly <= 10):
+      physicalActivityRisk = "high";
+      break;
+    case record.phys_minutes_weekly >= 10 && record.phys_minutes_weekly < 150:
+      physicalActivityRisk = "medium";
+      break;
+    case record.phys_minutes_weekly >= 150:
+      physicalActivityRisk = "low";
+      break;
+    default:
+      physicalActivityRisk = "unknown";
+  }
+
+  let stressRisk;
+  switch (true) {
+    case record.slider == "":
+      stressRisk = "unknown";
+      break;
+    case record.slider >= 8:
+      stressRisk = "high";
+      break;
+    case record.slider >= 5:
+      stressRisk = "medium";
+      break;
+    case record.slider < 5:
+      stressRisk = "low";
+      break;
+    default:
+      stressRisk = "unknown";
+  }
+
+  let sleepinessRisk;
+  switch (true) {
+    case record.sleepy_day == "":
+      sleepinessRisk = "unknown";
+      break;
+    case record.sleepy_day == 5:
+      sleepinessRisk = "high";
+      break;
+    case record.sleepy_day == 4:
+      sleepinessRisk = "medium";
+      break;
+    case record.sleepy_day <= 3:
+      sleepinessRisk = "low";
+      break;
+    default:
+      sleepinessRisk = "unknown";
+  }
+
+  let tobaccoUseRisk;
+  switch (true) {
+    case record.tobacco == "":
+      tobaccoUseRisk = "unknown";
+      break;
+    case record.tobacco == 1:
+      tobaccoUseRisk = "high";
+      break;
+    case record.tobacco == 0:
+      tobaccoUseRisk = "low";
+      break;
+    default:
+      tobaccoUseRisk = "unknown";
+  }
+
+  let drugUseRisk;
+  switch (true) {
+    case record.drug_rx_nonmed == "":
+      drugUseRisk = "unknown";
+      break;
+    case record.drug_rx_nonmed == 2:
+      drugUseRisk = "high";
+      break;
+    case record.drug_rx_nonmed == 1:
+      drugUseRisk = "medium";
+      break;
+    case record.drug_rx_nonmed == 0:
+      drugUseRisk = "low";
+      break;
+    default:
+      drugUseRisk = "unknown";
+  }
+
+  let generalHealthRisk;
+  switch (true) {
+    case record.general_health == "":
+      generalHealthRisk = "unknown";
+      break;
+    case record.general_health == 5:
+      generalHealthRisk = "high";
+      break;
+    case record.general_health == 4:
+      generalHealthRisk = "medium";
+      break;
+    case record.general_health <= 3:
+      generalHealthRisk = "low";
+      break;
+    default:
+      generalHealthRisk = "unknown";
+  }
+
+  const riskKeys = [
+    providerRisk,
+    diabetesRisk,
+    fastFoodSnacksRisk,
+    fruitVegIntakeRisk,
+    sugarSweetenedBeveragesRisk,
+    physicalActivityRisk,
+    stressRisk,
+    sleepinessRisk,
+    tobaccoUseRisk,
+    drugUseRisk,
+    generalHealthRisk,
+  ];
+  return riskKeys;
+}
+
+function calculateA1CValue() {
+  const record = PDF.logicRecord;
+  let a1cValue = "";
+  if (record) {
+    if (record.recent_a1c) {
+      switch (record.recent_a1c) {
+        case "0":
+          a1cValue = "<5.7";
+          break;
+        case "1":
+          a1cValue = "5.7-6.4";
+          break;
+        case "2":
+          a1cValue = "≥6.5";
+          break;
+        default:
+          a1cValue = "";
+      }
+    } else if (record.recent_a1c_type12) {
+      switch (record.recent_a1c_type12) {
+        case "0":
+          a1cValue = "<7.1";
+          break;
+        case "1":
+          a1cValue = "7.1-8.0";
+          break;
+        case "2":
+          a1cValue = "≥8";
+          break;
+        default:
+          a1cValue = "";
+      }
+    }
+  }
+  return a1cValue;
+}
