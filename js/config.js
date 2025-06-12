@@ -1294,10 +1294,10 @@ function calculateRiskKeysTable() {
     case record.sugar_sweetened >= 4:
       sugarSweetenedBeveragesRisk = "high";
       break;
-    case record.sugar_sweetened <= 3:
+    case record.sugar_sweetened > 0:
       sugarSweetenedBeveragesRisk = "medium";
       break;
-    case record.sugar_sweetened < 0:
+    case record.sugar_sweetened == 0:
       sugarSweetenedBeveragesRisk = "low";
       break;
     default:
