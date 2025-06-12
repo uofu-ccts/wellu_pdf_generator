@@ -3,6 +3,37 @@ if (typeof PDF === "undefined") {
   var PDF = {};
 }
 
+const choiceToText = {
+  sleepy_day: {
+    1: "Never",
+    2: "Rarely",
+    3: "Sometimes",
+    4: "Often",
+    5: "Always",
+  },
+  general_health: {
+    1: "Excellent",
+    2: "Very Good",
+    3: "Good",
+    4: "Fair",
+    5: "Poor",
+  },
+};
+
+const imageToIndex = {
+  "a1c.png": 0,
+  "diabetes.png": 1,
+  "general_health.png": 2,
+  "header.png": 3,
+  "mental_health.png": 4,
+  "movement.png": 5,
+  "nutrition.png": 6,
+  "physical_activity.png": 7,
+  "primary_care_provider.png": 8,
+  "sleep.png": 9,
+  "substance_use.png": 10,
+};
+
 const styles = {
   font: "centurygothic",
   fontStyle: "normal",
@@ -72,7 +103,7 @@ const styles = {
     fontStyle: "normal",
   },
   prioritiesSection: {
-    headerColor: "#94d3d1", // dark blue
+    headerColor: "#4d838c", // dark blue
     headerTextColor: "#fff", // white
     bodyTextColor: "#333", // dark gray
     headerFontSize: 14,
@@ -116,9 +147,16 @@ PDF.post = function (action, pdfData, record_id, name) {
   });
 };
 
-PDF.addEventHandlers = function (imageUrls) {
-  console.log("Image Urls:", imageUrls);
+PDF.addEventHandlers = function (
+  record,
+  imageUrls,
+  goalsContent,
+  processedData
+) {
   PDF.imageUrls = imageUrls || [];
+  PDF.goalsContent = goalsContent || {};
+  PDF.record = record || {};
+  PDF.processedData = processedData || {};
   // Handle the ADD button
   $(".generate-pdf").on("click", function () {
     var record_id = $(this).attr("data-record-id");
@@ -185,88 +223,26 @@ PDF.generatePDF = async function (record_id, name) {
   coordinates = [startingX, coordinates[1]];
   const boxX = coordinates[0];
   const boxY = coordinates[1];
-  const boxWidth = 45; // Width of the box
-  const boxHeight = 40; // Height of the box
-
-  coordinates = createGoalBox(
-    doc,
-    "??",
-    "A1c",
-    coordinates,
-    boxWidth,
-    boxHeight,
-    "https://en.wikipedia.org/wiki/Main_Page"
-  );
-
-  coordinates = createGoalBox(
-    doc,
-    "??",
-    "Depression",
-    [coordinates[0] + boxWidth + 5, boxY],
-    boxWidth,
-    boxHeight,
-    "https://en.wikipedia.org/wiki/Main_Page"
-  );
-
-  coordinates = createGoalBox(
-    doc,
-    "7-9 hours per night",
-    "Allergies",
-    [coordinates[0] + boxWidth + 5, boxY],
-    boxWidth,
-    boxHeight,
-    "https://en.wikipedia.org/wiki/Main_Page"
-  );
-
-  coordinates = createGoalBox(
-    doc,
-    "150-300+ minutes per week",
-    "Cancer",
-    [coordinates[0] + boxWidth + 5, boxY],
-    boxWidth,
-    boxHeight,
-    "https://en.wikipedia.org/wiki/Main_Page"
-  );
-
-  coordinates[0] = startingX; // Reset X coordinate for next section
-  coordinates[1] -= 12;
+  const boxWidth = 46; // Width of the box
+  const boxHeight = 35; // Height of the box
   const subboxHeight = 16;
 
-  coordinates = createGoalSubbox(
-    doc,
-    "Find a Diabetes Prevention Program cohort.",
-    coordinates,
-    boxWidth,
-    subboxHeight,
-    "https://en.wikipedia.org/wiki/Main_Page"
-  );
-
-  coordinates = createGoalSubbox(
-    doc,
-    "Engage with the Employee Assistance Program.",
-    coordinates,
-    boxWidth,
-    subboxHeight,
-    "https://en.wikipedia.org/wiki/Main_Page"
-  );
-
-  coordinates = createGoalSubbox(
-    doc,
-    "Enroll in a CBT program for insomnia.",
-    coordinates,
-    boxWidth,
-    subboxHeight,
-    "https://en.wikipedia.org/wiki/Main_Page"
-  );
-
-  coordinates = createGoalSubbox(
-    doc,
-    "Schedule your Personal Training Appointment​.",
-    coordinates,
-    boxWidth,
-    subboxHeight,
-    "https://en.wikipedia.org/wiki/Main_Page"
-  );
+  for (let i = 0; i < 4; i++) {
+    coordinates = createGoalBox(
+      doc,
+      PDF.processedData[i],
+      [boxX + i * (boxWidth + 5), boxY],
+      boxWidth,
+      boxHeight
+    );
+    coordinates = createGoalSubbox(
+      doc,
+      PDF.processedData[i],
+      [boxX + i * (boxWidth + 5), boxY + boxHeight],
+      boxWidth,
+      subboxHeight
+    );
+  }
 
   coordinates[0] = startingX; // Reset X coordinate for next section
   coordinates[1] += 20; // Move down for the next section
@@ -327,7 +303,7 @@ PDF.generatePDF = async function (record_id, name) {
   ];
   const recommendations = [
     "Yes",
-    "",
+    "--",
     "Less than 1",
     "1.5-2 cups fruit\n2-3 cups vegetable",
     "Limit intake",
@@ -338,20 +314,7 @@ PDF.generatePDF = async function (record_id, name) {
     "Never",
     "Good to Excellent",
   ];
-  const individualData = [
-    "No",
-    "No History",
-    "3",
-    "2",
-    "1",
-    "1",
-    "100",
-    "5=moderate",
-    "Sometimes",
-    "No",
-    "Never",
-    "Very Good",
-  ];
+  const individualData = calculateIndividualData();
   const riskKeys = [
     "low",
     "medium",
@@ -490,16 +453,8 @@ const createBullet = function (doc, text, coordinates, coordinateHeight = 6) {
   return coordinates;
 };
 
-const createGoalBox = function (
-  doc,
-  text,
-  header,
-  coordinates,
-  width,
-  height,
-  url
-) {
-  const headerHeight = 12; // Height for the header
+const createGoalBox = function (doc, goal, coordinates, width, height) {
+  const headerHeight = 14; // Height for the header
   doc.setFillColor(styles.box.headerBackgroundColor);
   doc.rect(coordinates[0], coordinates[1], width, headerHeight, "F");
   doc.setFillColor(styles.box.backgroundColor);
@@ -513,22 +468,26 @@ const createGoalBox = function (
 
   // Add header to the box
   const textX = coordinates[0];
-  const headerText = doc.splitTextToSize(header, width - 8);
+  const headerText = doc.splitTextToSize(goal.label, width - 2);
   doc.setTextColor(styles.box.headerTextColor);
   doc.setFontSize(styles.box.headerFontSize);
   doc.setFont(styles.box.font, styles.box.fontStyle);
-  doc.text(headerText, textX + width / 2, coordinates[1] + 8, {
+  const yCoord =
+    headerText.length > 1 ? coordinates[1] + 6 : coordinates[1] + 9;
+  doc.text(headerText, textX + width / 2, yCoord, {
     align: "center",
   });
   coordinates[1] += headerHeight; // Move down for the text
 
-  const img = PDF.imageUrls[0];
+  const img = PDF.imageUrls[imageToIndex[goal.image]];
   const imgX = coordinates[0] + width / 2 - 10; // Center image
-  const imgY = coordinates[1] + 3;
-  const imgW = 20;
-  const imgH = 20;
+  const imgY = coordinates[1] + 1.5;
+  const imgW = 18;
+  const imgH = 18;
   doc.addImage(img, "PNG", imgX, imgY, imgW, imgH);
-  // Make the image a link
+
+  // TODO: Retrieve the URL from the goal object
+  const url = PDF.goalsContent[goal.lookup_content]?.link || null;
   if (url) {
     doc.link(imgX, imgY, imgW, imgH, { url: url });
   }
@@ -537,7 +496,7 @@ const createGoalBox = function (
   return coordinates;
 };
 
-const createGoalSubbox = function (doc, text, coordinates, width, height, url) {
+const createGoalSubbox = function (doc, goal, coordinates, width, height) {
   // Set the outline color to match the background color that was previously used
   doc.setDrawColor(styles.goalSubbox.backgroundColor);
   doc.setLineWidth(1); // Set border thickness
@@ -545,24 +504,17 @@ const createGoalSubbox = function (doc, text, coordinates, width, height, url) {
   // Draw a rectangle with an outline but no fill ('S' instead of 'F')
   doc.rect(coordinates[0] + 0.5, coordinates[1], width - 1, height, "S");
 
-  // Split text for wrapping
-  let splitText = doc.splitTextToSize(text, width - 1);
-  if (splitText.length > 3) splitText = doc.splitTextToSize(text, width);
-  // Add link if URL is provided
-  // Add text to the subbox
-  doc.setTextColor(styles.textColor);
+  // Set text color and font
+  doc.setTextColor("#000000");
   doc.setFontSize(styles.goalSubbox.fontSize);
   doc.setFont(styles.goalSubbox.font, styles.goalSubbox.fontStyle);
-  doc.textWithLink(
-    splitText,
-    coordinates[0] + width / 2,
-    coordinates[1] + 5.33,
-    {
-      align: "center",
-      url: url,
-    }
-  );
-  coordinates[0] += width + 5; // Move right for the next box
+  // Split text for wrapping
+  const text = PDF.goalsContent[goal.lookup_content]?.pdf_box || "";
+  let splitText = doc.splitTextToSize(text, width - 1);
+  if (splitText.length > 3) splitText = doc.splitTextToSize(text, width);
+  doc.text(splitText, coordinates[0] + width / 2, coordinates[1] + 5.33, {
+    align: "center",
+  });
 
   return coordinates;
 };
@@ -1074,4 +1026,37 @@ const createTailoredCareSection = function (doc, coordinates, width) {
   coordinates[1] += sectionHeight + 10;
 
   return coordinates;
+};
+
+const calculateIndividualData = function () {
+  record = PDF.record[1] || {};
+  const hasPrimaryCareProvider =
+    record.provider == 1 || record.provider == 2 ? "Yes" : "No";
+  const hasDiabetesHistory = record.dbt_p_score == 2 ? "No History" : "History";
+  const fastFoodSnacks =
+    record.fast_food_snacks == 7 ? "7 or more" : record.fast_food_snacks;
+  const cupsFruitVeg =
+    record.cups_fruit_veg == 6 ? "6 or more" : record.cups_fruit_veg;
+  const sugarSweetened =
+    record.sugar_sweetened == 6 ? "More than 5" : record.sugar_sweetened;
+  const physicalActivity = record.phys_minutes_weekly;
+  const stress = record.slider;
+  const sleepiness = choiceToText.sleepy_day[record.sleepy_day];
+  const tobaccoUse = record.tobacco == 1 ? "Yes" : "No";
+  const drugUse = record.drug_rx_nonmed == 0 ? "No" : "Yes";
+  const generalHealth =
+    choiceToText.general_health[record.general_health] || "Unknown";
+  return [
+    hasPrimaryCareProvider,
+    hasDiabetesHistory,
+    fastFoodSnacks,
+    cupsFruitVeg,
+    sugarSweetened,
+    physicalActivity,
+    stress,
+    sleepiness,
+    tobaccoUse,
+    drugUse,
+    generalHealth,
+  ];
 };

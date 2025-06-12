@@ -778,8 +778,8 @@
     },
     "eap": {
         "name": "EAP",
-        "link": "supportllinc.com (group code: uofu)",
-        "pdf_box": "CClick HERE to access the Supportlinc Employee Assistance Program (Use group code: uofu)",
+        "link": "supportllinc.com",
+        "pdf_box": "Supportlinc Employee Assistance Program (Use group code: uofu)",
         "full": [
             {
                 "type": "paragraph",
