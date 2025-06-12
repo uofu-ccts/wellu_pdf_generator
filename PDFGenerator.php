@@ -247,6 +247,9 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
 
         $goalsContent = $this->getPdfContent($record);
 
+        $tcpLink = $this->getTcpLink($record_id);
+        $this->console_log("TCP Link for record ID $record_id: " . $tcpLink);
+
         // loading libraries
         $html  = '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>';
         $html .= '<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>';
@@ -304,6 +307,18 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
           );
         $record = json_decode(\REDCap::getData($params), true);
         return $record;
+    }
+
+    function getTcpLink($record_id) {
+
+        $instrument = "tcp_intake_survey";
+        $event_id = REDCap::getEventIdFromUniqueEvent("fy_202627_arm_1");
+
+        return \REDCap::getSurveyLink(
+            $record_id,
+            $instrument,
+            $event_id
+        );
     }
 
     /**
