@@ -966,8 +966,8 @@
     },
     "insomnia_class": {
         "name": "I want to register for an online insomnia class",
-        "link": "Alert sent to Wellness Team to submit order for insomnia class",
-        "pdf_box": "Register for the CBT-I online insomnia class",
+        "link": "",
+        "pdf_box": "A team member will contact you to schedule an appointment",
         "full": [
             {
                 "type": "paragraph",
