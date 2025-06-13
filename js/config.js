@@ -151,13 +151,15 @@ PDF.addEventHandlers = function (
   record,
   imageUrls,
   goalsContent,
-  processedData
+  processedData,
+  tcpLink
 ) {
   PDF.imageUrls = imageUrls || [];
   PDF.goalsContent = goalsContent || {};
   PDF.record = record || {};
   PDF.logicRecord = record[record.length - 1] || {};
   PDF.processedData = processedData || {};
+  PDF.tcpLink = tcpLink || {};
   console.log("Record: ", PDF.record);
   // Handle the ADD button
   $(".generate-pdf").on("click", function () {
@@ -1053,7 +1055,7 @@ const createTailoredCareSection = function (doc, coordinates, width) {
     sectionY + 25,
     {
       align: "center",
-      url: "https://example.com/enroll",
+      url: PDF.tcpLink,
     }
   );
 
