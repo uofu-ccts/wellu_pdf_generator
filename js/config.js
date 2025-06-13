@@ -1030,7 +1030,7 @@ const createTailoredCareSection = function (doc, coordinates, width) {
 
   doc.setFont(styles.font, styles.fontStyle);
   doc.text(
-    "IIf you enroll, a member of the OCIH team will reach out to help you further",
+    "If you enroll, a member of the OCIH team will reach out to help you further",
     sectionX + width / 2,
     sectionY + 12,
     { align: "center" }
