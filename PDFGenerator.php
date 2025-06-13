@@ -8,10 +8,12 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
     public $project_id = null;
     public $list_of_records = array();
 
+    // TODO: Set defaults
     private $lookup = [
         'dbt' => [
             'label' => 'Diabetes',
             'priority_field' => 'dbt_priority_numb_2',
+            'default_priority' => 15,
             'top_three_field' => 'top_3___15',
             'ranking_field' => 'dbt_priority',
             'image' => 'diabetes.png',
@@ -20,6 +22,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         'a1c' => [
             'label' => 'A1C',
             'priority_field' => 'a1c_priority_numb_2',
+            'default_priority' => 2,
             'top_three_field' => 'top_3___2',
             'ranking_field' => 'a1c_priority',
             'image' => 'a1c.png',
@@ -28,6 +31,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         'fastfood' => [
             'label' => 'Fast Food / Snacks Intake',
             'priority_field' => 'fastfood_priority_numb_2',
+            'default_priority' => 12,
             'top_three_field' => 'top_3___12',
             'ranking_field' => 'fastfood_priority',
             'image' => 'nutrition.png',
@@ -36,6 +40,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         'fruitveg' => [
             'label' => 'Fruit & Vegetable Intake',
             'priority_field' => 'fruitveg_priority_numb_2',
+            'default_priority' => 11,
             'top_three_field' => 'top_3___11',
             'ranking_field' => 'fruitveg_priority',
             'image' => 'nutrition.png',
@@ -44,6 +49,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         'sugarbev' => [
             'label' => 'Sugar Sweetened Beverages Intake',
             'priority_field' => 'sugarbev_priority_numb_2',
+            'default_priority' => 13,
             'top_three_field' => 'top_3___13',
             'ranking_field' => 'sugarbev_priority',
             'image' => 'nutrition.png',
@@ -52,6 +58,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         'artbev' => [
             'label' => 'Artificially Sweetened Beverages Intake',
             'priority_field' => 'artbev_priority_numb_2',
+            'default_priority' => 14,
             'top_three_field' => 'top_3___14',
             'ranking_field' => 'artbev_priority',
             'image' => 'nutrition.png',
@@ -60,6 +67,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         'phys' => [
             'label' => 'Physical Activity',
             'priority_field' => 'phys_priority_numb_2',
+            'default_priority' => 10,
             'top_three_field' => 'top_3___10',
             'ranking_field' => 'phys_priority',
             'image' => 'physical_activity.png',
@@ -68,6 +76,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         'stress' => [
             'label' => 'Stress',
             'priority_field' => 'stress_priority_numb_2',
+            'default_priority' => 9,
             'top_three_field' => 'top_3___9',
             'ranking_field' => 'stress_priority',
             'image' => 'mental_health.png',
@@ -76,6 +85,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         'anxiety' => [
             'label' => 'Anxiety',
             'priority_field' => 'anxietypriority_numb_2',
+            'default_priority' => 8,
             'top_three_field' => 'top_3___8',
             'ranking_field' => 'anxiety_priority',
             'image' => 'mental_health.png',
@@ -84,6 +94,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         'depression' => [
             'label' => 'Depression',
             'priority_field' => 'depression_priority_numb_2',
+            'default_priority' => 1,
             'top_three_field' => 'top_3___1',
             'ranking_field' => 'depression_priority',
             'image' => 'mental_health.png',
@@ -92,6 +103,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         'alcohol' => [
             'label' => 'Alcohol Consumption',
             'priority_field' => 'alchohol_priority_numb_2',
+            'default_priority' => 5,
             'top_three_field' => 'top_3___5',
             'ranking_field' => 'alchohol_priority',
             'image' => 'substance_use.png',
@@ -100,6 +112,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         'drugs' => [
             'label' => 'Drug Usage',
             'priority_field' => 'drugs_priority_numb_2',
+            'default_priority' => 3,
             'top_three_field' => 'top_3___3',
             'ranking_field' => 'drugs_priority',
             'image' => 'substance_use.png',
@@ -108,6 +121,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         'tobacco' => [
             'label' => 'Tobacco Usage',
             'priority_field' => 'tobacco_priority_numb_2',
+            'default_priority' => 6,
             'top_three_field' => 'top_3___6',
             'ranking_field' => 'tobacco_priority',
             'image' => 'substance_use.png',
@@ -116,14 +130,16 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         'sleep' => [
             'label' => 'Daytime Sleepiness',
             'priority_field' => 'sleep_priority_numb_2',
+            'default_priority' => 7,
             'top_three_field' => 'top_3___7',
             'ranking_field' => 'sleep_priority',
             'image' => 'sleep.png',
             'lookup_content' => 'sleep_action'
         ],
         'genhealth' => [
-            'label' => 'General Health Rating',
+            'label' => 'General Health',
             'priority_field' => 'genhealth_priority_numb_2',
+            'default_priority' => 16,
             'top_three_field' => 'top_3___16',
             'ranking_field' => 'genhealth_priority',
             'image' => 'general_health.png',
@@ -132,6 +148,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         'pcp' => [
             'label' => 'Primary Care Provider',
             'priority_field' => 'pcp_priority_numb_2',
+            'default_priority' => 4,
             'top_three_field' => 'top_3___4',
             'ranking_field' => 'pcp_priority',
             'image' => 'primary_care_provider.png',
@@ -140,6 +157,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         'no_answr' => [
             'label' => 'No Answers Provided',
             'priority_field' => 'no_answr',
+            'default_priority' => 99,
             'top_three_field' => 'top_3___99',
             'ranking_field' => NULL,
             'lookup_content' => 'gen_action'
@@ -368,12 +386,14 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             }
         }
 
+
         // Sort by priority value (lower number = higher priority)
         // Probably don't need to sort, but doing it just in case
         // Sort by priority values with NULLs at the end
         usort($priorities, function($a, $b) {
             return $a['priority_value'] - $b['priority_value'];
         });
+
 
         usort($priorities, function($a, $b) {
             // If both values are NULL, consider them equal
@@ -416,9 +436,41 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             return $a['ranking_value'] - $b['ranking_value'];
         });
 
+        // if (count($priorities) < 4) {
+        //     $this->console_log("Less than 4 priorities found, ensuring defaults are added.");
+        //     $priorities = $this->ensurePriorities($priorities);
+        // }
+
+
         return $priorities;
     }
 
+    function ensurePriorities($priorities) {
+        // If no priorites are set, add default priorities
+        // If there are priorities but less than 4, add defaults to fill the gaps
+        $lookup = $this->lookup;
+        $default_priorities = array();
+        foreach ($lookup as $key => $element) {
+            if (empty($element['ranking_field'])) continue; // Skip if no ranking field
+            if (empty($element['default_priority'])) continue; // Skip if no default priority
+
+            $default_priorities[] = [
+                'field' => $element['priority_field'],
+                'label' => $element['label'],
+                'priority_value' => $element['default_priority'],
+                'ranking_value' => NULL, // Default priorities have no ranking
+                'top_three_value' => NULL, // Default priorities are not in top three
+                'image' => $element['image'],
+                'lookup_content' => $element['lookup_content'],
+            ];
+        }
+        while (count($priorities) < 4 && count($default_priorities) > 0) {
+            // Pop the last default priority and add it to the priorities array
+            $default_priority = array_pop($default_priorities);
+            $priorities[] = $default_priority;
+        }
+        return $priorities;
+    }
 
     function getPdfContent($record) {
         // save contents of lookup.json file into variable
@@ -445,7 +497,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
 
         $goalsContent =  array();
         foreach ($lookupData as $key => $value) {
-            $user_choice = $record[1][$key];
+            $user_choice = $record[1][$key] ? $record[1][$key] : "no_answ";
 
             $this->console_log("Processing key: $key");
             $this->console_log("The user chose: " . $user_choice);
