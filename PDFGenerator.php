@@ -29,39 +29,39 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'lookup_content' => 'meta_action'
         ],
         'fastfood' => [
-            'label' => 'Fast Food / Snacks Intake',
+            'label' => "Fast Food /\nSnacks Intake",
             'priority_field' => 'fastfood_priority_numb_2',
             'default_priority' => 12,
             'top_three_field' => 'top_3___12',
             'ranking_field' => 'fastfood_priority',
-            'image' => 'nutrition.png',
+            'image' => 'fast_food.png',
             'lookup_content' => 'nutr_action'
         ],
         'fruitveg' => [
-            'label' => 'Fruit & Vegetable Intake',
+            'label' => "Fruit & Vegetable\nIntake",
             'priority_field' => 'fruitveg_priority_numb_2',
             'default_priority' => 11,
             'top_three_field' => 'top_3___11',
             'ranking_field' => 'fruitveg_priority',
-            'image' => 'nutrition.png',
+            'image' => 'fruit_and_vegetable.png',
             'lookup_content' => 'nutr_action'
         ],
         'sugarbev' => [
-            'label' => 'Sugar Sweetened Beverages Intake',
+            'label' => "Sugar Sweetened\nBeverages Intake",
             'priority_field' => 'sugarbev_priority_numb_2',
             'default_priority' => 13,
             'top_three_field' => 'top_3___13',
             'ranking_field' => 'sugarbev_priority',
-            'image' => 'nutrition.png',
+            'image' => 'sugary_beverages.png',
             'lookup_content' => 'nutr_action'
         ],
         'artbev' => [
-            'label' => 'Artificially Sweetened Beverages Intake',
+            'label' => "Artificially Sweetened\nBeverages Intake",
             'priority_field' => 'artbev_priority_numb_2',
             'default_priority' => 14,
             'top_three_field' => 'top_3___14',
             'ranking_field' => 'artbev_priority',
-            'image' => 'nutrition.png',
+            'image' => 'artificial_beverages.png',
             'lookup_content' => 'nutr_action'
         ],
         'phys' => [
@@ -79,7 +79,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'default_priority' => 9,
             'top_three_field' => 'top_3___9',
             'ranking_field' => 'stress_priority',
-            'image' => 'mental_health.png',
+            'image' => 'stress.png',
             'lookup_content' => 'stress_action'
         ],
         'anxiety' => [
@@ -88,7 +88,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'default_priority' => 8,
             'top_three_field' => 'top_3___8',
             'ranking_field' => 'anxiety_priority',
-            'image' => 'mental_health.png',
+            'image' => 'anxiety.png',
             'lookup_content' => 'anx_action'
         ],
         'depression' => [
@@ -97,7 +97,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'default_priority' => 1,
             'top_three_field' => 'top_3___1',
             'ranking_field' => 'depression_priority',
-            'image' => 'mental_health.png',
+            'image' => 'depression.png',
             'lookup_content' => 'phq_action'
         ],
         'alcohol' => [
@@ -106,7 +106,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'default_priority' => 5,
             'top_three_field' => 'top_3___5',
             'ranking_field' => 'alchohol_priority',
-            'image' => 'substance_use.png',
+            'image' => 'alcohol.png',
             'lookup_content' => 'alcohol_action'
         ],
         'drugs' => [
@@ -115,7 +115,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'default_priority' => 3,
             'top_three_field' => 'top_3___3',
             'ranking_field' => 'drugs_priority',
-            'image' => 'substance_use.png',
+            'image' => 'drug_use.png',
             'lookup_content' => 'drug_action'
         ],
         'tobacco' => [
@@ -124,7 +124,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'default_priority' => 6,
             'top_three_field' => 'top_3___6',
             'ranking_field' => 'tobacco_priority',
-            'image' => 'substance_use.png',
+            'image' => 'tobacco.png',
             'lookup_content' => 'tobacco_action'
         ],
         'sleep' => [
@@ -146,7 +146,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'lookup_content' => 'gen_action'
         ],
         'pcp' => [
-            'label' => 'Primary Care Provider',
+            'label' => "Primary Care\nProvider",
             'priority_field' => 'pcp_priority_numb_2',
             'default_priority' => 4,
             'top_three_field' => 'top_3___4',
@@ -234,17 +234,24 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         $centuryGothicItalicUrl = $this->getUrl('js/centurygothic_italic-italic.js');
 
         $imageFileNames = array(
-            "a1c.png",
-            "diabetes.png",
-            "general_health.png",
-            "header.png",
-            "mental_health.png",
-            "movement.png",
-            "nutrition.png",
-            "physical_activity.png",
-            "primary_care_provider.png",
-            "sleep.png",
-            "substance_use.png",
+            'a1c.png',
+            'alcohol.png',
+            'anxiety.png',
+            'artificial_beverages.png',
+            'depression.png',
+            'diabetes.png',
+            'drug_use.png',
+            'fast_food.png',
+            'fruit_and_vegetable.png',
+            'general_health.png',
+            'header.png',
+            'movement.png',
+            'physical_activity.png',
+            'primary_care_provider.png',
+            'sleep.png',
+            'stress.png',
+            'sugary_beverages.png',
+            'tabacco.png'
         );
 
         $imageUrls = array();
