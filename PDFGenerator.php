@@ -449,6 +449,12 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
 
             $this->console_log("Processing key: $key");
             $this->console_log("The user chose: " . $user_choice);
+
+            if (empty($user_choice) || $user_choice == 'no_answr') {
+                // default to no_answr if no user choice is made, for now
+                $user_choice = 'no_answ';
+            }
+
             $this->console_log("The user will see: " . $value[$user_choice]);
             $this->console_log("The content is: ");
             $this->console_log(json_encode($resourcesData[$value[$user_choice]]));

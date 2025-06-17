@@ -67,6 +67,7 @@
         "6": "mindfulness_class"
     },
     "phq_action": {
+        "no_answ": "hmhi_crisis_line_safeut",
         "1": "mental_health_provider",
         "2": "eap",
         "3": "pcp",
@@ -75,6 +76,7 @@
         "6": "mindfulness_class"
     },
     "sleep_action": {
+        "no_answ": "sleep_essential",
         "1": "insomnia_class",
         "2": "sleep_own_plan",
         "3": "health_coaching",
