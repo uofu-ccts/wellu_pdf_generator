@@ -689,7 +689,7 @@
     "stress_eap": {
         "name": "I want to learn about SupportLinc employee assistance program",
         "link": "supportlinc.com (group code:uofu)",
-        "pdf_box": "Access the Supportlinc Employee Assistance Program (Use group code: uofu)",
+        "pdf_box": "Supportlinc Employee Assistance Program (Use group code: uofu)",
         "full": [
             {
                 "type": "paragraph",
@@ -840,8 +840,8 @@
     },
     "mental_health_provider": {
         "name": "I want help finding a mental health provider",
-        "link": "BHN -https://apps.med.utah.edu/site/hmhibhn/a/search.aspx EAP - supportlinc.com Group code: uofu",
-        "pdf_box": "Learn how Supportlinc can help connect you to Mental Health support.",
+        "link": "https://apps.med.utah.edu/site/hmhibhn/a/search.aspx",
+        "pdf_box": "Supportlinc Employee Assistance Program (Use group code: uofu)",
         "full": [
             {
                 "type": "paragraph",
@@ -879,8 +879,8 @@
     },
     "anx_own_plan": {
         "name": "I want to make my own plan to address my Mental Health",
-        "link": "supportllinc.com (group code: uofu)",
-        "pdf_box": "Create your own plan. Access Supportlinc resources (Use group code: uofu)",
+        "link": "supportllinc.com",
+        "pdf_box": "Supportlinc Employee Assistance Program (Use group code: uofu)",
         "full": [
             {
                 "type": "paragraph",
