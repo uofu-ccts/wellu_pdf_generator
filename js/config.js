@@ -553,7 +553,8 @@ const createGoalSubbox = function (doc, goal, coordinates, width, height) {
   doc.setFontSize(styles.goalSubbox.fontSize);
   doc.setFont(styles.goalSubbox.font, styles.goalSubbox.fontStyle);
   // Split text for wrapping
-  const text = PDF.goalsContent[goal.lookup_content]?.pdf_box || "";
+  const text =
+    PDF.goalsContent[goal.lookup_content]?.pdf_box || "No action available";
   let splitText = doc.splitTextToSize(text, width - 1);
   if (splitText.length > 3) splitText = doc.splitTextToSize(text, width);
   doc.text(splitText, coordinates[0] + width / 2, coordinates[1] + 5.33, {
