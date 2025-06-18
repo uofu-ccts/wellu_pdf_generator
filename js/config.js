@@ -22,16 +22,23 @@ const choiceToText = {
 
 const imageToIndex = {
   "a1c.png": 0,
-  "diabetes.png": 1,
-  "general_health.png": 2,
-  "header.png": 3,
-  "mental_health.png": 4,
-  "movement.png": 5,
-  "nutrition.png": 6,
-  "physical_activity.png": 7,
-  "primary_care_provider.png": 8,
-  "sleep.png": 9,
-  "substance_use.png": 10,
+  "alcohol.png": 1,
+  "anxiety.png": 2,
+  "artificial_beverages.png": 3,
+  "depression.png": 4,
+  "diabetes.png": 5,
+  "drug_use.png": 6,
+  "fast_food.png": 7,
+  "fruit_and_vegetable.png": 8,
+  "general_health.png": 9,
+  "header.png": 10,
+  "movement.png": 11,
+  "physical_activity.png": 12,
+  "primary_care_provider.png": 13,
+  "sleep.png": 14,
+  "stress.png": 15,
+  "sugary_beverages.png": 16,
+  "tabacco.png": 17,
 };
 
 const styles = {
@@ -440,7 +447,7 @@ PDF.generatePDF = async function (record_id, name) {
 };
 
 const createHeaderImage = function (doc, coordinates, width) {
-  const headerImage = PDF.imageUrls[3]; // Assuming the first image is the header
+  const headerImage = PDF.imageUrls[imageToIndex["header.png"]];
   if (headerImage) {
     doc.addImage(headerImage, "PNG", 0, 0, width, 40);
     coordinates[1] += 38; // Move down after header
@@ -507,10 +514,10 @@ const createGoalBox = function (doc, goal, coordinates, width, height) {
   const textX = coordinates[0];
   const headerText = doc.splitTextToSize(goal.label, width - 2);
   doc.setTextColor(styles.box.headerTextColor);
-  doc.setFontSize(styles.box.headerFontSize);
   doc.setFont(styles.box.font, styles.box.fontStyle);
   const yCoord =
     headerText.length > 1 ? coordinates[1] + 6 : coordinates[1] + 9;
+  doc.setFontSize(headerText.length > 1 ? 14 : styles.box.headerFontSize);
   doc.text(headerText, textX + width / 2, yCoord, {
     align: "center",
   });
@@ -546,7 +553,8 @@ const createGoalSubbox = function (doc, goal, coordinates, width, height) {
   doc.setFontSize(styles.goalSubbox.fontSize);
   doc.setFont(styles.goalSubbox.font, styles.goalSubbox.fontStyle);
   // Split text for wrapping
-  const text = PDF.goalsContent[goal.lookup_content]?.pdf_box || "";
+  const text =
+    PDF.goalsContent[goal.lookup_content]?.pdf_box || "No action available";
   let splitText = doc.splitTextToSize(text, width - 1);
   if (splitText.length > 3) splitText = doc.splitTextToSize(text, width);
   doc.text(splitText, coordinates[0] + width / 2, coordinates[1] + 5.33, {
@@ -1030,7 +1038,7 @@ const createTailoredCareSection = function (doc, coordinates, width) {
 
   doc.setFont(styles.font, styles.fontStyle);
   doc.text(
-    "IIf you enroll, a member of the OCIH team will reach out to help you further",
+    "If you enroll, a member of the OCIH team will reach out to help you further",
     sectionX + width / 2,
     sectionY + 12,
     { align: "center" }
@@ -1306,10 +1314,10 @@ function calculateRiskKeysTable() {
     case record.sugar_sweetened >= 4:
       sugarSweetenedBeveragesRisk = "high";
       break;
-    case record.sugar_sweetened <= 3:
+    case record.sugar_sweetened > 0:
       sugarSweetenedBeveragesRisk = "medium";
       break;
-    case record.sugar_sweetened < 0:
+    case record.sugar_sweetened == 0:
       sugarSweetenedBeveragesRisk = "low";
       break;
     default:

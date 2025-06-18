@@ -12,6 +12,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         'dbt' => [
             'label' => 'Diabetes',
             'priority_field' => 'dbt_priority_numb_2',
+            'default_priority' => 15,
             'top_three_field' => 'top_3___15',
             'ranking_field' => 'dbt_priority',
             'image' => 'diabetes.png',
@@ -20,46 +21,52 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         'a1c' => [
             'label' => 'A1C',
             'priority_field' => 'a1c_priority_numb_2',
+            'default_priority' => 2,
             'top_three_field' => 'top_3___2',
             'ranking_field' => 'a1c_priority',
             'image' => 'a1c.png',
             'lookup_content' => 'meta_action'
         ],
         'fastfood' => [
-            'label' => 'Fast Food / Snacks Intake',
+            'label' => "Fast Food /\nSnacks Intake",
             'priority_field' => 'fastfood_priority_numb_2',
+            'default_priority' => 12,
             'top_three_field' => 'top_3___12',
             'ranking_field' => 'fastfood_priority',
-            'image' => 'nutrition.png',
+            'image' => 'fast_food.png',
             'lookup_content' => 'nutr_action'
         ],
         'fruitveg' => [
-            'label' => 'Fruit & Vegetable Intake',
+            'label' => "Fruit & Vegetable\nIntake",
             'priority_field' => 'fruitveg_priority_numb_2',
+            'default_priority' => 11,
             'top_three_field' => 'top_3___11',
             'ranking_field' => 'fruitveg_priority',
-            'image' => 'nutrition.png',
+            'image' => 'fruit_and_vegetable.png',
             'lookup_content' => 'nutr_action'
         ],
         'sugarbev' => [
-            'label' => 'Sugar Sweetened Beverages Intake',
+            'label' => "Sugar Sweetened\nBeverages Intake",
             'priority_field' => 'sugarbev_priority_numb_2',
+            'default_priority' => 13,
             'top_three_field' => 'top_3___13',
             'ranking_field' => 'sugarbev_priority',
-            'image' => 'nutrition.png',
+            'image' => 'sugary_beverages.png',
             'lookup_content' => 'nutr_action'
         ],
         'artbev' => [
-            'label' => 'Artificially Sweetened Beverages Intake',
+            'label' => "Artificial\nBeverage Intake",
             'priority_field' => 'artbev_priority_numb_2',
+            'default_priority' => 14,
             'top_three_field' => 'top_3___14',
             'ranking_field' => 'artbev_priority',
-            'image' => 'nutrition.png',
+            'image' => 'artificial_beverages.png',
             'lookup_content' => 'nutr_action'
         ],
         'phys' => [
             'label' => 'Physical Activity',
             'priority_field' => 'phys_priority_numb_2',
+            'default_priority' => 10,
             'top_three_field' => 'top_3___10',
             'ranking_field' => 'phys_priority',
             'image' => 'physical_activity.png',
@@ -68,70 +75,79 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         'stress' => [
             'label' => 'Stress',
             'priority_field' => 'stress_priority_numb_2',
+            'default_priority' => 9,
             'top_three_field' => 'top_3___9',
             'ranking_field' => 'stress_priority',
-            'image' => 'mental_health.png',
+            'image' => 'stress.png',
             'lookup_content' => 'stress_action'
         ],
         'anxiety' => [
             'label' => 'Anxiety',
             'priority_field' => 'anxietypriority_numb_2',
+            'default_priority' => 8,
             'top_three_field' => 'top_3___8',
             'ranking_field' => 'anxiety_priority',
-            'image' => 'mental_health.png',
+            'image' => 'anxiety.png',
             'lookup_content' => 'anx_action'
         ],
         'depression' => [
             'label' => 'Depression',
             'priority_field' => 'depression_priority_numb_2',
+            'default_priority' => 1,
             'top_three_field' => 'top_3___1',
             'ranking_field' => 'depression_priority',
-            'image' => 'mental_health.png',
+            'image' => 'depression.png',
             'lookup_content' => 'phq_action'
         ],
         'alcohol' => [
             'label' => 'Alcohol Consumption',
             'priority_field' => 'alchohol_priority_numb_2',
+            'default_priority' => 5,
             'top_three_field' => 'top_3___5',
             'ranking_field' => 'alchohol_priority',
-            'image' => 'substance_use.png',
+            'image' => 'alcohol.png',
             'lookup_content' => 'alcohol_action'
         ],
         'drugs' => [
             'label' => 'Drug Usage',
             'priority_field' => 'drugs_priority_numb_2',
+            'default_priority' => 3,
             'top_three_field' => 'top_3___3',
             'ranking_field' => 'drugs_priority',
-            'image' => 'substance_use.png',
+            'image' => 'drug_use.png',
             'lookup_content' => 'drug_action'
         ],
         'tobacco' => [
             'label' => 'Tobacco Usage',
             'priority_field' => 'tobacco_priority_numb_2',
+            'default_priority' => 6,
             'top_three_field' => 'top_3___6',
             'ranking_field' => 'tobacco_priority',
-            'image' => 'substance_use.png',
+            'image' => 'tobacco.png',
             'lookup_content' => 'tobacco_action'
         ],
         'sleep' => [
             'label' => 'Daytime Sleepiness',
             'priority_field' => 'sleep_priority_numb_2',
+            'default_priority' => 7,
             'top_three_field' => 'top_3___7',
             'ranking_field' => 'sleep_priority',
             'image' => 'sleep.png',
             'lookup_content' => 'sleep_action'
         ],
         'genhealth' => [
-            'label' => 'General Health Rating',
+            'label' => 'General Health',
             'priority_field' => 'genhealth_priority_numb_2',
+            'default_priority' => 16,
             'top_three_field' => 'top_3___16',
             'ranking_field' => 'genhealth_priority',
             'image' => 'general_health.png',
             'lookup_content' => 'gen_action'
         ],
         'pcp' => [
-            'label' => 'Primary Care Provider',
+            'label' => "Primary Care\nProvider",
             'priority_field' => 'pcp_priority_numb_2',
+            'default_priority' => 4,
             'top_three_field' => 'top_3___4',
             'ranking_field' => 'pcp_priority',
             'image' => 'primary_care_provider.png',
@@ -140,6 +156,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         'no_answr' => [
             'label' => 'No Answers Provided',
             'priority_field' => 'no_answr',
+            'default_priority' => 99,
             'top_three_field' => 'top_3___99',
             'ranking_field' => NULL,
             'lookup_content' => 'gen_action'
@@ -216,17 +233,24 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         $centuryGothicItalicUrl = $this->getUrl('js/centurygothic_italic-italic.js');
 
         $imageFileNames = array(
-            "a1c.png",
-            "diabetes.png",
-            "general_health.png",
-            "header.png",
-            "mental_health.png",
-            "movement.png",
-            "nutrition.png",
-            "physical_activity.png",
-            "primary_care_provider.png",
-            "sleep.png",
-            "substance_use.png",
+            'a1c.png',
+            'alcohol.png',
+            'anxiety.png',
+            'artificial_beverages.png',
+            'depression.png',
+            'diabetes.png',
+            'drug_use.png',
+            'fast_food.png',
+            'fruit_and_vegetable.png',
+            'general_health.png',
+            'header.png',
+            'movement.png',
+            'physical_activity.png',
+            'primary_care_provider.png',
+            'sleep.png',
+            'stress.png',
+            'sugary_beverages.png',
+            'tabacco.png'
         );
 
         $imageUrls = array();
@@ -339,6 +363,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         $priorities = [];
 
         $lookup = $this->lookup;
+        $selected_labels = [];
 
         // Extract priority values for this record
         foreach ($lookup as $key => $element) {
@@ -365,8 +390,10 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
                     'image' => $image_field,
                     'lookup_content' => $lookup_content,
                 ];
+                $selected_labels[] = $label;
             }
         }
+
 
         // Sort by priority value (lower number = higher priority)
         // Probably don't need to sort, but doing it just in case
@@ -416,9 +443,34 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             return $a['ranking_value'] - $b['ranking_value'];
         });
 
+        // If there are less than 4 priorities, fill in the rest with the lookup
+        // item with the lowest default priorities till we have 4.
+        if (count($priorities) < 4) {
+            $default_priorities = array_filter($lookup, function($item) {
+                return isset($item['default_priority']);
+            });
+            usort($default_priorities, function($a, $b) {
+                return $a['default_priority'] - $b['default_priority'];
+            });
+            $default_priorities = array_values($default_priorities);
+            $default_priorities = array_slice($default_priorities, 0, 4 - count($priorities));
+            foreach ($default_priorities as $default) {
+                if (!in_array($default['label'], $selected_labels)) {
+                    $priorities[] = [
+                        'field' => $default['priority_field'],
+                        'label' => $default['label'],
+                        'priority_value' => $default['default_priority'],
+                        'ranking_value' => NULL,
+                        'top_three_value' => NULL,
+                        'image' => $default['image'],
+                        'lookup_content' => $default['lookup_content'],
+                    ];
+                }
+            }
+        }
+
         return $priorities;
     }
-
 
     function getPdfContent($record) {
         // save contents of lookup.json file into variable
@@ -445,7 +497,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
 
         $goalsContent =  array();
         foreach ($lookupData as $key => $value) {
-            $user_choice = $record[1][$key];
+            $user_choice = $record[1][$key] ? $record[1][$key] : "no_answ";
 
             $this->console_log("Processing key: $key");
             $this->console_log("The user chose: " . $user_choice);
