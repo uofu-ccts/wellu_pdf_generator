@@ -402,7 +402,6 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             return $a['priority_value'] - $b['priority_value'];
         });
 
-
         usort($priorities, function($a, $b) {
             // If both values are NULL, consider them equal
             if ($a['top_three_value'] === NULL && $b['top_three_value'] === NULL) {
