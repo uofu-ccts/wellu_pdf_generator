@@ -514,10 +514,10 @@ const createGoalBox = function (doc, goal, coordinates, width, height) {
   const textX = coordinates[0];
   const headerText = doc.splitTextToSize(goal.label, width - 2);
   doc.setTextColor(styles.box.headerTextColor);
-  doc.setFontSize(styles.box.headerFontSize);
   doc.setFont(styles.box.font, styles.box.fontStyle);
   const yCoord =
     headerText.length > 1 ? coordinates[1] + 6 : coordinates[1] + 9;
+  doc.setFontSize(headerText.length > 1 ? 14 : styles.box.headerFontSize);
   doc.text(headerText, textX + width / 2, yCoord, {
     align: "center",
   });
