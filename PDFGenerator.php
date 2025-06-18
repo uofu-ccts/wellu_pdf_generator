@@ -247,6 +247,9 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
 
         $goalsContent = $this->getPdfContent($record);
 
+        $tcpLink = $this->getTcpLink($record_id);
+        $this->console_log("TCP Link for record ID $record_id: " . $tcpLink);
+
         // loading libraries
         $html  = '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>';
         $html .= '<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>';
@@ -268,7 +271,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         $html .= "<button type='button' class='btn btn-primary generate-pdf' data-record-id='$record_id' data-name='$name'>Download PDF</button>";
         $html .= "<form id='action-form' name='action' class='hidden' method='POST'></form>";
         $html .= "<script src='$jsUrl'></script>";
-        $html .= "<script>PDF.addEventHandlers(" . json_encode($record) . "," . json_encode($imageUrls) . "," . json_encode($goalsContent) . "," . json_encode($processed_data) . ");</script>";
+        $html .= "<script>PDF.addEventHandlers(" . json_encode($record) . "," . json_encode($imageUrls) . "," . json_encode($goalsContent) . "," . json_encode($processed_data) . "," . json_encode($tcpLink) . ");</script>";
 
         return $html;
     }
@@ -304,6 +307,18 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
           );
         $record = json_decode(\REDCap::getData($params), true);
         return $record;
+    }
+
+    function getTcpLink($record_id) {
+
+        $instrument = "tcp_intake_survey";
+        $event_id = REDCap::getEventIdFromUniqueEvent("fy_202627_arm_1");
+
+        return \REDCap::getSurveyLink(
+            $record_id,
+            $instrument,
+            $event_id
+        );
     }
 
     /**
@@ -434,6 +449,12 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
 
             $this->console_log("Processing key: $key");
             $this->console_log("The user chose: " . $user_choice);
+
+            if (empty($user_choice) || $user_choice == 'no_answr') {
+                // default to no_answr if no user choice is made, for now
+                $user_choice = 'no_answ';
+            }
+
             $this->console_log("The user will see: " . $value[$user_choice]);
             $this->console_log("The content is: ");
             $this->console_log(json_encode($resourcesData[$value[$user_choice]]));
