@@ -56,7 +56,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'lookup_content' => 'nutr_action'
         ],
         'artbev' => [
-            'label' => "Artificially Sweetened\nBeverages Intake",
+            'label' => "Artificial\nBeverage Intake",
             'priority_field' => 'artbev_priority_numb_2',
             'default_priority' => 14,
             'top_three_field' => 'top_3___14',
