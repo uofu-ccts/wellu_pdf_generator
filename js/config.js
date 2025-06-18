@@ -420,6 +420,29 @@ PDF.generatePDF = async function (record_id, name) {
     100
   );
 
+  doc.addPage();
+  coordinates = [startingX, startingY];
+
+  // Add header image
+  coordinates = createHeaderImage(doc, coordinates, pageWidth);
+
+  for (var key in PDF.goalsContent) {
+    console.log("Processing goal: ", key);
+    console.log("Goal content: ", PDF.goalsContent[key]);
+
+    var heading = PDF.goalsContent[key].name || "Goal";
+    var content = PDF.goalsContent[key].full || [];
+
+    coordinates[1] = createSubsection(
+        doc,
+        heading,
+        content,
+        [coordinates[0], coordinates[1]],
+        pageWidth - 10,
+        100
+    );
+  }
+
   try {
     // Generate PDF data first - this will work even if browser preview fails
     const pdfData = doc.output("datauristring");
