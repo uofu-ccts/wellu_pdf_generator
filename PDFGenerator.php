@@ -364,6 +364,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         $priorities = [];
 
         $lookup = $this->lookup;
+        $selected_labels = [];
 
         // Extract priority values for this record
         foreach ($lookup as $key => $element) {
@@ -390,6 +391,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
                     'image' => $image_field,
                     'lookup_content' => $lookup_content,
                 ];
+                $selected_labels[] = $label;
             }
         }
 
@@ -443,6 +445,28 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             return $a['ranking_value'] - $b['ranking_value'];
         });
 
+        // If there are less than 4 priorities, fill in the rest with the lookup
+        // item with the lowest default priorities till we have 4.
+        $default_priorities = array_filter($lookup, function($item) {
+            return isset($item['default_priority']);
+        });
+        usort($default_priorities, function($a, $b) {
+            return $a['default_priority'] - $b['default_priority'];
+        });
+        $default_priorities = array_values($default_priorities);
+        foreach ($default_priorities as $default) {
+            if (!in_array($default['label'], $selected_labels)) {
+                $priorities[] = [
+                    'field' => $default['priority_field'],
+                    'label' => $default['label'],
+                    'priority_value' => $default['default_priority'],
+                    'ranking_value' => NULL,
+                    'top_three_value' => NULL,
+                    'image' => $default['image'],
+                    'lookup_content' => $default['lookup_content'],
+                ];
+            }
+        }
 
         return $priorities;
     }
