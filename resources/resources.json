@@ -106,7 +106,7 @@
     "pcp": {
         "name": "I want to work on this area with my primary care provider",
         "link": "https://healthcare.utah.edu/primary-care/appointment",
-        "pdf_box": "Work with your primary care provider to address your health concerns. Click HERE for help finding a primary care provider.",
+        "pdf_box": "Work with your primary care provider to address your health concerns. Find a primary care provider.",
         "full": 
         [
             {
@@ -122,7 +122,7 @@
     "health_coaching": {
         "name": "I want to schedule a free Health Coaching session",
         "link": "https://booknow.appointment-plus.com/165ehg4e/10#Appointment",
-        "pdf_box": "Click HERE to schedule your free health coaching session.",
+        "pdf_box": "Schedule your free health coaching session.",
         "full": 
         [
             {
@@ -158,13 +158,13 @@
     "noom": {
         "name": "I want to learn more about  Noom Weight Management",
         "link": "Noom Weight Management",
-        "pdf_box": "Click HERE to Register for Noom Weight Management.",
+        "pdf_box": "Register for Noom Weight Management.",
         "full": []
     },
     "lifestyle_medicine": {
         "name": "I want to learn about the  Lifestyle Medicine Consultation",
         "link": "https://healthcare.utah.edu/integrative-health/services/lifestyle-medicine",
-        "pdf_box": "Click HERE to learn more about Lifestyle Medicine Consultaion.",
+        "pdf_box": "Learn more about Lifestyle Medicine Consultaion.",
         "full": 
         [
             {
@@ -413,7 +413,7 @@
     "intruitive_eating": {
         "name": "I want to register for an Intuitive Eating class",
         "link": "https://peak.webapps.med.utah.edu/category/86",
-        "pdf_box": "Click HERE to register for an Intuitive Eating class",
+        "pdf_box": "Register for an Intuitive Eating class",
         "full": [
             {
                 "type": "paragraph",
@@ -468,7 +468,7 @@
     "fitness_assessment": {
         "name": "I want to schedule a Fitness Assessment",
         "link": "https://booknow.appointment-plus.com/165ehg4e/10#Appointment",
-        "pdf_box": "Click HERE to schedule your Fitness Assessment",
+        "pdf_box": "Schedule your Fitness Assessment",
         "full": [
             {
                 "type": "paragraph",
@@ -518,7 +518,7 @@
     "fitness_class": {
         "name": "I want to register for an activity/fitness class",
         "link": "https://peak.webapps.med.utah.edu/category/132",
-        "pdf_box": "Click HERE to resister for a PEAK fitness class",
+        "pdf_box": "Resister for a PEAK fitness class",
         "full": [
             {
                 "type": "paragraph",
@@ -646,7 +646,7 @@
     "mindfulness_class": {
         "name": "I want to join a Mindfulness Class",
         "link": "https://app.healthcare.utah.edu/peakCourseRegistration/byCategory?categoryPrimaryId=60",
-        "pdf_box": "Click HERE to register for a Mindfulness class",
+        "pdf_box": "Register for a Mindfulness class",
         "full": [
             {
                 "type": "paragraph",
@@ -689,7 +689,7 @@
     "stress_eap": {
         "name": "I want to learn about SupportLinc employee assistance program",
         "link": "supportlinc.com (group code:uofu)",
-        "pdf_box": "Click HERE to access the Supportlinc Employee Assistance Program (Use group code: uofu)",
+        "pdf_box": "Supportlinc Employee Assistance Program (Use group code: uofu)",
         "full": [
             {
                 "type": "paragraph",
@@ -740,7 +740,7 @@
     "leisure": {
         "name": "I want to schedule a free Leisure Consultation",
         "link": "https://booknow.appointment-plus.com/165ehg4e/10#Appointment",
-        "pdf_box": "Click HERE to schedule a free Leisure Consultation",
+        "pdf_box": "Schedule a free Leisure Consultation",
         "full": [
             {
                 "type": "paragraph",
@@ -840,8 +840,8 @@
     },
     "mental_health_provider": {
         "name": "I want help finding a mental health provider",
-        "link": "BHN -https://apps.med.utah.edu/site/hmhibhn/a/search.aspx EAP - supportlinc.com Group code: uofu",
-        "pdf_box": "Click Here to find a Mental Health Provider. Click HERE to learn how Supportlinc can help connect you to Mental Health support. ",
+        "link": "https://apps.med.utah.edu/site/hmhibhn/a/search.aspx",
+        "pdf_box": "Supportlinc Employee Assistance Program (Use group code: uofu)",
         "full": [
             {
                 "type": "paragraph",
@@ -879,8 +879,8 @@
     },
     "anx_own_plan": {
         "name": "I want to make my own plan to address my Mental Health",
-        "link": "supportllinc.com (group code: uofu)",
-        "pdf_box": "Create your own plan. Click HERE to access Supportlinc resources (Use group code: uofu)",
+        "link": "supportllinc.com",
+        "pdf_box": "Supportlinc Employee Assistance Program (Use group code: uofu)",
         "full": [
             {
                 "type": "paragraph",
@@ -966,8 +966,8 @@
     },
     "insomnia_class": {
         "name": "I want to register for an online insomnia class",
-        "link": "Alert sent to Wellness Team to submit order for insomnia class",
-        "pdf_box": "Click Here to register for the CBT-I  online insomnia class",
+        "link": "",
+        "pdf_box": "A team member will contact you to schedule an appointment",
         "full": [
             {
                 "type": "paragraph",
