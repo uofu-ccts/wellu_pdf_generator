@@ -1102,21 +1102,18 @@ function calculateRiskKeyBubbles() {
   const record = PDF.logicRecord;
   let a1cRisk;
   switch (true) {
-    case record.a1c_12m == "" &&
-      record.recent_a1c == "" &&
-      record.pre_diabetes_care == "" &&
-      record.recent_a1c_type12 == "" &&
-      record.type1_diabetes_care == "" &&
-      record.type2_diabetes_care == "":
+    case record.recent_a1c == "88" ||
+      record.recent_a1c_type12 == "88" ||
+      (record.a1c_12m == "" && record.recent_a1c == ""):
       a1cRisk = "unknown";
       break;
     case (record.a1c_12m == "1" && record.recent_a1c == "2") ||
       (record.recent_a1c == "1" && record.pre_diabetes_care == "0") ||
-      (record.recent_a1c == "2" && record.pre_diabetes_care == "1") ||
+      (record.recent_a1c == "2" && record.pre_diabetes_care != "") ||
       (record.recent_a1c_type12 == "1" && record.type1_diabetes_care == "0") ||
-      (record.recent_a1c_type12 == "2" && record.type1_diabetes_care == "1") ||
+      (record.recent_a1c_type12 == "2" && record.type1_diabetes_care != "") ||
       (record.recent_a1c_type12 == "1" && record.type2_diabetes_care == "0") ||
-      (record.recent_a1c_type12 == "2" && record.type2_diabetes_care == "1"):
+      (record.recent_a1c_type12 == "2" && record.type2_diabetes_care != ""):
       a1cRisk = "high";
       break;
     case (record.recent_a1c == "0" && record.pre_diabetes_care == "0") ||
@@ -1130,6 +1127,7 @@ function calculateRiskKeyBubbles() {
       break;
     case (record.recent_a1c == "0" && record.pre_diabetes_care == "1") ||
       (record.a1c_12m == "1" && record.recent_a1c == "0") ||
+      (record.recent_a1c_type12 == "0" && record.pre_diabetes_care == "1") ||
       (record.recent_a1c_type12 == "0" && record.type1_diabetes_care == "1") ||
       (record.recent_a1c_type12 == "0" && record.type2_diabetes_care == "1"):
       a1cRisk = "low";
@@ -1235,6 +1233,18 @@ function calculateRiskKeysTable() {
 
   let diabetesRisk;
   switch (true) {
+    case record.prev_diags___1 == "0" &&
+      record.prev_diags___2 == "0" &&
+      record.prev_diags___3 == "0" &&
+      record.prev_diags___4 == "0" &&
+      record.prev_diags___5 == "0" &&
+      record.prev_diags___6 == "0" &&
+      record.prev_diags___7 == "0" &&
+      record.prev_diags___8 == "0" &&
+      record.prev_diags___9 == "0" &&
+      record.prev_diags___10 == "0":
+      diabetesRisk = "unknown";
+      break;
     case record.prev_diags___1 == 1 ||
       record.prev_diags___2 == 1 ||
       record.prev_diags___3 == 1 ||
@@ -1308,8 +1318,10 @@ function calculateRiskKeysTable() {
 
   let physicalActivityRisk;
   switch (true) {
-    case record.exercise_7_days != "" &&
-      (record.exercise_7_days == 0 || record.phys_minutes_weekly <= 10):
+    case record.exercise_7_days == "":
+      physicalActivityRisk = "unknown";
+      break;
+    case record.exercise_7_days == 0 || record.phys_minutes_weekly <= 10:
       physicalActivityRisk = "high";
       break;
     case record.phys_minutes_weekly >= 10 && record.phys_minutes_weekly < 150:
