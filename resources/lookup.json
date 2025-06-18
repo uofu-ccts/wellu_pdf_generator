@@ -50,8 +50,8 @@
         "no_answ": "mindfulness_no_answ",
         "1": "mindfulness_class",
         "2": "stress_eap",
-        "3": "joy_in_work",
-        "4": "flourishing_in_medicine",
+        "3": "assess_stress",
+        "4": "stress_exercise",
         "5": "lifestyle_medicine",
         "6": "leisure"
     },
@@ -67,6 +67,8 @@
         "6": "mindfulness_class"
     },
     "phq_action": {
+        "green": "eap",
+        "noaction": "hmhi_crisis_line_safeut",
         "no_answ": "hmhi_crisis_line_safeut",
         "1": "mental_health_provider",
         "2": "eap",
@@ -76,31 +78,35 @@
         "6": "mindfulness_class"
     },
     "sleep_action": {
+        "green": "sleep_great",
+        "noaction": "sleep_no_action",
         "no_answ": "sleep_essential",
         "1": "insomnia_class",
         "2": "sleep_own_plan",
         "3": "health_coaching",
-        "4": "ollie_class",
-        "5": "pcp",
-        "6": "lifestyle_medicine"
+        "4": "pcp",
+        "5": "lifestyle_medicine"
     },
     "tobacco_action": {
+        "noaction": "tobacco_support",
+        "no_answ": "tobacco_no_answ",
         "1": "tobacco_quit_line",
         "2": "pcp",
         "3": "tobacco_own_plan",
-        "4": "combination_therapy_contact",
-        "5": "lifestyle_medicine",
-        "6": "addiction_recovery_resource_link"
+        "4": "lifestyle_medicine"
     },
     "alcohol_action": {
+        "noaction": "addiction_recovery_resource_link",
+        "no_answ": "alcohol_no_answ",
         "1": "eap",
-        "2": "addiction_recovery_resource_link",
+        "2": "addiction_recovery_services",
         "3": "pcp",
         "4": "addiction_own_plan",
-        "5": "lifestyle_medicine",
-        "6": "addiction_recovery_resource_link"
+        "5": "lifestyle_medicine"
     },
     "drug_action": {
+        "noaction": "addiction_recovery_resource_link",
+        "no_answ": "alcohol_no_answ",
         "1": "eap",
         "2": "addiction_recovery_resource_link",
         "3": "pcp",
@@ -109,6 +115,9 @@
         "6": "addiction_recovery_resource_link"
     },
     "gen_action": {
+        "green": "lifestyle_medicine",
+        "noaction": "general_health_links",
+        "no_answ": "lifestyle_medicine",
         "1": "health_coaching",
         "2": "lifestyle_medicine",
         "3": "ilp",

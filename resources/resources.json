@@ -512,6 +512,10 @@
             {
                 "type": "paragraph",
                 "content": "When you're ready, we're here to support you. In the meantime, here are some helpful resources you can explore at your own pace - no pressure, just possibilities."
+            },
+            {
+                "type": "paragraph",
+                "content": "https://health.utah.edu/peak"
             }
         ]
     },
@@ -582,6 +586,14 @@
             {
                 "type": "paragraph",
                 "content": "Each class is guided by experienced instructors and offers a supportive, welcoming environment to help you grow your practice and improve your well-being."
+            },
+            {
+                "type": "paragraph",
+                "content": "Mindfulness Classes: https://app.healthcare.utah.edu/peakCourseRegistration/byCategory?categoryPrimaryId=60"
+            },
+            {
+                "type": "paragraph",
+                "content": "Curalinc Online Resources LINK"
             }
         ]
     },
@@ -607,7 +619,11 @@
         "full": [
             {
                 "type": "paragraph",
-                "content": "It looks like you skipped this question.                               Managing your stress is a great way to guarantee better health!   Our Mindfulness Classes offer practical tools to help you slow down, breathe deeply, and live more intentionally - no matter your background or experience level."
+                "content": "It looks like you skipped this question."
+            },
+            {
+                "type": "paragraph",
+                "content": "Managing your stress is a great way to guarantee better health!   Our Mindfulness Classes offer practical tools to help you slow down, breathe deeply, and live more intentionally - no matter your background or experience level."
             },
             {
                 "type": "paragraph",
@@ -705,35 +721,39 @@
             }
         ]
     },
-    "joy_in_work": {
-        "name": "Joy in Work",
-        "link": "",
-        "pdf_box": "",
+    "assess_stress": {
+        "name": "I want to make my own plan.",
+        "link": "https://admin.healthcare.utah.edu/sites/g/files/zrelqx136/files/media/documents/2024/assess-your-stress.pdf Resiliency Tools: https://www.resiliency.tools/",
+        "pdf_box": "Learn how to assess your stress.",
         "full": 
         [
             {
                 "type": "paragraph",
-                "text": "Example"
+                "text": "Stress is a part of life - but it doesn't have to run your life. Understanding what triggers your stress is the first step toward managing it in a healthier, more intentional way. By identifying your unique stressors and creating a personalized plan to address them, you can build resilience, improve your well-being, and feel more in control of your day-to-day. Whether it's work, relationships, or just the pace of life, small changes can lead to big relief."
             },
             {
-                "type": "bullet",
-                "text": "Bullet"
+                "type": "paragraph",
+                "text": "Learn how to assess your stress: https://admin.healthcare.utah.edu/sites/g/files/zrelqx136/files/media/documents/2024/assess-your-stress.pdf"
+            },
+            {
+                "type": "paragraph",
+                "text": "Resiliency Tools: https://www.resiliency.tools/"
             }
         ]
     },
-    "flourishing_in_medicine": {
-        "name": "Flourishing in Medicine",
-        "link": "",
-        "pdf_box": "",
+    "stress_exercise": {
+        "name": "I want to join an exercise class.",
+        "link": "https://peak.webapps.med.utah.edu/category/132",
+        "pdf_box": "Register for an exercise class",
         "full": 
         [
             {
                 "type": "paragraph",
-                "text": "Example"
+                "text": "Feeling overwhelmed? Exercise is one of the most effective — and natural — ways to manage stress. Physical activity boosts your mood, clears your mind, and helps your body process tension in a healthy way.Joining an exercise class adds structure, motivation, and community to your routine. Whether it's yoga, strength training, or a dance class, moving with others can lift your spirits and help you stay committed to your well-being."
             },
             {
-                "type": "bullet",
-                "text": "Bullet"
+                "type": "paragraph",
+                "text": "https://peak.webapps.med.utah.edu/category/132"
             }
         ]
     },
@@ -1002,19 +1022,18 @@
             }
         ]
     },
-    "ollie_class": {
-        "name": "OLLIE class",
-        "link": "Science of Sleep",
+    "tobacco_no_answ": {
+        "name": "Tobacco no answer",
+        "link": "https://employeewellness.utah.edu/wp-content/uploads/sites/44/2020/07/Regence-Empower-Program.pdf",
         "pdf_box": "",
-        "full": 
-        [
+        "full": [
             {
                 "type": "paragraph",
-                "text": "Example"
+                "content": "https://employeewellness.utah.edu/wp-content/uploads/sites/44/2020/07/Regence-Empower-Program.pdf"
             },
             {
-                "type": "bullet",
-                "text": "Bullet"
+                "type": "paragraph",
+                "content": "Need resource verbiage"
             }
         ]
     },
@@ -1084,20 +1103,20 @@
             }
         ]
     },
-    "combination_therapy_contact": {
-        "name": "Combination Therapy Contact?",
-        "link": "Combination Therapy Contact?",
-        "pdf_box": "",
+    "alcohol_no_answ": {
+        "name": "Addiction Recovery Resource Link",
+        "link": "http://www.wellbeing.place/",
+        "pdf_box": "http://www.wellbeing.place/",
         "full": [
             {
                 "type": "paragraph",
-                "content": "need resource verbiage"
+                "content": "Looks like you skipped this question. Here are some helpful articles that you might find helpful. http://www.wellbeing.place/"
             }
         ]
     },
     "addiction_recovery_resource_link": {
         "name": "Addiction Recovery Resource Link",
-        "link": "Addiction Recovery Resource Link",
+        "link": "https://healthcare.utah.edu/hmhi/treatments/addiction-recovery/recovery-clinic#:~:text=The%20HMHI%20Recovery%20Clinic%20is,which%20can%20negatively%20impact%20recovery",
         "pdf_box": "",
         "full": [
             {
@@ -1110,26 +1129,18 @@
             }
         ]
     },
-    "addiction_recovery_skipped": {
-        "name": "Addiction Recovery Resource Link",
-        "link": "Addiction Recovery Resource Link",
-        "pdf_box": "",
+    "addiction_recovery_services": {
+        "name": "I want to learn more about HMHI Addiction Recovery Services",
+        "link": "https://healthcare.utah.edu/hmhi/treatments/addiction-recovery/recovery-clinic#:~:text=The%20HMHI%20Recovery%20Clinic%20is,which%20can%20negatively%20impact%20recovery",
+        "pdf_box": "Learn more about HMHI Addiction Recovery Services",
         "full": [
             {
                 "type": "paragraph",
-                "content": "Looks like you skipped this question. Here are some helpful articles that you might find helpful. http://www.wellbeing.place/"
+                "content": "HMHI Addiction Recovery Services are designed for individuals at any stage of their journey. Whether you are  looking to cut back, take a break, or make a more lasting shift, HMHI Addiction Recovery Services offers a number of personalized, nonjudgmental support programs grounded in evidence-based care. Explore what's possible today."
             },
             {
                 "type": "paragraph",
-                "content": "We understand that making changes to your health can feel overwhelming, and sometimes the first step is simply giving yourself time."
-            },
-            {
-                "type": "paragraph",
-                "content": "When you're ready, we're here to support you. In the meantime, here are some helpful resources you can explore at your own pace - no pressure, just possibilities."
-            },
-            {
-                "type": "paragraph",
-                "content": "need resource verbiage"
+                "content": "https://healthcare.utah.edu/hmhi/treatments/addiction-recovery/recovery-clinic#:~:text=The%20HMHI%20Recovery%20Clinic%20is,which%20can%20negatively%20impact%20recovery"
             }
         ]
     },
