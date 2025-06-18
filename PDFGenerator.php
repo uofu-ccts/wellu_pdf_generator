@@ -8,7 +8,6 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
     public $project_id = null;
     public $list_of_records = array();
 
-    // TODO: Set defaults
     private $lookup = [
         'dbt' => [
             'label' => 'Diabetes',
