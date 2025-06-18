@@ -445,25 +445,27 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
 
         // If there are less than 4 priorities, fill in the rest with the lookup
         // item with the lowest default priorities till we have 4.
-        $default_priorities = array_filter($lookup, function($item) {
-            return isset($item['default_priority']);
-        });
-        usort($default_priorities, function($a, $b) {
-            return $a['default_priority'] - $b['default_priority'];
-        });
-        $default_priorities = array_values($default_priorities);
-        $default_priorities = array_slice($default_priorities, 0, 4 - count($priorities));
-        foreach ($default_priorities as $default) {
-            if (!in_array($default['label'], $selected_labels)) {
-                $priorities[] = [
-                    'field' => $default['priority_field'],
-                    'label' => $default['label'],
-                    'priority_value' => $default['default_priority'],
-                    'ranking_value' => NULL,
-                    'top_three_value' => NULL,
-                    'image' => $default['image'],
-                    'lookup_content' => $default['lookup_content'],
-                ];
+        if (count($priorities) < 4) {
+            $default_priorities = array_filter($lookup, function($item) {
+                return isset($item['default_priority']);
+            });
+            usort($default_priorities, function($a, $b) {
+                return $a['default_priority'] - $b['default_priority'];
+            });
+            $default_priorities = array_values($default_priorities);
+            $default_priorities = array_slice($default_priorities, 0, 4 - count($priorities));
+            foreach ($default_priorities as $default) {
+                if (!in_array($default['label'], $selected_labels)) {
+                    $priorities[] = [
+                        'field' => $default['priority_field'],
+                        'label' => $default['label'],
+                        'priority_value' => $default['default_priority'],
+                        'ranking_value' => NULL,
+                        'top_three_value' => NULL,
+                        'image' => $default['image'],
+                        'lookup_content' => $default['lookup_content'],
+                    ];
+                }
             }
         }
 
