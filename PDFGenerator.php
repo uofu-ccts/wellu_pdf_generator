@@ -443,39 +443,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             return $a['ranking_value'] - $b['ranking_value'];
         });
 
-        // if (count($priorities) < 4) {
-        //     $this->console_log("Less than 4 priorities found, ensuring defaults are added.");
-        //     $priorities = $this->ensurePriorities($priorities);
-        // }
 
-
-        return $priorities;
-    }
-
-    function ensurePriorities($priorities) {
-        // If no priorites are set, add default priorities
-        // If there are priorities but less than 4, add defaults to fill the gaps
-        $lookup = $this->lookup;
-        $default_priorities = array();
-        foreach ($lookup as $key => $element) {
-            if (empty($element['ranking_field'])) continue; // Skip if no ranking field
-            if (empty($element['default_priority'])) continue; // Skip if no default priority
-
-            $default_priorities[] = [
-                'field' => $element['priority_field'],
-                'label' => $element['label'],
-                'priority_value' => $element['default_priority'],
-                'ranking_value' => NULL, // Default priorities have no ranking
-                'top_three_value' => NULL, // Default priorities are not in top three
-                'image' => $element['image'],
-                'lookup_content' => $element['lookup_content'],
-            ];
-        }
-        while (count($priorities) < 4 && count($default_priorities) > 0) {
-            // Pop the last default priority and add it to the priorities array
-            $default_priority = array_pop($default_priorities);
-            $priorities[] = $default_priority;
-        }
         return $priorities;
     }
 
