@@ -504,7 +504,11 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
 
             // // TODO: need to add green and noaction options, currently defaulting to no_answ
 
-            $goalsContent[$value["label"]] = $resourcesData[$value["choices"][$user_choice]];
+            $goalsContent[$key] = $resourcesData[$value["choices"][$user_choice]];
+
+            $goalsContent[$key]['label'] = $value['label'];
+
+            $this->console_log($goalsContent[$key]);
         }
 
         return $goalsContent;

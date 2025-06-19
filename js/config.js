@@ -420,14 +420,9 @@ PDF.generatePDF = async function (record_id, name) {
 //     100
 //   );
 
-  console.log(PDF.goalsContent);
-
   for (var key in PDF.goalsContent) {
-    var heading = key || "Goal";
+    var heading = PDF.goalsContent[key].label || "Goal";
     var content = PDF.goalsContent[key].full || [];
-
-    console.log("Heading: ", heading);
-    console.log("Content: ", content);
 
     if (coordinates[1] > 0.7 * pageHeight) {
         doc.addPage();
@@ -436,7 +431,6 @@ PDF.generatePDF = async function (record_id, name) {
         // Add header image
         coordinates = createHeaderImage(doc, coordinates, pageWidth);
     }
-    
 
     coordinates[1] = createSubsection(
         doc,

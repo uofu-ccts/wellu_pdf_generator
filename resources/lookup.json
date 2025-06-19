@@ -1,6 +1,6 @@
 {
     "bmi_action": {
-        "label": "Metabolic Health",
+        "label": "Metabolic Health (BMI)",
         "choices": {
             "green": "red_butte",
             "noaction": "weight_management",
