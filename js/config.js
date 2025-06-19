@@ -354,7 +354,7 @@ PDF.generatePDF = async function (record_id, name) {
     "Physical Activity",
     "Stress",
     "Sleepiness",
-    "Tabacco / Nicotine Use",
+    "Tobacco / Nicotine Use",
     "Drug Use",
     "General Health",
   ];
@@ -412,13 +412,35 @@ PDF.generatePDF = async function (record_id, name) {
   coordinates[1] -= 5; // Adjust for spacing
   coordinates = createHeader(doc, "below.", coordinates, "h4", 10);
 
-  coordinates = createPrioritiesSectionBox(
-    doc,
-    "Your Priorities",
-    coordinates,
-    pageWidth - 10,
-    100
-  );
+//   coordinates = createPrioritiesSectionBox(
+//     doc,
+//     "Your Priorities",
+//     coordinates,
+//     pageWidth - 10,
+//     100
+//   );
+
+  for (var key in PDF.goalsContent) {
+    var heading = PDF.goalsContent[key].label || "Goal";
+    var content = PDF.goalsContent[key].full || [];
+
+    if (coordinates[1] > 0.7 * pageHeight) {
+        doc.addPage();
+        coordinates = [startingX, startingY];
+
+        // Add header image
+        coordinates = createHeaderImage(doc, coordinates, pageWidth);
+    }
+
+    coordinates[1] = createSubsection(
+        doc,
+        heading,
+        content,
+        [coordinates[0], coordinates[1]],
+        pageWidth - 10,
+        100
+    );
+  }
 
   try {
     // Generate PDF data first - this will work even if browser preview fails
@@ -493,7 +515,11 @@ const createBullet = function (doc, text, coordinates, coordinateHeight = 6) {
   doc.setFontSize(styles.p.fontSize);
   doc.setFont(styles.font, styles.p.fontStyle);
   doc.text(text, coordinates[0] + 5, coordinates[1]);
-  coordinates[1] += coordinateHeight * text.length;
+  if (text.length > 1) {
+    coordinates[1] += text.length * 6;
+  } else {
+    coordinates[1] += text.length * coordinateHeight;
+  }
   return coordinates;
 };
 
@@ -764,11 +790,11 @@ const createPrioritiesSectionBox = function (
         text: "Tangible information about guidelines and diabetes prevention.",
       },
       {
-        type: "bullet",
-        text: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        type: "paragraph",
+        text: "Looking to improve your eating habits without the stress of strict diets? In this 60-minute one-on-one session, our expert will help you create a personalized nutrition plan that fits your lifestyle, preferences, and goals."
       },
       {
-        type: "bullet",
+        type: "paragraph",
         text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       },
     ],
@@ -785,7 +811,7 @@ const createPrioritiesSectionBox = function (
         text: "Tangible information about guidelines and diabetes prevention.",
       },
       {
-        type: "bullet",
+        type: "paragraph",
         text: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       },
       {
@@ -839,7 +865,11 @@ const createSubsection = function (
       // wrap text within width
       const lines = doc.splitTextToSize(item.text, w);
       doc.text(lines, x, cursorY);
-      cursorY += lines.length * lineHeight;
+      if (lines.length > 1) {
+        cursorY += lines.length * 6;
+      } else {
+        cursorY += lines.length * lineHeight;
+      }
     } else if (item.type === "bullet") {
       let ignoredX;
       [ignoredX, cursorY] = createBullet(

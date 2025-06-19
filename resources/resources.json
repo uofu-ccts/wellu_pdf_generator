@@ -253,31 +253,31 @@
         [
             {
                 "type": "paragraph",
-                "content": "The National DPP is a proven, year-long lifestyle change program designed to help you prevent or delay the onset of Type 2 diabetes through small, achievable steps. With the support of a trained lifestyle coach and a group of peers, you'll learn how to:"
+                "text": "The National DPP is a proven, year-long lifestyle change program designed to help you prevent or delay the onset of Type 2 diabetes through small, achievable steps. With the support of a trained lifestyle coach and a group of peers, you'll learn how to:"
             },
             {
                 "type": "bullet",
-                "content": "Eat healthier without giving up the foods you love"
+                "text": "Eat healthier without giving up the foods you love"
             },
             {
                 "type": "bullet",
-                "content": "Get active in ways that fit your life"
+                "text": "Get active in ways that fit your life"
             },
             {
                 "type": "bullet",
-                "content": "Manage stress and stay motivated"
+                "text": "Manage stress and stay motivated"
             },
             {
                 "type": "bullet",
-                "content": "Build habits that last a lifetime"
+                "text": "Build habits that last a lifetime"
             },
             {
                 "type": "paragraph",
-                "content": "This isn't a diet. It's a lifestyle shift- backed by science and built for real life."
+                "text": "This isn't a diet. It's a lifestyle shift- backed by science and built for real life."
             },
             {
                 "type": "paragraph",
-                "content": "Join today and take the first step toward a healthier future."
+                "text": "Join today and take the first step toward a healthier future."
             }
         ]
     },
@@ -289,31 +289,31 @@
         [
             {
             "type": "paragraph",
-            "content": "Ready to take control of your health and well-being? Join our Intensive Lifestyle Program-  powerful 10-week journey designed to help you build lasting habits for a healthier, more energized life."
+            "text": "Ready to take control of your health and well-being? Join our Intensive Lifestyle Program-  powerful 10-week journey designed to help you build lasting habits for a healthier, more energized life."
             },
             {
                 "type": "paragraph",
-                "content": "In this dynamic, group-based program, you'll explore the foundations of:"
+                "text": "In this dynamic, group-based program, you'll explore the foundations of:"
             },
             {
                 "type": "bullet",
-                "content": "Movement -  Find joy in staying active"
+                "text": "Movement -  Find joy in staying active"
             },
             {
                 "type": "bullet",
-                "content": "Nutrition - Learn to fuel your body with confidence"
+                "text": "Nutrition - Learn to fuel your body with confidence"
             },
             {
                 "type": "bullet",
-                "content": "Stress Management - Discover tools to feel more balanced and in control"
+                "text": "Stress Management - Discover tools to feel more balanced and in control"
             },
             {
                 "type": "paragraph",
-                "content": "Each week, you'll gain practical strategies, expert guidance, and the support of a like-minded community- all focused on helping you create real, sustainable change."
+                "text": "Each week, you'll gain practical strategies, expert guidance, and the support of a like-minded community- all focused on helping you create real, sustainable change."
             },
             {
                 "type": "paragraph",
-                "content": "Don't just make a resolution- make a lifestyle."
+                "text": "Don't just make a resolution- make a lifestyle."
             }
         ]
     },
@@ -324,31 +324,31 @@
         "full": [
             {
                 "type": "paragraph",
-                "content": "This 60-minute session is designed to help you move smarter, not just harder. Whether you're managing a health condition, recovering from injury, or simply looking for a safe and effective way to stay active, our expert team will create a customized exercise plan tailored to your unique needs and goals."
+                "text": "This 60-minute session is designed to help you move smarter, not just harder. Whether you're managing a health condition, recovering from injury, or simply looking for a safe and effective way to stay active, our expert team will create a customized exercise plan tailored to your unique needs and goals."
             },
             {
                 "type": "paragraph",
-                "content": "In your session, you'll:"
+                "text": "In your session, you'll:"
             },
             {
                 "type": "bullet",
-                "content": "Receive a personalized exercise prescription based on your health status and fitness level"
+                "text": "Receive a personalized exercise prescription based on your health status and fitness level"
             },
             {
                 "type": "bullet",
-                "content": "Learn proper form and technique to move safely and effectively"
+                "text": "Learn proper form and technique to move safely and effectively"
             },
             {
                 "type": "bullet",
-                "content": "Explore exercises that fit your lifestyle and preferences"
+                "text": "Explore exercises that fit your lifestyle and preferences"
             },
             {
                 "type": "bullet",
-                "content": "Gain confidence and motivation to stay active long-term"
+                "text": "Gain confidence and motivation to stay active long-term"
             },
             {
                 "type": "paragraph",
-                "content": "No matter your starting point, we'll help you move forward- safely, confidently, and with purpose."
+                "text": "No matter your starting point, we'll help you move forward- safely, confidently, and with purpose."
             }
         ]
     },
@@ -359,35 +359,35 @@
         "full": [
             {
                 "type": "paragraph",
-                "content": "Join our hands-on Nutrition Workshops and discover how to create simple, nutritious, and delicious meals. Whether you're a beginner or just looking for fresh ideas, these interactive sessions will introduce you to new recipes and practical tips for incorporating healthy ingredients into your everyday routine."
+                "text": "Join our hands-on Nutrition Workshops and discover how to create simple, nutritious, and delicious meals. Whether you're a beginner or just looking for fresh ideas, these interactive sessions will introduce you to new recipes and practical tips for incorporating healthy ingredients into your everyday routine."
             },
             {
                 "type": "paragraph",
-                "content": "What you'll get:"
+                "text": "What you'll get:"
             },
             {
                 "type": "bullet",
-                "content": "Fun, hands-on cooking experiences"
+                "text": "Fun, hands-on cooking experiences"
             },
             {
                 "type": "bullet",
-                "content": "Easy, nutritious recipes to try at home"
+                "text": "Easy, nutritious recipes to try at home"
             },
             {
                 "type": "bullet",
-                "content": "Tips for making healthy eating sustainable and enjoyable"
+                "text": "Tips for making healthy eating sustainable and enjoyable"
             },
             {
                 "type": "bullet",
-                "content": "A variety of rotating topics to keep things fresh"
+                "text": "A variety of rotating topics to keep things fresh"
             },
             {
                 "type": "bullet",
-                "content": "Everyone eats- why not learn to do it better?"
+                "text": "Everyone eats- why not learn to do it better?"
             },
             {
                 "type": "paragraph",
-                "content": "Check out our current workshops and register today:Join a Nutrition Workshop to learn how to make  nutritious meals, fun and easy.  https://app.healthcare.utah.edu/peakCourseRegistration/byCategory?categoryPrimaryId=6"
+                "text": "Check out our current workshops and register today:Join a Nutrition Workshop to learn how to make  nutritious meals, fun and easy.  https://app.healthcare.utah.edu/peakCourseRegistration/byCategory?categoryPrimaryId=6"
             }
         ]
     },
@@ -398,15 +398,15 @@
         "full": [
             {
                 "type": "paragraph",
-                "content": "We understand that making changes to your health can feel overwhelming, and sometimes the first step is simply giving yourself time."
+                "text": "We understand that making changes to your health can feel overwhelming, and sometimes the first step is simply giving yourself time."
             },
             {
                 "type": "paragraph",
-                "content": "When you're ready, we're here to support you. In the meantime, here are some helpful resources you can explore at your own pace-no pressure, just possibilities."
+                "text": "When you're ready, we're here to support you. In the meantime, here are some helpful resources you can explore at your own pace-no pressure, just possibilities."
             },
             {
                 "type": "paragraph",
-                "content": "Nutrition Resource Link"
+                "text": "Nutrition Resource Link"
             }
         ]
     },
@@ -417,51 +417,51 @@
         "full": [
             {
                 "type": "paragraph",
-                "content": "Discover Intuitive Eating: Let go of diets and reconnect with your body. Intuitive Eating helps you build a healthy, joyful relationship with food, movement, and self-care- no matter your size."
+                "text": "Discover Intuitive Eating: Let go of diets and reconnect with your body. Intuitive Eating helps you build a healthy, joyful relationship with food, movement, and self-care- no matter your size."
             },
             {
                 "type": "paragraph",
-                "content": "You'll learn to:"
+                "text": "You'll learn to:"
             },
             {
                 "type": "bullet",
-                "content": "Enjoy food without guilt"
+                "text": "Enjoy food without guilt"
             },
             {
                 "type": "paragrbulletaph",
-                "content": "Move your body to feel good"
+                "text": "Move your body to feel good"
             },
             {
                 "type": "bullet",
-                "content": "Respect and appreciate your body"
+                "text": "Respect and appreciate your body"
             },
             {
                 "type": "bullet",
-                "content": "Let go of diet rules"
+                "text": "Let go of diet rules"
             },
             {
                 "type": "bullet",
-                "content": "Nourish yourself with kindness"
+                "text": "Nourish yourself with kindness"
             },
             {
                 "type": "paragraph",
-                "content": "Backed by decades of research, Intuitive Eating is linked to:"
+                "text": "Backed by decades of research, Intuitive Eating is linked to:"
             },
             {
                 "type": "bullet",
-                "content": "Better body image and self-confidence"
+                "text": "Better body image and self-confidence"
             },
             {
                 "type": "bullet",
-                "content": "More satisfaction with food"
+                "text": "More satisfaction with food"
             },
             {
                 "type": "bullet",
-                "content": "Greater self-compassion"
+                "text": "Greater self-compassion"
             },
             {
                 "type": "bullet",
-                "content": "Less anxiety, guilt, and binge eating"
+                "text": "Less anxiety, guilt, and binge eating"
             }
         ]
     },
@@ -472,31 +472,31 @@
         "full": [
             {
                 "type": "paragraph",
-                "content": "You've been putting in the work - now it's time to see the results. A PEAK Fitness Assessment is a great way to evaluate your current fitness level and set meaningful, personalized goals for the future."
+                "text": "You've been putting in the work - now it's time to see the results. A PEAK Fitness Assessment is a great way to evaluate your current fitness level and set meaningful, personalized goals for the future."
             },
             {
                 "type": "paragraph",
-                "content": "During this 60-minute session, we'll assess key areas of your fitness, including:"
+                "text": "During this 60-minute session, we'll assess key areas of your fitness, including:"
             },
             {
                 "type": "bullet",
-                "content": "Cardiovascular endurance"
+                "text": "Cardiovascular endurance"
             },
             {
                 "type": "bullet",
-                "content": "Muscular strength and endurance"
+                "text": "Muscular strength and endurance"
             },
             {
                 "type": "bullet",
-                "content": "Flexibility"
+                "text": "Flexibility"
             },
             {
                 "type": "bullet",
-                "content": "Body composition"
+                "text": "Body composition"
             },
             {
                 "type": "paragraph",
-                "content": "You'll receive a detailed report comparing your results to age-based norms, along with expert recommendations to help you improve or maintain your fitness."
+                "text": "You'll receive a detailed report comparing your results to age-based norms, along with expert recommendations to help you improve or maintain your fitness."
             }
         ]
     },
@@ -507,15 +507,15 @@
         "full": [
             {
                 "type": "paragraph",
-                "content": "We understand that making changes to your health can feel overwhelming, and sometimes the first step is simply giving yourself time. PEAK health and fitness is ready to help you along your path to better well-being. We have a number of programs and services that can help no matter your fitness level or ability we can help you reach your goals."
+                "text": "We understand that making changes to your health can feel overwhelming, and sometimes the first step is simply giving yourself time. PEAK health and fitness is ready to help you along your path to better well-being. We have a number of programs and services that can help no matter your fitness level or ability we can help you reach your goals."
             },
             {
                 "type": "paragraph",
-                "content": "When you're ready, we're here to support you. In the meantime, here are some helpful resources you can explore at your own pace - no pressure, just possibilities."
+                "text": "When you're ready, we're here to support you. In the meantime, here are some helpful resources you can explore at your own pace - no pressure, just possibilities."
             },
             {
                 "type": "paragraph",
-                "content": "https://health.utah.edu/peak"
+                "text": "https://health.utah.edu/peak"
             }
         ]
     },
@@ -526,23 +526,23 @@
         "full": [
             {
                 "type": "paragraph",
-                "content": "Looking for a fun and convenient way to stay active? Join a fitness class right here on campus! Whether you prefer in-person or virtual workouts, there's something for everyone:"
+                "text": "Looking for a fun and convenient way to stay active? Join a fitness class right here on campus! Whether you prefer in-person or virtual workouts, there's something for everyone:"
             },
             {
                 "type": "bullet",
-                "content": "PEAK Health and Fitness offers a wide variety of employee-only fitness classes - available both virtually and at locations across campus."
+                "text": "PEAK Health and Fitness offers a wide variety of employee-only fitness classes - available both virtually and at locations across campus."
             },
             {
                 "type": "bullet",
-                "content": "Student Life Center provides access to dynamic group fitness classes with a membership."
+                "text": "Student Life Center provides access to dynamic group fitness classes with a membership."
             },
             {
                 "type": "bullet",
-                "content": "Tanner Dance features adult fitness classes that blend movement and creativity."
+                "text": "Tanner Dance features adult fitness classes that blend movement and creativity."
             },
             {
                 "type": "paragraph",
-                "content": "No matter your schedule or fitness level, there's a class to help you feel your best. Explore your options and sign up today:  https://app.healthcare.utah.edu/peakCourseRegistration/byCategories   https://campusrec.utah.edu/group-fitness/  https://shop.tannerdance.utah.edu/tickets/events/adult-osher"
+                "text": "No matter your schedule or fitness level, there's a class to help you feel your best. Explore your options and sign up today:  https://app.healthcare.utah.edu/peakCourseRegistration/byCategories   https://campusrec.utah.edu/group-fitness/  https://shop.tannerdance.utah.edu/tickets/events/adult-osher"
             }
         ]
     },
@@ -553,47 +553,47 @@
         "full": [
             {
                 "type": "paragraph",
-                "content": "Managing your stress is a great way to guarantee better health!   Our Mindfulness Classes offer practical tools to help you slow down, breathe deeply, and live more intentionally - no matter your background or experience level."
+                "text": "Managing your stress is a great way to guarantee better health!   Our Mindfulness Classes offer practical tools to help you slow down, breathe deeply, and live more intentionally - no matter your background or experience level."
             },
             {
                 "type": "paragraph",
-                "content": "We offer three unique class options to meet your needs:"
+                "text": "We offer three unique class options to meet your needs:"
             },
             {
                 "type": "paragraph",
-                "content": "Mindfulness-Based Stress Reduction (MBSR)"
+                "text": "Mindfulness-Based Stress Reduction (MBSR)"
             },
             {
                 "type": "bullet",
-                "content": "An evidence-based program designed to help you manage stress, anxiety, and chronic pain through meditation, gentle movement, and self-awareness practices."
+                "text": "An evidence-based program designed to help you manage stress, anxiety, and chronic pain through meditation, gentle movement, and self-awareness practices."
             },
             {
                 "type": "paragraph",
-                "content": "Everyday Mindfulness"
+                "text": "Everyday Mindfulness"
             },
             {
                 "type": "bullet",
-                "content": "Perfect for beginners or those looking to build a consistent practice. Learn simple, effective techniques to bring mindfulness into your daily life - at work, at home, and everywhere in between."
+                "text": "Perfect for beginners or those looking to build a consistent practice. Learn simple, effective techniques to bring mindfulness into your daily life - at work, at home, and everywhere in between."
             },
             {
                 "type": "paragraph",
-                "content": "Flourishing in Medicine"
+                "text": "Flourishing in Medicine"
             },
             {
                 "type": "bullet",
-                "content": "Created specifically for medical team members, this class focuses on resilience, emotional well-being, and connection in high-stress healthcare environments."
+                "text": "Created specifically for medical team members, this class focuses on resilience, emotional well-being, and connection in high-stress healthcare environments."
             },
             {
                 "type": "paragraph",
-                "content": "Each class is guided by experienced instructors and offers a supportive, welcoming environment to help you grow your practice and improve your well-being."
+                "text": "Each class is guided by experienced instructors and offers a supportive, welcoming environment to help you grow your practice and improve your well-being."
             },
             {
                 "type": "paragraph",
-                "content": "Mindfulness Classes: https://app.healthcare.utah.edu/peakCourseRegistration/byCategory?categoryPrimaryId=60"
+                "text": "Mindfulness Classes: https://app.healthcare.utah.edu/peakCourseRegistration/byCategory?categoryPrimaryId=60"
             },
             {
                 "type": "paragraph",
-                "content": "Curalinc Online Resources LINK"
+                "text": "Curalinc Online Resources LINK"
             }
         ]
     },
@@ -604,11 +604,11 @@
         "full": [
             {
                 "type": "paragraph",
-                "content": "We understand that making changes to your health can feel overwhelming, and sometimes the first step is simply giving yourself time. Resiliency toolkit: https://www.resiliency.tools/"
+                "text": "We understand that making changes to your health can feel overwhelming, and sometimes the first step is simply giving yourself time. Resiliency toolkit: https://www.resiliency.tools/"
             },
             {
                 "type": "paragraph",
-                "content": "When you're ready, we're here to support you. In the meantime, here are some helpful resources you can explore at your own pace - no pressure, just possibilities. Assess your stress tool: https://admin.healthcare.utah.edu/sites/g/files/zrelqx136/files/media/documents/2024/assess-your-stress.pdf"
+                "text": "When you're ready, we're here to support you. In the meantime, here are some helpful resources you can explore at your own pace - no pressure, just possibilities. Assess your stress tool: https://admin.healthcare.utah.edu/sites/g/files/zrelqx136/files/media/documents/2024/assess-your-stress.pdf"
             }
         ]
     },
@@ -619,43 +619,43 @@
         "full": [
             {
                 "type": "paragraph",
-                "content": "It looks like you skipped this question."
+                "text": "It looks like you skipped this question."
             },
             {
                 "type": "paragraph",
-                "content": "Managing your stress is a great way to guarantee better health!   Our Mindfulness Classes offer practical tools to help you slow down, breathe deeply, and live more intentionally - no matter your background or experience level."
+                "text": "Managing your stress is a great way to guarantee better health!   Our Mindfulness Classes offer practical tools to help you slow down, breathe deeply, and live more intentionally - no matter your background or experience level."
             },
             {
                 "type": "paragraph",
-                "content": "We offer three unique class options to meet your needs:"
+                "text": "We offer three unique class options to meet your needs:"
             },
             {
                 "type": "paragraph",
-                "content": "Mindfulness-Based Stress Reduction (MBSR)"
+                "text": "Mindfulness-Based Stress Reduction (MBSR)"
             },
             {
                 "type": "bullet",
-                "content": "An evidence-based program designed to help you manage stress, anxiety, and chronic pain through meditation, gentle movement, and self-awareness practices."
+                "text": "An evidence-based program designed to help you manage stress, anxiety, and chronic pain through meditation, gentle movement, and self-awareness practices."
             },
             {
                 "type": "paragraph",
-                "content": "Everyday Mindfulness"
+                "text": "Everyday Mindfulness"
             },
             {
                 "type": "bullet",
-                "content": "Perfect for beginners or those looking to build a consistent practice. Learn simple, effective techniques to bring mindfulness into your daily life - at work, at home, and everywhere in between."
+                "text": "Perfect for beginners or those looking to build a consistent practice. Learn simple, effective techniques to bring mindfulness into your daily life - at work, at home, and everywhere in between."
             },
             {
                 "type": "paragraph",
-                "content": "Flourishing in Medicine"
+                "text": "Flourishing in Medicine"
             },
             {
                 "type": "bullet",
-                "content": "Created specifically for medical team members, this class focuses on resilience, emotional well-being, and connection in high-stress healthcare environments."
+                "text": "Created specifically for medical team members, this class focuses on resilience, emotional well-being, and connection in high-stress healthcare environments."
             },
             {
                 "type": "paragraph",
-                "content": "Each class is guided by experienced instructors and offers a supportive, welcoming environment to help you grow your practice and improve your well-being."
+                "text": "Each class is guided by experienced instructors and offers a supportive, welcoming environment to help you grow your practice and improve your well-being."
             }
         ]
     },
@@ -666,39 +666,39 @@
         "full": [
             {
                 "type": "paragraph",
-                "content": "Feeling overwhelmed, stressed, or simply looking to reconnect with yourself? Our Mindfulness Classes offer practical tools to help you slow down, breathe deeply, and live more intentionally - no matter your background or experience level."
+                "text": "Feeling overwhelmed, stressed, or simply looking to reconnect with yourself? Our Mindfulness Classes offer practical tools to help you slow down, breathe deeply, and live more intentionally - no matter your background or experience level."
             },
             {
                 "type": "paragraph",
-                "content": "We offer three unique class options to meet your needs:"
+                "text": "We offer three unique class options to meet your needs:"
             },
             {
                 "type": "paragraph",
-                "content": "Mindfulness-Based Stress Reduction (MBSR)"
+                "text": "Mindfulness-Based Stress Reduction (MBSR)"
             },
             {
                 "type": "bullet",
-                "content": "An evidence-based program designed to help you manage stress, anxiety, and chronic pain through meditation, gentle movement, and self-awareness practices."
+                "text": "An evidence-based program designed to help you manage stress, anxiety, and chronic pain through meditation, gentle movement, and self-awareness practices."
             },
             {
                 "type": "paragraph",
-                "content": "Everyday Mindfulness"
+                "text": "Everyday Mindfulness"
             },
             {
                 "type": "bullet",
-                "content": "Perfect for beginners or those looking to build a consistent practice. Learn simple, effective techniques to bring mindfulness into your daily life - at work, at home, and everywhere in between."
+                "text": "Perfect for beginners or those looking to build a consistent practice. Learn simple, effective techniques to bring mindfulness into your daily life - at work, at home, and everywhere in between."
             },
             {
                 "type": "paragraph",
-                "content": "Flourishing in Medicine"
+                "text": "Flourishing in Medicine"
             },
             {
                 "type": "bullet",
-                "content": "Created specifically for medical provider teams, this class focuses on resilience, emotional well-being, and connection in high-stress healthcare environments."
+                "text": "Created specifically for medical provider teams, this class focuses on resilience, emotional well-being, and connection in high-stress healthcare environments."
             },
             {
                 "type": "paragraph",
-                "content": "Each class is guided by experienced instructors and offers a supportive, welcoming environment to help you grow your practice and improve your well-being."
+                "text": "Each class is guided by experienced instructors and offers a supportive, welcoming environment to help you grow your practice and improve your well-being."
             }
         ]
     },
@@ -709,15 +709,15 @@
         "full": [
             {
                 "type": "paragraph",
-                "content": "You indicated the you would like to talk to someone about your stress level."
+                "text": "You indicated the you would like to talk to someone about your stress level."
             },
             {
                 "type": "paragraph",
-                "content": "The Employee Assistance Program (EAP) has trained professionals available to help you manage your stress. To speak to someone at with the EAP please call (801) 587-9319 or (800) 926-9619."
+                "text": "The Employee Assistance Program (EAP) has trained professionals available to help you manage your stress. To speak to someone at with the EAP please call (801) 587-9319 or (800) 926-9619."
             },
             {
                 "type": "paragraph",
-                "content": "Here is a resource you may find helpful, Assess Your Stress Article and Assessment: https://accelerate.uofuhealth.utah.edu/resilience/assess-your-stress-where-are-you-on-the-stress-continuum"
+                "text": "Here is a resource you may find helpful, Assess Your Stress Article and Assessment: https://accelerate.uofuhealth.utah.edu/resilience/assess-your-stress-where-are-you-on-the-stress-continuum"
             }
         ]
     },
@@ -764,35 +764,35 @@
         "full": [
             {
                 "type": "paragraph",
-                "content": "Leisure isn't lazy - it's essential. In today's hustle culture, we often overlook the value of rest, play, and personal time. Our in-person Leisure Consultation helps you rethink your relationship with free time and discover how leisure can support your health, identity, and overall well-being."
+                "text": "Leisure isn't lazy - it's essential. In today's hustle culture, we often overlook the value of rest, play, and personal time. Our in-person Leisure Consultation helps you rethink your relationship with free time and discover how leisure can support your health, identity, and overall well-being."
             },
             {
                 "type": "paragraph",
-                "content": "In this one-on-one session, you'll:"
+                "text": "In this one-on-one session, you'll:"
             },
             {
                 "type": "bullet",
-                "content": "Explore how you currently spend your time"
+                "text": "Explore how you currently spend your time"
             },
             {
                 "type": "bullet",
-                "content": "Identify gaps, stress points, and opportunities for joy"
+                "text": "Identify gaps, stress points, and opportunities for joy"
             },
             {
                 "type": "bullet",
-                "content": "Reframe your mindset around rest and productivity"
+                "text": "Reframe your mindset around rest and productivity"
             },
             {
                 "type": "bullet",
-                "content": "Build a personalized plan for meaningful, energizing leisure"
+                "text": "Build a personalized plan for meaningful, energizing leisure"
             },
             {
                 "type": "paragraph",
-                "content": "Whether you're navigating a life transition, seeking better work-life balance, or simply want to reconnect with what brings you joy - this session is for you."
+                "text": "Whether you're navigating a life transition, seeking better work-life balance, or simply want to reconnect with what brings you joy - this session is for you."
             },
             {
                 "type": "paragraph",
-                "content": "Make time for what matters. Book your Leisure Consultation today."
+                "text": "Make time for what matters. Book your Leisure Consultation today."
             }
         ]
     },
@@ -803,35 +803,35 @@
         "full": [
             {
                 "type": "paragraph",
-                "content": "Life doesn's slow down when it gets tough-knowing where to turn for help when you need it is priceless. SupportLinc, your Employee Assistance Program (EAP), offers free, confidential support to help you manage life's challenges - big or small."
+                "text": "Life doesn's slow down when it gets tough-knowing where to turn for help when you need it is priceless. SupportLinc, your Employee Assistance Program (EAP), offers free, confidential support to help you manage life's challenges - big or small."
             },
             {
                 "type": "paragraph",
-                "content": "Whether you're dealing with stress, anxiety, relationship issues, grief, or work-life balance, SupportLinc provides:"
+                "text": "Whether you're dealing with stress, anxiety, relationship issues, grief, or work-life balance, SupportLinc provides:"
             },
             {
                 "type": "bullet",
-                "content": "24/7 access to licensed counselors"
+                "text": "24/7 access to licensed counselors"
             },
             {
                 "type": "bullet",
-                "content": "Short-term, solution-focused therapy"
+                "text": "Short-term, solution-focused therapy"
             },
             {
                 "type": "bullet",
-                "content": "Legal, financial, and family support resources"
+                "text": "Legal, financial, and family support resources"
             },
             {
                 "type": "bullet",
-                "content": "Self-guided tools and wellness content"
+                "text": "Self-guided tools and wellness text"
             },
             {
                 "type": "paragraph",
-                "content": "Getting started is easy."
+                "text": "Getting started is easy."
             },
             {
                 "type": "paragraph",
-                "content": "Visit supportlinc.com and use group code: uofu to access your benefits today."
+                "text": "Visit supportlinc.com and use group code: uofu to access your benefits today."
             }
         ]
     },
@@ -842,19 +842,19 @@
         "full": [
             {
                 "type": "paragraph",
-                "content": "We understand that making changes to your health can feel overwhelming, and sometimes the first step is simply giving yourself time."
+                "text": "We understand that making changes to your health can feel overwhelming, and sometimes the first step is simply giving yourself time."
             },
             {
                 "type": "paragraph",
-                "content": "When you're ready, we're here to support you. In the meantime, here are some helpful resources you can explore at your own pace - no pressure, just possibilities."
+                "text": "When you're ready, we're here to support you. In the meantime, here are some helpful resources you can explore at your own pace - no pressure, just possibilities."
             },
             {
                 "type": "paragraph",
-                "content": "Mental Health and Well-being Resources: https://officeforfaculty.utah.edu/home-template-2-2/resources-links/mentalhealth/"
+                "text": "Mental Health and Well-being Resources: https://officeforfaculty.utah.edu/home-template-2-2/resources-links/mentalhealth/"
             },
             {
                 "type": "paragraph",
-                "content": "If you are experiencing a mental health crisis, reach out to Huntsman Mental Health Institute (HMHI) crisis services by dialing 801-587-3000 or 988, or use the SafeUT Frontline app."
+                "text": "If you are experiencing a mental health crisis, reach out to Huntsman Mental Health Institute (HMHI) crisis services by dialing 801-587-3000 or 988, or use the SafeUT Frontline app."
             }
         ]
     },
@@ -865,35 +865,35 @@
         "full": [
             {
                 "type": "paragraph",
-                "content": "Life can be challenging, and it's okay to ask for help. Seeking mental health support is a powerful step toward healing, growth, and greater well-being."
+                "text": "Life can be challenging, and it's okay to ask for help. Seeking mental health support is a powerful step toward healing, growth, and greater well-being."
             },
             {
                 "type": "paragraph",
-                "content": "Whether you're feeling overwhelmed, stuck, anxious, or simply need someone to talk to, connecting with a mental health professional can help you:"
+                "text": "Whether you're feeling overwhelmed, stuck, anxious, or simply need someone to talk to, connecting with a mental health professional can help you:"
             },
             {
                 "type": "bullet",
-                "content": "Gain clarity and emotional balance"
+                "text": "Gain clarity and emotional balance"
             },
             {
                 "type": "bullet",
-                "content": "Build resilience and coping strategies"
+                "text": "Build resilience and coping strategies"
             },
             {
                 "type": "bullet",
-                "content": "Improve relationships and self-understanding"
+                "text": "Improve relationships and self-understanding"
             },
             {
                 "type": "bullet",
-                "content": "Feel more supported and less alone"
+                "text": "Feel more supported and less alone"
             },
             {
                 "type": "paragraph",
-                "content": "HMHI Behavioral Health Network can help you find a mental health provider that fits your individual preferences, Access the Provider Directory tool here: https://apps.med.utah.edu/site/hmhibhn/a/search.aspx"
+                "text": "HMHI Behavioral Health Network can help you find a mental health provider that fits your individual preferences, Access the Provider Directory tool here: https://apps.med.utah.edu/site/hmhibhn/a/search.aspx"
             },
             {
                 "type": "paragraph",
-                "content": "Supportlinc can help connect you to the care you need in a way that fits you. Learn more at: supportlinc.com. Use group code: uofu"
+                "text": "Supportlinc can help connect you to the care you need in a way that fits you. Learn more at: supportlinc.com. Use group code: uofu"
             }
         ]
     },
@@ -904,35 +904,35 @@
         "full": [
             {
                 "type": "paragraph",
-                "content": "You've Chosen Your Path - We're Here to Support It"
+                "text": "You've Chosen Your Path - We're Here to Support It"
             },
             {
                 "type": "paragraph",
-                "content": "Taking the initiative to create your own plan for better health is a meaningful step. We know that change can feel overwhelming at times, and you don't have to do it all at once."
+                "text": "Taking the initiative to create your own plan for better health is a meaningful step. We know that change can feel overwhelming at times, and you don't have to do it all at once."
             },
             {
                 "type": "paragraph",
-                "content": "To support your journey, we've gathered some helpful resources you can explore whenever you're ready - at your own pace, in your own way."
+                "text": "To support your journey, we've gathered some helpful resources you can explore whenever you're ready - at your own pace, in your own way."
             },
             {
                 "type": "paragraph",
-                "content": "No pressure - just support, inspiration, and tools to help you along the way.  Supportlinc.com (group code:uofu) Behavioral Health Network Provider Search Tool: https://apps.med.utah.edu/site/hmhibhn/a/search.aspx"
+                "text": "No pressure - just support, inspiration, and tools to help you along the way.  Supportlinc.com (group code:uofu) Behavioral Health Network Provider Search Tool: https://apps.med.utah.edu/site/hmhibhn/a/search.aspx"
             },
             {
                 "type": "paragraph",
-                "content": "You've Chosen Your Path - We're Here to Support It"
+                "text": "You've Chosen Your Path - We're Here to Support It"
             },
             {
                 "type": "paragraph",
-                "content": "Taking the initiative to create your own plan for better health is a meaningful step. We know that change can feel overwhelming at times, and you don't have to do it all at once."
+                "text": "Taking the initiative to create your own plan for better health is a meaningful step. We know that change can feel overwhelming at times, and you don't have to do it all at once."
             },
             {
                 "type": "paragraph",
-                "content": "To support your journey, we've gathered some helpful resources you can explore whenever you're ready - at your own pace, in your own way."
+                "text": "To support your journey, we've gathered some helpful resources you can explore whenever you're ready - at your own pace, in your own way."
             },
             {
                 "type": "paragraph",
-                "content": "No pressure - just support, inspiration, and tools to help you along the way.  Supportlinc.com (group code:uofu) Behavioral Health Network Provider Search Tool: https://apps.med.utah.edu/site/hmhibhn/a/search.aspx"
+                "text": "No pressure - just support, inspiration, and tools to help you along the way.  Supportlinc.com (group code:uofu) Behavioral Health Network Provider Search Tool: https://apps.med.utah.edu/site/hmhibhn/a/search.aspx"
             }
         ]
     },
@@ -991,11 +991,11 @@
         "full": [
             {
                 "type": "paragraph",
-                "content": "The CBT-I group is intended for adults with insomnia, especially for those with difficulties that have lasted several months or more.  These difficulties can include problems falling asleep, staying asleep, or waking up too early, that negatively impact your quality of life."
+                "text": "The CBT-I group is intended for adults with insomnia, especially for those with difficulties that have lasted several months or more.  These difficulties can include problems falling asleep, staying asleep, or waking up too early, that negatively impact your quality of life."
             },
             {
                 "type": "paragraph",
-                "content": "This treatment can work well for adults with other physical health or mental health conditions, and for people already being treated for other sleep conditions such as Obstructive Sleep Apnea (OSA) or Restless Leg Syndrome (RLS). If you're wondering if you have one of these sleep conditions, such as OSA or RLS, but haven't yet been diagnosed or treated for it, please talk to your primary care provider before signing up for this group."
+                "text": "This treatment can work well for adults with other physical health or mental health conditions, and for people already being treated for other sleep conditions such as Obstructive Sleep Apnea (OSA) or Restless Leg Syndrome (RLS). If you're wondering if you have one of these sleep conditions, such as OSA or RLS, but haven't yet been diagnosed or treated for it, please talk to your primary care provider before signing up for this group."
             }
         ]
     },
@@ -1006,34 +1006,34 @@
         "full": [
             {
                 "type": "paragraph",
-                "content": "You've Chosen Your Path - We're Here to Support It"
+                "text": "You've Chosen Your Path - We're Here to Support It"
             },
             {
                 "type": "paragraph",
-                "content": "Taking the initiative to create your own plan for better health is a meaningful step. We know that change can feel overwhelming at times, and you don't have to do it all at once."
+                "text": "Taking the initiative to create your own plan for better health is a meaningful step. We know that change can feel overwhelming at times, and you don't have to do it all at once."
             },
             {
                 "type": "paragraph",
-                "content": "To support your journey, we've gathered some helpful resources you can explore whenever you're ready - at your own pace, in your own way."
+                "text": "To support your journey, we've gathered some helpful resources you can explore whenever you're ready - at your own pace, in your own way."
             },
             {
                 "type": "paragraph",
-                "content": "No pressure - just support, inspiration, and tools to help you along the way."
+                "text": "No pressure - just support, inspiration, and tools to help you along the way."
             }
         ]
     },
     "tobacco_no_answ": {
         "name": "Tobacco no answer",
-        "link": "https://employeewellness.utah.edu/wp-content/uploads/sites/44/2020/07/Regence-Empower-Program.pdf",
+        "link": "https://employeewellness.utah.edu/wp-text/uploads/sites/44/2020/07/Regence-Empower-Program.pdf",
         "pdf_box": "",
         "full": [
             {
                 "type": "paragraph",
-                "content": "https://employeewellness.utah.edu/wp-content/uploads/sites/44/2020/07/Regence-Empower-Program.pdf"
+                "text": "https://employeewellness.utah.edu/wp-text/uploads/sites/44/2020/07/Regence-Empower-Program.pdf"
             },
             {
                 "type": "paragraph",
-                "content": "Need resource verbiage"
+                "text": "Need resource verbiage"
             }
         ]
     },
@@ -1044,19 +1044,19 @@
         "full": [
             {
                 "type": "paragraph",
-                "content": "We understand that making changes to your health can feel overwhelming, and sometimes the first step is simply giving yourself time."
+                "text": "We understand that making changes to your health can feel overwhelming, and sometimes the first step is simply giving yourself time."
             },
             {
                 "type": "paragraph",
-                "content": "When you're ready, we're here to support you. In the meantime, here are some helpful resources you can explore at your own pace - no pressure, just possibilities."
+                "text": "When you're ready, we're here to support you. In the meantime, here are some helpful resources you can explore at your own pace - no pressure, just possibilities."
             },
             {
                 "type": "bullet",
-                "text": "https://employeewellness.utah.edu/wp-content/uploads/sites/44/2020/07/Regence-Empower-Program.pdf, https://www.addictiontoolkit.tools/ways-to-quit-smoking-for-good"
+                "text": "https://employeewellness.utah.edu/wp-text/uploads/sites/44/2020/07/Regence-Empower-Program.pdf, https://www.addictiontoolkit.tools/ways-to-quit-smoking-for-good"
             },
             {
                 "type": "bullet",
-                "text": "https://employeewellness.utah.edu/wp-content/uploads/sites/44/2020/07/Regence-Empower-Program.pdf"
+                "text": "https://employeewellness.utah.edu/wp-text/uploads/sites/44/2020/07/Regence-Empower-Program.pdf"
             }
         ]
     },
@@ -1074,32 +1074,32 @@
     },
     "tobacco_own_plan": {
         "name": "I want to make my own plan",
-        "link": "https://employeewellness.utah.edu/wp-content/uploads/sites/44/2020/07/Regence-Empower-Program.pdf, https://www.addictiontoolkit.tools/ways-to-quit-smoking-for-good",
+        "link": "https://employeewellness.utah.edu/wp-text/uploads/sites/44/2020/07/Regence-Empower-Program.pdf, https://www.addictiontoolkit.tools/ways-to-quit-smoking-for-good",
         "pdf_box": "Create your own plan. Here are some useful resources to get started.",
         "full": [
             {
                 "type": "paragraph",
-                "content": "Quitting smoking is one of the most powerful steps you can take for your health - and it's never too late to start. From boosting your energy and lung function to reducing your risk of serious illness, the benefits begin almost immediately."
+                "text": "Quitting smoking is one of the most powerful steps you can take for your health - and it's never too late to start. From boosting your energy and lung function to reducing your risk of serious illness, the benefits begin almost immediately."
             },
             {
                 "type": "paragraph",
-                "content": "You don't have to do it alone. With the right tools, support, and mindset, you can break free from tobacco and reclaim your well-being."
+                "text": "You don't have to do it alone. With the right tools, support, and mindset, you can break free from tobacco and reclaim your well-being."
             },
             {
                 "type": "paragraph",
-                "content": "You've Chosen Your Path - We're Here to Support It"
+                "text": "You've Chosen Your Path - We're Here to Support It"
             },
             {
                 "type": "paragraph",
-                "content": "Taking the initiative to create your own plan for better health is a meaningful step. We know that change can feel overwhelming at times, and you don't have to do it all at once."
+                "text": "Taking the initiative to create your own plan for better health is a meaningful step. We know that change can feel overwhelming at times, and you don't have to do it all at once."
             },
             {
                 "type": "paragraph",
-                "content": "To support your journey, we've gathered some helpful resources you can explore whenever you're ready - at your own pace, in your own way."
+                "text": "To support your journey, we've gathered some helpful resources you can explore whenever you're ready - at your own pace, in your own way."
             },
             {
                 "type": "paragraph",
-                "content": "No pressure - just support, inspiration, and tools to help you along the way.  Supportlinc.com (group code:uofu) www.addictionToolkit.tools"
+                "text": "No pressure - just support, inspiration, and tools to help you along the way.  Supportlinc.com (group code:uofu) www.addictionToolkit.tools"
             }
         ]
     },
@@ -1110,7 +1110,7 @@
         "full": [
             {
                 "type": "paragraph",
-                "content": "Looks like you skipped this question. Here are some helpful articles that you might find helpful. http://www.wellbeing.place/"
+                "text": "Looks like you skipped this question. Here are some helpful articles that you might find helpful. http://www.wellbeing.place/"
             }
         ]
     },
@@ -1121,11 +1121,11 @@
         "full": [
             {
                 "type": "paragraph",
-                "content": "We understand that making changes to your health can feel overwhelming, and sometimes the first step is simply giving yourself time."
+                "text": "We understand that making changes to your health can feel overwhelming, and sometimes the first step is simply giving yourself time."
             },
             {
                 "type": "paragraph",
-                "content": "When you're ready, we're here to support you. In the meantime, here are some helpful resources you can explore at your own pace - no pressure, just possibilities."
+                "text": "When you're ready, we're here to support you. In the meantime, here are some helpful resources you can explore at your own pace - no pressure, just possibilities."
             }
         ]
     },
@@ -1136,11 +1136,11 @@
         "full": [
             {
                 "type": "paragraph",
-                "content": "HMHI Addiction Recovery Services are designed for individuals at any stage of their journey. Whether you are  looking to cut back, take a break, or make a more lasting shift, HMHI Addiction Recovery Services offers a number of personalized, nonjudgmental support programs grounded in evidence-based care. Explore what's possible today."
+                "text": "HMHI Addiction Recovery Services are designed for individuals at any stage of their journey. Whether you are  looking to cut back, take a break, or make a more lasting shift, HMHI Addiction Recovery Services offers a number of personalized, nonjudgmental support programs grounded in evidence-based care. Explore what's possible today."
             },
             {
                 "type": "paragraph",
-                "content": "https://healthcare.utah.edu/hmhi/treatments/addiction-recovery/recovery-clinic#:~:text=The%20HMHI%20Recovery%20Clinic%20is,which%20can%20negatively%20impact%20recovery"
+                "text": "https://healthcare.utah.edu/hmhi/treatments/addiction-recovery/recovery-clinic#:~:text=The%20HMHI%20Recovery%20Clinic%20is,which%20can%20negatively%20impact%20recovery"
             }
         ]
     },
@@ -1151,19 +1151,19 @@
         "full": [
             {
                 "type": "paragraph",
-                "content": "You've Chosen Your Path - We're Here to Support It"
+                "text": "You've Chosen Your Path - We're Here to Support It"
             },
             {
                 "type": "paragraph",
-                "content": "Taking the initiative to create your own plan for better health is a meaningful step. We know that change can feel overwhelming at times, and you don't have to do it all at once."
+                "text": "Taking the initiative to create your own plan for better health is a meaningful step. We know that change can feel overwhelming at times, and you don't have to do it all at once."
             },
             {
                 "type": "paragraph",
-                "content": "To support your journey, we've gathered some helpful resources you can explore whenever you're ready - at your own pace, in your own way."
+                "text": "To support your journey, we've gathered some helpful resources you can explore whenever you're ready - at your own pace, in your own way."
             },
             {
                 "type": "paragraph",
-                "content": "No pressure - just support, inspiration, and tools to help you along the way.  Supportlinc.com (group code:uofu) www.addictionToolkit.tools"
+                "text": "No pressure - just support, inspiration, and tools to help you along the way.  Supportlinc.com (group code:uofu) www.addictionToolkit.tools"
             }
         ]
     },
@@ -1174,7 +1174,7 @@
         "full": [
             {
                 "type": "paragraph",
-                "content": "need resource verbiage"
+                "text": "need resource verbiage"
             }
         ]
     },
@@ -1185,11 +1185,11 @@
         "full": [
             {
                 "type": "paragraph",
-                "content": "We understand that making changes to your health can feel overwhelming, and sometimes the first step is simply giving yourself time."
+                "text": "We understand that making changes to your health can feel overwhelming, and sometimes the first step is simply giving yourself time."
             },
             {
                 "type": "paragraph",
-                "content": "When you're ready, we're here to support you. In the meantime, here are some helpful resources you can explore at your own pace - no pressure, just possibilities. http://www.wellbeing.place/"
+                "text": "When you're ready, we're here to support you. In the meantime, here are some helpful resources you can explore at your own pace - no pressure, just possibilities. http://www.wellbeing.place/"
             }
         ]
     },
