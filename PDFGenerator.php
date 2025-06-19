@@ -368,6 +368,10 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         // Extract priority values for this record
         foreach ($lookup as $key => $element) {
 
+            if($key == "no_answr") {
+                continue;
+            }
+
             $label = $element['label'];
             $priority_field = $element['priority_field'];
             $top_three_field = $element['top_three_field'];
