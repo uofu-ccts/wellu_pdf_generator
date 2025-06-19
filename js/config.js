@@ -167,7 +167,6 @@ PDF.addEventHandlers = function (
   PDF.logicRecord = record[record.length - 1] || {};
   PDF.processedData = processedData || {};
   PDF.tcpLink = tcpLink || {};
-  console.log("Record: ", PDF.record);
   // Handle the ADD button
   $(".generate-pdf").on("click", function () {
     var record_id = $(this).attr("data-record-id");

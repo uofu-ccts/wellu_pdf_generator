@@ -260,22 +260,13 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
 
         $record = $this->getCurrentRecordData($record_id);
 
-        $this->console_log("Record data for ID $record_id: ");
-        $this->console_log($record);
-
         $name = $record[0]['first_name'] . " " . $record[0]['last_name'];
 
         $processed_data = $this->processPriorities($record);
-        $this->console_log("Processed priorities for record ID $record_id: ");
-        $this->console_log($processed_data);
 
         $goalsContent = $this->getPdfContent($record);
 
-        $this->console_log("Goals content for record ID $record_id: ");
-        $this->console_log($goalsContent);
-
         $tcpLink = $this->getTcpLink($record_id);
-        $this->console_log("TCP Link for record ID $record_id: " . $tcpLink);
 
         // loading libraries
         $html  = '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>';
@@ -511,8 +502,6 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             $goalsContent[$key] = $resourcesData[$value["choices"][$user_choice]];
 
             $goalsContent[$key]['label'] = $value['label'];
-
-            $this->console_log($goalsContent[$key]);
         }
 
         return $goalsContent;
