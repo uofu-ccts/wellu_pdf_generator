@@ -412,13 +412,13 @@ PDF.generatePDF = async function (record_id, name) {
   coordinates[1] -= 5; // Adjust for spacing
   coordinates = createHeader(doc, "below.", coordinates, "h4", 10);
 
-  coordinates = createPrioritiesSectionBox(
-    doc,
-    "Your Priorities",
-    coordinates,
-    pageWidth - 10,
-    100
-  );
+//   coordinates = createPrioritiesSectionBox(
+//     doc,
+//     "Your Priorities",
+//     coordinates,
+//     pageWidth - 10,
+//     100
+//   );
 
   console.log(PDF.goalsContent);
 
@@ -792,11 +792,11 @@ const createPrioritiesSectionBox = function (
         text: "Tangible information about guidelines and diabetes prevention.",
       },
       {
-        type: "bullet",
-        text: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        type: "paragraph",
+        text: "Looking to improve your eating habits without the stress of strict diets? In this 60-minute one-on-one session, our expert will help you create a personalized nutrition plan that fits your lifestyle, preferences, and goals."
       },
       {
-        type: "bullet",
+        type: "paragraph",
         text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       },
     ],
@@ -813,7 +813,7 @@ const createPrioritiesSectionBox = function (
         text: "Tangible information about guidelines and diabetes prevention.",
       },
       {
-        type: "bullet",
+        type: "paragraph",
         text: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       },
       {
