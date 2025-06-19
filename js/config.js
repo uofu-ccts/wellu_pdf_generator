@@ -521,7 +521,11 @@ const createBullet = function (doc, text, coordinates, coordinateHeight = 6) {
   doc.setFontSize(styles.p.fontSize);
   doc.setFont(styles.font, styles.p.fontStyle);
   doc.text(text, coordinates[0] + 5, coordinates[1]);
-  coordinates[1] += coordinateHeight * text.length;
+  if (text.length > 1) {
+    coordinates[1] += text.length * 6;
+  } else {
+    coordinates[1] += text.length * coordinateHeight;
+  }
   return coordinates;
 };
 
@@ -867,7 +871,11 @@ const createSubsection = function (
       // wrap text within width
       const lines = doc.splitTextToSize(item.text, w);
       doc.text(lines, x, cursorY);
-      cursorY += lines.length * lineHeight;
+      if (lines.length > 1) {
+        cursorY += lines.length * 6;
+      } else {
+        cursorY += lines.length * lineHeight;
+      }
     } else if (item.type === "bullet") {
       let ignoredX;
       [ignoredX, cursorY] = createBullet(
