@@ -271,6 +271,9 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
 
         $goalsContent = $this->getPdfContent($record);
 
+        $this->console_log("Goals content for record ID $record_id: ");
+        $this->console_log($goalsContent);
+
         $tcpLink = $this->getTcpLink($record_id);
         $this->console_log("TCP Link for record ID $record_id: " . $tcpLink);
 
@@ -367,6 +370,10 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
 
         // Extract priority values for this record
         foreach ($lookup as $key => $element) {
+
+            if($key == "no_answr") {
+                continue;
+            }
 
             $label = $element['label'];
             $priority_field = $element['priority_field'];
@@ -499,18 +506,13 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         foreach ($lookupData as $key => $value) {
             $user_choice = $record[1][$key] ? $record[1][$key] : "no_answ";
 
-            $this->console_log("Processing key: $key");
-            $this->console_log("The user chose: " . $user_choice);
+            // // TODO: need to add green and noaction options, currently defaulting to no_answ
 
-            if (empty($user_choice) || $user_choice == 'no_answr') {
-                // default to no_answr if no user choice is made, for now
-                $user_choice = 'no_answ';
-            }
+            $goalsContent[$key] = $resourcesData[$value["choices"][$user_choice]];
 
-            $this->console_log("The user will see: " . $value[$user_choice]);
-            $this->console_log("The content is: ");
-            $this->console_log(json_encode($resourcesData[$value[$user_choice]]));
-            $goalsContent[$key] = $resourcesData[$value[$user_choice]];
+            $goalsContent[$key]['label'] = $value['label'];
+
+            $this->console_log($goalsContent[$key]);
         }
 
         return $goalsContent;
