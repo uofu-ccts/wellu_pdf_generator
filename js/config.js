@@ -354,7 +354,7 @@ PDF.generatePDF = async function (record_id, name) {
     "Physical Activity",
     "Stress",
     "Sleepiness",
-    "Tabacco / Nicotine Use",
+    "Tobacco / Nicotine Use",
     "Drug Use",
     "General Health",
   ];
@@ -420,11 +420,10 @@ PDF.generatePDF = async function (record_id, name) {
     100
   );
 
-  for (var key in PDF.goalsContent) {
-    console.log("Processing goal: ", key);
-    console.log("Goal content: ", PDF.goalsContent[key]);
+  console.log(PDF.goalsContent);
 
-    var heading = PDF.goalsContent[key].name || "Goal";
+  for (var key in PDF.goalsContent) {
+    var heading = key || "Goal";
     var content = PDF.goalsContent[key].full || [];
 
     console.log("Heading: ", heading);

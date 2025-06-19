@@ -502,9 +502,9 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         foreach ($lookupData as $key => $value) {
             $user_choice = $record[1][$key] ? $record[1][$key] : "no_answ";
 
-            // TODO: need to add green and noaction options, currently defaulting to no_answ
+            // // TODO: need to add green and noaction options, currently defaulting to no_answ
 
-            $goalsContent[$key] = $resourcesData[$value[$user_choice]];
+            $goalsContent[$value["label"]] = $resourcesData[$value["choices"][$user_choice]];
         }
 
         return $goalsContent;

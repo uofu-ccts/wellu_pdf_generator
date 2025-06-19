@@ -1,126 +1,162 @@
 {
     "bmi_action": {
-        "green": "red_butte",
-        "noaction": "weight_management",
-        "no_answ": "peak_nutrition",
-        "1": "peak_nutrition",
-        "2": "personal_training",
-        "3": "pcp",
-        "4": "health_coaching",
-        "5": "noom",
-        "6": "lifestyle_medicine"
+        "label": "Metabolic Health",
+        "choices": {
+            "green": "red_butte",
+            "noaction": "weight_management",
+            "no_answ": "peak_nutrition",
+            "1": "peak_nutrition",
+            "2": "personal_training",
+            "3": "pcp",
+            "4": "health_coaching",
+            "5": "noom",
+            "6": "lifestyle_medicine"
+        }
     },
     "meta_action": {
-        "green": "red_butte",
-        "noaction": "metabolic_health",
-        "no_answ": "peak_nutrition",
-        "1": "ndpp",
-        "1b": "ilp",
-        "2": "peak_nutrition",
-        "3": "exercise_prescription",
-        "4": "pcp",
-        "5": "health_coaching",
-        "6": "lifestyle_medicine"
+        "label": "Metabolic Health",
+        "choices": {
+            "green": "red_butte",
+            "noaction": "metabolic_health",
+            "no_answ": "peak_nutrition",
+            "1": "ndpp",
+            "1b": "ilp",
+            "2": "peak_nutrition",
+            "3": "exercise_prescription",
+            "4": "pcp",
+            "5": "health_coaching",
+            "6": "lifestyle_medicine"
+        }
     },
     "nutr_action": {
-        "green": "nutrition_workshop",
-        "noaction": "nutrition_resource",
-        "no_answ": "health_coaching",
-        "1": "peak_nutrition",
-        "2": "health_coaching",
-        "3": "nutrition_workshop",
-        "4": "intuitive_eating",
-        "5": "pcp",
-        "6": "lifestyle_medicine"
+        "label": "Food & Nutrition",
+        "choices": {
+            "green": "nutrition_workshop",
+            "noaction": "nutrition_resource",
+            "no_answ": "health_coaching",
+            "1": "peak_nutrition",
+            "2": "health_coaching",
+            "3": "nutrition_workshop",
+            "4": "intuitive_eating",
+            "5": "pcp",
+            "6": "lifestyle_medicine"
+        }
     },
     "activity_action": {
-        "green": "fitness_assessment",
-        "noaction": "peak_activity",
-        "no_answ": "health_coaching",
-        "1": "fitness_class",
-        "2": "personal_training",
-        "3": "exercise_prescription",
-        "4": "fitness_assessment",
-        "5": "red_butte",
-        "6": "health_coaching"
+        "label": "Physical Activity",
+        "choices": {
+            "green": "fitness_assessment",
+            "noaction": "peak_activity",
+            "no_answ": "health_coaching",
+            "1": "fitness_class",
+            "2": "personal_training",
+            "3": "exercise_prescription",
+            "4": "fitness_assessment",
+            "5": "red_butte",
+            "6": "health_coaching"
+        }
     },
     "stress_action": {
-        "green": "mindfulness_curalinc",
-        "noaction": "stress_template",
-        "no_answ": "mindfulness_no_answ",
-        "1": "mindfulness_class",
-        "2": "stress_eap",
-        "3": "assess_stress",
-        "4": "stress_exercise",
-        "5": "lifestyle_medicine",
-        "6": "leisure"
+        "label": "Stress",
+        "choices": {
+            "green": "mindfulness_curalinc",
+            "noaction": "stress_template",
+            "no_answ": "mindfulness_no_answ",
+            "1": "mindfulness_class",
+            "2": "stress_eap",
+            "3": "assess_stress",
+            "4": "stress_exercise",
+            "5": "lifestyle_medicine",
+            "6": "leisure"
+        }
     },
     "anx_action": {
-        "green": "eap",
-        "noaction": "hmhi_crisis_line_safeut",
-        "no_answ": "hmhi_crisis_line_safeut",
-        "1": "mental_health_provider",
-        "2": "eap",
-        "3": "pcp",
-        "4": "lifestyle_medicine",
-        "5": "anx_own_plan",
-        "6": "mindfulness_class"
+        "label": "Anxiety/Worry",
+        "choices": {
+            "green": "eap",
+            "noaction": "hmhi_crisis_line_safeut",
+            "no_answ": "hmhi_crisis_line_safeut",
+            "1": "mental_health_provider",
+            "2": "eap",
+            "3": "pcp",
+            "4": "lifestyle_medicine",
+            "5": "anx_own_plan",
+            "6": "mindfulness_class"
+        }
     },
     "phq_action": {
-        "green": "eap",
-        "noaction": "hmhi_crisis_line_safeut",
-        "no_answ": "hmhi_crisis_line_safeut",
-        "1": "mental_health_provider",
-        "2": "eap",
-        "3": "pcp",
-        "4": "lifestyle_medicine",
-        "5": "anx_own_plan",
-        "6": "mindfulness_class"
+        "label": "Depression",
+        "choices": {
+            "green": "eap",
+            "noaction": "hmhi_crisis_line_safeut",
+            "no_answ": "hmhi_crisis_line_safeut",
+            "1": "mental_health_provider",
+            "2": "eap",
+            "3": "pcp",
+            "4": "lifestyle_medicine",
+            "5": "anx_own_plan",
+            "6": "mindfulness_class"
+        }
     },
     "sleep_action": {
-        "green": "sleep_great",
-        "noaction": "sleep_no_action",
-        "no_answ": "sleep_essential",
-        "1": "insomnia_class",
-        "2": "sleep_own_plan",
-        "3": "health_coaching",
-        "4": "pcp",
-        "5": "lifestyle_medicine"
+        "label": "Sleepiness",
+        "choices": {
+            "green": "sleep_great",
+            "noaction": "sleep_no_action",
+            "no_answ": "sleep_essential",
+            "1": "insomnia_class",
+            "2": "sleep_own_plan",
+            "3": "health_coaching",
+            "4": "pcp",
+            "5": "lifestyle_medicine"
+        }
     },
     "tobacco_action": {
-        "noaction": "tobacco_support",
-        "no_answ": "tobacco_no_answ",
-        "1": "tobacco_quit_line",
-        "2": "pcp",
-        "3": "tobacco_own_plan",
-        "4": "lifestyle_medicine"
+        "label": "Tobacco/Nicotine Use",
+        "choices": {
+            "noaction": "tobacco_support",
+            "no_answ": "tobacco_no_answ",
+            "1": "tobacco_quit_line",
+            "2": "pcp",
+            "3": "tobacco_own_plan",
+            "4": "lifestyle_medicine"
+        }
     },
     "alcohol_action": {
-        "noaction": "addiction_recovery_resource_link",
-        "no_answ": "alcohol_no_answ",
-        "1": "eap",
-        "2": "addiction_recovery_services",
-        "3": "pcp",
-        "4": "addiction_own_plan",
-        "5": "lifestyle_medicine"
+        "label": "Alcohol",
+        "choices": {
+            "noaction": "addiction_recovery_resource_link",
+            "no_answ": "alcohol_no_answ",
+            "1": "eap",
+            "2": "addiction_recovery_services",
+            "3": "pcp",
+            "4": "addiction_own_plan",
+            "5": "lifestyle_medicine"
+        }
     },
     "drug_action": {
-        "noaction": "addiction_recovery_resource_link",
-        "no_answ": "alcohol_no_answ",
-        "1": "eap",
-        "2": "addiction_recovery_resource_link",
-        "3": "pcp",
-        "4": "addiction_own_plan",
-        "5": "lifestyle_medicine",
-        "6": "addiction_recovery_resource_link"
+        "label": "Drug Use",
+        "choices": {
+            "noaction": "addiction_recovery_resource_link",
+            "no_answ": "alcohol_no_answ",
+            "1": "eap",
+            "2": "addiction_recovery_resource_link",
+            "3": "pcp",
+            "4": "addiction_own_plan",
+            "5": "lifestyle_medicine",
+            "6": "addiction_recovery_resource_link"
+        }
     },
     "gen_action": {
-        "green": "lifestyle_medicine",
-        "noaction": "general_health_links",
-        "no_answ": "lifestyle_medicine",
-        "1": "health_coaching",
-        "2": "lifestyle_medicine",
-        "3": "ilp",
-        "4": "pcp"
+        "label": "General Health",
+        "choices": {
+            "green": "lifestyle_medicine",
+            "noaction": "general_health_links",
+            "no_answ": "lifestyle_medicine",
+            "1": "health_coaching",
+            "2": "lifestyle_medicine",
+            "3": "ilp",
+            "4": "pcp"
+        }
     }
 }
