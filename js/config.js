@@ -410,34 +410,29 @@ PDF.generatePDF = async function (record_id, name) {
   );
   coordinates[1] -= 5; // Adjust for spacing
   coordinates = createHeader(doc, "below.", coordinates, "h4", 10);
-
-//   coordinates = createPrioritiesSectionBox(
-//     doc,
-//     "Your Priorities",
-//     coordinates,
-//     pageWidth - 10,
-//     100
-//   );
+  coordinates[1] -= 5;
 
   for (var key in PDF.goalsContent) {
     var heading = PDF.goalsContent[key].label || "Goal";
     var content = PDF.goalsContent[key].full || [];
 
-    if (coordinates[1] > 0.7 * pageHeight) {
-        doc.addPage();
-        coordinates = [startingX, startingY];
+    const estimatedSectionLength = estimateSectionLength(doc, content);
 
-        // Add header image
-        coordinates = createHeaderImage(doc, coordinates, pageWidth);
+    if (coordinates[1] + estimatedSectionLength >= pageHeight) {
+      doc.addPage();
+      coordinates = [startingX, startingY];
+
+      // Add header image
+      coordinates = createHeaderImage(doc, coordinates, pageWidth);
     }
 
     coordinates[1] = createSubsection(
-        doc,
-        heading,
-        content,
-        [coordinates[0], coordinates[1]],
-        pageWidth - 10,
-        100
+      doc,
+      heading,
+      content,
+      [coordinates[0], coordinates[1]],
+      pageWidth - 10,
+      100
     );
   }
 
@@ -751,81 +746,6 @@ const createGridSectionBox = function (
   return coordinates;
 };
 
-const createPrioritiesSectionBox = function (
-  doc,
-  header,
-  coordinates,
-  width,
-  height
-) {
-  coordinates[1] = createSubsection(
-    doc,
-    "Hemoglobin A1c",
-    [
-      {
-        type: "paragraph",
-        text: "Tangible information about guidelines and diabetes prevention.",
-      },
-      {
-        type: "bullet",
-        text: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      },
-      {
-        type: "bullet",
-        text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      },
-    ],
-    [coordinates[0], coordinates[1] + 10],
-    width,
-    height
-  );
-
-  coordinates[1] = createSubsection(
-    doc,
-    "Depression",
-    [
-      {
-        type: "paragraph",
-        text: "Tangible information about guidelines and diabetes prevention.",
-      },
-      {
-        type: "paragraph",
-        text: "Looking to improve your eating habits without the stress of strict diets? In this 60-minute one-on-one session, our expert will help you create a personalized nutrition plan that fits your lifestyle, preferences, and goals."
-      },
-      {
-        type: "paragraph",
-        text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      },
-    ],
-    [coordinates[0], coordinates[1]],
-    width,
-    height
-  );
-  coordinates[1] = createSubsection(
-    doc,
-    "Allergies",
-    [
-      {
-        type: "paragraph",
-        text: "Tangible information about guidelines and diabetes prevention.",
-      },
-      {
-        type: "paragraph",
-        text: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      },
-      {
-        type: "bullet",
-        text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      },
-    ],
-    [coordinates[0], coordinates[1]],
-    width,
-    height
-  );
-
-  return coordinates;
-};
-
 const createSubsection = function (
   doc,
   header,
@@ -840,7 +760,7 @@ const createSubsection = function (
   const headerTextColor = styles.prioritiesSection.headerTextColor; // white
   const bodyTextColor = styles.prioritiesSection.bodyTextColor; // dark gray
   const fontSizeBody = styles.prioritiesSection.fontSizeBody;
-  const lineHeight = fontSizeBody * 1.2;
+  const lineHeight = fontSizeBody;
   let x = coordinates[0];
   let y = coordinates[1];
   const w = width;
@@ -867,16 +787,11 @@ const createSubsection = function (
       if (lines.length > 1) {
         cursorY += lines.length * 6;
       } else {
-        cursorY += lines.length * lineHeight;
+        cursorY += lines.length * 8;
       }
     } else if (item.type === "bullet") {
       let ignoredX;
-      [ignoredX, cursorY] = createBullet(
-        doc,
-        item.text,
-        [x, cursorY],
-        lineHeight
-      );
+      [ignoredX, cursorY] = createBullet(doc, item.text, [x, cursorY], 8);
     }
   });
 
@@ -1509,4 +1424,26 @@ function calculateA1CValue() {
     }
   }
   return a1cValue;
+}
+
+function estimateSectionLength(doc, content) {
+  let sectionLength = 26;
+  let width = doc.internal.pageSize.getWidth() - 10;
+  let coordinateHeight = 10;
+  for (let key in content) {
+    let type = content[key].type;
+    let text = content[key].text;
+    if (type === "bullet") {
+      text = "\u2022 " + text;
+      width = 180;
+      coordinateHeight = 6;
+    }
+    text = doc.splitTextToSize("\u2022 " + text, width);
+    if (text.length > 1) {
+      sectionLength += text.length * 6;
+    } else {
+      sectionLength += text.length * 8;
+    }
+  }
+  return sectionLength;
 }

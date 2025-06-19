@@ -451,7 +451,6 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
                 return $a['default_priority'] - $b['default_priority'];
             });
             $default_priorities = array_values($default_priorities);
-            $default_priorities = array_slice($default_priorities, 0, 4 - count($priorities));
             foreach ($default_priorities as $default) {
                 if (!in_array($default['label'], $selected_labels)) {
                     $priorities[] = [
@@ -463,6 +462,9 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
                         'image' => $default['image'],
                         'lookup_content' => $default['lookup_content'],
                     ];
+                    if (count($priorities) >= 4) {
+                        break;
+                    }
                 }
             }
         }
