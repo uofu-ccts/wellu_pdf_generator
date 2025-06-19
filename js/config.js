@@ -417,7 +417,7 @@ PDF.generatePDF = async function (record_id, name) {
     var heading = PDF.goalsContent[key].label || "Goal";
     var content = PDF.goalsContent[key].full || [];
 
-    const estimatedSectionLength = estimateSectionLegnth(doc, content);
+    const estimatedSectionLength = estimateSectionLength(doc, content);
 
     if (coordinates[1] + estimatedSectionLength >= pageHeight) {
       doc.addPage();
@@ -1427,7 +1427,7 @@ function calculateA1CValue() {
   return a1cValue;
 }
 
-function estimateSectionLegnth(doc, content) {
+function estimateSectionLength(doc, content) {
   let sectionLength = 26;
   let width = doc.internal.pageSize.getWidth() - 10;
   let coordinateHeight = 10;
