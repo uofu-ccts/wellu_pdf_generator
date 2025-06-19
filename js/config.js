@@ -420,18 +420,24 @@ PDF.generatePDF = async function (record_id, name) {
     100
   );
 
-  doc.addPage();
-  coordinates = [startingX, startingY];
-
-  // Add header image
-  coordinates = createHeaderImage(doc, coordinates, pageWidth);
-
   for (var key in PDF.goalsContent) {
     console.log("Processing goal: ", key);
     console.log("Goal content: ", PDF.goalsContent[key]);
 
     var heading = PDF.goalsContent[key].name || "Goal";
     var content = PDF.goalsContent[key].full || [];
+
+    console.log("Heading: ", heading);
+    console.log("Content: ", content);
+
+    if (coordinates[1] > 0.7 * pageHeight) {
+        doc.addPage();
+        coordinates = [startingX, startingY];
+
+        // Add header image
+        coordinates = createHeaderImage(doc, coordinates, pageWidth);
+    }
+    
 
     coordinates[1] = createSubsection(
         doc,
