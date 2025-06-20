@@ -260,6 +260,9 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
 
         $record = $this->getCurrentRecordData($record_id);
 
+        $this->console_log("Record data retrieved for record ID: " . $record_id);
+        $this->console_log($record);
+
         $name = $record[0]['first_name'] . " " . $record[0]['last_name'];
 
         $processed_data = $this->processPriorities($record);
@@ -348,7 +351,6 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
      * 5. return array of processed priorities
      */
 
-    // TODO: Will need to add default display for when no priorities are set
     // TODO: dynamic header for employee identified goals vs OCIH goals ("This is a goal you selected" vs "We've identified this as a goal for you")
 
     // when rendering the PDF, either top 4 of the priorities, or the length of the priorities array, whichever is smaller
@@ -497,13 +499,37 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
 
         $goalsContent =  array();
         foreach ($lookupData as $key => $value) {
-            $user_choice = $record[1][$key] ? $record[1][$key] : "no_answ";
+
+            $green = $key . '_is_green';
+            $action = $key . '_action';
+            $yn = $key . '_yn';
+
+            $this->console_log("Processing goal: " . $key);
+
+            $user_choice = $record[1][$action] ? $record[1][$action] : "no_answ";
+
+            $user_yn = $record[1][$yn];
+            $user_green = $record[1][$green];
+
+            if ($user_choice == "no_answ") {
+                if ($user_yn == "0") {
+                    $user_choice = "noaction";
+                } 
+                else if ($user_green == "1") {
+                    $user_choice = "green";
+                }
+                else if ($user_green == null) {
+                    // its probably tobacco, alcohol, or drugs
+                    // skip because the user does not need resources for these
+                    continue;
+                }
+            }
 
             // // TODO: need to add green and noaction options, currently defaulting to no_answ
 
-            $goalsContent[$key] = $resourcesData[$value["choices"][$user_choice]];
+            $goalsContent[$action] = $resourcesData[$value["choices"][$user_choice]];
 
-            $goalsContent[$key]['label'] = $value['label'];
+            $goalsContent[$action]['label'] = $value['label'];
         }
 
         return $goalsContent;
