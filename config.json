@@ -1,9 +1,9 @@
 {
-  "name": "PDF Generator - DEV",
+  "name": "WellU HRA PDF Generator - DEV",
 
   "namespace": "Utah\\PDFGenerator",
 
-  "description": "This is an external module that generates a PDF file within REDCap.",
+  "description": "This is an external module for the WellU-HRA project that generates a PDF file within REDCap containing recommended health resources for staff of the U.",
 
   "documentation": "README.md",
 
@@ -12,20 +12,18 @@
       "name": "Sumon Chattopadhyay",
       "email": "sumon.chattopadhyay@utah.edu",
       "institution": "University of Utah BMIC"
+    },
+    {
+      "name": "Akhil Potla",
+      "email": "akhil.potla@utah.edu",
+      "institution": "University of Utah BMIC"
     }
   ],
 
   "framework-version": 12,
 
   "links": {
-    "project": [
-        {
-            "name": "Generate PDF",
-            "icon": "fa-solid fa-file-pdf",
-            "url": "pages/pdfgenerator.php",
-            "show-header-and-footer": true
-        }
-    ],
+    "project": [],
     "control-center": []
   },
 
