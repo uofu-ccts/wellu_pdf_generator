@@ -516,7 +516,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
                 else if ($user_green == "1") {
                     $user_choice = "green";
                 }
-                else if ($user_green == null) {
+                else if ($user_green == null && ($key == "tobacco" || $key == "alcohol" || $key == "drugs")) {
                     // its probably tobacco, alcohol, or drugs
                     // skip because the user does not need resources for these
                     continue;
