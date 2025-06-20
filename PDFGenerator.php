@@ -504,8 +504,6 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             $action = $key . '_action';
             $yn = $key . '_yn';
 
-            $this->console_log("Processing goal: " . $key);
-
             $user_choice = $record[1][$action] ? $record[1][$action] : "no_answ";
 
             $user_yn = $record[1][$yn];
