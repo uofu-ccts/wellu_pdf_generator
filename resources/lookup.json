@@ -1,5 +1,5 @@
 {
-    "bmi_action": {
+    "bmi": {
         "label": "Metabolic Health (BMI)",
         "choices": {
             "green": "red_butte",
@@ -13,7 +13,7 @@
             "6": "lifestyle_medicine"
         }
     },
-    "meta_action": {
+    "meta": {
         "label": "Metabolic Health",
         "choices": {
             "green": "red_butte",
@@ -28,7 +28,7 @@
             "6": "lifestyle_medicine"
         }
     },
-    "nutr_action": {
+    "nutr": {
         "label": "Food & Nutrition",
         "choices": {
             "green": "nutrition_workshop",
@@ -42,7 +42,7 @@
             "6": "lifestyle_medicine"
         }
     },
-    "activity_action": {
+    "activity": {
         "label": "Physical Activity",
         "choices": {
             "green": "fitness_assessment",
@@ -56,7 +56,7 @@
             "6": "health_coaching"
         }
     },
-    "stress_action": {
+    "stress": {
         "label": "Stress",
         "choices": {
             "green": "mindfulness_curalinc",
@@ -70,7 +70,7 @@
             "6": "leisure"
         }
     },
-    "anx_action": {
+    "anx": {
         "label": "Anxiety/Worry",
         "choices": {
             "green": "eap",
@@ -84,7 +84,7 @@
             "6": "mindfulness_class"
         }
     },
-    "phq_action": {
+    "phq": {
         "label": "Depression",
         "choices": {
             "green": "eap",
@@ -98,7 +98,7 @@
             "6": "mindfulness_class"
         }
     },
-    "sleep_action": {
+    "sleep": {
         "label": "Sleepiness",
         "choices": {
             "green": "sleep_great",
@@ -111,7 +111,7 @@
             "5": "lifestyle_medicine"
         }
     },
-    "tobacco_action": {
+    "tobacco": {
         "label": "Tobacco/Nicotine Use",
         "choices": {
             "noaction": "tobacco_support",
@@ -122,7 +122,7 @@
             "4": "lifestyle_medicine"
         }
     },
-    "alcohol_action": {
+    "alcohol": {
         "label": "Alcohol",
         "choices": {
             "noaction": "addiction_recovery_resource_link",
@@ -134,7 +134,7 @@
             "5": "lifestyle_medicine"
         }
     },
-    "drug_action": {
+    "drug": {
         "label": "Drug Use",
         "choices": {
             "noaction": "addiction_recovery_resource_link",
@@ -147,7 +147,7 @@
             "6": "addiction_recovery_resource_link"
         }
     },
-    "gen_action": {
+    "gen": {
         "label": "General Health",
         "choices": {
             "green": "lifestyle_medicine",
