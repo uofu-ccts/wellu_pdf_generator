@@ -3,8 +3,7 @@
         "name": "Red Butte Walk",
         "link": "https://redbuttegarden.org/",
         "pdf_box": "Take a walk at Red Butte Garden. Visit 10 times to earn WellU credit.",
-        "full":
-        [
+        "full": [
             {
                 "type": "paragraph",
                 "text": "Get out and enjoy a walk at Red Butte Garden. Getting out for a brisk walk after eating can help lower blood sugar levels and keep your A1c levels low. A great place to walk around campus is the Red Butte Garden. Employees enjoy free access to Red Butte Garden and if you scan your card 10 times and go for a walk through the beautiful gardens you will earn credit towards your premium reduction!"
@@ -15,8 +14,7 @@
         "name": "Weight Management Resource Link",
         "link": "Weight Management Resource Link",
         "pdf_box": "Schedule/register (action) For vague resources (learn about or learn more)",
-        "full":
-        [
+        "full": [
             {
                 "type": "paragraph",
                 "text": "We understand that making changes to your health can feel overwhelming, and sometimes the first step is simply giving yourself time."
@@ -31,8 +29,7 @@
         "name": "PEAK Nutrition Consultation",
         "link": "https://booknow.appointment-plus.com/165ehg4e/10#Appointment",
         "pdf_box": "Schedule your free PEAK nutrition consultation.",
-        "full":
-        [
+        "full": [
             {
                 "type": "paragraph",
                 "text": "Looking to improve your eating habits without the stress of strict diets? In this 60-minute one-on-one session, our expert will help you create a personalized nutrition plan that fits your lifestyle, preferences, and goals."
@@ -71,8 +68,7 @@
         "name": "I want to schedule a free Personal Training session",
         "link": "https://booknow.appointment-plus.com/165ehg4e/10#Appointment",
         "pdf_box": "Schedule your free PEAK personal training session.",
-        "full":
-        [
+        "full": [
             {
                 "type": "paragraph",
                 "text": "This 60-minute session is all about you. Whether you're just starting out or looking to level up your routine, our expert PEAK personal trainers provide personalized guidance to help you move with confidence and purpose."
@@ -107,8 +103,7 @@
         "name": "I want to work on this area with my primary care provider",
         "link": "https://healthcare.utah.edu/primary-care/appointment",
         "pdf_box": "Find a primary care provider to address your health concerns.",
-        "full":
-        [
+        "full": [
             {
                 "type": "paragraph",
                 "text": "Partner with your Primary Care Provider for better health. Meeting with your primary care provider is a powerful step toward improving your overall well-being. Together, you can create a personalized plan to address your health risks and support your long-term goals."
@@ -123,8 +118,7 @@
         "name": "I want to schedule a free Health Coaching session",
         "link": "https://booknow.appointment-plus.com/165ehg4e/10#Appointment",
         "pdf_box": "Schedule your free health coaching session.",
-        "full":
-        [
+        "full": [
             {
                 "type": "paragraph",
                 "text": "Ready to take charge of your well-being? Our expert health coach offers one-on-one guidance tailored to your unique goals and lifestyle. Whether you're looking to boost energy, manage stress, improve nutrition, or build sustainable habits, we're here to help you succeed."
@@ -165,8 +159,7 @@
         "name": "I want to learn about the  Lifestyle Medicine Consultation",
         "link": "https://healthcare.utah.edu/integrative-health/services/lifestyle-medicine",
         "pdf_box": "Learn more about Lifestyle Medicine Consultaion.",
-        "full":
-        [
+        "full": [
             {
                 "type": "paragraph",
                 "text": "Chronic conditions don't have to define your future. With Lifestyle Medicine, you can take control of your health through sustainable, evidence-based changes in how you live each day."
@@ -229,8 +222,7 @@
         "name": "Metabolic Health Resource Link",
         "link": "https://healthcare.utah.edu/primary-care/appointment",
         "pdf_box": "Schedule/register (action) For vague resources (learn about or learn more)",
-        "full":
-        [
+        "full": [
             {
                 "type": "paragraph",
                 "text": "We understand that making changes to your health can feel overwhelming, and sometimes the first step is simply giving yourself time."
@@ -249,8 +241,7 @@
         "name": "I want to register for the National Diabetes Prevention Program (NDPP)",
         "link": "https://app.healthcare.utah.edu/peakCourseRegistration/byCategory?categoryPrimaryId=29",
         "pdf_box": "Register for the National Diabetes Prevention Program (NDPP)",
-        "full":
-        [
+        "full": [
             {
                 "type": "paragraph",
                 "text": "The National DPP is a proven, year-long lifestyle change program designed to help you prevent or delay the onset of Type 2 diabetes through small, achievable steps. With the support of a trained lifestyle coach and a group of peers, you'll learn how to:"
@@ -285,11 +276,10 @@
         "name": "I want to register for the Intensive Lifestyle Program (ILP)",
         "link": "https://app.healthcare.utah.edu/peakCourseRegistration/byCategory?categoryPrimaryId=78",
         "pdf_box": "Register for the Intensive Lifestyle Program (ILP)",
-        "full":
-        [
+        "full": [
             {
-            "type": "paragraph",
-            "text": "Ready to take control of your health and well-being? Join our Intensive Lifestyle Program - powerful 10-week journey designed to help you build lasting habits for a healthier, more energized life."
+                "type": "paragraph",
+                "text": "Ready to take control of your health and well-being? Join our Intensive Lifestyle Program - powerful 10-week journey designed to help you build lasting habits for a healthier, more energized life."
             },
             {
                 "type": "paragraph",
@@ -725,8 +715,7 @@
         "name": "I want to make my own plan.",
         "link": "https://admin.healthcare.utah.edu/sites/g/files/zrelqx136/files/media/documents/2024/assess-your-stress.pdf Resiliency Tools: https://www.resiliency.tools/",
         "pdf_box": "Learn how to assess your stress.",
-        "full":
-        [
+        "full": [
             {
                 "type": "paragraph",
                 "text": "Stress is a part of life - but it doesn't have to run your life. Understanding what triggers your stress is the first step toward managing it in a healthier, more intentional way. By identifying your unique stressors and creating a personalized plan to address them, you can build resilience, improve your well-being, and feel more in control of your day-to-day. Whether it's work, relationships, or just the pace of life, small changes can lead to big relief."
@@ -745,8 +734,7 @@
         "name": "I want to join an exercise class.",
         "link": "https://peak.webapps.med.utah.edu/category/132",
         "pdf_box": "Register for an exercise class",
-        "full":
-        [
+        "full": [
             {
                 "type": "paragraph",
                 "text": "Feeling overwhelmed? Exercise is one of the most effective — and natural — ways to manage stress. Physical activity boosts your mood, clears your mind, and helps your body process tension in a healthy way.Joining an exercise class adds structure, motivation, and community to your routine. Whether it's yoga, strength training, or a dance class, moving with others can lift your spirits and help you stay committed to your well-being."
@@ -804,7 +792,7 @@
             {
                 "type": "paragraph",
                 "text": "Your mental health is just as important as your physical health. It affects how you think, feel, and act—and influences every part of your life, from relationships and work to sleep and self-esteem. The Employee Assistance program is always available if you ever need any support. supportlinc.com (group code: uofu)"
-            },
+            }
         ]
     },
     "hmhi_crisis_line_safeut": {
@@ -819,7 +807,7 @@
             {
                 "type": "paragraph",
                 "text": "When you're ready, we're here to support you. In the meantime, here are some helpful resources you can explore at your own pace - no pressure, just possibilities."
-            },
+            }
         ]
     },
     "mental_health_provider": {
@@ -904,8 +892,7 @@
         "name": "Sleep Resource Link",
         "link": "https://www.sleepfitness.tools/",
         "pdf_box": "",
-        "full":
-        [
+        "full": [
             {
                 "type": "paragraph",
                 "text": "Your sleep fitness looks great! Sleep is a vital part of your health and performance. Just like exercise and nutrition, quality sleep is essential for energy, focus, mood, and long-term well-being."
@@ -920,8 +907,7 @@
         "name": "Sleep Resource Link",
         "link": "https://www.sleepfitness.tools/",
         "pdf_box": "",
-        "full":
-        [
+        "full": [
             {
                 "type": "paragraph",
                 "text": "We understand that making changes to your health can feel overwhelming, and sometimes the first step is simply giving yourself time."
@@ -936,8 +922,7 @@
         "name": "Sleep Resource Link",
         "link": "https://www.sleepfitness.tools/",
         "pdf_box": "",
-        "full":
-        [
+        "full": [
             {
                 "type": "paragraph",
                 "text": "Sleep isn't a luxury—it's a vital part of your health and performance. Just like exercise and nutrition, quality sleep is essential for energy, focus, mood, and long-term well-being."
@@ -1023,9 +1008,8 @@
     "tobacco_quit_line": {
         "name": "Call the Utah Tobacco Quit Line",
         "link": "https://waytoquit.org/",
-        "pdf_box": ""Way to Quit and the Utah Tobacco Quit Line (1-800-Quit-Now)",
-        "full":
-        [
+        "pdf_box": "Way to Quit and the Utah Tobacco Quit Line (1-800-Quit-Now)",
+        "full": [
             {
                 "type": "bullet",
                 "text": "Quitting tobacco is one of the best decisions you can make for your health—and with Way to Quit and the Utah Tobacco Quit Line, you don’t have to do it alone. Way to Quit offers free, confidential tools to help you break free from nicotine—on your terms. Whether you prefer online support, text coaching, or a personalized quit plan, you’ll find the resources you need to succeed at waytoquit.org.Prefer to talk it out? Call the Utah Tobacco Quit Line at 1-800-QUIT-NOW for one-on-one support from trained quit coaches. You’ll get expert guidance, encouragement, and even access to free nicotine replacement therapies."
@@ -1084,15 +1068,15 @@
                 "text": "SupportLinc’s Employee Assistance Program (EAP) and the innovative Addiction Care Navigator, help is just a click away."
             },
             {
-              "type": "paragraph",
-              "text": "The Addiction Care Navigator offers a quick, clinically validated assessment to help you understand your risk level and create a personalized action plan. Whether you need short-term counseling or more intensive treatment, SupportLinc connects you to the right care—fast."
+                "type": "paragraph",
+                "text": "The Addiction Care Navigator offers a quick, clinically validated assessment to help you understand your risk level and create a personalized action plan. Whether you need short-term counseling or more intensive treatment, SupportLinc connects you to the right care—fast."
             },
             {
-              "type": "paragraph",
-              "text": "If your assessment shows elevated risk, a trained Addiction Care Coach will reach out (with your consent) to guide you through treatment options, verify insurance coverage, and even help make the call to a provider."
+                "type": "paragraph",
+                "text": "If your assessment shows elevated risk, a trained Addiction Care Coach will reach out (with your consent) to guide you through treatment options, verify insurance coverage, and even help make the call to a provider."
             }
         ]
-    }
+    },
     "addiction_recovery_resource_link": {
         "name": "Addiction Recovery Resource Link",
         "link": "https://healthcare.utah.edu/hmhi/treatments/addiction-recovery/recovery-clinic#:~:text=The%20HMHI%20Recovery%20Clinic%20is,which%20can%20negatively%20impact%20recovery.",
@@ -1176,8 +1160,7 @@
         "name": "",
         "link": "",
         "pdf_box": "",
-        "full":
-        [
+        "full": [
             {
                 "type": "paragraph",
                 "text": "Based on your responses you may find the following resources helpful:"
@@ -1212,8 +1195,7 @@
         "name": "",
         "link": "",
         "pdf_box": "",
-        "full":
-        [
+        "full": [
             {
                 "type": "paragraph",
                 "text": "Example"
