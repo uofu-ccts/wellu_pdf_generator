@@ -1,13 +1,13 @@
 {
     "red_butte": {
         "name": "Red Butte Walk",
-        "link": "Red Butte Walk",
-        "pdf_box": "Take a walk at Red Butte Garden.",
+        "link": "https://redbuttegarden.org/",
+        "pdf_box": "Take a walk at Red Butte Garden. Visit 10 times to earn WellU credit.",
         "full":
         [
             {
                 "type": "paragraph",
-                "text": "Getting out for a brisk walk after eating can help lower blood sugar levels and keep your A1c levels low. A great place to walk around campus is the Red Butte Garden. Employees enjoy free access to Red Butte Garden and if you scan your card 10 times and go for a walk through the beautiful gardens you will earn credit towards your premium reduction!"
+                "text": "Get out and enjoy a walk at Red Butte Garden. Getting out for a brisk walk after eating can help lower blood sugar levels and keep your A1c levels low. A great place to walk around campus is the Red Butte Garden. Employees enjoy free access to Red Butte Garden and if you scan your card 10  times and go for a walk through the beautiful gardens you will earn credit towards your premium reduction!"
             }
         ]
     },
@@ -289,7 +289,7 @@
         [
             {
             "type": "paragraph",
-            "text": "Ready to take control of your health and well-being? Join our Intensive Lifestyle Program-  powerful 10-week journey designed to help you build lasting habits for a healthier, more energized life."
+            "text": "Ready to take control of your health and well-being? Join our Intensive Lifestyle Program - powerful 10-week journey designed to help you build lasting habits for a healthier, more energized life."
             },
             {
                 "type": "paragraph",
@@ -297,7 +297,7 @@
             },
             {
                 "type": "bullet",
-                "text": "Movement -  Find joy in staying active"
+                "text": "Movement - Find joy in staying active"
             },
             {
                 "type": "bullet",
@@ -309,11 +309,11 @@
             },
             {
                 "type": "paragraph",
-                "text": "Each week, you'll gain practical strategies, expert guidance, and the support of a like-minded community- all focused on helping you create real, sustainable change."
+                "text": "Each week, you'll gain practical strategies, expert guidance, and the support of a like-minded community - all focused on helping you create real, sustainable change."
             },
             {
                 "type": "paragraph",
-                "text": "Don't just make a resolution- make a lifestyle."
+                "text": "Don't just make a resolution - make a lifestyle."
             }
         ]
     },
@@ -803,41 +803,13 @@
         "full": [
             {
                 "type": "paragraph",
-                "text": "Life doesn's slow down when it gets tough-knowing where to turn for help when you need it is priceless. SupportLinc, your Employee Assistance Program (EAP), offers free, confidential support to help you manage life's challenges - big or small."
+                "text": "Your mental health is just as important as your physical health. It affects how you think, feel, and act—and influences every part of your life, from relationships and work to sleep and self-esteem. The Employee Assistance program is always available if you ever need any support. supportlinc.com (group code: uofu)"
             },
-            {
-                "type": "paragraph",
-                "text": "Whether you're dealing with stress, anxiety, relationship issues, grief, or work-life balance, SupportLinc provides:"
-            },
-            {
-                "type": "bullet",
-                "text": "24/7 access to licensed counselors"
-            },
-            {
-                "type": "bullet",
-                "text": "Short-term, solution-focused therapy"
-            },
-            {
-                "type": "bullet",
-                "text": "Legal, financial, and family support resources"
-            },
-            {
-                "type": "bullet",
-                "text": "Self-guided tools and wellness text"
-            },
-            {
-                "type": "paragraph",
-                "text": "Getting started is easy."
-            },
-            {
-                "type": "paragraph",
-                "text": "Visit supportlinc.com and use group code: uofu to access your benefits today."
-            }
         ]
     },
     "hmhi_crisis_line_safeut": {
         "name": "HMHI crisis line SafeUT",
-        "link": "HMHI crisis line SafeUT",
+        "link": "https://healthcare.utah.edu/hmhi/programs/crisis-diversion",
         "pdf_box": "HMHI crisis line SafeUT",
         "full": [
             {
@@ -848,14 +820,6 @@
                 "type": "paragraph",
                 "text": "When you're ready, we're here to support you. In the meantime, here are some helpful resources you can explore at your own pace - no pressure, just possibilities."
             },
-            {
-                "type": "paragraph",
-                "text": "Mental Health and Well-being Resources: https://officeforfaculty.utah.edu/home-template-2-2/resources-links/mentalhealth/"
-            },
-            {
-                "type": "paragraph",
-                "text": "If you are experiencing a mental health crisis, reach out to Huntsman Mental Health Institute (HMHI) crisis services by dialing 801-587-3000 or 988, or use the SafeUT Frontline app."
-            }
         ]
     },
     "mental_health_provider": {
@@ -1023,17 +987,13 @@
         ]
     },
     "tobacco_no_answ": {
-        "name": "Tobacco no answer",
-        "link": "https://employeewellness.utah.edu/wp-text/uploads/sites/44/2020/07/Regence-Empower-Program.pdf",
+        "name": "Osher Center Link",
+        "link": "https://healthcare.utah.edu/integrative-health",
         "pdf_box": "",
         "full": [
             {
                 "type": "paragraph",
-                "text": "https://employeewellness.utah.edu/wp-text/uploads/sites/44/2020/07/Regence-Empower-Program.pdf"
-            },
-            {
-                "type": "paragraph",
-                "text": "Need resource verbiage"
+                "text": "Looks like you skipped this question. Here are some helpful articles that you might find helpful. https://healthcare.utah.edu/integrative-health"
             }
         ]
     },
@@ -1062,13 +1022,13 @@
     },
     "tobacco_quit_line": {
         "name": "Call the Utah Tobacco Quit Line",
-        "link": "",
-        "pdf_box": "Utah Tobacco Quit Line is 1-800-QUIT-NOW",
+        "link": "https://waytoquit.org/",
+        "pdf_box": ""Way to Quit and the Utah Tobacco Quit Line (1-800-Quit-Now)",
         "full":
         [
             {
                 "type": "bullet",
-                "text": "Utah Tobacco Quit Line is 1-800-QUIT-NOW"
+                "text": "Quitting tobacco is one of the best decisions you can make for your health—and with Way to Quit and the Utah Tobacco Quit Line, you don’t have to do it alone. Way to Quit offers free, confidential tools to help you break free from nicotine—on your terms. Whether you prefer online support, text coaching, or a personalized quit plan, you’ll find the resources you need to succeed at waytoquit.org.Prefer to talk it out? Call the Utah Tobacco Quit Line at 1-800-QUIT-NOW for one-on-one support from trained quit coaches. You’ll get expert guidance, encouragement, and even access to free nicotine replacement therapies."
             }
         ]
     },
@@ -1114,9 +1074,28 @@
             }
         ]
     },
+    "alcohol_eap": {
+        "name": "I want to work with SupportLinc to address my substance use.",
+        "link": "supportlinc.com",
+        "pdf_box": "Supportlinc Employee Assistance Program (Use group code: uofu)",
+        "full": [
+            {
+                "type": "paragraph",
+                "text": "SupportLinc’s Employee Assistance Program (EAP) and the innovative Addiction Care Navigator, help is just a click away."
+            },
+            {
+              "type": "paragraph",
+              "text": "The Addiction Care Navigator offers a quick, clinically validated assessment to help you understand your risk level and create a personalized action plan. Whether you need short-term counseling or more intensive treatment, SupportLinc connects you to the right care—fast."
+            },
+            {
+              "type": "paragraph",
+              "text": "If your assessment shows elevated risk, a trained Addiction Care Coach will reach out (with your consent) to guide you through treatment options, verify insurance coverage, and even help make the call to a provider."
+            }
+        ]
+    }
     "addiction_recovery_resource_link": {
         "name": "Addiction Recovery Resource Link",
-        "link": "https://healthcare.utah.edu/hmhi/treatments/addiction-recovery/recovery-clinic#:~:text=The%20HMHI%20Recovery%20Clinic%20is,which%20can%20negatively%20impact%20recovery",
+        "link": "https://healthcare.utah.edu/hmhi/treatments/addiction-recovery/recovery-clinic#:~:text=The%20HMHI%20Recovery%20Clinic%20is,which%20can%20negatively%20impact%20recovery.",
         "pdf_box": "",
         "full": [
             {
@@ -1147,7 +1126,7 @@
     "addiction_own_plan": {
         "name": "I want to make my own plan.",
         "link": "www.addictionToolkit.tools",
-        "pdf_box": "Create your own plan. Here are some resources that may help.",
+        "pdf_box": "Create your own plan with these resources. (group code: uofu)",
         "full": [
             {
                 "type": "paragraph",
