@@ -219,6 +219,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
                     $this->console_log("Failed to save PDF to file field.");
                 } else {
                     $this->console_log("PDF file saved successfully to file field.");
+                    unlink($pdfFilePath);
                 }
             } else {
                 $this->console_log("Unknown action: " . $action);
@@ -512,7 +513,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             if ($user_choice == "no_answ") {
                 if ($user_yn == "0") {
                     $user_choice = "noaction";
-                } 
+                }
                 else if ($user_green == "1") {
                     $user_choice = "green";
                 }
