@@ -127,7 +127,7 @@
         "choices": {
             "noaction": "addiction_recovery_resource_link",
             "no_answ": "alcohol_no_answ",
-            "1": "eap",
+            "1": "alcohol_eap",
             "2": "addiction_recovery_services",
             "3": "pcp",
             "4": "addiction_own_plan",
