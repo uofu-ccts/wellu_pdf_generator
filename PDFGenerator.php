@@ -501,9 +501,6 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         $goalsContent =  array();
         foreach ($lookupData as $key => $value) {
 
-            $this->console_log("Processing key: " . $key);
-            $this->console_log("Value: " . json_encode($value));
-
             $green = $key . '_is_green';
             $action = $key . '_action';
             $yn = $key . '_yn';
@@ -522,15 +519,13 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
                 }
                 else if ($user_green == null && ($key == "tobacco" || $key == "alcohol" || $key == "drug" || $key == "meta")) {
                     // its probably tobacco, alcohol, or drugs
+                    // coult also be meta
                     // skip because the user does not need resources for these
                     continue;
                 }
             }
 
             $resourceKey = $key . '_' . $user_choice;
-
-            $this->console_log("Resource key: " . $resourceKey);
-
 
             $goalsContent[$action] = $resourcesData[$resourceKey];
 
