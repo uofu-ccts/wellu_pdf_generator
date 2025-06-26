@@ -519,14 +519,16 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
                 }
                 else if ($user_green == null && ($key == "tobacco" || $key == "alcohol" || $key == "drug" || $key == "meta")) {
                     // its probably tobacco, alcohol, or drugs
-                    // coult also be meta
+                    // could also be meta
                     // skip because the user does not need resources for these
+                    // maybe can handle this below, if content is empty
                     continue;
                 }
             }
 
             $resourceKey = $key . '_' . $user_choice;
 
+            // maybe add the continue if the resourceKey is not in the resourcesData
             $goalsContent[$action] = $resourcesData[$resourceKey];
 
             $goalsContent[$action]['label'] = $value['label'];
