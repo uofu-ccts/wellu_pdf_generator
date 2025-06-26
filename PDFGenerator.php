@@ -501,32 +501,38 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         $goalsContent =  array();
         foreach ($lookupData as $key => $value) {
 
+            $this->console_log("Processing key: " . $key);
+            $this->console_log("Value: " . json_encode($value));
+
             $green = $key . '_is_green';
             $action = $key . '_action';
             $yn = $key . '_yn';
 
-            $user_choice = $record[1][$action] ? $record[1][$action] : "no_answ";
+            $user_choice = $record[1][$action] ? $record[1][$action] : "noansw";
 
             $user_yn = $record[1][$yn];
             $user_green = $record[1][$green];
 
-            if ($user_choice == "no_answ") {
+            if ($user_choice == "noansw") {
                 if ($user_yn == "0") {
                     $user_choice = "noaction";
                 }
                 else if ($user_green == "1") {
-                    $user_choice = "green";
+                    $user_choice = "g_action";
                 }
-                else if ($user_green == null && ($key == "tobacco" || $key == "alcohol" || $key == "drugs")) {
+                else if ($user_green == null && ($key == "tobacco" || $key == "alcohol" || $key == "drug" || $key == "meta")) {
                     // its probably tobacco, alcohol, or drugs
                     // skip because the user does not need resources for these
                     continue;
                 }
             }
 
-            // // TODO: need to add green and noaction options, currently defaulting to no_answ
+            $resourceKey = $key . '_' . $user_choice;
 
-            $goalsContent[$action] = $resourcesData[$value["choices"][$user_choice]];
+            $this->console_log("Resource key: " . $resourceKey);
+
+
+            $goalsContent[$action] = $resourcesData[$resourceKey];
 
             $goalsContent[$action]['label'] = $value['label'];
         }
