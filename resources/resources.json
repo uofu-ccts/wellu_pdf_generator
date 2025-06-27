@@ -257,11 +257,16 @@
             }
         ]
     },
-    "a1c__g_action": {
+    "meta_g_action": {
         "name": "Red Butte Walk",
-        "link": "Red Butte Walk",
-        "pdf_box": null,
-        "full": []
+        "link": "https://redbuttegarden.org/",
+        "pdf_box": "Take a walk at Red Butte Garden. Visit 10 times to earn WellU credit.",
+        "full": [
+            {
+                "type": "paragraph",
+                "text": "Get out and enjoy a walk at Red Butte Garden. Getting out for a brisk walk after eating can help lower blood sugar levels and keep your A1c levels low. A great place to walk around campus is the Red Butte Garden. Employees enjoy free access to Red Butte Garden and if you scan your card 10 times and go for a walk through the beautiful gardens you will earn credit towards your premium reduction!"
+            }
+        ]
     },
     "meta_noaction": {
         "name": "Metabolic Health Resource Link",
@@ -1966,7 +1971,7 @@
             }
         ]
     },
-    "sleep_Noansw": {
+    "sleep_noansw": {
         "name": "",
         "link": "Sleep Resource Link https://www.sleepfitness.tools/",
         "pdf_box": null,
@@ -2135,7 +2140,7 @@
             }
         ]
     },
-    "tobacco_Noansw": {
+    "tobacco_noansw": {
         "name": "Osher Center Link",
         "link": "https://healthcare.utah.edu/integrative-health",
         "pdf_box": null,
@@ -2282,7 +2287,7 @@
             }
         ]
     },
-    "alcohol_Noansw": {
+    "alcohol_noansw": {
         "name": "General Health",
         "link": "www.wellbeing.place/",
         "pdf_box": null,
@@ -2460,7 +2465,7 @@
             }
         ]
     },
-    "drug_Noansw": {
+    "drug_noansw": {
         "name": "general health",
         "link": "www.wellbeing.place/",
         "pdf_box": null,
@@ -2690,7 +2695,7 @@
             }
         ]
     },
-    "gen_Noansw": {
+    "gen_noansw": {
         "name": "Lifestyle Medicine Consultation",
         "link": "https://healthcare.utah.edu/integrative-health/services/lifestyle-medicine",
         "pdf_box": "Click HERE to learn more about Lifestyle Medicine Consultaion.",
