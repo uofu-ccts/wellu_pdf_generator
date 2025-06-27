@@ -257,16 +257,11 @@
             }
         ]
     },
-    "meta_g_action": {
+    "a1c_g_action": {
         "name": "Red Butte Walk",
-        "link": "https://redbuttegarden.org/",
-        "pdf_box": "Take a walk at Red Butte Garden. Visit 10 times to earn WellU credit.",
-        "full": [
-            {
-                "type": "paragraph",
-                "text": "Get out and enjoy a walk at Red Butte Garden. Getting out for a brisk walk after eating can help lower blood sugar levels and keep your A1c levels low. A great place to walk around campus is the Red Butte Garden. Employees enjoy free access to Red Butte Garden and if you scan your card 10 times and go for a walk through the beautiful gardens you will earn credit towards your premium reduction!"
-            }
-        ]
+        "link": "Red Butte Walk",
+        "pdf_box": null,
+        "full": []
     },
     "meta_noaction": {
         "name": "Metabolic Health Resource Link",
