@@ -19,7 +19,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'lookup_content' => 'meta_action'
         ],
         'a1c' => [
-            'label' => 'A1C',
+            'label' => "Hemoglobin\nA1C",
             'priority_field' => 'a1c_priority_numb_2',
             'default_priority' => 2,
             'top_three_field' => 'top_3___2',
@@ -28,7 +28,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'lookup_content' => 'meta_action'
         ],
         'fastfood' => [
-            'label' => "Fast Food /\nSnacks Intake",
+            'label' => "Fast Food /\nSnack Intake",
             'priority_field' => 'fastfood_priority_numb_2',
             'default_priority' => 12,
             'top_three_field' => 'top_3___12',
@@ -46,7 +46,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'lookup_content' => 'nutr_action'
         ],
         'sugarbev' => [
-            'label' => "Sugar Sweetened\nBeverages Intake",
+            'label' => "Sugar Sweetened\nBeverage Intake",
             'priority_field' => 'sugarbev_priority_numb_2',
             'default_priority' => 13,
             'top_three_field' => 'top_3___13',
@@ -100,7 +100,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'lookup_content' => 'phq_action'
         ],
         'alcohol' => [
-            'label' => 'Alcohol Consumption',
+            'label' => "Alcohol\nConsumption",
             'priority_field' => 'alchohol_priority_numb_2',
             'default_priority' => 5,
             'top_three_field' => 'top_3___5',
