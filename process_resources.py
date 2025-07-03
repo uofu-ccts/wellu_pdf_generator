@@ -3,7 +3,7 @@ import pandas as pd
 import unicodedata
 import json
 
-df = pd.read_excel('./wellu_resources_practice_format.xlsx')
+df = pd.read_excel('./wellu_resources_final_mm.xlsx')
 
 def normalize_text(text):
     # Replace smart apostrophes with straight ones.
@@ -29,9 +29,9 @@ resources = {}
 for index, row in df.iterrows():
     resource_key = '{}_{}'.format(row["Field"].lower(), str(row["Choice"]).lower())
     resource_content = {
-        "name": row["Resource Name"],
-        "link": row["Resource Link"] if row["Resource Link"] else None,
-        "pdf_box": row["PDF Box Verbiage"] if row["PDF Box Verbiage"] else None,
+        "name": row["Resource Name"].strip(),
+        "link": row["Resource Link"].strip() if row["Resource Link"] else None,
+        "pdf_box": row["PDF Box Verbiage"].strip() if row["PDF Box Verbiage"] else None,
         "full": []
     }
     full_verbiage = row["Full Verbiage"]
