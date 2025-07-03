@@ -1405,18 +1405,38 @@
                 "url": null
             },
             {
-                "type": "link",
+                "type": "bullet",
                 "text": "PEAK Health and Fitness offers a wide variety of employee-only fitness classes-available both virtually and at locations across campus.",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Student Life Center provides access to dynamic group fitness classes with a membership.",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Tanner Dance features adult fitness classes that blend movement and creativity.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "To sign up for any of these, click the links below:",
+                "url": null
+            },
+            {
+                "type": "link",
+                "text": "PEAK Health and Fitness",
                 "url": "https://app.healthcare.utah.edu/peakCourseRegistration/byCategories"
             },
             {
                 "type": "link",
-                "text": "Student Life Center provides access to dynamic group fitness classes with a membership.",
+                "text": "Student Life Center",
                 "url": "https://campusrec.utah.edu/group-fitness/"
             },
             {
                 "type": "link",
-                "text": "Tanner Dance features adult fitness classes that blend movement and creativity.",
+                "text": "Tanner Dance",
                 "url": "https://shop.tannerdance.utah.edu/tickets/events/adult-osher"
             }
         ]
@@ -2588,7 +2608,12 @@
             },
             {
                 "type": "paragraph",
-                "text": "When you're ready, we're here to support you. In the meantime, HERE are some helpful resources for you if you feel you need some support.",
+                "text": "When you're ready, we're here to support you. In the meantime, there are some helpful resources for you if you feel you need some support.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Click HERE to access those.",
                 "url": null
             }
         ]
@@ -3638,7 +3663,7 @@
             },
             {
                 "type": "paragraph",
-                "text": "Click HERE to explore whats possible today.",
+                "text": "Click HERE to explore what's possible today.",
                 "url": null
             }
         ]
