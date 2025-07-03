@@ -3,7 +3,7 @@ import pandas as pd
 import unicodedata
 import json
 
-df = pd.read_excel('./wellu_resources_practice_format.xlsx')
+df = pd.read_excel('./wellu_resources_final_mm.xlsx')
 
 def normalize_text(text):
     # Replace smart apostrophes with straight ones.
@@ -29,9 +29,9 @@ resources = {}
 for index, row in df.iterrows():
     resource_key = '{}_{}'.format(row["Field"].lower(), str(row["Choice"]).lower())
     resource_content = {
-        "name": row["Resource Name"],
-        "link": row["Resource Link"] if row["Resource Link"] else None,
-        "pdf_box": row["PDF Box Verbiage"] if row["PDF Box Verbiage"] else None,
+        "name": row["Resource Name"].strip(),
+        "link": row["Resource Link"].strip() if row["Resource Link"] else None,
+        "pdf_box": row["PDF Box Verbiage"].strip() if row["PDF Box Verbiage"] else None,
         "full": []
     }
     full_verbiage = row["Full Verbiage"]
@@ -42,12 +42,28 @@ for index, row in df.iterrows():
         for verb in full_verbiage:
             verb = verb.strip()
             t = "paragraph"
+            url = None
             if len(verb) == 0:
                 continue
             elif verb[0] == "-":
                 t = "bullet"
                 verb = verb[1:].strip()
-            resource_content["full"].append({"type": t, "text": verb})
+            # If verb contains a URL, treat it as a link
+            if "http://" in verb or "https://" in verb:
+                t = "link"
+                # Extract the URL from verb, but leave verb unchanged
+                url_start = verb.find("http://")
+                if url_start == -1:
+                    url_start = verb.find("https://")
+                if url_start != -1:
+                    url_end = verb.find(" ", url_start)
+                    if url_end == -1:
+                        url_end = len(verb)
+                    url = verb[url_start:url_end]
+                    verb = verb[:url_start].strip() + " " + verb[url_end:].strip()
+                    verb = verb.strip()
+
+            resource_content["full"].append({"type": t, "text": verb, "url": url})
     resources[resource_key] = resource_content
 
 

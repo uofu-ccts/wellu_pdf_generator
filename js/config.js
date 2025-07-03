@@ -38,7 +38,7 @@ const imageToIndex = {
   "sleep.png": 14,
   "stress.png": 15,
   "sugary_beverages.png": 16,
-  "tabacco.png": 17,
+  "tobacco.png": 17,
 };
 
 const styles = {
@@ -50,6 +50,7 @@ const styles = {
   headerTextColor: "#fff",
   fontItalic: "centurygothic_italic",
   fontItalicStyle: "italic",
+  linkTextColor: "#0000EE",
   h1: {
     font: "centurygothic_bold",
     fontSize: 22,
@@ -193,7 +194,6 @@ PDF.generatePDF = async function (record_id, name) {
   const doc = new jsPDF();
   const record = PDF.logicRecord;
 
-  console.log("Seeing if record qualifies for TCP: ", record);
   const qualifiedTCP =
     record.bmi >= 35 ||
     (record.bmi >= 30 &&
@@ -228,7 +228,7 @@ PDF.generatePDF = async function (record_id, name) {
 
   coordinates = createHeader(
     doc,
-    "Thank you for completing your WellU Health Risk Assessment.",
+    "Your Well U Action Plan",
     coordinates,
     "h3",
     10,
@@ -237,7 +237,7 @@ PDF.generatePDF = async function (record_id, name) {
   coordinates[1] += extraPadding;
   coordinates = createHeader(
     doc,
-    "You’ve taken an important step in minimizing health risks. Below, you’ll find a personalized WellU action plan to help you achieve your health goals.",
+    "Resource recommendations tailored to your HRA responses, wellness goals, and\nOsher Center guidance to help you take the next step toward better health.",
     coordinates,
     "h4",
     10
@@ -395,26 +395,23 @@ PDF.generatePDF = async function (record_id, name) {
 
   coordinates = createHeader(
     doc,
-    "To learn more about your priority health areas, what the guidelines are, and",
+    "Take a moment to explore your full action plan below.",
     coordinates,
     "h4",
     10
   );
-  coordinates[1] -= 5; // Adjust for spacing
   coordinates = createHeader(
     doc,
-    "how making small changes can improve your health, read the information",
+    "As an employee, you have access to a wide range of health resources - click the\nlinks to learn more or get started.",
     coordinates,
     "h4",
     10
   );
-  coordinates[1] -= 5; // Adjust for spacing
-  coordinates = createHeader(doc, "below.", coordinates, "h4", 10);
-  coordinates[1] -= 5;
 
   for (var key in PDF.goalsContent) {
     var heading = PDF.goalsContent[key].label || "Goal";
     var content = PDF.goalsContent[key].full || [];
+    let url = PDF.goalsContent[key].link || "";
 
     const estimatedSectionLength = estimateSectionLength(doc, content);
 
@@ -432,7 +429,7 @@ PDF.generatePDF = async function (record_id, name) {
       content,
       [coordinates[0], coordinates[1]],
       pageWidth - 10,
-      100
+      url
     );
   }
 
@@ -480,9 +477,7 @@ const createHeader = function (
   headerFontStyle = "normal"
 ) {
   const pageWidth = doc.internal.pageSize.getWidth();
-  const maxWidth = pageWidth;
 
-  title = doc.splitTextToSize(title, maxWidth);
   const headerStyles = styles[headerType];
   doc.setTextColor(styles.textColor);
   doc.setFontSize(headerStyles.fontSize);
@@ -753,7 +748,7 @@ const createSubsection = function (
   content,
   coordinates,
   width,
-  height
+  url
 ) {
   const headerH = 10;
   const badgeW = 10;
@@ -778,13 +773,22 @@ const createSubsection = function (
   let cursorY = y + headerH + 6;
   doc.setFont(styles.font, styles.fontStyle);
   doc.setFontSize(12);
-  doc.setTextColor(bodyTextColor);
 
-  content.forEach((item) => {
-    if (item.type === "paragraph") {
+  const contentLength = content.length;
+  content.forEach((item, index) => {
+    if (item.type === "paragraph" || item.type === "link") {
       // wrap text within width
       const lines = doc.splitTextToSize(item.text, w);
-      doc.text(lines, x, cursorY);
+      if (index === contentLength - 1) {
+        doc.setTextColor(styles.linkTextColor);
+        doc.textWithLink(lines, x, cursorY, { url: url });
+      } else if (item.type === "link") {
+        doc.setTextColor(styles.linkTextColor);
+        doc.textWithLink(lines, x, cursorY, { url: item.url });
+      } else {
+        doc.setTextColor(bodyTextColor);
+        doc.text(item.text, x, cursorY, { maxWidth: width });
+      }
       if (lines.length > 1) {
         cursorY += lines.length * 6;
       } else {
