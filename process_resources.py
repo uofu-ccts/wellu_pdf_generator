@@ -42,12 +42,28 @@ for index, row in df.iterrows():
         for verb in full_verbiage:
             verb = verb.strip()
             t = "paragraph"
+            url = None
             if len(verb) == 0:
                 continue
             elif verb[0] == "-":
                 t = "bullet"
                 verb = verb[1:].strip()
-            resource_content["full"].append({"type": t, "text": verb})
+            # If verb contains a URL, treat it as a link
+            if "http://" in verb or "https://" in verb:
+                t = "link"
+                # Extract the URL from verb, but leave verb unchanged
+                url_start = verb.find("http://")
+                if url_start == -1:
+                    url_start = verb.find("https://")
+                if url_start != -1:
+                    url_end = verb.find(" ", url_start)
+                    if url_end == -1:
+                        url_end = len(verb)
+                    url = verb[url_start:url_end]
+                    verb = verb[:url_start].strip() + " " + verb[url_end:].strip()
+                    verb = verb.strip()
+
+            resource_content["full"].append({"type": t, "text": verb, "url": url})
     resources[resource_key] = resource_content
 
 
