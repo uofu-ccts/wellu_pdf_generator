@@ -228,7 +228,7 @@ PDF.generatePDF = async function (record_id, name) {
 
   coordinates = createHeader(
     doc,
-    "Thank you for completing your WellU Health Risk Assessment.",
+    "Your Well U Action Plan",
     coordinates,
     "h3",
     10,
@@ -237,7 +237,7 @@ PDF.generatePDF = async function (record_id, name) {
   coordinates[1] += extraPadding;
   coordinates = createHeader(
     doc,
-    "You’ve taken an important step in minimizing health risks. Below, you’ll find a personalized WellU action plan to help you achieve your health goals.",
+    "Resource recommendations tailored to your HRA responses, wellness goals, and\nOsher Center guidance to help you take the next step toward better health.",
     coordinates,
     "h4",
     10
@@ -395,22 +395,18 @@ PDF.generatePDF = async function (record_id, name) {
 
   coordinates = createHeader(
     doc,
-    "To learn more about your priority health areas, what the guidelines are, and",
+    "Take a moment to explore your full action plan below.",
     coordinates,
     "h4",
     10
   );
-  coordinates[1] -= 5; // Adjust for spacing
   coordinates = createHeader(
     doc,
-    "how making small changes can improve your health, read the information",
+    "As an employee, you have access to a wide range of health resources - click the\nlinks to learn more or get started.",
     coordinates,
     "h4",
     10
   );
-  coordinates[1] -= 5; // Adjust for spacing
-  coordinates = createHeader(doc, "below.", coordinates, "h4", 10);
-  coordinates[1] -= 5;
 
   for (var key in PDF.goalsContent) {
     var heading = PDF.goalsContent[key].label || "Goal";
@@ -481,9 +477,7 @@ const createHeader = function (
   headerFontStyle = "normal"
 ) {
   const pageWidth = doc.internal.pageSize.getWidth();
-  const maxWidth = pageWidth;
 
-  title = doc.splitTextToSize(title, maxWidth);
   const headerStyles = styles[headerType];
   doc.setTextColor(styles.textColor);
   doc.setFontSize(headerStyles.fontSize);
