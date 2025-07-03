@@ -50,6 +50,7 @@ const styles = {
   headerTextColor: "#fff",
   fontItalic: "centurygothic_italic",
   fontItalicStyle: "italic",
+  linkTextColor: "#0000EE",
   h1: {
     font: "centurygothic_bold",
     fontSize: 22,
@@ -193,26 +194,24 @@ PDF.generatePDF = async function (record_id, name) {
   const doc = new jsPDF();
   const record = PDF.logicRecord;
 
-  // console.log("Seeing if record qualifies for TCP: ", record);
-  // const qualifiedTCP =
-  //   record.bmi >= 35 ||
-  //   (record.bmi >= 30 &&
-  //     (record.prev_diags___5 == 1 ||
-  //       record.prev_diags___6 == 1 ||
-  //       record.prev_diags___7 == 1 ||
-  //       record.prev_diags___8 == 1 ||
-  //       record.prev_diags___9 == 1)) ||
-  //   record.prev_diags___1 == 1 ||
-  //   record.prev_diags___2 == 1 ||
-  //   record.prev_diags___3 == 1 ||
-  //   record.gad_total >= 10 ||
-  //   record.phq9_total_score >= 10 ||
-  //   record.drug_rx_nonmed == 2 ||
-  //   record.drinks_occasion >= 2 ||
-  //   (record.prev_diags___4 == 1 &&
-  //     record.a1c_12m == 1 &&
-  //     record.recent_a1c > 0);
-  const qualifiedTCP = false;
+  const qualifiedTCP =
+    record.bmi >= 35 ||
+    (record.bmi >= 30 &&
+      (record.prev_diags___5 == 1 ||
+        record.prev_diags___6 == 1 ||
+        record.prev_diags___7 == 1 ||
+        record.prev_diags___8 == 1 ||
+        record.prev_diags___9 == 1)) ||
+    record.prev_diags___1 == 1 ||
+    record.prev_diags___2 == 1 ||
+    record.prev_diags___3 == 1 ||
+    record.gad_total >= 10 ||
+    record.phq9_total_score >= 10 ||
+    record.drug_rx_nonmed == 2 ||
+    record.drinks_occasion >= 2 ||
+    (record.prev_diags___4 == 1 &&
+      record.a1c_12m == 1 &&
+      record.recent_a1c > 0);
 
   console.log("Qualified for TCP: ", qualifiedTCP);
 
@@ -783,15 +782,18 @@ const createSubsection = function (
 
   const contentLength = content.length;
   content.forEach((item, index) => {
-    if (item.type === "paragraph") {
+    if (item.type === "paragraph" || item.type === "link") {
       // wrap text within width
       const lines = doc.splitTextToSize(item.text, w);
       if (index === contentLength - 1) {
-        doc.setTextColor("#0000EE");
+        doc.setTextColor(styles.linkTextColor);
         doc.textWithLink(lines, x, cursorY, { url: url });
+      } else if (item.type === "link") {
+        doc.setTextColor(styles.linkTextColor);
+        doc.textWithLink(lines, x, cursorY, { url: item.url });
       } else {
         doc.setTextColor(bodyTextColor);
-        doc.text(lines, x, cursorY);
+        doc.text(item.text, x, cursorY, { maxWidth: width });
       }
       if (lines.length > 1) {
         cursorY += lines.length * 6;
