@@ -251,7 +251,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'sleep.png',
             'stress.png',
             'sugary_beverages.png',
-            'tabacco.png'
+            'tobacco.png'
         );
 
         $imageUrls = array();

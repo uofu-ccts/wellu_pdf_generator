@@ -2535,12 +2535,6 @@
         ]
     },
     "sleep_4": {
-        "name": "",
-        "link": null,
-        "pdf_box": null,
-        "full": []
-    },
-    "sleep_5": {
         "name": "I want to work on this area with my primary care provider",
         "link": "https://healthcare.utah.edu/primary-care/appointment",
         "pdf_box": "Work with your primary care provider to address your sleep concerns. Click the icon for help finding a provider.",
@@ -2563,7 +2557,7 @@
             }
         ]
     },
-    "sleep_6": {
+    "sleep_5": {
         "name": "I want to learn about the Lifestyle Medicine Consultation",
         "link": "https://healthcare.utah.edu/integrative-health/services/lifestyle-medicine",
         "pdf_box": "Learn more about a Lifestyle Medicine Consultation.",
@@ -2756,17 +2750,6 @@
         ]
     },
     "tobacco_4": {
-        "name": "Combination Therapy Contact?",
-        "link": "Combination Therapy Contact?",
-        "pdf_box": null,
-        "full": [
-            {
-                "type": "paragraph",
-                "text": "need resource verbiage"
-            }
-        ]
-    },
-    "tobacco_5": {
         "name": "I want to learn about the Lifestyle Medicine Consultation",
         "link": "https://healthcare.utah.edu/integrative-health/services/lifestyle-medicine",
         "pdf_box": "Learn more about a Lifestyle Medicine Consultation.",
@@ -2934,17 +2917,6 @@
         ]
     },
     "alcohol_5": {
-        "name": "Outside/Community Program ,, (ex. LifeRing or Fit2Recover)",
-        "link": "Outside/Community Program ,, (ex. LifeRing or Fit2Recover)",
-        "pdf_box": null,
-        "full": [
-            {
-                "type": "paragraph",
-                "text": "need resource verbiage"
-            }
-        ]
-    },
-    "alcohol_6": {
         "name": "I want to learn about the Lifestyle Medicine Consultation",
         "link": "https://healthcare.utah.edu/integrative-health/services/lifestyle-medicine",
         "pdf_box": "Learn more about a Lifestyle Medicine Consultation.",
@@ -3129,12 +3101,6 @@
                 "text": "Click HERE to Learn more and request your Lifestyle Medicine Consultation."
             }
         ]
-    },
-    "drug_6": {
-        "name": "TBD",
-        "link": "TBD",
-        "pdf_box": null,
-        "full": []
     },
     "gen_g_action": {
         "name": "I want to learn about the Lifestyle Medicine Consultation",
