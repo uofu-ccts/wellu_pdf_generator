@@ -289,7 +289,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             var PDF_NAME = '" . htmlspecialchars($name, ENT_QUOTES) . "';
         </script>";
 
-        //keep the button for manual triggering, will remove this once testing is done
+        //keep the button for manual triggering, requested by study team
         $html .= "<div style='text-align:center; margin: 20px 0;'>
             <button type='button' class='btn btn-primary generate-pdf' data-record-id='$record_id' data-name='$name' style='color: #fff !important;'>Download Your Results</button>
         </div>";
