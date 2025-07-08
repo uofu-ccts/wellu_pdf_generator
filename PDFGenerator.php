@@ -28,7 +28,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'lookup_content' => 'meta_action'
         ],
         'fastfood' => [
-            'label' => "Fast Food /\nSnack Intake",
+            'label' => "Fast Food &\nSnack Intake",
             'priority_field' => 'fastfood_priority_numb_2',
             'default_priority' => 12,
             'top_three_field' => 'top_3___12',
@@ -127,7 +127,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'lookup_content' => 'tobacco_action'
         ],
         'sleep' => [
-            'label' => 'Daytime Sleepiness',
+            'label' => "Daytime\nSleepiness",
             'priority_field' => 'sleep_priority_numb_2',
             'default_priority' => 7,
             'top_three_field' => 'top_3___7',
