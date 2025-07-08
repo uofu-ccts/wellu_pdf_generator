@@ -1966,7 +1966,7 @@
     },
     "alcohol_4": {
         "name": "I want to make my own plan.",
-        "link": "www.addictionToolkit.tools",
+        "link": "https://www.addictiontoolkit.tools/",
         "pdf_box": "Here are some resources that can help you make your own plan.",
         "full": [
             {
@@ -1993,7 +1993,7 @@
     },
     "drug_4": {
         "name": "I want to make my own plan",
-        "link": "www.addictionToolkit.tools",
+        "link": "https://www.addictiontoolkit.tools/",
         "pdf_box": "Create your own plan. Here are some useful resources to get started.",
         "full": [
             {
@@ -3889,7 +3889,7 @@
     },
     "alcohol_noansw": {
         "name": "General Health",
-        "link": "www.wellbeing.place/",
+        "link": "https://www.wellbeing.place/",
         "pdf_box": "Learn more about available resources to support your wellbeing.",
         "full": [
             {
@@ -3906,7 +3906,7 @@
     },
     "drug_noansw": {
         "name": "general health",
-        "link": "www.wellbeing.place/",
+        "link": "https://www.wellbeing.place/",
         "pdf_box": "Learn more about available resources to support your wellbeing.",
         "full": [
             {
