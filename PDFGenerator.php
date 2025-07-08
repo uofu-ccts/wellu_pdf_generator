@@ -28,7 +28,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'lookup_content' => 'meta_action'
         ],
         'fastfood' => [
-            'label' => "Fast Food /\nSnack Intake",
+            'label' => "Fast Food &\nSnack Intake",
             'priority_field' => 'fastfood_priority_numb_2',
             'default_priority' => 12,
             'top_three_field' => 'top_3___12',
@@ -127,7 +127,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'lookup_content' => 'tobacco_action'
         ],
         'sleep' => [
-            'label' => 'Daytime Sleepiness',
+            'label' => "Daytime\nSleepiness",
             'priority_field' => 'sleep_priority_numb_2',
             'default_priority' => 7,
             'top_three_field' => 'top_3___7',
@@ -518,6 +518,9 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
                 }
                 else if ($user_green == "1") {
                     $user_choice = "g_action";
+                }
+                else if ($user_yn = "1" && ($key == "tobacco" || $key == "alcohol" || $key == "drug")){
+                    $user_choice = "noansw";
                 }
                 else if ($user_green == null && ($key == "tobacco" || $key == "alcohol" || $key == "drug" || $key == "meta")) {
                     // its probably tobacco, alcohol, or drugs
