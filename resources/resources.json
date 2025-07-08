@@ -3952,5 +3952,32 @@
                 "url": null
             }
         ]
+    },
+    "meta_noansw": {
+        "name": "Metabolic Health Resource Link",
+        "link": "http://www.wellbeing.place/",
+        "pdf_box": "When you're ready, learn about resources to support your wellbeing.",
+        "full": [
+            {
+                "type": "paragraph",
+                "text": "You chose not to take action on this area today.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "We understand that making changes to your health can feel overwhelming, and sometimes the first step is simply giving yourself time.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "When you're ready, we're here to support you. In the meantime, there are some helpful resources you can explore at your own pace-no pressure, just possibilities.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Click HERE to find those.",
+                "url": null
+            }
+        ]
     }
 }
