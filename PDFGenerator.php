@@ -290,7 +290,9 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         </script>";
 
         //keep the button for manual triggering, will remove this once testing is done
-        $html .= "<button type='button' class='btn btn-primary generate-pdf' data-record-id='$record_id' data-name='$name'>Download PDF</button>";
+        $html .= "<div style='text-align:center; margin: 20px 0;'>
+            <button type='button' class='btn btn-primary generate-pdf' data-record-id='$record_id' data-name='$name' style='color: #fff !important;'>Download Your Results</button>
+        </div>";
         $html .= "<form id='action-form' name='action' class='hidden' method='POST'></form>";
         $html .= "<script src='$jsUrl'></script>";
         $html .= "<script>PDF.addEventHandlers(" . json_encode($record) . "," . json_encode($imageUrls) . "," . json_encode($goalsContent) . "," . json_encode($processed_data) . "," . json_encode($tcpLink) . ");</script>";
