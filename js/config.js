@@ -1026,7 +1026,8 @@ const calculateIndividualData = function () {
   const record = PDF.logicRecord;
   const hasPrimaryCareProvider =
     record.provider == 1 || record.provider == 2 ? "Yes" : "No";
-  const hasDiabetesHistory = record.dbt_p_score == 2 ? "No History" : "History";
+  const hasDiabetesHistory =
+    record.dbt_p_score == 2 ? "No History" : "Diabetes";
   const fastFoodSnacks =
     record.fast_food_snacks == 7 ? "7 or more" : record.fast_food_snacks;
   const cupsFruitVeg =
