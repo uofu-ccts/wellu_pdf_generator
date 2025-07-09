@@ -519,7 +519,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
                 else if ($user_green == "1") {
                     $user_choice = "g_action";
                 }
-                else if ($user_yn = "1" && ($key == "tobacco" || $key == "alcohol" || $key == "drug")){
+                else if ($user_yn == "1" && ($key == "tobacco" || $key == "alcohol" || $key == "drug")){
                     $user_choice = "noansw";
                 }
                 else if ($user_green == null && ($key == "tobacco" || $key == "alcohol" || $key == "drug" || $key == "meta")) {
