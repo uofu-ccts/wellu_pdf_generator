@@ -463,7 +463,11 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
                 }
                 $key = explode('_', $default['lookup_content'])[0];
                 $is_green = $key . '_is_green';
-                if (!in_array($default['label'], $selected_labels) && $record[1][$is_green] == "0") {
+                $physical_activity_is_green = "1";
+                if($default['label'] == "Physical Activity" && $record[1][$is_green] == "") {
+                    $physical_activity_is_green = "0";
+                }
+                if (!in_array($default['label'], $selected_labels) && ($record[1][$is_green] == "0" || $physical_activity_is_green == "0")) {
                     $priorities[] = [
                         'field' => $default['priority_field'],
                         'label' => $default['label'],
