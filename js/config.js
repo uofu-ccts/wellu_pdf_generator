@@ -1026,8 +1026,14 @@ const calculateIndividualData = function () {
   const record = PDF.logicRecord;
   const hasPrimaryCareProvider =
     record.provider == 1 || record.provider == 2 ? "Yes" : "No";
-  const hasDiabetesHistory =
-    record.dbt_p_score == 2 ? "No History" : "Diabetes";
+  let hasDiabetesHistory = "";
+  if (record && record.dbt_p_score) {
+    if (record.dbt_p_score == 2) {
+      hasDiabetesHistory = "No History";
+    } else {
+      hasDiabetesHistory = "Diabetes";
+    }
+  }
   const fastFoodSnacks =
     record.fast_food_snacks == 7 ? "7 or more" : record.fast_food_snacks;
   const cupsFruitVeg =
@@ -1036,7 +1042,9 @@ const calculateIndividualData = function () {
     record.sugar_sweetened == 6 ? "More than 5" : record.sugar_sweetened;
   const physicalActivity = record.phys_minutes_weekly;
   const stress = record.slider;
-  const sleepiness = choiceToText.sleepy_day[record.sleepy_day];
+  const sleepiness = choiceToText.sleepy_day[record.sleepy_day]
+    ? choiceToText.sleepy_day[record.sleepy_day]
+    : "";
   const tobaccoUse = record.tobacco == 1 ? "Yes" : "No";
   const drugUse = record.drug_rx_nonmed == 0 ? "No" : "Yes";
   const generalHealth =
@@ -1246,7 +1254,7 @@ function calculateRiskKeysTable() {
     case record.cups_fruit_veg <= 2:
       fruitVegIntakeRisk = "high";
       break;
-    case record.cups_fruit_veg < 4:
+    case record.cups_fruit_veg <= 4:
       fruitVegIntakeRisk = "medium";
       break;
     case record.cups_fruit_veg >= 5:
