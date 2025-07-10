@@ -1026,7 +1026,14 @@ const calculateIndividualData = function () {
   const record = PDF.logicRecord;
   const hasPrimaryCareProvider =
     record.provider == 1 || record.provider == 2 ? "Yes" : "No";
-  const hasDiabetesHistory = record.dbt_p_score == 2 ? "No History" : "History";
+  let hasDiabetesHistory = "";
+  if (record && record.dbt_p_score) {
+    if (record.dbt_p_score == 2) {
+      hasDiabetesHistory = "No History";
+    } else {
+      hasDiabetesHistory = "Diabetes";
+    }
+  }
   const fastFoodSnacks =
     record.fast_food_snacks == 7 ? "7 or more" : record.fast_food_snacks;
   const cupsFruitVeg =
@@ -1035,9 +1042,25 @@ const calculateIndividualData = function () {
     record.sugar_sweetened == 6 ? "More than 5" : record.sugar_sweetened;
   const physicalActivity = record.phys_minutes_weekly;
   const stress = record.slider;
-  const sleepiness = choiceToText.sleepy_day[record.sleepy_day];
-  const tobaccoUse = record.tobacco == 1 ? "Yes" : "No";
-  const drugUse = record.drug_rx_nonmed == 0 ? "No" : "Yes";
+  const sleepiness = choiceToText.sleepy_day[record.sleepy_day]
+    ? choiceToText.sleepy_day[record.sleepy_day]
+    : "";
+  let tobaccoUse = "";
+  if (record && record.tobacco) {
+    if (record.tobacco == 1) {
+      tobaccoUse = "Yes";
+    } else {
+      tobaccoUse = "No";
+    }
+  }
+  let drugUse = "";
+  if (record && record.drug_rx_nonmed) {
+    if (record.drug_rx_nonmed == 0) {
+      drugUse = "No";
+    } else {
+      drugUse = "Yes";
+    }
+  }
   const generalHealth =
     choiceToText.general_health[record.general_health] || "Unknown";
   return [
@@ -1059,9 +1082,7 @@ function calculateRiskKeyBubbles() {
   const record = PDF.logicRecord;
   let a1cRisk;
   switch (true) {
-    case record.recent_a1c == "88" ||
-      record.recent_a1c_type12 == "88" ||
-      (record.a1c_12m == "" && record.recent_a1c == ""):
+    case record.recent_a1c == "88" || record.recent_a1c_type12 == "88":
       a1cRisk = "unknown";
       break;
     case (record.a1c_12m == "1" && record.recent_a1c == "2") ||
@@ -1190,34 +1211,47 @@ function calculateRiskKeysTable() {
 
   let diabetesRisk;
   switch (true) {
-    case record.prev_diags___1 == "0" &&
-      record.prev_diags___2 == "0" &&
-      record.prev_diags___3 == "0" &&
-      record.prev_diags___4 == "0" &&
-      record.prev_diags___5 == "0" &&
-      record.prev_diags___6 == "0" &&
-      record.prev_diags___7 == "0" &&
-      record.prev_diags___8 == "0" &&
-      record.prev_diags___9 == "0" &&
-      record.prev_diags___10 == "0":
+    case record.dbt_p_score == "":
       diabetesRisk = "unknown";
       break;
-    case record.prev_diags___1 == 1 ||
-      record.prev_diags___2 == 1 ||
-      record.prev_diags___3 == 1 ||
-      record.prev_diags___10 == 1:
-      diabetesRisk = "medium";
-      break;
-    case record.prev_diags___4 == 1 ||
-      (record.prev_diags___1 == 0 &&
-        record.prev_diags___2 == 0 &&
-        record.prev_diags___3 == 0 &&
-        record.prev_diags___10 == 0):
+    case record.dbt_p_score == 2:
       diabetesRisk = "low";
+      break;
+    case record.dbt_p_score != "":
+      diabetesRisk = "medium";
       break;
     default:
       diabetesRisk = "unknown";
   }
+  // switch (true) {
+  //   case record.prev_diags___1 == "0" &&
+  //     record.prev_diags___2 == "0" &&
+  //     record.prev_diags___3 == "0" &&
+  //     record.prev_diags___4 == "0" &&
+  //     record.prev_diags___5 == "0" &&
+  //     record.prev_diags___6 == "0" &&
+  //     record.prev_diags___7 == "0" &&
+  //     record.prev_diags___8 == "0" &&
+  //     record.prev_diags___9 == "0" &&
+  //     record.prev_diags___10 == "0":
+  //     diabetesRisk = "unknown";
+  //     break;
+  //   case record.prev_diags___1 == 1 ||
+  //     record.prev_diags___2 == 1 ||
+  //     record.prev_diags___3 == 1 ||
+  //     record.prev_diags___10 == 1:
+  //     diabetesRisk = "medium";
+  //     break;
+  //   case record.prev_diags___4 == 1 ||
+  //     (record.prev_diags___1 == 0 &&
+  //       record.prev_diags___2 == 0 &&
+  //       record.prev_diags___3 == 0 &&
+  //       record.prev_diags___10 == 0):
+  //     diabetesRisk = "low";
+  //     break;
+  //   default:
+  //     diabetesRisk = "unknown";
+  // }
 
   let fastFoodSnacksRisk;
   switch (true) {
@@ -1245,7 +1279,7 @@ function calculateRiskKeysTable() {
     case record.cups_fruit_veg <= 2:
       fruitVegIntakeRisk = "high";
       break;
-    case record.cups_fruit_veg < 4:
+    case record.cups_fruit_veg <= 4:
       fruitVegIntakeRisk = "medium";
       break;
     case record.cups_fruit_veg >= 5:

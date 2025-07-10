@@ -153,14 +153,14 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'image' => 'primary_care_provider.png',
             'lookup_content' => 'gen_action'
         ],
-        'no_answr' => [
-            'label' => 'No Answers Provided',
-            'priority_field' => 'no_answr',
-            'default_priority' => 99,
-            'top_three_field' => 'top_3___99',
-            'ranking_field' => NULL,
-            'lookup_content' => 'gen_action'
-        ],
+        // 'no_answr' => [
+        //     'label' => 'No Answers Provided',
+        //     'priority_field' => 'no_answr',
+        //     'default_priority' => 99,
+        //     'top_three_field' => 'top_3___99',
+        //     'ranking_field' => NULL,
+        //     'lookup_content' => 'gen_action'
+        // ],
     ];
 
     public function __construct() {
@@ -457,6 +457,38 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             });
             $default_priorities = array_values($default_priorities);
             foreach ($default_priorities as $default) {
+                if ($default['label'] == "Primary Care\nProvider" && !($record[0]['provider'] == "1" || $record[1]['provider'] == "2")) {
+                    $this->console_log("Skipping Primary Care Provider they already have one.");
+                    continue;
+                }
+                $key = explode('_', $default['lookup_content'])[0];
+                $is_green = $key . '_is_green';
+                $physical_activity_is_green = "1";
+                if($default['label'] == "Physical Activity" && $record[1][$is_green] == "") {
+                    $physical_activity_is_green = "0";
+                }
+                if (!in_array($default['label'], $selected_labels) && ($record[1][$is_green] == "0" || $physical_activity_is_green == "0")) {
+                    $priorities[] = [
+                        'field' => $default['priority_field'],
+                        'label' => $default['label'],
+                        'priority_value' => $default['default_priority'],
+                        'ranking_value' => NULL,
+                        'top_three_value' => NULL,
+                        'image' => $default['image'],
+                        'lookup_content' => $default['lookup_content'],
+                    ];
+                    if (count($priorities) >= 4) {
+                        break;
+                    }
+                }
+            }
+        }
+        $healthy_defaults = ['sleep', 'stress', 'phys', 'fruitveg', 'fastfood', 'sugarbev', 'artbev'];
+        $healthy_defaults = array_map(function($item) use ($lookup) {
+            return $lookup[$item];
+        }, $healthy_defaults);
+        if (count($priorities) < 4) {
+            foreach ($healthy_defaults as $default) {
                 if (!in_array($default['label'], $selected_labels)) {
                     $priorities[] = [
                         'field' => $default['priority_field'],
@@ -516,11 +548,14 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
                 if ($user_yn == "0") {
                     $user_choice = "noaction";
                 }
-                else if ($user_green == "1") {
-                    $user_choice = "g_action";
+                else if ($user_green == "1" && ($key == "tobacco" || $key == "alcohol" || $key == "drug")){
+                    continue;
                 }
                 else if ($user_yn == "1" && ($key == "tobacco" || $key == "alcohol" || $key == "drug")){
                     $user_choice = "noansw";
+                }
+                else if ($user_green == "1") {
+                    $user_choice = "g_action";
                 }
                 else if ($user_green == null && ($key == "tobacco" || $key == "alcohol" || $key == "drug" || $key == "meta")) {
                     // its probably tobacco, alcohol, or drugs
