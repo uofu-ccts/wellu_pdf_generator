@@ -477,6 +477,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
                         'image' => $default['image'],
                         'lookup_content' => $default['lookup_content'],
                     ];
+                    $selected_labels[] = $default['label'];
                     if (count($priorities) >= 4) {
                         break;
                     }
@@ -499,6 +500,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
                         'image' => $default['image'],
                         'lookup_content' => $default['lookup_content'],
                     ];
+                    $selected_labels[] = $default['label'];
                     if (count($priorities) >= 4) {
                         break;
                     }
