@@ -1045,8 +1045,22 @@ const calculateIndividualData = function () {
   const sleepiness = choiceToText.sleepy_day[record.sleepy_day]
     ? choiceToText.sleepy_day[record.sleepy_day]
     : "";
-  const tobaccoUse = record.tobacco == 1 ? "Yes" : "No";
-  const drugUse = record.drug_rx_nonmed == 0 ? "No" : "Yes";
+  let tobaccoUse = "";
+  if (record && record.tobacco) {
+    if (record.tobacco == 1) {
+      tobaccoUse = "Yes";
+    } else {
+      tobaccoUse = "No";
+    }
+  }
+  let drugUse = "";
+  if (record && record.drug_rx_nonmed) {
+    if (record.drug_rx_nonmed == 0) {
+      drugUse = "No";
+    } else {
+      drugUse = "Yes";
+    }
+  }
   const generalHealth =
     choiceToText.general_health[record.general_health] || "Unknown";
   return [
