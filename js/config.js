@@ -228,7 +228,7 @@ PDF.generatePDF = async function (record_id, name) {
 
   coordinates = createHeader(
     doc,
-    "Your Well U Action Plan",
+    "Your WellU Action Plan",
     coordinates,
     "h3",
     10,
