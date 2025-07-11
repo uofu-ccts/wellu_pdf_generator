@@ -1,4 +1,835 @@
 {
+    "activity_3": {
+        "name": "I want to schedule a free Exercise Prescription",
+        "link": "https://booknow.appointment-plus.com/165ehg4e/10#Appointment",
+        "pdf_box": "Schedule your free exercise prescription.",
+        "full": [
+            {
+                "type": "paragraph",
+                "text": "You may find a free Exercise Prescription to be helpful for your physical activity.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "In-Person & Virtual options",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "This 60-minute session is designed to help you move smarter, not just harder. Whether you're managing a health condition, just getting started, or simply looking for a safe and effective way to stay active, our experts  will work with you to create a customized exercise plan tailored to your unique needs and goals.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "In your session, you'll:",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Receive a personalized exercise prescription based on your health status and fitness level",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Learn proper form and technique to move safely and effectively",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Explore exercises that fit your lifestyle and preferences",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Gain confidence and motivation to stay active long-term",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "No matter your starting point, we'll help you move forward-safely, confidently, and with purpose.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Click HERE to schedule your free Exercise Prescription.",
+                "url": null
+            }
+        ]
+    },
+    "alcohol_2": {
+        "name": "I want to learn more about HMHI Addiction Recovery Services",
+        "link": "https://healthcare.utah.edu/hmhi/treatments/addiction-recovery/recovery-clinic",
+        "pdf_box": "Learn more about HMHI Addiction Recovery Services.",
+        "full": [
+            {
+                "type": "paragraph",
+                "text": "You may find it helpful to connect with Huntsman Mental Health Institute Addiction Recovery Services.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "HMHI Addiction Recovery Services are designed for individuals at any stage of their journey.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Whether you are  looking to cut back, take a break, or make a more lasting shift, HMHI Addiction Recovery Services offers a number of personalized, nonjudgmental support programs grounded in evidence-based care.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Click HERE to explore what's possible today.",
+                "url": null
+            }
+        ]
+    },
+    "anx_2": {
+        "name": "I want to talk to a therapist about my Anxiety/Worry.",
+        "link": "https://www.SupportLinc.com/",
+        "pdf_box": "Schedule an appointment through SupportLinc using group code: uofu",
+        "full": [
+            {
+                "type": "paragraph",
+                "text": "You may find it helpful to talk to a Therapist about your anxiety/worry.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "SupportLinc, your Employee Assistance Program (EAP), offers free, confidential access to licensed therapists to help you manage life's challenges-big or small.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Whether you're dealing with stress, anxiety, relationship issues, grief, or work-life balance, SupportLinc provides:",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "24/7 access to licensed counselors",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Short-term, solution-focused therapy",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Legal, financial, and family support resources",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Self-guided tools and wellness content",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Click HERE to visit SupportLinc and schedule your appointment today. (use group code: uofu)",
+                "url": null
+            }
+        ]
+    },
+    "bmi_4": {
+        "name": "I want to schedule  a free Health Coaching session",
+        "link": "https://booknow.appointment-plus.com/165ehg4e/10#Appointment",
+        "pdf_box": "Schedule your free health coaching session.",
+        "full": [
+            {
+                "type": "paragraph",
+                "text": "You may find a free Health Coaching session to be helpful.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "In-Person & Virtual options",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Our expert Health Coaches offer one-on-one guidance tailored to your unique goals and lifestyle. Whether you're looking to boost energy, manage stress, improve nutrition, or build sustainable habits, we're here to help you succeed.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "With PEAK Health Coaching, you'll get:",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Personalized goal setting and action plans",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Ongoing motivation and accountability",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Expert strategies for lasting lifestyle changes",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Support every step of the way",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Start your journey to better health today.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Click HERE to schedule your free Health Coaching session.",
+                "url": null
+            }
+        ]
+    },
+    "drug_2": {
+        "name": "I want to learn more about HMHI Addiction Recovery Services",
+        "link": "https://healthcare.utah.edu/hmhi/treatments/addiction-recovery/recovery-clinic",
+        "pdf_box": "Learn more about HMHI Addiction Recovery Services.",
+        "full": [
+            {
+                "type": "paragraph",
+                "text": "You may find it helpful to connect with Huntsman Mental Health Institute Addiction Recovery Services.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "HMHI Addiction Recovery Services are designed for individuals at any stage of their journey.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Whether you are  looking to cut back, take a break, or make a more lasting shift, HMHI Addiction Recovery Services offers a number of personalized, nonjudgmental support programs grounded in evidence-based care.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Click HERE to explore what's possible today.",
+                "url": null
+            }
+        ]
+    },
+    "gen_1": {
+        "name": "I want to schedule a free Health Coaching session",
+        "link": "https://booknow.appointment-plus.com/165ehg4e/10#Appointment",
+        "pdf_box": "Schedule your free health coaching session.",
+        "full": [
+            {
+                "type": "paragraph",
+                "text": "You may find a free Health Coach session to be helpful for your general health.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "In-Person & Virtual options",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Our expert Health Coaches offer one-on-one guidance tailored to your unique goals and lifestyle.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Whether you're looking to boost energy, manage stress, improve nutrition, or build sustainable habits, we're here to help you succeed.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "With PEAK Health Coaching, you'll get:",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Personalized goal setting and action plans",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Ongoing motivation and accountability",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Expert strategies for lasting lifestyle changes",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Support every step of the way",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Start your journey to better health today.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Click HERE to schedule your free Health Coaching session.",
+                "url": null
+            }
+        ]
+    },
+    "nutr_1": {
+        "name": "I want to schedule a free  Nutrition Consultation",
+        "link": "https://booknow.appointment-plus.com/165ehg4e/10#Appointment",
+        "pdf_box": "Schedule your free PEAK nutrition consultation.",
+        "full": [
+            {
+                "type": "paragraph",
+                "text": "You may find a free Nutriton Consultation to be helpful.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "In-Person & Virtual options",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "In this 60-minute one-on-one session, our dietitian will help you create a personalized nutrition plan that fits your lifestyle, preferences, and goals.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "What you can expect:",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Practical, sustainable nutrition strategies tailored to you",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Guidance rooted in your real-life routines-not rigid meal plans",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Support to help you build long-term, healthy habits",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "A focus on progress, not perfection",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Empower yourself to make lasting changes that feel good and work for you.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Click HERE to schedule your free Nutrition Consultation.",
+                "url": null
+            }
+        ]
+    },
+    "phq_2": {
+        "name": "I want to work with SupportLinc Employee Assistance Program to create a plan",
+        "link": "https://www.SupportLinc.com/",
+        "pdf_box": "Access the SupportLinc using group code: uofu",
+        "full": [
+            {
+                "type": "paragraph",
+                "text": "You may find the SupportLinc Employee Assistance Program helpful for your emotional wellbeing.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Life can be unpredictable-but you don't have to face it alone. SupportLinc, your Employee Assistance Program (EAP), offers free, confidential support to help you manage life's challenges-big or small.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Whether you're dealing with stress, anxiety, relationship issues, grief, or work-life balance, SupportLinc provides:",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "24/7 access to licensed counselors",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Short-term, solution-focused therapy",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Legal, financial, and family support resources",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Online self-guided tools and wellness content",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Getting started is easy. Access your benefits today by clicking below and using group code: uofu.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Click HERE to visit SupportLinc.",
+                "url": null
+            }
+        ]
+    },
+    "sleep_2": {
+        "name": "I want to create my own plan",
+        "link": "https://www.sleepfitness.tools/",
+        "pdf_box": "Create your own plan. Here are some useful resources to get started.",
+        "full": [
+            {
+                "type": "paragraph",
+                "text": "You may find it helpful to create a plan to address your sleep.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Sleep quality can impact many different areas of your overall health and well-being. Taking steps to address this area is a big step towards improving your health. We are here to support you as you put your plan in place.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "We've gathered some helpful resources you can explore whenever you're ready.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Click HERE to explore resources to help you improve your sleep.",
+                "url": null
+            }
+        ]
+    },
+    "stress_2": {
+        "name": "I want to learn about SupportLinc employee assistance program",
+        "link": "https://www.SupportLinc.com/",
+        "pdf_box": "Access the SupportLinc using group code: uofu.",
+        "full": [
+            {
+                "type": "paragraph",
+                "text": "Here is some infomation about the SupportLinc Employee Assistance Program, that has resources to help with stress.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Life can be unpredictable-but you don't have to face it alone. SupportLinc, your Employee Assistance Program (EAP), offers free, confidential support to help you manage life's challenges-big or small.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Whether you're dealing with stress, anxiety, relationship issues, grief, or work-life balance, SupportLinc provides:",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "24/7 access to licensed counselors",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Short-term, solution-focused therapy",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Legal, financial, and family support resources",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Online self-guided tools and wellness content",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Getting started is easy.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Click HERE and use group code: uofu to access your benefits today.",
+                "url": null
+            }
+        ]
+    },
+    "tobacco_1": {
+        "name": "Utah Quit line",
+        "link": "https://waytoquit.org/",
+        "pdf_box": "Learn more about Way to Quit and the Utah Tobacco Quit Line",
+        "full": [
+            {
+                "type": "paragraph",
+                "text": "You may find resources helpful to address your Tobacco/Nicotine use at the Utah Quit line.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Quitting tobacco/nicotine is one of the best decisions you can make for your health-and with Way to Quit and the Utah Tobacco Quit Line, you don't have to do it alone.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Way to Quit offers free, confidential tools to help you break free from nicotine-on your terms. Whether you prefer online support, text coaching, or a personalized quit plan, you'll find the resources you need to succeed at waytoquit.org.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Prefer to talk it out? Call the Utah Tobacco Quit Line at 1-800-QUIT-NOW for one-on-one support from trained quit coaches.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "You'll get expert guidance, encouragement, and even access to free nicotine replacement therapies.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Click HERE to access tools to help you quit today.",
+                "url": null
+            }
+        ]
+    },
+    "meta_1b": {
+        "name": "I want to register for the Intensive Lifestyle Program (ILP)",
+        "link": "https://peak.webapps.med.utah.edu/category/78",
+        "pdf_box": "Register for the Intensive Lifestyle Program (ILP).",
+        "full": [
+            {
+                "type": "paragraph",
+                "text": "You may be interested in the Intensive Lifestyle Program (ILP).",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "In-Person & Virtual options",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "The Intensive Lifestyle Program is a powerful 10-week  group program. This program is designed to help you build lasting habits for a healthier, more energized life.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "In this dynamic, group-based program, you'll explore the foundations of:",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Movement - Find joy in staying active",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Nutrition - Learn to fuel your body with confidence",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Stress Management - Discover tools to feel more balanced and in control",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Each week, you'll gain practical strategies, expert guidance, and the support of a like-minded community-all focused on helping you create real, sustainable change.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Click HERE to learn more and register for the Internsive Lifestyle Program (ILP).",
+                "url": null
+            }
+        ]
+    },
+    "meta_4": {
+        "name": "I want to work on this area with  my primary care provider",
+        "link": "https://healthcare.utah.edu/primary-care/appointment",
+        "pdf_box": "Work with your primary care provider to address your health concerns.",
+        "full": [
+            {
+                "type": "paragraph",
+                "text": "A Primary Care Provider is a great place to start to address your health concerns.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Partnering with your primary care provider is a powerful step toward improving your overall well-being. Together, you can create a personalized plan to address your health risks and support your long-term goals.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Don't have a provider yet or looking for someone new? Our Primary Care Navigation Team is here to help you find the right fit-someone who understands your needs and supports your journey to better health.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Click HERE to find a Primary Care Provider near you.",
+                "url": null
+            }
+        ]
+    },
+    "meta_1a": {
+        "name": "I want to register for the National Diabetes Prevention Program (NDPP)",
+        "link": "https://peak.webapps.med.utah.edu/category/29",
+        "pdf_box": "Register for the National Diabetes Prevention Program (NDPP).",
+        "full": [
+            {
+                "type": "paragraph",
+                "text": "You may be interested in the National Diabetes Prevention Program (NDPP).",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "In-person & Virtual options",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "The National DPP is a proven, evidence-based, year-long lifestyle change program designed to help you prevent or delay the onset of Type 2 diabetes through small, achievable steps.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "With the support of a trained lifestyle coach and a group of peers, you'll learn how to:",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Eat healthier without giving up the foods you love",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Get active in ways that fit your life",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Manage stress and stay motivated",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Build habits that last a lifetime",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "This isn't a diet. It's a lifestyle shift-backed by science and built for real life.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Click HERE to learn more and register for the National Diabetes Prevention Program (NDPP).",
+                "url": null
+            }
+        ]
+    },
+    "activity_g_action": {
+        "name": "Fitness assessment",
+        "link": "https://booknow.appointment-plus.com/165ehg4e/10#Appointment",
+        "pdf_box": "Schedule a fitness assessment to learn even more about your fitness.",
+        "full": [
+            {
+                "type": "paragraph",
+                "text": "Your responses to the physical activty questions show that you take exercise seriously!",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "As a \"healthy recommendation\" we invite you to schedule a PEAK Fitness Assessment.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "A PEAK Fitness Assessment is a great way to evaluate your current fitness level and set meaningful, personalized goals for the future.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "During this 60-minute session, we'll assess key areas of your fitness, including:",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Cardiovascular endurance",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Muscular strength and endurance",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Flexibility",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Body composition",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "You'll receive a detailed report comparing your results to age-based norms, along with expert recommendations to help you improve or maintain your fitness.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Click HERE to schedule your PEAK Fitness Assessment.",
+                "url": null
+            }
+        ]
+    },
+    "nutr_g_action": {
+        "name": "Nutrition Workshop/Class",
+        "link": "https://peak.webapps.med.utah.edu/category/6",
+        "pdf_box": "Join an interactive Nutrition Workshop to add new recipes to your rotation.",
+        "full": [
+            {
+                "type": "paragraph",
+                "text": "Your answers to the food and nutrition questions indicate that you are doing well in this area!",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "As a \"healthy recommendation\" we invite you to join our hands-on Nutrition Workshops and discover how to create simple, nutritious, and delicious meals. Whether you're a beginner or just looking for fresh ideas, these interactive sessions will introduce you to new recipes and practical tips for incorporating healthy ingredients into your everyday routine.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "What you'll get:",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Fun, hands-on cooking experiences",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Easy, nutritious recipes to try at home",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Tips for making healthy eating sustainable and enjoyable",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "A variety of rotating topics to keep things fresh",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Click HERE to check out our current Nutrition Workshops and register today.",
+                "url": null
+            }
+        ]
+    },
+    "sleep_g_action": {
+        "name": "sleep tools",
+        "link": "https://www.sleepfitness.tools/",
+        "pdf_box": "Learn more about getting an even better night's sleep.",
+        "full": [
+            {
+                "type": "paragraph",
+                "text": "It looks like sleep is going well for you!",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Sleep is a vital part of your health and performance. Just like exercise and nutrition, quality sleep is essential for energy, focus, mood, and long-term well-being.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Improving your sleep fitness means creating healthy habits that support deep, restorative rest. From setting a consistent bedtime to creating a calming nighttime routine, small changes can lead to big benefits.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Click HERE for tips and tools for ways to get an even better night's sleep.",
+                "url": null
+            }
+        ]
+    },
+    "stress_g_action": {
+        "name": "Mindfulness Class & Curalinc Online Resources",
+        "link": "https://peak.webapps.med.utah.edu/category/60",
+        "pdf_box": "Learn more about available resources to support your wellbeing.",
+        "full": [
+            {
+                "type": "paragraph",
+                "text": "Looks like you are managing stress well- Keep it up!",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Managing your stress is a great way to guarantee better health!   Our Mindfulness Classes offer practical tools to help you slow down, breathe deeply, and live more intentionally-no matter your background or experience level.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "We offer three unique class options to meet your needs with both in-person and virtual options:",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Mindfulness-Based Stress Reduction (MBSR):",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "An evidence-based program designed to help you manage stress, anxiety, and chronic pain through meditation, gentle movement, and self-awareness practices.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Everyday Mindfulness:",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Perfect for beginners or those looking to build a consistent practice. Learn simple, effective techniques to bring mindfulness into your daily life-at work, at home, and everywhere in between.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Flourishing in Medicine:",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Created specifically for medical team members, this class focuses on resilience, emotional well-being, and connection in high-stress healthcare environments.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Each class is guided by experienced instructors and offers a supportive, welcoming environment to help you grow your practice and improve your well-being.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Click HERE to learn more and register for a class today.",
+                "url": null
+            }
+        ]
+    },
     "activity_1": {
         "name": "I want to register for an activity/fitness class",
         "link": "https://peak.webapps.med.utah.edu/category/132",
@@ -104,63 +935,6 @@
             {
                 "type": "paragraph",
                 "text": "Click HERE to schedule your free Personal Training session.",
-                "url": null
-            }
-        ]
-    },
-    "activity_3": {
-        "name": "I want to schedule a free Exercise Prescription",
-        "link": "https://booknow.appointment-plus.com/165ehg4e/10#Appointment",
-        "pdf_box": "Schedule your free exercise prescription.",
-        "full": [
-            {
-                "type": "paragraph",
-                "text": "You chose to schedule a free Exercise Prescription.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "In-Person & Virtual options",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "This 60-minute session is designed to help you move smarter, not just harder. Whether you're managing a health condition, just getting started, or simply looking for a safe and effective way to stay active, our experts  will work with you to create a customized exercise plan tailored to your unique needs and goals.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "In your session, you'll:",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Receive a personalized exercise prescription based on your health status and fitness level",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Learn proper form and technique to move safely and effectively",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Explore exercises that fit your lifestyle and preferences",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Gain confidence and motivation to stay active long-term",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "No matter your starting point, we'll help you move forward-safely, confidently, and with purpose.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Click HERE to schedule your free Exercise Prescription.",
                 "url": null
             }
         ]
@@ -306,63 +1080,6 @@
             }
         ]
     },
-    "activity_g_action": {
-        "name": "Fitness assessment",
-        "link": "https://booknow.appointment-plus.com/165ehg4e/10#Appointment",
-        "pdf_box": "Schedule a fitness assessment to learn even more about your fitness.",
-        "full": [
-            {
-                "type": "paragraph",
-                "text": "Your responses to the physical activty questions show that you take exercise seriously!",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "As a \"healthy recommendation\" we invite you to schedule a PEAK Fitness Assessment.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "A PEAK Fitness Assessment is a great way to evaluate your current fitness level and set meaningful, personalized goals for the future.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "During this 60-minute session, we'll assess key areas of your fitness, including:",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Cardiovascular endurance",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Muscular strength and endurance",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Flexibility",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Body composition",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "You'll receive a detailed report comparing your results to age-based norms, along with expert recommendations to help you improve or maintain your fitness.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Click HERE to schedule your PEAK Fitness Assessment.",
-                "url": null
-            }
-        ]
-    },
     "activity_noaction": {
         "name": "Physical Activity Resource Template",
         "link": "https://health.utah.edu/peak",
@@ -475,33 +1192,6 @@
             {
                 "type": "paragraph",
                 "text": "Click HERE to access SupportLinc and the Addiction Navigator (Use Group code: uofu).",
-                "url": null
-            }
-        ]
-    },
-    "alcohol_2": {
-        "name": "I want to learn more about HMHI Addiction Recovery Services",
-        "link": "https://healthcare.utah.edu/hmhi/treatments/addiction-recovery/recovery-clinic",
-        "pdf_box": "Learn more about HMHI Addiction Recovery Services.",
-        "full": [
-            {
-                "type": "paragraph",
-                "text": "You chose to work with Huntsman Mental Health Institute Addiction Recovery Services.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "HMHI Addiction Recovery Services are designed for individuals at any stage of their journey.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Whether you are  looking to cut back, take a break, or make a more lasting shift, HMHI Addiction Recovery Services offers a number of personalized, nonjudgmental support programs grounded in evidence-based care.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Click HERE to explore what's possible today.",
                 "url": null
             }
         ]
@@ -701,53 +1391,6 @@
                 "type": "link",
                 "text": "Click HERE for the HMHI Behavioral Health Network provider search tool",
                 "url": "https://apps.med.utah.edu/site/hmhibhn/a/search.aspx\\"
-            }
-        ]
-    },
-    "anx_2": {
-        "name": "I want to talk to a therapist about my Anxiety/Worry.",
-        "link": "https://www.SupportLinc.com/",
-        "pdf_box": "Schedule an appointment through SupportLinc using group code: uofu",
-        "full": [
-            {
-                "type": "paragraph",
-                "text": "You asked to talk to a Therapist about your anxiety/worry.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "SupportLinc, your Employee Assistance Program (EAP), offers free, confidential access to licensed therapists to help you manage life's challenges-big or small.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Whether you're dealing with stress, anxiety, relationship issues, grief, or work-life balance, SupportLinc provides:",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "24/7 access to licensed counselors",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Short-term, solution-focused therapy",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Legal, financial, and family support resources",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Self-guided tools and wellness content",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Click HERE to visit SupportLinc and schedule your appointment today. (use group code: uofu)",
-                "url": null
             }
         ]
     },
@@ -1161,63 +1804,6 @@
             }
         ]
     },
-    "bmi_4": {
-        "name": "I want to schedule  a free Health Coaching session",
-        "link": "https://booknow.appointment-plus.com/165ehg4e/10#Appointment",
-        "pdf_box": "Schedule your free health coaching session.",
-        "full": [
-            {
-                "type": "paragraph",
-                "text": "You chose to schedule a free Health Coaching session.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "In-Person & Virtual options",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Our expert Health Coaches offer one-on-one guidance tailored to your unique goals and lifestyle. Whether you're looking to boost energy, manage stress, improve nutrition, or build sustainable habits, we're here to help you succeed.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "With PEAK Health Coaching, you'll get:",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Personalized goal setting and action plans",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Ongoing motivation and accountability",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Expert strategies for lasting lifestyle changes",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Support every step of the way",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Start your journey to better health today.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Click HERE to schedule your free Health Coaching session.",
-                "url": null
-            }
-        ]
-    },
     "bmi_5": {
         "name": "I want to learn more about a Weight Management program",
         "link": "https://peak.webapps.med.utah.edu/category/133",
@@ -1425,33 +2011,6 @@
             }
         ]
     },
-    "drug_2": {
-        "name": "I want to learn more about HMHI Addiction Recovery Services",
-        "link": "https://healthcare.utah.edu/hmhi/treatments/addiction-recovery/recovery-clinic",
-        "pdf_box": "Learn more about HMHI Addiction Recovery Services.",
-        "full": [
-            {
-                "type": "paragraph",
-                "text": "You chose to work with Huntsman Mental Health Institute Addiction Recovery Services.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "HMHI Addiction Recovery Services are designed for individuals at any stage of their journey.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Whether you are  looking to cut back, take a break, or make a more lasting shift, HMHI Addiction Recovery Services offers a number of personalized, nonjudgmental support programs grounded in evidence-based care.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Click HERE to explore what's possible today.",
-                "url": null
-            }
-        ]
-    },
     "drug_3": {
         "name": "I want to work on this area with my primary care provider",
         "link": "https://healthcare.utah.edu/primary-care/appointment",
@@ -1584,68 +2143,6 @@
             {
                 "type": "paragraph",
                 "text": "Click HERE for information about substance and alcohol awareness, and resources available.",
-                "url": null
-            }
-        ]
-    },
-    "gen_1": {
-        "name": "I want to schedule a free Health Coaching session",
-        "link": "https://booknow.appointment-plus.com/165ehg4e/10#Appointment",
-        "pdf_box": "Schedule your free health coaching session.",
-        "full": [
-            {
-                "type": "paragraph",
-                "text": "You chose to schedule a free Health Coach session.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "In-Person & Virtual options",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Our expert Health Coaches offer one-on-one guidance tailored to your unique goals and lifestyle.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Whether you're looking to boost energy, manage stress, improve nutrition, or build sustainable habits, we're here to help you succeed.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "With PEAK Health Coaching, you'll get:",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Personalized goal setting and action plans",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Ongoing motivation and accountability",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Expert strategies for lasting lifestyle changes",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Support every step of the way",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Start your journey to better health today.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Click HERE to schedule your free Health Coaching session.",
                 "url": null
             }
         ]
@@ -1842,63 +2339,6 @@
             }
         ]
     },
-    "meta_1a": {
-        "name": "I want to register for the National Diabetes Prevention Program (NDPP)",
-        "link": "https://peak.webapps.med.utah.edu/category/29",
-        "pdf_box": "Register for the National Diabetes Prevention Program (NDPP).",
-        "full": [
-            {
-                "type": "paragraph",
-                "text": "You chose to register for the National Diabetes Prevention Program (NDPP).",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "In-person & Virtual options",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "The National DPP is a proven, evidence-based, year-long lifestyle change program designed to help you prevent or delay the onset of Type 2 diabetes through small, achievable steps.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "With the support of a trained lifestyle coach and a group of peers, you'll learn how to:",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Eat healthier without giving up the foods you love",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Get active in ways that fit your life",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Manage stress and stay motivated",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Build habits that last a lifetime",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "This isn't a diet. It's a lifestyle shift-backed by science and built for real life.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Click HERE to learn more and register for the National Diabetes Prevention Program (NDPP).",
-                "url": null
-            }
-        ]
-    },
     "meta_2": {
         "name": "I want to schedule a free  Nutrition Consultation",
         "link": "https://booknow.appointment-plus.com/165ehg4e/10#Appointment",
@@ -2013,33 +2453,6 @@
             }
         ]
     },
-    "meta_4": {
-        "name": "I want to work on this area with  my primary care provider",
-        "link": "https://healthcare.utah.edu/primary-care/appointment",
-        "pdf_box": "Work with your primary care provider to address your health concerns.",
-        "full": [
-            {
-                "type": "paragraph",
-                "text": "You chose to work with your Primary Care Provider to address your health concerns.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Partnering with your primary care provider is a powerful step toward improving your overall well-being. Together, you can create a personalized plan to address your health risks and support your long-term goals.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Don't have a provider yet or looking for someone new? Our Primary Care Navigation Team is here to help you find the right fit-someone who understands your needs and supports your journey to better health.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Click HERE to find a Primary Care Provider near you.",
-                "url": null
-            }
-        ]
-    },
     "meta_5": {
         "name": "I want to schedule a free Health Coaching session",
         "link": "https://booknow.appointment-plus.com/165ehg4e/10#Appointment",
@@ -2120,58 +2533,6 @@
             {
                 "type": "paragraph",
                 "text": "Click HERE to Learn more and request your Lifestyle Medicine Consultation.",
-                "url": null
-            }
-        ]
-    },
-    "meta_1b": {
-        "name": "I want to register for the Intensive Lifestyle Program (ILP)",
-        "link": "https://peak.webapps.med.utah.edu/category/78",
-        "pdf_box": "Register for the Intensive Lifestyle Program (ILP).",
-        "full": [
-            {
-                "type": "paragraph",
-                "text": "You chose to register for the Intensive Lifestyle Program (ILP).",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "In-Person & Virtual options",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "The Intensive Lifestyle Program is a powerful 10-week  group program. This program is designed to help you build lasting habits for a healthier, more energized life.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "In this dynamic, group-based program, you'll explore the foundations of:",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Movement - Find joy in staying active",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Nutrition - Learn to fuel your body with confidence",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Stress Management - Discover tools to feel more balanced and in control",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Each week, you'll gain practical strategies, expert guidance, and the support of a like-minded community-all focused on helping you create real, sustainable change.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Click HERE to learn more and register for the Internsive Lifestyle Program (ILP).",
                 "url": null
             }
         ]
@@ -2258,63 +2619,6 @@
             {
                 "type": "paragraph",
                 "text": "Click HERE to find those.",
-                "url": null
-            }
-        ]
-    },
-    "nutr_1": {
-        "name": "I want to schedule a free  Nutrition Consultation",
-        "link": "https://booknow.appointment-plus.com/165ehg4e/10#Appointment",
-        "pdf_box": "Schedule your free PEAK nutrition consultation.",
-        "full": [
-            {
-                "type": "paragraph",
-                "text": "You chose to schedule a free Nutriton Consultation.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "In-Person & Virtual options",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "In this 60-minute one-on-one session, our dietitian will help you create a personalized nutrition plan that fits your lifestyle, preferences, and goals.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "What you can expect:",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Practical, sustainable nutrition strategies tailored to you",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Guidance rooted in your real-life routines-not rigid meal plans",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Support to help you build long-term, healthy habits",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "A focus on progress, not perfection",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Empower yourself to make lasting changes that feel good and work for you.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Click HERE to schedule your free Nutrition Consultation.",
                 "url": null
             }
         ]
@@ -2564,53 +2868,6 @@
             }
         ]
     },
-    "nutr_g_action": {
-        "name": "Nutrition Workshop/Class",
-        "link": "https://peak.webapps.med.utah.edu/category/6",
-        "pdf_box": "Join an interactive Nutrition Workshop to add new recipes to your rotation.",
-        "full": [
-            {
-                "type": "paragraph",
-                "text": "Your answers to the food and nutrition questions indicate that you are doing well in this area!",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "As a \"healthy recommendation\" we invite you to join our hands-on Nutrition Workshops and discover how to create simple, nutritious, and delicious meals. Whether you're a beginner or just looking for fresh ideas, these interactive sessions will introduce you to new recipes and practical tips for incorporating healthy ingredients into your everyday routine.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "What you'll get:",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Fun, hands-on cooking experiences",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Easy, nutritious recipes to try at home",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Tips for making healthy eating sustainable and enjoyable",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "A variety of rotating topics to keep things fresh",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Click HERE to check out our current Nutrition Workshops and register today.",
-                "url": null
-            }
-        ]
-    },
     "nutr_noaction": {
         "name": "Nutrition Resource Link",
         "link": "https://healthcare.utah.edu/integrative-health/whole-person-health/nutrition-weight-management",
@@ -2623,7 +2880,7 @@
             },
             {
                 "type": "paragraph",
-                "text": "Changing food and nutrition habits can feel like a big step so it's normal to need time to think things through. What matters most is that you're aware-and when you're ready, we're here to help.",
+                "text": "Changing food and nutrition habits can feel like a big step, so it's normal to need time to think things through. What matters most is that you're aware-and when you're ready, we're here to help.",
                 "url": null
             },
             {
@@ -2754,58 +3011,6 @@
                 "type": "link",
                 "text": "Click HERE for the HMHI Behavioral Health Network provider search tool",
                 "url": "https://apps.med.utah.edu/site/hmhibhn/a/search.aspx\\"
-            }
-        ]
-    },
-    "phq_2": {
-        "name": "I want to work with SupportLinc Employee Assistance Program to create a plan",
-        "link": "https://www.SupportLinc.com/",
-        "pdf_box": "Access the SupportLinc using group code: uofu",
-        "full": [
-            {
-                "type": "paragraph",
-                "text": "You chose to meet with SupportLinc Employee Assistance Program.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Life can be unpredictable-but you don't have to face it alone. SupportLinc, your Employee Assistance Program (EAP), offers free, confidential support to help you manage life's challenges-big or small.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Whether you're dealing with stress, anxiety, relationship issues, grief, or work-life balance, SupportLinc provides:",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "24/7 access to licensed counselors",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Short-term, solution-focused therapy",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Legal, financial, and family support resources",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Online self-guided tools and wellness content",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Getting started is easy. Access your benefits today by clicking below and using group code: uofu.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Click HERE to visit SupportLinc.",
-                "url": null
             }
         ]
     },
@@ -3111,7 +3316,7 @@
     "sleep_1": {
         "name": "I want to register for a virtual insomnia class",
         "link": "Alert sent to Wellness Team to submit order for insomnia class",
-        "pdf_box": "A member of our team will reach out to register you for a virtual insomnia class.",
+        "pdf_box": "A member of our team will reach out about a virtual insomnia class.",
         "full": [
             {
                 "type": "paragraph",
@@ -3136,33 +3341,6 @@
             {
                 "type": "paragraph",
                 "text": "A member of our team contact you to schedule this class soon.",
-                "url": null
-            }
-        ]
-    },
-    "sleep_2": {
-        "name": "I want to create my own plan",
-        "link": "https://www.sleepfitness.tools/",
-        "pdf_box": "Create your own plan. Here are some useful resources to get started.",
-        "full": [
-            {
-                "type": "paragraph",
-                "text": "You chose to make your own plan to address your sleep.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Sleep quality can impact many different areas of your overall health and well-being. Taking steps to address this area is a big step towards improving your health. We are here to support you as you put your plan in place.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "To support you we've gathered some helpful resources you can explore whenever you're ready.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Click HERE to explore resources to help you improve your sleep.",
                 "url": null
             }
         ]
@@ -3232,7 +3410,7 @@
     "sleep_4": {
         "name": "I want to work on this area with my primary care provider",
         "link": "https://healthcare.utah.edu/primary-care/appointment",
-        "pdf_box": "Work with your primary care provider to address your sleep concerns.",
+        "pdf_box": "Work with your primary care provider on your sleep concerns.",
         "full": [
             {
                 "type": "paragraph",
@@ -3283,33 +3461,6 @@
             }
         ]
     },
-    "sleep_g_action": {
-        "name": "sleep tools",
-        "link": "https://www.sleepfitness.tools/",
-        "pdf_box": "Learn more about getting an even better night's sleep.",
-        "full": [
-            {
-                "type": "paragraph",
-                "text": "It looks like sleep is going well for you!",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Sleep is a vital part of your health and performance. Just like exercise and nutrition, quality sleep is essential for energy, focus, mood, and long-term well-being.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Improving your sleep fitness means creating healthy habits that support deep, restorative rest. From setting a consistent bedtime to creating a calming nighttime routine, small changes can lead to big benefits.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Click HERE for tips and tools for ways to get an even better night's sleep.",
-                "url": null
-            }
-        ]
-    },
     "sleep_noaction": {
         "name": "sleep tools",
         "link": "https://www.sleepfitness.tools/",
@@ -3345,7 +3496,7 @@
     "sleep_noansw": {
         "name": "sleep tools",
         "link": "https://www.sleepfitness.tools/",
-        "pdf_box": "When you're ready, learn more about improving your sleep.",
+        "pdf_box": "Learn more about improving your sleep.",
         "full": [
             {
                 "type": "paragraph",
@@ -3441,62 +3592,10 @@
             }
         ]
     },
-    "stress_2": {
-        "name": "I want to learn about SupportLinc employee assistance program",
-        "link": "https://www.SupportLinc.com/",
-        "pdf_box": "Access the SupportLinc using group code: uofu.",
-        "full": [
-            {
-                "type": "paragraph",
-                "text": "You chose to learn more about the SupportLinc Employee Assistance Program.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Life can be unpredictable-but you don't have to face it alone. SupportLinc, your Employee Assistance Program (EAP), offers free, confidential support to help you manage life's challenges-big or small.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Whether you're dealing with stress, anxiety, relationship issues, grief, or work-life balance, SupportLinc provides:",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "24/7 access to licensed counselors",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Short-term, solution-focused therapy",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Legal, financial, and family support resources",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Online self-guided tools and wellness content",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Getting started is easy.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Click HERE and use group code: uofu to access your benefits today.",
-                "url": null
-            }
-        ]
-    },
     "stress_3": {
         "name": "I want to make my own plan",
         "link": "https://admin.healthcare.utah.edu/sites/g/files/zrelqx136/files/media/documents/2024/assess-your-stress.pdf",
-        "pdf_box": "Learn how to assess your stress and how you can make your own plan.",
+        "pdf_box": "Learn how to assess your stress and how you can make a plan.",
         "full": [
             {
                 "type": "paragraph",
@@ -3636,68 +3735,6 @@
             }
         ]
     },
-    "stress_g_action": {
-        "name": "Mindfulness Class & Curalinc Online Resources",
-        "link": "https://peak.webapps.med.utah.edu/category/60",
-        "pdf_box": "Learn more about available resources to support your wellbeing.",
-        "full": [
-            {
-                "type": "paragraph",
-                "text": "Looks like you are managing stress well- Keep it up!",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Managing your stress is a great way to guarantee better health!   Our Mindfulness Classes offer practical tools to help you slow down, breathe deeply, and live more intentionally-no matter your background or experience level.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "We offer three unique class options to meet your needs with both in-person and virtual options:",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Mindfulness-Based Stress Reduction (MBSR):",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "An evidence-based program designed to help you manage stress, anxiety, and chronic pain through meditation, gentle movement, and self-awareness practices.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Everyday Mindfulness:",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Perfect for beginners or those looking to build a consistent practice. Learn simple, effective techniques to bring mindfulness into your daily life-at work, at home, and everywhere in between.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Flourishing in Medicine:",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Created specifically for medical team members, this class focuses on resilience, emotional well-being, and connection in high-stress healthcare environments.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Each class is guided by experienced instructors and offers a supportive, welcoming environment to help you grow your practice and improve your well-being.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Click HERE to learn more and register for a class today.",
-                "url": null
-            }
-        ]
-    },
     "stress_noaction": {
         "name": "Stress Resource Template & Assess your stress link",
         "link": "https://admin.healthcare.utah.edu/sites/g/files/zrelqx136/files/media/documents/2024/assess-your-stress.pdf",
@@ -3732,7 +3769,7 @@
         "full": [
             {
                 "type": "paragraph",
-                "text": "We didnt capture a response on this question.",
+                "text": "We didn't capture a response on this question.",
                 "url": null
             },
             {
@@ -3787,47 +3824,10 @@
             }
         ]
     },
-    "tobacco_1": {
-        "name": "Utah Quit line",
-        "link": "https://waytoquit.org/",
-        "pdf_box": "Learn more about Way to Quit and the Utah Tobacco Quit Line (1-800-Quit-Now)",
-        "full": [
-            {
-                "type": "paragraph",
-                "text": "You chose to access the Utah Quit line to address your Tobacco/Nicotine use.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Quitting tobacco/nicotine is one of the best decisions you can make for your health-and with Way to Quit and the Utah Tobacco Quit Line, you don't have to do it alone.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Way to Quit offers free, confidential tools to help you break free from nicotine-on your terms. Whether you prefer online support, text coaching, or a personalized quit plan, you'll find the resources you need to succeed at waytoquit.org.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Prefer to talk it out? Call the Utah Tobacco Quit Line at 1-800-QUIT-NOW for one-on-one support from trained quit coaches.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "You'll get expert guidance, encouragement, and even access to free nicotine replacement therapies.",
-                "url": null
-            },
-            {
-                "type": "paragraph",
-                "text": "Click HERE to access tools to help you quit today.",
-                "url": null
-            }
-        ]
-    },
     "tobacco_2": {
         "name": "Primary Care",
         "link": "https://healthcare.utah.edu/primary-care/appointment",
-        "pdf_box": "Work with your primary care provider to address your tobacco/nicotine use.",
+        "pdf_box": "Work with your primary care provider on your tobacco/nicotine use.",
         "full": [
             {
                 "type": "paragraph",
