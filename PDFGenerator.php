@@ -185,44 +185,33 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             $action     = !empty($_POST['action'])      ? htmlspecialchars( $_POST['action'], ENT_QUOTES) : "";
 
             if ($action == 'generate_pdf') {
-                $this->console_log("Generating PDF for record: " . $record_id . " with name: " . $name);
-                $this->console_log("Action: " . $action);
-
-                $this->console_log("PDF Data: " . $pdfData);
 
                 $currentDateTime = preg_replace('/[ :]/', '_', gmdate("Y-m-d H:i:s")) . '_UTC';
-                $this->console_log("Current Date and Time: " . $currentDateTime);
 
                 $pdfFilePath = __DIR__ . '/generated_pdfs' . '/' . $record_id . '_' . $name . '_' . $currentDateTime. '.pdf';
 
                 $response = $this->savePdfFile($pdfData, $pdfFilePath);
 
                 if ($response === false) {
-                    $this->console_log("Failed to save PDF file.");
+                    $this->console_log("FAILED: Record ID: " . $record_id . " to save PDF file.", "ERROR");
                     return;
                 } else {
-                    $this->console_log("PDF file saved to following filesystem location: " . $pdfFilePath);
 
                     $doc_id = $this->saveToEdocs($pdfFilePath);
-                    $this->console_log("PDF file saved to REDCap edocs with ID: " . $doc_id);
                 }
 
                 if (!$doc_id) {
-                    $this->console_log("Failed to save PDF to REDCap edocs.");
+                    $this->console_log("FAILED: Record ID: " . $record_id . " to save PDF to edocs.", "ERROR");
                     return;
                 } else {
-                    $this->console_log("PDF file saved successfully to REDCap edocs.");
                     $response = $this->savePdfToFileField($record_id, $doc_id);
                 }
 
                 if ($response === false) {
-                    $this->console_log("Failed to save PDF to file field.");
+                    $this->console_log("FAILED: Record ID: " . $record_id . " to save PDF to file field.", "ERROR");
                 } else {
-                    $this->console_log("PDF file saved successfully to file field.");
                     unlink($pdfFilePath);
                 }
-            } else {
-                $this->console_log("Unknown action: " . $action);
             }
         }
     }
@@ -260,9 +249,6 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         }
 
         $record = $this->getCurrentRecordData($record_id);
-
-        $this->console_log("Record data retrieved for record ID: " . $record_id);
-        $this->console_log($record);
 
         $name = $record[0]['first_name'] . " " . $record[0]['last_name'];
 
@@ -458,7 +444,6 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             $default_priorities = array_values($default_priorities);
             foreach ($default_priorities as $default) {
                 if ($default['label'] == "Primary Care\nProvider" && !($record[0]['provider'] == "1" || $record[1]['provider'] == "2")) {
-                    $this->console_log("Skipping Primary Care Provider they already have one.");
                     continue;
                 }
                 $key = explode('_', $default['lookup_content'])[0];
@@ -531,8 +516,6 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             $this->console_log("Resources file not found: " . $resourcesFilePath, 'ERROR');
             return '';
         }
-
-        $this->console_log("Lookup and resources data loaded successfully.");
 
         $goalsContent =  array();
         foreach ($lookupData as $key => $value) {
