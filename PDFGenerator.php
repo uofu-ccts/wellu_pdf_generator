@@ -193,7 +193,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
                 $response = $this->savePdfFile($pdfData, $pdfFilePath);
 
                 if ($response === false) {
-                    $this->console_log("FAILED: Record ID: " . $record_id . " to save PDF file.", "ERROR");
+                    $this->console_log("FAILED - Record ID: " . $record_id . " to save PDF file.", "ERROR");
                     return;
                 } else {
 
@@ -201,14 +201,14 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
                 }
 
                 if (!$doc_id) {
-                    $this->console_log("FAILED: Record ID: " . $record_id . " to save PDF to edocs.", "ERROR");
+                    $this->console_log("FAILED - Record ID: " . $record_id . " to save PDF to edocs.", "ERROR");
                     return;
                 } else {
                     $response = $this->savePdfToFileField($record_id, $doc_id);
                 }
 
                 if ($response === false) {
-                    $this->console_log("FAILED: Record ID: " . $record_id . " to save PDF to file field.", "ERROR");
+                    $this->console_log("FAILED - Record ID: " . $record_id . " to save PDF to file field.", "ERROR");
                 } else {
                     unlink($pdfFilePath);
                 }
