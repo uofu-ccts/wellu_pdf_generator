@@ -4,7 +4,12 @@ namespace Utah\PDFGenerator;
 
 use \REDCap as REDCap;
 
+include_once "emLoggerTrait.php";
+
 class PDFGenerator extends \ExternalModules\AbstractExternalModule {
+
+    use emLoggerTrait;
+
     public $project_id = null;
     public $list_of_records = array();
 
@@ -193,7 +198,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
                 $response = $this->savePdfFile($pdfData, $pdfFilePath);
 
                 if ($response === false) {
-                    $this->console_log("FAILED - Record ID: " . $record_id . " to save PDF file.", "ERROR");
+                    $this->emError("FAILED - Record ID: " . $record_id . " to save PDF file.");
                     return;
                 } else {
 
@@ -201,14 +206,14 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
                 }
 
                 if (!$doc_id) {
-                    $this->console_log("FAILED - Record ID: " . $record_id . " to save PDF to edocs.", "ERROR");
+                    $this->emError("FAILED - Record ID: " . $record_id . " to save PDF to edocs.");
                     return;
                 } else {
                     $response = $this->savePdfToFileField($record_id, $doc_id);
                 }
 
                 if ($response === false) {
-                    $this->console_log("FAILED - Record ID: " . $record_id . " to save PDF to file field.", "ERROR");
+                    $this->emError("FAILED - Record ID: " . $record_id . " to save PDF to file field.");
                 } else {
                     unlink($pdfFilePath);
                 }
@@ -505,7 +510,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             $lookupContent = file_get_contents($lookupFilePath);
             $lookupData = json_decode($lookupContent, true);
         } else {
-            $this->console_log("Lookup file not found: " . $lookupFilePath, 'ERROR');
+            $this->emError("Lookup file not found: " . $lookupFilePath);
             return '';
         }
 
@@ -513,7 +518,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             $resourcesContent = file_get_contents($resourcesFilePath);
             $resourcesData = json_decode($resourcesContent, true);
         } else {
-            $this->console_log("Resources file not found: " . $resourcesFilePath, 'ERROR');
+            $this->emError("Resources file not found: " . $resourcesFilePath);
             return '';
         }
 

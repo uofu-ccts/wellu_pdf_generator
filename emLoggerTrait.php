@@ -15,30 +15,6 @@ namespace Utah\PDFGenerator;
  * 4) Inside your class, before your first function, insert: use emLoggerTrait;
  * 5) (optional) Modify your config.json to include these two optional debug settings
 
-(OPTIONAL) INSERT THESE OPTIONS INTO THE CONFIG.JSON
-
-"system-settings": [
-
-{
-"key": "enable-system-debug-logging",
-"name": "<b>Enable Debug Logging (system-wide)</b><i>(optional)</i> Requires installation and configuration of emLogger",
-"required": false,
-"type": "checkbox"
-},
-
-],
-
-"project-settings": [
-
-{
-"key": "enable-project-debug-logging",
-"name": "<b>Enable Debug Logging</b><br><i>(optional)</i> Requires installation and configuration of emLogger",
-"required": false,
-"type": "checkbox"
-},
-
-],
-
  */
 
 trait emLoggerTrait

@@ -12,7 +12,7 @@ $username = $user->getUsername();
 // Handle calls from the generator page
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // $module->console_log($_POST);
+    // $module->emDebug($_POST);
 
     // Parse required fields
     $pdfData    = !empty($_POST['pdfData'])     ? htmlspecialchars( $_POST['pdfData'], ENT_QUOTES) : "";
@@ -21,24 +21,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $action     = !empty($_POST['action'])      ? htmlspecialchars( $_POST['action'], ENT_QUOTES) : "";
 
     if ($action == 'generate_pdf') {
-        $module->console_log("Generating PDF for record: " . $record_id . " with name: " . $name);
-        $module->console_log("Action: " . $action);
+        $module->emDebug("Generating PDF for record: " . $record_id . " with name: " . $name);
+        $module->emDebug("Action: " . $action);
 
-        $module->console_log("PDF Data: " . $pdfData);
+        $module->emDebug("PDF Data: " . $pdfData);
 
         $pdfFilePath = __DIR__ . '/' . $record_id . '.pdf';
 
         $response = $module->savePdfFile($pdfData, $pdfFilePath);
-        $module->console_log("PDF file saved to: " . $pdfFilePath);
+        $module->emDebug("PDF file saved to: " . $pdfFilePath);
         if ($response === false) {
-            $module->console_log("Failed to save PDF file.");
+            $module->emError("Failed to save PDF file.");
         } else {
-            $module->console_log("PDF file saved successfully.");
+            $module->emDebug("PDF file saved successfully.");
         }
         // $doc_id = $module->saveToEdocs($record_id, $doc);
-        // $module->console_log("Document ID: " . $doc_id);
+        // $module->emDebug("Document ID: " . $doc_id);
     } else {
-        $module->console_log("Unknown action: " . $action);
+        $module->emDebug("Unknown action: " . $action);
     }
 }
 
