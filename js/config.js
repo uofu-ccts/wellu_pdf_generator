@@ -165,7 +165,7 @@ PDF.addEventHandlers = function (
   PDF.imageUrls = imageUrls || [];
   PDF.goalsContent = goalsContent || {};
   PDF.record = record || {};
-  PDF.logicRecord = record[record.length - 1] || {};
+  PDF.logicRecord = record.filter(r => r.redcap_event_name === "fy_202627_arm_1" && r.redcap_repeat_instrument === ""&& r.affirmative === "1")[0] || {};
   PDF.processedData = processedData || {};
   PDF.tcpLink = tcpLink || {};
   // Handle the ADD button
