@@ -5,7 +5,7 @@ This document contains the team-oriented maintenance material that used to live 
 Use this alongside [`onboarding.md`](./onboarding.md):
 
 - `onboarding.md` explains the module structure and change-impact areas
-- `MAINTENANCE_PLAYBOOK.md` covers ramp-up, testing, and near-term maintenance guidance
+- `maintenance.md` covers ramp-up, testing, and near-term maintenance guidance
 
 ## Suggested Ramp-Up By Complexity
 

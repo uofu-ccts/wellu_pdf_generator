@@ -101,7 +101,7 @@ PHP then:
 - attaches it to the `wellu_pdf` file field
 - removes the temp file if attachment succeeds
 
-## Critical REDCap Contract
+## Coupling with REDCap project structure
 
 This module depends on specific REDCap project structure. Before changing code, verify these assumptions still hold.
 
@@ -476,3 +476,5 @@ When the REDCap project contract changes, the safest order is usually:
 ## See Also
 
 For ramp-up by complexity, testing checklists, and near-term backlog notes, see [`maintenance.md`](./maintenance.md).
+
+To use the emLogger module, make sure it is enabled on your local REDCap instance and configured properly. For more information, see [the emLogger EM README](https://github.com/susom/redcap-em-logger/blob/master/README.md).
