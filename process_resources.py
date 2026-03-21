@@ -26,6 +26,9 @@ df['Full Verbiage'] = df['Full Verbiage'].apply(normalize_text)
 
 # Loop through the DataFrame and create the desired structure
 resources = {}
+# TODO: If SDOH-tailored resource copy is maintained in the source spreadsheet,
+# extend this exporter so SDOH entries land in the same resources.json structure
+# consumed by getPdfContent() and the rest of the PDF.
 for index, row in df.iterrows():
     resource_key = '{}_{}'.format(row["Field"].lower(), str(row["Choice"]).lower())
     resource_content = {

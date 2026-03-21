@@ -168,6 +168,9 @@ PDF.addEventHandlers = function (
   PDF.logicRecord = record.filter(r => r.redcap_event_name === "fy_202627_arm_1" && r.redcap_repeat_instrument === ""&& r.affirmative === "1")[0] || {};
   PDF.processedData = processedData || {};
   PDF.tcpLink = tcpLink || {};
+  // TODO: If SDOH survey responses feed a bottom-of-PDF section, expect them to come
+  // through this same goalsContent payload from getPdfContent() rather than as a
+  // separate data source.
   // Handle the ADD button
   $(".generate-pdf").on("click", function () {
     var record_id = $(this).attr("data-record-id");
@@ -432,6 +435,10 @@ PDF.generatePDF = async function (record_id, name) {
       url
     );
   }
+
+  // TODO: Render SDOH content here from PDF.goalsContent after getPdfContent() starts
+  // including it, so the bottom-of-PDF section is driven by the same data source and
+  // rendering flow as the rest of the action-plan sections.
 
   try {
     // Generate PDF data first - this will work even if browser preview fails

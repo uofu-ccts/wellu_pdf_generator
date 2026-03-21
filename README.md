@@ -2,6 +2,8 @@
 
 This is an external module to generate a PDF when prompted using the JSPDF library.
 
+For engineering context and maintenance notes, start with [onboarding.md](./docs/onboarding.md).
+
 ## Setup for Development
 1. Clone repo into the `modules` directory for a `REDCap` instance.
 2. Modify name to follow REDCap EM naming conventions: `wellu_pdf_generator_v[version_number]`

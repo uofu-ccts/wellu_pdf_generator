@@ -253,6 +253,9 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             $imageUrls[] = $this->getUrl('js/img/' . $fileName);
         }
 
+        // TODO: If SDOH survey answers should appear in the PDF, make sure the
+        // relevant survey/event data is available here so getPdfContent() can add it
+        // to the same content payload used by the rest of the PDF.
         $record = $this->getCurrentRecordData($record_id);
 
         $name = $record[0]['first_name'] . " " . $record[0]['last_name'];
@@ -260,6 +263,9 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         $processed_data = $this->processPriorities($record);
 
         $goalsContent = $this->getPdfContent($record);
+        // TODO: Extend getPdfContent() so SDOH-driven resources are included in this
+        // existing content payload, using the same data source that feeds the rest of
+        // the PDF sections.
 
         $tcpLink = $this->getTcpLink($record_id);
 
@@ -286,6 +292,9 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         </div>";
         $html .= "<form id='action-form' name='action' class='hidden' method='POST'></form>";
         $html .= "<script src='$jsUrl'></script>";
+        // TODO: Keep SDOH resources in this existing goalsContent argument once
+        // getPdfContent() includes them, so config.js renders them from the same
+        // source as the rest of the PDF.
         $html .= "<script>PDF.addEventHandlers(" . json_encode($record) . "," . json_encode($imageUrls) . "," . json_encode($goalsContent) . "," . json_encode($processed_data) . "," . json_encode($tcpLink) . ");</script>";
 
         return $html;
@@ -502,6 +511,11 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
     }
 
     function getPdfContent($record) {
+        // TODO: Add SDOH survey-driven resources here so they are returned in the
+        // same content structure as the current PDF sections. If SDOH fields do not
+        // follow the existing <prefix>_action/_yn/_is_green pattern, extend this
+        // method's mapping logic rather than creating a separate payload.
+        
         // save contents of lookup.json file into variable
         $lookupFilePath = __DIR__ . '/resources/lookup.json';
         $resourcesFilePath = __DIR__ . '/resources/resources.json';
@@ -643,16 +657,16 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         return $html;
     }
 
-    function returnProcessedString($string) {
-        $length = 50;
+    // function returnProcessedString($string) {
+    //     $length = 50;
 
-        $string = strip_tags2($string);
-        if (strlen($string) > $length) {
-            $string = substr($string,0,$length) . "...";
-        }
-        $string = preg_replace('/[\n\r]+/', " ", $string);
-        return $string;
-    }
+    //     $string = strip_tags2($string);
+    //     if (strlen($string) > $length) {
+    //         $string = substr($string,0,$length) . "...";
+    //     }
+    //     $string = preg_replace('/[\n\r]+/', " ", $string);
+    //     return $string;
+    // }
 
     private function includeJs($path){
         echo "<script type='text/javascript' src={$this->getUrl($path)}></script>";
