@@ -4,7 +4,7 @@ This module generates a participant-facing PDF on the REDCap `final_report` surv
 
 ## Key Files
 
-- [`config.json`](../config.json): EM manifest and settings.
+- [`config.json`](../config.json): EM settings.
 - [`PDFGenerator.php`](../PDFGenerator.php): server-side hook, mapping, and save flow.
 - [`js/config.js`](../js/config.js): PDF layout, scoring, and browser POST logic.
 - [`resources/resources.json`](../resources/resources.json): resource copy and links used in the PDF.

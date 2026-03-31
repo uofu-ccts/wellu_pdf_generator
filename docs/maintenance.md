@@ -59,6 +59,20 @@ Deliverables:
 - add guardrails around POST handling and filename construction
 - separate scoring logic from layout logic where practical
 
+## JSON File Updates
+
+### For SDOH changes
+
+- update [`resources/resources.json`](../resources/resources.json) with SDOH content in the same object shape already used by the PDF: `name`, `link`, `pdf_box`, and `full`
+- update [`resources/lookup.json`](../resources/lookup.json) if SDOH needs a new heading/lookup key in the detailed PDF
+- keep any new SDOH JSON keys aligned with whatever lookup key and choice mapping `getPdfContent()` uses
+
+### For priority changes
+
+- update [`resources/lookup.json`](../resources/lookup.json) when combined or renamed priorities need different section labels or a different shared lookup key
+- update [`resources/resources.json`](../resources/resources.json) so the detailed resource blocks match the new priority grouping, naming, and lookup keys
+- if multiple top-of-PDF priorities now roll up to one detailed section, consolidate the matching entries under the shared lookup key and remove or rename obsolete JSON keys
+
 ## Manual Smoke Test
 
 1. Confirm `generated_pdfs/` exists and is writable.

@@ -266,6 +266,8 @@ PDF.generatePDF = async function (record_id, name) {
   const boxHeight = 35; // Height of the box
   const subboxHeight = 16;
 
+  // TODO: If the top priority set changes, update this tile loop and layout so the
+  // icon row matches the new combined/renamed priorities coming from processPriorities().
   for (let i = 0; i < 4; i++) {
     coordinates = createGoalBox(
       doc,
@@ -411,6 +413,8 @@ PDF.generatePDF = async function (record_id, name) {
     10
   );
 
+  // TODO: Keep this detailed-section render flow aligned with any combined or renamed
+  // priorities so the lower PDF content matches the top icon tiles.
   for (var key in PDF.goalsContent) {
     var heading = PDF.goalsContent[key].label || "Goal";
     var content = PDF.goalsContent[key].full || [];
@@ -587,6 +591,7 @@ const createGoalSubbox = function (doc, goal, coordinates, width, height) {
   return coordinates;
 };
 
+// TODO: explore how to add alt text to these color bars for accessibility, and if that can be included in the PDF output in a way that screen readers can access.
 const createMetricBox = function (doc, metric, label, coordinates, riskLevel) {
   // Box settings
   const boxWidth = 25;
@@ -1085,6 +1090,8 @@ const calculateIndividualData = function () {
   ];
 };
 
+// TODO: If the risk key logic changes based on combined/renamed priorities coming from processPriorities(),
+// update this function to match the new logic and ensure the risk levels in the summary table align with the top icon tiles.
 function calculateRiskKeyBubbles() {
   const record = PDF.logicRecord;
   let a1cRisk;
@@ -1202,6 +1209,8 @@ function calculateRiskKeyBubbles() {
   return riskKeys;
 }
 
+// TODO: If the risk key logic changes based on combined/renamed priorities coming from processPriorities(),
+// update this function to match the new logic and ensure the risk levels in the summary table align with the top icon tiles.
 function calculateRiskKeysTable() {
   const record = PDF.logicRecord;
   let providerRisk;

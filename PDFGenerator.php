@@ -13,6 +13,11 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
     public $project_id = null;
     public $list_of_records = array();
 
+    // TODO: If top-of-PDF priorities are combined, renamed, or re-iconed, update
+    // this mapping first so the tile label/image and downstream lookup_content stay
+    // in sync with the detailed PDF sections.
+    // Will also need to see if *_p_score updates in REDCap are cascading down to the 
+    // variables that are shown here
     private $lookup = [
         'dbt' => [
             'label' => 'Diabetes',
@@ -32,6 +37,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'image' => 'a1c.png',
             'lookup_content' => 'meta_action'
         ],
+        // TODO: no longer relevant, remove
         'fastfood' => [
             'label' => "Fast Food &\nSnack Intake",
             'priority_field' => 'fastfood_priority_numb_2',
@@ -41,6 +47,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'image' => 'fast_food.png',
             'lookup_content' => 'nutr_action'
         ],
+        // TODO: no longer relevant, remove
         'fruitveg' => [
             'label' => "Fruit & Vegetable\nIntake",
             'priority_field' => 'fruitveg_priority_numb_2',
@@ -50,6 +57,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'image' => 'fruit_and_vegetable.png',
             'lookup_content' => 'nutr_action'
         ],
+        // TODO: no longer relevant, remove
         'sugarbev' => [
             'label' => "Sugar Sweetened\nBeverage Intake",
             'priority_field' => 'sugarbev_priority_numb_2',
@@ -59,6 +67,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             'image' => 'sugary_beverages.png',
             'lookup_content' => 'nutr_action'
         ],
+        // TODO: need to remove this completely, no longer shown
         'artbev' => [
             'label' => "Artificial\nBeverage Intake",
             'priority_field' => 'artbev_priority_numb_2',
@@ -358,6 +367,8 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
 
     // when rendering the PDF, either top 4 of the priorities, or the length of the priorities array, whichever is smaller
 
+    // TODO: If the priority model changes, update the selection/sort/default-fill
+    // logic here so the icon tiles reflect the new combined or renamed priorities.
     function processPriorities($record) {
         $priorities = [];
 
@@ -536,6 +547,8 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             return '';
         }
 
+        // TODO: If priority groupings change upstream, keep the goalsContent mapping
+        // aligned here so the detailed PDF descriptions match the updated top tiles.
         $goalsContent =  array();
         foreach ($lookupData as $key => $value) {
 
