@@ -28,5 +28,8 @@
     },
     "gen": {
         "label": "General Health"
+    },
+    "pcp": {
+        "label": "Primary Care Provider"
     }
 }
