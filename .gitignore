@@ -14,3 +14,6 @@ Ignore generated PDFs
 
 # Ignore random files
 .DS_Store
+
+# Ignore Excel spreadsheets
+*.xlsx
