@@ -3,7 +3,8 @@ import pandas as pd
 import unicodedata
 import json
 
-df = pd.read_excel('./wellu_resources_final_mm.xlsx', sheet_name='WellU V2 resource map FINAL')
+df = pd.read_excel('./wellu_resources_y3_final_4.30.26.xlsx', sheet_name='USE THIS WellU V3 resource')
+# df = pd.read_excel('./wellu_resources_final_mm.xlsx', sheet_name='WellU V2 resource map FINAL')
 
 def normalize_text(text):
     # Replace smart apostrophes with straight ones.
@@ -22,7 +23,8 @@ df.fillna('', inplace=True)
 df['Resource Name'] = df['Resource Name'].apply(normalize_text)
 df['Resource Link'] = df['Resource Link'].apply(normalize_text)
 df['PDF Box Verbiage'] = df['PDF Box Verbiage'].apply(normalize_text)
-df['Full Verbiage'] = df['Full Verbiage'].apply(normalize_text)
+df['FY27 Verbiage'] = df['FY27 Verbiage'].apply(normalize_text)
+# df['Full Verbiage'] = df['Full Verbiage'].apply(normalize_text)
 
 # Loop through the DataFrame and create the desired structure
 resources = {}
@@ -30,14 +32,19 @@ resources = {}
 # extend this exporter so SDOH entries land in the same resources.json structure
 # consumed by getPdfContent() and the rest of the PDF.
 for index, row in df.iterrows():
-    resource_key = '{}_{}'.format(row["Field"].lower(), str(row["Choice"]).lower())
+    resource_key = '{}_{}'.format(row["Field"].lower(), str(row["Suggested variable name"]).lower())
+
+    if str(row["Choice"]).lower() == "g_action" or str(row["Choice"]).lower() == "noaction" or str(row["Choice"]).lower() == "noansw":
+        resource_key = '{}_{}'.format(row["Field"].lower(), str(row["Choice"]).lower())
+
     resource_content = {
         "name": row["Resource Name"].strip(),
         "link": row["Resource Link"].strip() if row["Resource Link"] else None,
         "pdf_box": row["PDF Box Verbiage"].strip() if row["PDF Box Verbiage"] else None,
         "full": []
     }
-    full_verbiage = row["Full Verbiage"]
+    full_verbiage = row["FY27 Verbiage"]
+    # full_verbiage = row["Full Verbiage"]
     if type(full_verbiage) != str:
         continue
     else:

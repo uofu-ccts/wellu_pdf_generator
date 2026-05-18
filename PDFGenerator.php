@@ -509,9 +509,7 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             $action = $key . '_action';
             $yn = $key . '_yn';
 
-            $user_choice = $record[1][$action] ? $record[1][$action] : "noansw";
-
-            $this->console_log("User choice for $key: " . $user_choice);
+            $user_choice = $record[1][$action] ? strtolower($record[1][$action]) : "noansw";
 
             $user_yn = $record[1][$yn];
             $user_green = $record[1][$green];

@@ -17,3 +17,6 @@ Ignore generated PDFs
 
 # Ignore Excel spreadsheets
 *.xlsx
+
+# Ignore environments
+.env/
