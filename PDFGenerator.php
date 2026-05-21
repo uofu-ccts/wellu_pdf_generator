@@ -537,8 +537,6 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
             }
 
             if ($key == "pcp") {
-                $this->console_log("Processing PCP resource with response: " . $record[1]['provider']);
-                $this->console_log("Processing PCP resource with response: " . $record[1]['provider_help']);
                 // need special handling for PCP resources
                 if ($record[1]['provider'] == "1" || $record[1]['provider'] == "2") {
                     $user_choice = "has_pcp";
@@ -550,8 +548,6 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
                 else if ($record[1]['provider'] == "3" && $record[1]['provider_help'] == "0") {
                     $user_choice = "no_pcp";
                 }
-
-                $this->console_log("Determined PCP resource key: " . $user_choice);
             }
 
             $resourceKey = $key . '_' . $user_choice;
