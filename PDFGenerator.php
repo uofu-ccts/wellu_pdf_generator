@@ -543,7 +543,6 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
                 }
                 else if ($record[1]['provider'] == "3" && $record[1]['provider_help'] == "1") {
                     $user_choice = "connect_pcp";
-                    $this->console_log("we are here in the connect pcp branch");
                 }
                 else if ($record[1]['provider'] == "3" && $record[1]['provider_help'] == "0") {
                     $user_choice = "no_pcp";
