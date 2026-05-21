@@ -536,6 +536,19 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
                 }
             }
 
+            if ($key == "pcp") {
+                // need special handling for PCP resources
+                if ($record[1]['provider'] == "1" || $record[1]['provider'] == "2") {
+                    $user_choice = "has_pcp";
+                }
+                else if ($record[1]['provider'] == "3" && $record[1]['provider_help'] == "1") {
+                    $user_choice = "connect_pcp";
+                }
+                else if ($record[1]['provider'] == "3" && $record[1]['provider_help'] == "0") {
+                    $user_choice = "no_pcp";
+                }
+            }
+
             $resourceKey = $key . '_' . $user_choice;
 
             // maybe add the continue if the resourceKey is not in the resourcesData

@@ -3447,5 +3447,311 @@
                 "url": "https://waytoquit.org/"
             }
         ]
+    },
+    "pcp_has_pcp": {
+        "name": "Yes, has provider",
+        "link": null,
+        "pdf_box": null,
+        "full": [
+            {
+                "type": "paragraph",
+                "text": "It's great that you have a primary care provider. Seeing your provider annually for a general physical is an important part of maintaining your health and preventing disease. Your provider can also discuss any health concerns with you and recommend appropriate preventive screenings based on your individual needs.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Regular health screenings are essential for early detection and prevention of disease. The specific screenings recommended can vary based on age, gender, family history, and lifestyle factors.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "General screenings for most adults include:",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Blood pressure checks",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Cholesterol levels",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Blood sugar tests",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Cervical cancer screening",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Breast cancer screening",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Colon cancer screening",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Skin checks",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Dental checkups",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Immunizations",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "If it's been a while since your last visit, you may consider scheduling your annual exam. This can be a helpful step in staying on track with your health.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "It's important to continue working with your healthcare provider to determine the most appropriate screening schedule for you. They can assess your individual risk factors and provide personalized recommendations.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "For more information on health screenings based on age and gender, please visit:",
+                "url": null
+            },
+            {
+                "type": "link",
+                "text": "Current national preventative health recommendations",
+                "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation-topics/information-for-consumers"
+            },
+            {
+                "type": "link",
+                "text": "Preventive health services",
+                "url": "https://www.healthcare.gov/coverage/preventive-care-benefits/"
+            },
+            {
+                "type": "link",
+                "text": "Cancer screening tests",
+                "url": "https://www.cdc.gov/cancer/prevention/screening.html"
+            },
+            {
+                "type": "link",
+                "text": "Vaccines & Immunizations",
+                "url": "https://www.cdc.gov/vaccines/?CDC_AAref_Val=https://www.cdc.gov/vaccines/schedules/hcp/imz/adult-index.html"
+            }
+        ]
+    },
+    "pcp_connect_pcp": {
+        "name": "No, connect to care",
+        "link": null,
+        "pdf_box": null,
+        "full": [
+            {
+                "type": "paragraph",
+                "text": "Establishing care with a primary care provider is an important step in maintaining your health and preventing disease. A provider can help you understand your current health, address any concerns, and recommend appropriate preventive screenings based on your individual needs.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Regular health screenings are essential for early detection and prevention of disease. The specific screenings recommended can vary based on age, gender, family history, and lifestyle factors.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "General screenings for most adults include:",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Blood pressure checks",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Cholesterol levels",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Blood sugar tests",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Cervical cancer screening",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Breast cancer screening",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Colon cancer screening",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Skin checks",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Dental checkups",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Immunizations",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "You indicated that you'd like help getting connected with a provider. The University of Utah Health Care Navigation team will reach out to you with a phone call and MyChart ticket to get scheduled. Your first visit  can help you understand which screenings are most relevant for you and create a plan moving forward.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "It's important to consult with a healthcare provider to determine the most appropriate screening schedule for you. They can assess your individual risk factors and provide personalized recommendations.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "For more information on health screenings based on age and gender, please visit:",
+                "url": null
+            },
+            {
+                "type": "link",
+                "text": "Current national preventative health recommendations",
+                "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation-topics/information-for-consumers"
+            },
+            {
+                "type": "link",
+                "text": "Preventive health services",
+                "url": "https://www.healthcare.gov/coverage/preventive-care-benefits/"
+            },
+            {
+                "type": "link",
+                "text": "Cancer screening tests",
+                "url": "https://www.cdc.gov/cancer/prevention/screening.html"
+            },
+            {
+                "type": "link",
+                "text": "Vaccines & Immunizations",
+                "url": "https://www.cdc.gov/vaccines/?CDC_AAref_Val=https://www.cdc.gov/vaccines/schedules/hcp/imz/adult-index.html"
+            }
+        ]
+    },
+    "pcp_no_pcp": {
+        "name": "No, don't connect to care",
+        "link": null,
+        "pdf_box": null,
+        "full": [
+            {
+                "type": "paragraph",
+                "text": "Establishing care with a primary care provider is an important step in maintaining your health and preventing disease. A provider can help address concerns and recommend appropriate preventive screenings based on your individual needs.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Regular health screenings are essential for early detection. Common screenings for most adults include:",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Blood pressure",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Cholesterol",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Blood sugar",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Cervical, breast, and colon cancer screenings",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Skin checks",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Dental checkups",
+                "url": null
+            },
+            {
+                "type": "bullet",
+                "text": "Immunizations",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "If you're not ready to see a primary care provider, that's okay. You can still take steps to stay on top of your health.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "The Employee RedMed Clinic is a convenient and free option for routine screenings, common concerns, and guidance on next steps.",
+                "url": null
+            },
+            {
+                "type": "link",
+                "text": "",
+                "url": "https://benefits.utah.edu/redmed-employee-health-clinic/"
+            },
+            {
+                "type": "paragraph",
+                "text": "When you're ready, connecting with a primary care provider can help you stay on track and receive more coordinated care.",
+                "url": null
+            },
+            {
+                "type": "link",
+                "text": "",
+                "url": "https://healthcare.utah.edu/primary-care"
+            },
+            {
+                "type": "paragraph",
+                "text": "For more information:",
+                "url": null
+            },
+            {
+                "type": "link",
+                "text": "Current national preventative health recommendations",
+                "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation-topics/information-for-consumers"
+            },
+            {
+                "type": "link",
+                "text": "Preventive health services",
+                "url": "https://www.healthcare.gov/coverage/preventive-care-benefits/"
+            },
+            {
+                "type": "link",
+                "text": "Cancer screening tests",
+                "url": "https://www.cdc.gov/cancer/prevention/screening.html"
+            },
+            {
+                "type": "link",
+                "text": "Vaccines & Immunizations",
+                "url": "https://www.cdc.gov/vaccines/?CDC_AAref_Val=https://www.cdc.gov/vaccines/schedules/hcp/imz/adult-index.html"
+            }
+        ]
     }
 }
