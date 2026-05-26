@@ -1131,23 +1131,21 @@ function calculateRiskKeyBubbles() {
       a1cRisk = "unknown";
   }
   let alcRisk;
+  // for birth_gender, 1 = male, 2 = female
   switch (true) {
     case record.alc_total == "":
       alcRisk = "unknown";
       break;
-    case record.alc_total >= 5 && record.birth_gender != 1:
+    case record.alc_total >= 6:
       alcRisk = "high";
       break;
-    case record.alc_total >= 6 && record.birth_gender == 1:
-      alcRisk = "high";
-      break;
-    case record.alc_total >= 3 && record.birth_gender != 1:
+    case record.birth_gender != 1 && record.alc_total >= 3 && record.alc_total < 6:
       alcRisk = "medium";
       break;
-    case record.alc_total == 4:
+    case record.birth_gender == 1 && record.alc_total >= 4 && record.alc_total < 6:
       alcRisk = "medium";
       break;
-    case record.alc_total < 4:
+    case record.alc_total < 4: // should only trigger for female < 3
       alcRisk = "low";
       break;
     default:
