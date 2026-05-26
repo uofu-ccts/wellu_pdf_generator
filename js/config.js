@@ -1142,7 +1142,7 @@ function calculateRiskKeyBubbles() {
     case record.birth_gender != 1 && record.alc_total >= 3 && record.alc_total < 6:
       alcRisk = "medium";
       break;
-    case record.alc_total == 4: // should not trigger for female
+    case record.birth_gender == 1 && record.alc_total >= 4 && record.alc_total < 6:
       alcRisk = "medium";
       break;
     case record.alc_total < 4: // should only trigger for female < 3
