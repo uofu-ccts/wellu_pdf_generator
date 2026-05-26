@@ -1331,10 +1331,10 @@ function calculateRiskKeysTable() {
     case record.exercise_7_days == "":
       physicalActivityRisk = "unknown";
       break;
-    case record.exercise_7_days == 0 || record.phys_minutes_weekly <= 10:
+    case record.exercise_7_days != '' && (record.exercise_7_days == 0 || record.phys_minutes_weekly <= 59):
       physicalActivityRisk = "high";
       break;
-    case record.phys_minutes_weekly >= 10 && record.phys_minutes_weekly < 150:
+    case (record.phys_minutes_weekly > 59 && record.phys_minutes_weekly < 150) || record.phys_minutes_weekly == "":
       physicalActivityRisk = "medium";
       break;
     case record.phys_minutes_weekly >= 150:
