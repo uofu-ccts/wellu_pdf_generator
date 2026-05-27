@@ -819,12 +819,27 @@ const createSubsection = function (
 };
 
 const drawRiskBox = function (doc, riskKey, x, y, height) {
-  const boxWidth = 10;
-  const boxHeight = 4;
+  const boxWidth = 18;
+  const boxHeight = 5;
+  const boxX = x - boxWidth / 2;
+  const boxY = y + height / 2 - boxHeight / 2 - 1;
 
-  const color = styles.riskKey[riskKey]; // Default to unknown if riskKey is not defined
+  const riskLabel = riskKey.charAt(0).toUpperCase() + riskKey.slice(1);
+  const color = styles.riskKey[riskKey];
   doc.setFillColor(color);
-  doc.rect(x, y + height / 4, boxWidth, boxHeight, "F");
+  doc.rect(boxX, boxY, boxWidth, boxHeight, "F");
+
+  doc.setFont(styles.font, styles.fontStyle);
+  doc.setFontSize(10);
+  doc.setTextColor(
+    riskKey === "medium" || riskKey === "low"
+      ? "#333333"
+      : "#FFFFFF"
+  );
+  doc.text(riskLabel, boxX + boxWidth / 2, boxY + boxHeight / 2 + 0.3, {
+    align: "center",
+    baseline: "middle",
+  });
 };
 
 const summaryTable = function (
@@ -877,7 +892,7 @@ const summaryTable = function (
   );
   doc.text(
     "Health\nRisk",
-    originX + (10.8 * width) / 12 + 6,
+    originX + (10 * width) / 12 + cellPadding + 12,
     originY + headerHeight / 2 - 1,
     { align: "center" }
   );
