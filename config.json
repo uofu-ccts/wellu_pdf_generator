@@ -1,9 +1,9 @@
 {
-  "name": "WellU HRA PDF Generator",
+  "name": "WellU HRA PDF Generator - YEAR 3 TESTING",
 
   "namespace": "Utah\\PDFGeneratorTesting",
 
-  "description": "This is an external module for the WellU-HRA project that generates a PDF file within REDCap containing recommended health resources for staff of the U.",
+  "description": "This is an external module for the WellU-HRA project that generates a PDF file within REDCap containing recommended health resources for staff of the U. This is the temporary testing EM for Year 3 of the project (with separate namespace).",
 
   "documentation": "README.md",
 
