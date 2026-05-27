@@ -1,6 +1,6 @@
 <?php
 
-namespace Utah\PDFGenerator;
+namespace Utah\PDFGeneratorTesting;
 
 use \REDCap as REDCap;
 

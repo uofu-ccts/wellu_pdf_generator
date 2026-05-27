@@ -1,7 +1,7 @@
 {
   "name": "WellU HRA PDF Generator",
 
-  "namespace": "Utah\\PDFGenerator",
+  "namespace": "Utah\\PDFGeneratorTesting",
 
   "description": "This is an external module for the WellU-HRA project that generates a PDF file within REDCap containing recommended health resources for staff of the U.",
 

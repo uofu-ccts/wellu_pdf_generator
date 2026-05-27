@@ -4,7 +4,7 @@
 /* it is not used in the final version of the module */
 /* will delete once jsPDF testing is complete        */
 
-namespace Utah\PDFGenerator;
+namespace Utah\PDFGeneratorTesting;
 
 $user = $module->getUser();
 $username = $user->getUsername();

@@ -1,6 +1,6 @@
 <?php
-namespace Utah\PDFGenerator;
-/** @var \Utah\PDFGenerator\PDFGenerator $this */
+namespace Utah\PDFGeneratorTesting;
+/** @var \Utah\PDFGeneratorTesting\PDFGenerator $this */
 
 
 /**
