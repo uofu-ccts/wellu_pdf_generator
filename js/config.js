@@ -326,7 +326,7 @@ PDF.generatePDF = async function (record_id, name) {
   coordinates = createMetricBox(
     doc,
     PDF.logicRecord.alc_total,
-    "Alcohol Screening",
+    "Alcohol Screening*",
     coordinates,
     riskLevelsBubbles[1]
   );
@@ -394,6 +394,36 @@ PDF.generatePDF = async function (record_id, name) {
     coordinates,
     pageWidth - 40
   );
+
+  // Add footnote about alcohol screening recommendation with link to more info
+  const footnoteText =
+    "* The recommended score for alcohol consumption is based off of a composite score of the Audit-C instrument. It is not a recommendation of number of alcoholic drinks.";
+  const footnoteLinkText = "For more information, click here";
+  const footnoteUrl =
+    "https://www.hepatitis.va.gov/alcohol/treatment/audit-c.asp#:~:text=The%20AUDIT%2DC%20is%20scored,his%2Fher%20health%20and%20safety";
+  const footnoteWidth = pageWidth - 10;
+  const footnoteLineHeight = 4;
+  const footnoteLines = doc.splitTextToSize(footnoteText, footnoteWidth);
+  const footnoteLinkLines = doc.splitTextToSize(
+    footnoteLinkText,
+    footnoteWidth
+  );
+  const footnoteY =
+    pageHeight -
+    8 -
+    (footnoteLines.length + footnoteLinkLines.length - 1) *
+      footnoteLineHeight;
+
+  doc.setFont(styles.font, styles.fontStyle);
+  doc.setFontSize(8);
+  doc.setTextColor("#555555");
+  doc.text(footnoteLines, startingX, footnoteY);
+
+  const footnoteLinkY = footnoteY + footnoteLines.length * footnoteLineHeight;
+  doc.setTextColor(styles.linkTextColor);
+  doc.textWithLink(footnoteLinkLines, startingX, footnoteLinkY, {
+    url: footnoteUrl,
+  });
 
   doc.addPage();
   coordinates = [startingX, startingY];
