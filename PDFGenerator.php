@@ -230,9 +230,9 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
         $tcpLink = $this->getTcpLink($record_id);
 
         // loading libraries
-        $html  = '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>';
+        $html  = '<script src="https://unpkg.com/jspdf@4.2.1/dist/jspdf.umd.min.js"></script>';
         $html .= '<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>';
-        $html .= '<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.2.6/purify.min.js"></script>';
+        $html .= '<script src="https://cdn.jsdelivr.net/npm/dompurify@3.4.7/dist/purify.min.js"></script>';
         $html .= '<script src="' . $centuryGothicNormalUrl . '" type="module"></script>';
         $html .= '<script src="' . $centuryGothicBoldUrl . '" type="module"></script>';
         $html .= '<script src="' . $centuryGothicItalicUrl . '" type="module"></script>';
