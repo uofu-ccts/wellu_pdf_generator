@@ -6,7 +6,7 @@ use \REDCap as REDCap;
 
 include_once "emLoggerTrait.php";
 
-class PDFGenerator extends \ExternalModules\AbstractExternalModule {
+class PDFGeneratorTesting extends \ExternalModules\AbstractExternalModule {
 
     use emLoggerTrait;
 
