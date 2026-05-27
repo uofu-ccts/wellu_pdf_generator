@@ -326,7 +326,7 @@ PDF.generatePDF = async function (record_id, name) {
   coordinates = createMetricBox(
     doc,
     PDF.logicRecord.alc_total,
-    "Alcohol Screening",
+    "Alcohol Screening*",
     coordinates,
     riskLevelsBubbles[1]
   );
@@ -393,6 +393,16 @@ PDF.generatePDF = async function (record_id, name) {
     riskKeysTable,
     coordinates,
     pageWidth - 40
+  );
+
+  addFootnote(
+    doc,
+    "* The recommended score for alcohol consumption is based off of a composite score of the Audit-C instrument. It is not a recommendation of number of alcoholic drinks.",
+    "For more information, click here",
+    "https://www.hepatitis.va.gov/alcohol/treatment/audit-c.asp#:~:text=The%20AUDIT%2DC%20is%20scored,his%2Fher%20health%20and%20safety",
+    startingX,
+    pageWidth,
+    pageHeight
   );
 
   doc.addPage();
@@ -471,6 +481,42 @@ PDF.generatePDF = async function (record_id, name) {
   } catch (e) {
     console.error("Error in PDF generation: ", e);
   }
+};
+
+// currently hardcoded to need text, then a link on the next line
+// may need to be made more flexible in the future
+const addFootnote = function (
+  doc,
+  footnoteText,
+  footnoteLinkText,
+  footnoteUrl,
+  x,
+  pageWidth,
+  pageHeight
+) {
+  const footnoteWidth = pageWidth - 10;
+  const footnoteLineHeight = 4;
+  const footnoteLines = doc.splitTextToSize(footnoteText, footnoteWidth);
+  const footnoteLinkLines = doc.splitTextToSize(
+    footnoteLinkText,
+    footnoteWidth
+  );
+  const footnoteY =
+    pageHeight -
+    8 -
+    (footnoteLines.length + footnoteLinkLines.length - 1) *
+      footnoteLineHeight;
+
+  doc.setFont(styles.font, styles.fontStyle);
+  doc.setFontSize(8);
+  doc.setTextColor("#555555");
+  doc.text(footnoteLines, x, footnoteY);
+
+  const footnoteLinkY = footnoteY + footnoteLines.length * footnoteLineHeight;
+  doc.setTextColor(styles.linkTextColor);
+  doc.textWithLink(footnoteLinkLines, x, footnoteLinkY, {
+    url: footnoteUrl,
+  });
 };
 
 const createHeaderImage = function (doc, coordinates, width) {
