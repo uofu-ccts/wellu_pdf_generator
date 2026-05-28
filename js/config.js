@@ -256,7 +256,7 @@ PDF.generatePDF = async function (record_id, name) {
     "bold"
   );
 
-  coordinates[1] -= 5 + extraPadding;
+  coordinates[1] -= (qualifiedTCP ? 7 : 5) + extraPadding;
 
   coordinates = [startingX, coordinates[1]];
   const boxX = coordinates[0];
@@ -285,7 +285,7 @@ PDF.generatePDF = async function (record_id, name) {
   }
 
   coordinates[0] = startingX; // Reset X coordinate for next section
-  coordinates[1] += 20 + extraPadding; // Move down for the next section
+  coordinates[1] += (qualifiedTCP ? 18 : 20) + extraPadding; // Move down for the next section
   doc.setTextColor(styles.textColor);
 
   console.log("Rendering section for tailored care pathway");
@@ -397,8 +397,8 @@ PDF.generatePDF = async function (record_id, name) {
     "For more information, click here",
     "https://www.hepatitis.va.gov/alcohol/treatment/audit-c.asp#:~:text=The%20AUDIT%2DC%20is%20scored,his%2Fher%20health%20and%20safety",
     startingX,
-    pageWidth,
-    pageHeight
+    coordinates[1] + 6,
+    pageWidth
   );
 
   doc.addPage();
@@ -479,7 +479,7 @@ PDF.generatePDF = async function (record_id, name) {
   }
 };
 
-// currently hardcoded to need text, then a link on the next line
+// currently hardcoded to need text followed by a link on the same line
 // may need to be made more flexible in the future
 const addFootnote = function (
   doc,
@@ -487,30 +487,39 @@ const addFootnote = function (
   footnoteLinkText,
   footnoteUrl,
   x,
-  pageWidth,
-  pageHeight
+  y,
+  pageWidth
 ) {
   const footnoteWidth = pageWidth - 10;
   const footnoteLineHeight = 4;
-  const footnoteLines = doc.splitTextToSize(footnoteText, footnoteWidth);
-  const footnoteLinkLines = doc.splitTextToSize(
-    footnoteLinkText,
-    footnoteWidth
-  );
-  const footnoteY =
-    pageHeight -
-    8 -
-    (footnoteLines.length + footnoteLinkLines.length - 1) *
-      footnoteLineHeight;
-
   doc.setFont(styles.font, styles.fontStyle);
   doc.setFontSize(8);
-  doc.setTextColor("#555555");
-  doc.text(footnoteLines, x, footnoteY);
+  let footnoteLines = doc.splitTextToSize(footnoteText, footnoteWidth);
+  const linkGap = 1;
+  const linkWidth = doc.getTextWidth(footnoteLinkText);
 
-  const footnoteLinkY = footnoteY + footnoteLines.length * footnoteLineHeight;
+  if (
+    doc.getTextWidth(footnoteLines[footnoteLines.length - 1]) +
+      linkGap +
+      linkWidth >
+    footnoteWidth
+  ) {
+    footnoteLines = doc.splitTextToSize(
+      footnoteText,
+      footnoteWidth - linkGap - linkWidth
+    );
+  }
+
+  doc.setTextColor("#555555");
+  footnoteLines.forEach((line, index) => {
+    doc.text(line, x, y + index * footnoteLineHeight);
+  });
+
+  const footnoteLinkY = y + (footnoteLines.length - 1) * footnoteLineHeight;
+  const footnoteLinkX =
+    x + doc.getTextWidth(footnoteLines[footnoteLines.length - 1]) + linkGap;
   doc.setTextColor(styles.linkTextColor);
-  doc.textWithLink(footnoteLinkLines, x, footnoteLinkY, {
+  doc.textWithLink(footnoteLinkText, footnoteLinkX, footnoteLinkY, {
     url: footnoteUrl,
   });
 };
@@ -1032,7 +1041,7 @@ const summaryTable = function (
   doc.rect(originX, originY, width, currentY - originY, "S");
 
   // Update coordinates for the next element
-  // coordinates[1] = currentY + 10;
+  coordinates[1] = currentY;
   return coordinates;
 };
 
