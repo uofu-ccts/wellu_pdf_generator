@@ -215,8 +215,6 @@ PDF.generatePDF = async function (record_id, name) {
       record.a1c_12m == 1 &&
       record.recent_a1c > 0);
 
-//   qualifiedTCP = false; // TODO: Remove this line after testing to re-enable TCP section for eligible users
-
   console.log("Qualified for TCP: ", qualifiedTCP);
 
   const extraPadding = !qualifiedTCP ? 5 : 0;
@@ -258,7 +256,7 @@ PDF.generatePDF = async function (record_id, name) {
     "bold"
   );
 
-  coordinates[1] -= 5 + extraPadding;
+  coordinates[1] -= (qualifiedTCP ? 7 : 5) + extraPadding;
 
   coordinates = [startingX, coordinates[1]];
   const boxX = coordinates[0];
@@ -287,7 +285,7 @@ PDF.generatePDF = async function (record_id, name) {
   }
 
   coordinates[0] = startingX; // Reset X coordinate for next section
-  coordinates[1] += 20 + extraPadding; // Move down for the next section
+  coordinates[1] += (qualifiedTCP ? 18 : 20) + extraPadding; // Move down for the next section
   doc.setTextColor(styles.textColor);
 
   console.log("Rendering section for tailored care pathway");
