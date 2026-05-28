@@ -196,28 +196,24 @@ PDF.generatePDF = async function (record_id, name) {
   const doc = new jsPDF();
   const record = PDF.logicRecord;
 
-  // Year 2 requirement: hide the tailored care callout for now, but keep the
-  // original qualification logic here for easy restoration in year 3.
-  
-  // const qualifiedTCP =
-  //   record.bmi >= 35 ||
-  //   (record.bmi >= 30 &&
-  //     (record.prev_diags___5 == 1 ||
-  //       record.prev_diags___6 == 1 ||
-  //       record.prev_diags___7 == 1 ||
-  //       record.prev_diags___8 == 1 ||
-  //       record.prev_diags___9 == 1)) ||
-  //   record.prev_diags___1 == 1 ||
-  //   record.prev_diags___2 == 1 ||
-  //   record.prev_diags___3 == 1 ||
-  //   record.gad_total >= 10 ||
-  //   record.phq9_total_score >= 10 ||
-  //   record.drug_rx_nonmed == 2 ||
-  //   record.drinks_occasion >= 2 ||
-  //   (record.prev_diags___4 == 1 &&
-  //     record.a1c_12m == 1 &&
-  //     record.recent_a1c > 0);
-  const qualifiedTCP = false;
+  const qualifiedTCP =
+    record.bmi >= 35 ||
+    (record.bmi >= 30 &&
+      (record.prev_diags___5 == 1 ||
+        record.prev_diags___6 == 1 ||
+        record.prev_diags___7 == 1 ||
+        record.prev_diags___8 == 1 ||
+        record.prev_diags___9 == 1)) ||
+    record.prev_diags___1 == 1 ||
+    record.prev_diags___2 == 1 ||
+    record.prev_diags___3 == 1 ||
+    record.gad_total >= 10 ||
+    record.phq9_total_score >= 10 ||
+    record.drug_rx_nonmed == 2 ||
+    record.drinks_occasion >= 2 ||
+    (record.prev_diags___4 == 1 &&
+      record.a1c_12m == 1 &&
+      record.recent_a1c > 0);
 
   console.log("Qualified for TCP: ", qualifiedTCP);
 
