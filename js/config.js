@@ -481,7 +481,7 @@ PDF.generatePDF = async function (record_id, name) {
   }
 };
 
-// currently hardcoded to need text, then a link on the next line
+// currently hardcoded to need text followed by a link on the same line
 // may need to be made more flexible in the future
 const addFootnote = function (
   doc,
@@ -494,19 +494,34 @@ const addFootnote = function (
 ) {
   const footnoteWidth = pageWidth - 10;
   const footnoteLineHeight = 4;
-  const footnoteLines = doc.splitTextToSize(footnoteText, footnoteWidth);
-  const footnoteLinkLines = doc.splitTextToSize(
-    footnoteLinkText,
-    footnoteWidth
-  );
   doc.setFont(styles.font, styles.fontStyle);
   doc.setFontSize(8);
-  doc.setTextColor("#555555");
-  doc.text(footnoteLines, x, y);
+  let footnoteLines = doc.splitTextToSize(footnoteText, footnoteWidth);
+  const linkGap = 1;
+  const linkWidth = doc.getTextWidth(footnoteLinkText);
 
-  const footnoteLinkY = y + footnoteLines.length * footnoteLineHeight;
+  if (
+    doc.getTextWidth(footnoteLines[footnoteLines.length - 1]) +
+      linkGap +
+      linkWidth >
+    footnoteWidth
+  ) {
+    footnoteLines = doc.splitTextToSize(
+      footnoteText,
+      footnoteWidth - linkGap - linkWidth
+    );
+  }
+
+  doc.setTextColor("#555555");
+  footnoteLines.forEach((line, index) => {
+    doc.text(line, x, y + index * footnoteLineHeight);
+  });
+
+  const footnoteLinkY = y + (footnoteLines.length - 1) * footnoteLineHeight;
+  const footnoteLinkX =
+    x + doc.getTextWidth(footnoteLines[footnoteLines.length - 1]) + linkGap;
   doc.setTextColor(styles.linkTextColor);
-  doc.textWithLink(footnoteLinkLines, x, footnoteLinkY, {
+  doc.textWithLink(footnoteLinkText, footnoteLinkX, footnoteLinkY, {
     url: footnoteUrl,
   });
 };
