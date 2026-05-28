@@ -215,6 +215,8 @@ PDF.generatePDF = async function (record_id, name) {
       record.a1c_12m == 1 &&
       record.recent_a1c > 0);
 
+//   qualifiedTCP = false; // TODO: Remove this line after testing to re-enable TCP section for eligible users
+
   console.log("Qualified for TCP: ", qualifiedTCP);
 
   const extraPadding = !qualifiedTCP ? 5 : 0;
@@ -397,8 +399,8 @@ PDF.generatePDF = async function (record_id, name) {
     "For more information, click here",
     "https://www.hepatitis.va.gov/alcohol/treatment/audit-c.asp#:~:text=The%20AUDIT%2DC%20is%20scored,his%2Fher%20health%20and%20safety",
     startingX,
-    pageWidth,
-    pageHeight
+    coordinates[1] + 6,
+    pageWidth
   );
 
   doc.addPage();
@@ -487,8 +489,8 @@ const addFootnote = function (
   footnoteLinkText,
   footnoteUrl,
   x,
-  pageWidth,
-  pageHeight
+  y,
+  pageWidth
 ) {
   const footnoteWidth = pageWidth - 10;
   const footnoteLineHeight = 4;
@@ -497,18 +499,12 @@ const addFootnote = function (
     footnoteLinkText,
     footnoteWidth
   );
-  const footnoteY =
-    pageHeight -
-    8 -
-    (footnoteLines.length + footnoteLinkLines.length - 1) *
-      footnoteLineHeight;
-
   doc.setFont(styles.font, styles.fontStyle);
   doc.setFontSize(8);
   doc.setTextColor("#555555");
-  doc.text(footnoteLines, x, footnoteY);
+  doc.text(footnoteLines, x, y);
 
-  const footnoteLinkY = footnoteY + footnoteLines.length * footnoteLineHeight;
+  const footnoteLinkY = y + footnoteLines.length * footnoteLineHeight;
   doc.setTextColor(styles.linkTextColor);
   doc.textWithLink(footnoteLinkLines, x, footnoteLinkY, {
     url: footnoteUrl,
@@ -1032,7 +1028,7 @@ const summaryTable = function (
   doc.rect(originX, originY, width, currentY - originY, "S");
 
   // Update coordinates for the next element
-  // coordinates[1] = currentY + 10;
+  coordinates[1] = currentY;
   return coordinates;
 };
 
