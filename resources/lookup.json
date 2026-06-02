@@ -1,9 +1,18 @@
 {
-    "bmi": {
-        "label": "Metabolic Health (BMI)"
+    "phq": {
+        "label": "Depression"
+    },
+    "substance": {
+        "label": "Substance Use"
+    },
+    "pcp": {
+        "label": "Primary Care Provider"
     },
     "meta": {
         "label": "Diabetes Risk"
+    },
+    "anx": {
+        "label": "Anxiety/Worry"
     },
     "nutr": {
         "label": "Food & Nutrition"
@@ -11,25 +20,16 @@
     "activity": {
         "label": "Physical Activity"
     },
-    "stress": {
-        "label": "Stress"
-    },
-    "anx": {
-        "label": "Anxiety/Worry"
-    },
-    "phq": {
-        "label": "Depression"
-    },
     "sleep": {
         "label": "Sleepiness"
     },
-    "substance": {
-        "label": "Substance Use"
+    "stress": {
+        "label": "Stress"
+    },
+    "bmi": {
+        "label": "Metabolic Health (BMI)"
     },
     "gen": {
         "label": "General Health"
-    },
-    "pcp": {
-        "label": "Primary Care Provider"
     }
 }
