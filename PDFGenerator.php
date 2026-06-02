@@ -547,6 +547,9 @@ class PDFGenerator extends \ExternalModules\AbstractExternalModule {
                 else if ($record[1]['provider'] == "3" && $record[1]['provider_help'] == "0") {
                     $user_choice = "no_pcp";
                 }
+                else {
+                    $user_choice = "no_pcp";
+                }
             }
 
             $resourceKey = $key . '_' . $user_choice;
