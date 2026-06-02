@@ -1046,10 +1046,14 @@ const summaryTable = function (
 };
 
 const createTailoredCareSection = function (doc, coordinates, width) {
-  const sectionHeight = 30;
   const backgroundColor = "#BBBBBB"; // Light gray background
-  const sectionX = coordinates[0];
   const sectionY = coordinates[1];
+  const sectionCenterX = width / 2;
+  const buttonText = "Click here to learn more.";
+  const titleY = sectionY + 6;
+  const buttonY = titleY + 3;
+  const buttonHeight = 10;
+  const sectionHeight = buttonY - sectionY + buttonHeight + 1;
 
   // Create gray background rectangle
   doc.setFillColor(backgroundColor);
@@ -1060,37 +1064,32 @@ const createTailoredCareSection = function (doc, coordinates, width) {
   doc.setTextColor("#FFFFFF"); // White text
   doc.setFontSize(14);
   doc.text(
-    "You qualified for a tailored care pathway:",
-    sectionX + width / 2,
-    sectionY + 5,
-    { align: "center" }
-  );
-
-  doc.setFont(styles.font, styles.fontStyle);
-  doc.text(
-    "If you enroll, a member of the OCIH team will reach out to help you further",
-    sectionX + width / 2,
-    sectionY + 12,
-    { align: "center" }
-  );
-  doc.text(
-    "tailor this plan and put it into action with individual support.",
-    sectionX + width / 2,
-    sectionY + 17,
+    "You qualified for a tailored care pathway!",
+    sectionCenterX,
+    titleY,
     { align: "center" }
   );
   // Add enrollment button
+  doc.setFontSize(12);
+  doc.setFont(styles.font, styles.fontStyle);
+  const buttonWidth = doc.getTextWidth(buttonText) + 12;
   doc.setFillColor("#FFFFFF");
-  doc.roundedRect(sectionX + width / 2 - 25, sectionY + 20, 50, 8, 3, 3, "F");
+  doc.roundedRect(
+    sectionCenterX - buttonWidth / 2,
+    buttonY,
+    buttonWidth,
+    buttonHeight,
+    3,
+    3,
+    "F"
+  );
 
   // Add enrollment link
   doc.setTextColor("#990000"); // Dark red text
-  doc.setFontSize(12);
-  doc.setFont(styles.font, styles.fontStyle);
   doc.textWithLink(
-    "Click here to enroll!",
-    sectionX + width / 2,
-    sectionY + 25,
+    buttonText,
+    sectionCenterX,
+    buttonY + 6.5,
     {
       align: "center",
       url: PDF.tcpLink,
