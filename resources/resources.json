@@ -291,6 +291,38 @@
             }
         ]
     },
+    "activity_toolkit": {
+        "name": "I want to make a plan on my own",
+        "link": "https://odphp.health.gov/moveyourway/activity-planner",
+        "pdf_box": "Make your movement plan with the interactive activity planner.",
+        "full": [
+            {
+                "type": "paragraph",
+                "text": "You chose to make your own plan to improve your physical activity.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Regular movement supports heart health, energy levels, and overall well-being. Finding activities that fit your interests, schedule, and current fitness level can make it easier to stay active over time.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "To help you get started, use this interactive activity planner that can help you identify activities you enjoy, set goals, and create a plan that works for your lifestyle.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "As you build your plan, remember that even small amounts of activity can add up over time. Health guidelines recommend at least 150 minutes of moderate physical activity each week.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Click HERE to access the Physical Activity Planner.",
+                "url": null
+            }
+        ]
+    },
     "activity_g_action": {
         "name": "Fitness assessment",
         "link": "https://booknow.appointment-plus.com/165ehg4e/10#Appointment",
@@ -1002,6 +1034,38 @@
             }
         ]
     },
+    "bmi_toolkit": {
+        "name": "I want to create my own plan",
+        "link": "https://www.cdc.gov/healthy-weight-growth/about/index.html",
+        "pdf_box": "Learn more about optimal health and maintaining a healthy weight.",
+        "full": [
+            {
+                "type": "paragraph",
+                "text": "You chose to make your own plan to support your health and weight-related goals.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Body weight is influenced by many factors, including nutrition, physical activity, sleep, and stress. Small, consistent changes in these areas can support overall health over time.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "To help you build your plan, browse these resources that provide practical information about healthy weight management and lifestyle habits.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "As you move forward, these tips can help you identify strategies that fit your goals and daily routine.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Click HERE to access healthy weight resources.",
+                "url": null
+            }
+        ]
+    },
     "bmi_g_action": {
         "name": "Red Butte Walk",
         "link": "https://redbuttegarden.org/",
@@ -1287,6 +1351,38 @@
             {
                 "type": "paragraph",
                 "text": "Click HERE to find a Primary Care Provider near you.",
+                "url": null
+            }
+        ]
+    },
+    "gen_toolkit": {
+        "name": "I want to create my own plan",
+        "link": "https://healthcare.utah.edu/orthopaedics/programs/restore/coaching-education",
+        "pdf_box": "Learn more about lifestyle and optimal health.",
+        "full": [
+            {
+                "type": "paragraph",
+                "text": "You chose to make your own plan to improve your health.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Improving your health doesn't require changing everything at once. Small, consistent changes across areas like nutrition, physical activity, sleep, and stress can add up over time.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "To help you get started, we've gathered resources that provide practical information and tools to help you identify areas of focus and build a plan that works for you.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "As you explore these resources, you can choose the strategies that feel most relevant to your goals and daily life.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Click HERE to access general health resources.",
                 "url": null
             }
         ]
@@ -1603,6 +1699,33 @@
             {
                 "type": "paragraph",
                 "text": "Click HERE to learn more and request your Lifestyle Medicine Consultation.",
+                "url": null
+            }
+        ]
+    },
+    "meta_toolkit": {
+        "name": "I want to create my own plan",
+        "link": "https://healthcare.utah.edu/integrative-health/prediabetes",
+        "pdf_box": "Learn more about strategies to prevent type 2 diabetes",
+        "full": [
+            {
+                "type": "paragraph",
+                "text": "You chose to make your own plan to address your diabetes risk.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Blood sugar can change gradually over time, often without noticeable symptoms. Understanding the factors that influence blood sugar can help you make informed decisions about your health.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "The Just the Facts About Prediabetes video series provides practical information about diabetes risk and lifestyle habits that support healthy blood sugar levels.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Click HERE to access the Just the Facts About Prediabetes video series.",
                 "url": null
             }
         ]
