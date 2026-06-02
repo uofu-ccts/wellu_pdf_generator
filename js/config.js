@@ -1047,9 +1047,9 @@ const summaryTable = function (
 
 const createTailoredCareSection = function (doc, coordinates, width) {
   const backgroundColor = "#BBBBBB"; // Light gray background
-  const sectionX = coordinates[0];
   const sectionY = coordinates[1];
-  const buttonText = "Click here for more information.";
+  const sectionCenterX = width / 2;
+  const buttonText = "Click here to learn more.";
   const titleY = sectionY + 6;
   const buttonY = titleY + 3;
   const buttonHeight = 10;
@@ -1065,7 +1065,7 @@ const createTailoredCareSection = function (doc, coordinates, width) {
   doc.setFontSize(14);
   doc.text(
     "You qualified for a tailored care pathway!",
-    sectionX + width / 2,
+    sectionCenterX,
     titleY,
     { align: "center" }
   );
@@ -1075,7 +1075,7 @@ const createTailoredCareSection = function (doc, coordinates, width) {
   const buttonWidth = doc.getTextWidth(buttonText) + 12;
   doc.setFillColor("#FFFFFF");
   doc.roundedRect(
-    sectionX + width / 2 - buttonWidth / 2,
+    sectionCenterX - buttonWidth / 2,
     buttonY,
     buttonWidth,
     buttonHeight,
@@ -1088,7 +1088,7 @@ const createTailoredCareSection = function (doc, coordinates, width) {
   doc.setTextColor("#990000"); // Dark red text
   doc.textWithLink(
     buttonText,
-    sectionX + width / 2,
+    sectionCenterX,
     buttonY + 6.5,
     {
       align: "center",
