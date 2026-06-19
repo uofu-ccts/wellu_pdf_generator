@@ -845,12 +845,13 @@ const createSubsection = function (
     if (item.type === "paragraph" || item.type === "link") {
       // wrap text within width
       const lines = doc.splitTextToSize(item.text, w);
-      if (index === contentLength - 1) {
+      const linkUrl = item.type === "link" ? item.url : null;
+      const fallbackUrl = index === contentLength - 1 ? url : null;
+      const itemUrl = linkUrl || fallbackUrl;
+
+      if (itemUrl) {
         doc.setTextColor(styles.linkTextColor);
-        doc.textWithLink(lines, x, cursorY, { url: url });
-      } else if (item.type === "link") {
-        doc.setTextColor(styles.linkTextColor);
-        doc.textWithLink(lines, x, cursorY, { url: item.url });
+        doc.textWithLink(lines, x, cursorY, { url: itemUrl });
       } else {
         doc.setTextColor(bodyTextColor);
         doc.text(item.text, x, cursorY, { maxWidth: width });
