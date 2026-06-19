@@ -808,6 +808,10 @@ const createGridSectionBox = function (
   return coordinates;
 };
 
+const normalizeLinkUrl = function (url) {
+  return typeof url === "string" ? url.trim() : "";
+};
+
 const createSubsection = function (
   doc,
   header,
@@ -845,12 +849,16 @@ const createSubsection = function (
     if (item.type === "paragraph" || item.type === "link") {
       // wrap text within width
       const lines = doc.splitTextToSize(item.text, w);
-      if (index === contentLength - 1) {
+      const linkUrl = item.type === "link" ? normalizeLinkUrl(item.url) : "";
+      const fallbackUrl =
+        item.type !== "link" && index === contentLength - 1
+          ? normalizeLinkUrl(url)
+          : "";
+      const itemUrl = linkUrl || fallbackUrl;
+
+      if (itemUrl) {
         doc.setTextColor(styles.linkTextColor);
-        doc.textWithLink(lines, x, cursorY, { url: url });
-      } else if (item.type === "link") {
-        doc.setTextColor(styles.linkTextColor);
-        doc.textWithLink(lines, x, cursorY, { url: item.url });
+        doc.textWithLink(lines, x, cursorY, { url: itemUrl });
       } else {
         doc.setTextColor(bodyTextColor);
         doc.text(item.text, x, cursorY, { maxWidth: width });
