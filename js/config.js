@@ -1237,16 +1237,16 @@ function calculateRiskKeyBubbles() {
 
   let depRisk;
   switch (true) {
-    case record.phq9_total_score == "":
+    case record.phq9_total_score_em == "":
       depRisk = "unknown";
       break;
-    case record.phq9_total_score >= 15:
+    case record.phq9_total_score_em >= 15:
       depRisk = "high";
       break;
-    case record.phq9_total_score >= 4:
+    case record.phq9_total_score_em >= 4:
       depRisk = "medium";
       break;
-    case record.phq9_total_score < 4:
+    case record.phq9_total_score_em < 4:
       depRisk = "low";
       break;
     default:
