@@ -1,12 +1,12 @@
 {
+    "pcp": {
+        "label": "Primary Care Provider"
+    },
     "phq": {
         "label": "Depression"
     },
     "substance": {
         "label": "Substance Use"
-    },
-    "pcp": {
-        "label": "Primary Care Provider"
     },
     "meta": {
         "label": "Diabetes Risk"
