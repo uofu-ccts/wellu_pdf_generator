@@ -395,7 +395,7 @@ PDF.generatePDF = async function (record_id, name) {
     doc,
     "* The recommended score for alcohol consumption is based off of a composite score of the Audit-C instrument. It is not a recommendation of number of alcoholic drinks.",
     "For more information, click here",
-    "https://www.hepatitis.va.gov/alcohol/treatment/audit-c.asp#:~:text=The%20AUDIT%2DC%20is%20scored,his%2Fher%20health%20and%20safety",
+    "https://www.niaaa.nih.gov/news-events/spectrum/volume-16-issue-3-fall-2024/study-confirms-real-world-reliability-key-tool-alcohol-screening",
     coordinates[0],
     coordinates[1] + 6,
     pageWidth - 40
@@ -808,6 +808,10 @@ const createGridSectionBox = function (
   return coordinates;
 };
 
+const normalizeLinkUrl = function (url) {
+  return typeof url === "string" ? url.trim() : "";
+};
+
 const createSubsection = function (
   doc,
   header,
@@ -845,12 +849,16 @@ const createSubsection = function (
     if (item.type === "paragraph" || item.type === "link") {
       // wrap text within width
       const lines = doc.splitTextToSize(item.text, w);
-      if (index === contentLength - 1) {
+      const linkUrl = item.type === "link" ? normalizeLinkUrl(item.url) : "";
+      const fallbackUrl =
+        item.type !== "link" && index === contentLength - 1
+          ? normalizeLinkUrl(url)
+          : "";
+      const itemUrl = linkUrl || fallbackUrl;
+
+      if (itemUrl) {
         doc.setTextColor(styles.linkTextColor);
-        doc.textWithLink(lines, x, cursorY, { url: url });
-      } else if (item.type === "link") {
-        doc.setTextColor(styles.linkTextColor);
-        doc.textWithLink(lines, x, cursorY, { url: item.url });
+        doc.textWithLink(lines, x, cursorY, { url: itemUrl });
       } else {
         doc.setTextColor(bodyTextColor);
         doc.text(item.text, x, cursorY, { maxWidth: width });
@@ -1237,16 +1245,16 @@ function calculateRiskKeyBubbles() {
 
   let depRisk;
   switch (true) {
-    case record.phq9_total_score == "":
+    case record.phq9_total_score_em == "":
       depRisk = "unknown";
       break;
-    case record.phq9_total_score >= 15:
+    case record.phq9_total_score_em >= 15:
       depRisk = "high";
       break;
-    case record.phq9_total_score >= 4:
+    case record.phq9_total_score_em >= 4:
       depRisk = "medium";
       break;
-    case record.phq9_total_score < 4:
+    case record.phq9_total_score_em < 4:
       depRisk = "low";
       break;
     default:
