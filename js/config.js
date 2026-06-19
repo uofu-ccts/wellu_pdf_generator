@@ -429,7 +429,9 @@ PDF.generatePDF = async function (record_id, name) {
     var content = PDF.goalsContent[key].full || [];
     let url = PDF.goalsContent[key].link || "";
 
-    const estimatedSectionLength = estimateSectionLength(doc, content);
+    const estimatedSectionLength = isPrimaryCareProviderSection(key, heading)
+      ? estimateRenderedSectionLength(doc, content, pageWidth - 10)
+      : estimateSectionLength(doc, content);
 
     if (coordinates[1] + estimatedSectionLength >= pageHeight) {
       doc.addPage();
@@ -810,6 +812,10 @@ const createGridSectionBox = function (
 
 const normalizeLinkUrl = function (url) {
   return typeof url === "string" ? url.trim() : "";
+};
+
+const isPrimaryCareProviderSection = function (key, heading) {
+  return key === "pcp_action" || heading === "Primary Care Provider";
 };
 
 const createSubsection = function (
@@ -1574,5 +1580,21 @@ function estimateSectionLength(doc, content) {
       sectionLength += text.length * 8;
     }
   }
+  return sectionLength;
+}
+
+function estimateRenderedSectionLength(doc, content, width) {
+  let sectionLength = 16;
+  doc.setFont(styles.font, styles.fontStyle);
+  doc.setFontSize(12);
+
+  for (let key in content) {
+    const item = content[key];
+    const text = item.type === "bullet" ? "\u2022 " + item.text : item.text;
+    const itemWidth = item.type === "bullet" ? 180 : width;
+    const lines = doc.splitTextToSize(text, itemWidth);
+    sectionLength += lines.length > 1 ? lines.length * 6 : lines.length * 8;
+  }
+
   return sectionLength;
 }
