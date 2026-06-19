@@ -395,7 +395,7 @@ PDF.generatePDF = async function (record_id, name) {
     doc,
     "* The recommended score for alcohol consumption is based off of a composite score of the Audit-C instrument. It is not a recommendation of number of alcoholic drinks.",
     "For more information, click here",
-    "https://www.hepatitis.va.gov/alcohol/treatment/audit-c.asp#:~:text=The%20AUDIT%2DC%20is%20scored,his%2Fher%20health%20and%20safety",
+    "https://www.niaaa.nih.gov/news-events/spectrum/volume-16-issue-3-fall-2024/study-confirms-real-world-reliability-key-tool-alcohol-screening",
     coordinates[0],
     coordinates[1] + 6,
     pageWidth - 40
