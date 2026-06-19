@@ -429,7 +429,9 @@ PDF.generatePDF = async function (record_id, name) {
     var content = PDF.goalsContent[key].full || [];
     let url = PDF.goalsContent[key].link || "";
 
-    const estimatedSectionLength = estimateSectionLength(doc, content);
+    const estimatedSectionLength = isPrimaryCareProviderSection(key, heading)
+      ? estimateRenderedSectionLength(doc, content, pageWidth - 10)
+      : estimateSectionLength(doc, content);
 
     if (coordinates[1] + estimatedSectionLength >= pageHeight) {
       doc.addPage();
@@ -812,6 +814,14 @@ const normalizeLinkUrl = function (url) {
   return typeof url === "string" ? url.trim() : "";
 };
 
+const normalizeLinkText = function (text) {
+  return typeof text === "string" ? text.replace(/:\s*$/, "").trimEnd() : text;
+};
+
+const isPrimaryCareProviderSection = function (key, heading) {
+  return key === "pcp_action" || heading === "Primary Care Provider";
+};
+
 const createSubsection = function (
   doc,
   header,
@@ -848,7 +858,9 @@ const createSubsection = function (
   content.forEach((item, index) => {
     if (item.type === "paragraph" || item.type === "link") {
       // wrap text within width
-      const lines = doc.splitTextToSize(item.text, w);
+      const displayText =
+        item.type === "link" ? normalizeLinkText(item.text) : item.text;
+      const lines = doc.splitTextToSize(displayText, w);
       const linkUrl = item.type === "link" ? normalizeLinkUrl(item.url) : "";
       const fallbackUrl =
         item.type !== "link" && index === contentLength - 1
@@ -861,7 +873,7 @@ const createSubsection = function (
         doc.textWithLink(lines, x, cursorY, { url: itemUrl });
       } else {
         doc.setTextColor(bodyTextColor);
-        doc.text(item.text, x, cursorY, { maxWidth: width });
+        doc.text(displayText, x, cursorY, { maxWidth: width });
       }
       if (lines.length > 1) {
         cursorY += lines.length * 6;
@@ -1574,5 +1586,23 @@ function estimateSectionLength(doc, content) {
       sectionLength += text.length * 8;
     }
   }
+  return sectionLength;
+}
+
+function estimateRenderedSectionLength(doc, content, width) {
+  let sectionLength = 16;
+  doc.setFont(styles.font, styles.fontStyle);
+  doc.setFontSize(12);
+
+  for (let key in content) {
+    const item = content[key];
+    const displayText =
+      item.type === "link" ? normalizeLinkText(item.text) : item.text;
+    const text = item.type === "bullet" ? "\u2022 " + item.text : displayText;
+    const itemWidth = item.type === "bullet" ? 180 : width;
+    const lines = doc.splitTextToSize(text, itemWidth);
+    sectionLength += lines.length > 1 ? lines.length * 6 : lines.length * 8;
+  }
+
   return sectionLength;
 }
