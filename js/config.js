@@ -808,6 +808,10 @@ const createGridSectionBox = function (
   return coordinates;
 };
 
+const normalizeLinkUrl = function (url) {
+  return typeof url === "string" ? url.trim() : "";
+};
+
 const createSubsection = function (
   doc,
   header,
@@ -845,8 +849,11 @@ const createSubsection = function (
     if (item.type === "paragraph" || item.type === "link") {
       // wrap text within width
       const lines = doc.splitTextToSize(item.text, w);
-      const linkUrl = item.type === "link" ? item.url : null;
-      const fallbackUrl = index === contentLength - 1 ? url : null;
+      const linkUrl = item.type === "link" ? normalizeLinkUrl(item.url) : "";
+      const fallbackUrl =
+        item.type !== "link" && index === contentLength - 1
+          ? normalizeLinkUrl(url)
+          : "";
       const itemUrl = linkUrl || fallbackUrl;
 
       if (itemUrl) {
