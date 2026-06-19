@@ -814,6 +814,10 @@ const normalizeLinkUrl = function (url) {
   return typeof url === "string" ? url.trim() : "";
 };
 
+const normalizeLinkText = function (text) {
+  return typeof text === "string" ? text.replace(/:\s*$/, "").trimEnd() : text;
+};
+
 const isPrimaryCareProviderSection = function (key, heading) {
   return key === "pcp_action" || heading === "Primary Care Provider";
 };
@@ -854,7 +858,9 @@ const createSubsection = function (
   content.forEach((item, index) => {
     if (item.type === "paragraph" || item.type === "link") {
       // wrap text within width
-      const lines = doc.splitTextToSize(item.text, w);
+      const displayText =
+        item.type === "link" ? normalizeLinkText(item.text) : item.text;
+      const lines = doc.splitTextToSize(displayText, w);
       const linkUrl = item.type === "link" ? normalizeLinkUrl(item.url) : "";
       const fallbackUrl =
         item.type !== "link" && index === contentLength - 1
@@ -867,7 +873,7 @@ const createSubsection = function (
         doc.textWithLink(lines, x, cursorY, { url: itemUrl });
       } else {
         doc.setTextColor(bodyTextColor);
-        doc.text(item.text, x, cursorY, { maxWidth: width });
+        doc.text(displayText, x, cursorY, { maxWidth: width });
       }
       if (lines.length > 1) {
         cursorY += lines.length * 6;
@@ -1590,7 +1596,9 @@ function estimateRenderedSectionLength(doc, content, width) {
 
   for (let key in content) {
     const item = content[key];
-    const text = item.type === "bullet" ? "\u2022 " + item.text : item.text;
+    const displayText =
+      item.type === "link" ? normalizeLinkText(item.text) : item.text;
+    const text = item.type === "bullet" ? "\u2022 " + item.text : displayText;
     const itemWidth = item.type === "bullet" ? 180 : width;
     const lines = doc.splitTextToSize(text, itemWidth);
     sectionLength += lines.length > 1 ? lines.length * 6 : lines.length * 8;
