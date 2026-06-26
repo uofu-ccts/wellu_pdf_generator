@@ -3,7 +3,7 @@ import pandas as pd
 import unicodedata
 import json
 
-df = pd.read_excel('./wellu_resources_y3_final_.xlsx', sheet_name='USE THIS WellU V3 resource')
+df = pd.read_excel('./wellu_resources_y3_final_TEMP.xlsx', sheet_name='USE THIS WellU V3 resource')
 # df = pd.read_excel('./wellu_resources_final_mm.xlsx', sheet_name='WellU V2 resource map FINAL')
 
 def normalize_text(text):
