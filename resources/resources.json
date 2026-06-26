@@ -41,7 +41,7 @@
             },
             {
                 "type": "paragraph",
-                "text": "To view options and sign up:",
+                "text": "CLICK to view options and sign up:",
                 "url": null
             },
             {
@@ -439,7 +439,7 @@
             },
             {
                 "type": "paragraph",
-                "text": "Click HERE to schedule your free Health Coaching session",
+                "text": "Click HERE to schedule your free Health Coaching session.",
                 "url": null
             }
         ]
@@ -723,7 +723,7 @@
     "anx_noansw": {
         "name": "EAP",
         "link": "https://www.SupportLinc.com/",
-        "pdf_box": "Find supportive resources through SupportLinc (group code: uofu)",
+        "pdf_box": "Find supportive resources through SupportLinc. (group code: uofu)",
         "full": [
             {
                 "type": "paragraph",
@@ -1049,7 +1049,7 @@
     "bmi_g_action": {
         "name": "Campus Garden",
         "link": "https://sustainability.utah.edu/edible-campus-gardens/",
-        "pdf_box": "Volunteer at the Campus Garden",
+        "pdf_box": "Volunteer at the Campus Garden.",
         "full": [
             {
                 "type": "paragraph",
@@ -1214,7 +1214,7 @@
             },
             {
                 "type": "paragraph",
-                "text": "Click HERE to schedule your free Health Coaching session",
+                "text": "Click HERE to schedule your free Health Coaching session.",
                 "url": null
             }
         ]
@@ -1443,7 +1443,7 @@
             },
             {
                 "type": "paragraph",
-                "text": "Click HERE to learn more about Lifestyle Medicine.",
+                "text": "Click HERE to learn more about a Lifestyle Medicine consultation.",
                 "url": null
             }
         ]
@@ -1552,7 +1552,7 @@
             },
             {
                 "type": "paragraph",
-                "text": "Click HERE to schedule your free Exercise Prescription",
+                "text": "Click HERE to schedule your free Exercise Prescription.",
                 "url": null
             }
         ]
@@ -1631,7 +1631,7 @@
             },
             {
                 "type": "paragraph",
-                "text": "Click HERE to schedule your free Health Coaching session",
+                "text": "Click HERE to schedule your free Health Coaching session.",
                 "url": null
             }
         ]
@@ -1671,7 +1671,7 @@
     "meta_toolkit": {
         "name": "I want to create my own plan",
         "link": "https://healthcare.utah.edu/integrative-health/prediabetes",
-        "pdf_box": "Learn more about strategies to prevent type 2 diabetes",
+        "pdf_box": "Learn more about strategies to prevent type 2 diabetes.",
         "full": [
             {
                 "type": "paragraph",
@@ -1747,7 +1747,7 @@
             },
             {
                 "type": "paragraph",
-                "text": "Click HERE to learn more about the National Diabetes Prevention Program (NDPP)",
+                "text": "Click HERE to learn more about the National Diabetes Prevention Program (NDPP).",
                 "url": null
             }
         ]
@@ -1885,7 +1885,12 @@
             },
             {
                 "type": "paragraph",
-                "text": "If you're interested, this can be a helpful place to learn more and get started. Click HERE to access the Just the Facts toolkit.",
+                "text": "If you're interested, this can be a helpful place to learn more and get started.",
+                "url": null
+            },
+            {
+                "type": "paragraph",
+                "text": "Click HERE to access the Just the Facts toolkit.",
                 "url": null
             }
         ]
@@ -1945,7 +1950,7 @@
     "nutr_toolkit": {
         "name": "I want to learn and make my own plan with a self-paced nutrition course",
         "link": "https://extensioncourses.usu.edu/product/create-better-health/",
-        "pdf_box": "Start your nutrition course",
+        "pdf_box": "Start your nutrition course.",
         "full": [
             {
                 "type": "paragraph",
@@ -2073,27 +2078,7 @@
             },
             {
                 "type": "paragraph",
-                "text": "Backed by decades of research, Intuitive Eating is linked to:",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Better body image and self-confidence",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "More satisfaction with food",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Greater self-compassion",
-                "url": null
-            },
-            {
-                "type": "bullet",
-                "text": "Less anxiety, guilt, and binge eating",
+                "text": "Backed by decades of research, Intuitive Eating is linked to better body image and self-confidence, more satisfaction with food, greater self-compassion and less anxiety, guilt, and binge eating.",
                 "url": null
             },
             {
@@ -2138,7 +2123,7 @@
     "nutr_lmc": {
         "name": "I want to learn about the Lifestyle Medicine Consultation with a healthcare provider",
         "link": "https://healthcare.utah.edu/integrative-health/services/lifestyle-medicine",
-        "pdf_box": "Learn more about a Lifestyle Medicine Consultaion.",
+        "pdf_box": "Learn more about a Lifestyle Medicine Consultation.",
         "full": [
             {
                 "type": "paragraph",
@@ -2719,11 +2704,6 @@
             },
             {
                 "type": "paragraph",
-                "text": "In-Person & Virtual options",
-                "url": null
-            },
-            {
-                "type": "paragraph",
                 "text": "Available in-person and virtually, a Health Coach can help you identify patterns and build routines that support better sleep.",
                 "url": null
             },
@@ -2754,7 +2734,7 @@
             },
             {
                 "type": "paragraph",
-                "text": "Click HERE to schedule your free Health Coaching session",
+                "text": "Click HERE to schedule your free Health Coaching session.",
                 "url": null
             }
         ]
@@ -2949,7 +2929,7 @@
     "stress_eap": {
         "name": "I want to learn about the EAP, SupportLinc, and available resources",
         "link": "https://www.SupportLinc.com/",
-        "pdf_box": "Access the SupportLinc using group code: uofu.",
+        "pdf_box": "Access the SupportLinc using group code: uofu",
         "full": [
             {
                 "type": "paragraph",
@@ -3144,7 +3124,7 @@
     "stress_campus_garden": {
         "name": "I'm interested in volunteering at the Edible Campus Garden",
         "link": "https://sustainability.utah.edu/edible-campus-gardens/",
-        "pdf_box": "Volunteer at the Campus Garden",
+        "pdf_box": "Volunteer at the Campus Garden.",
         "full": [
             {
                 "type": "paragraph",
@@ -3343,7 +3323,7 @@
     "substance_toolkit": {
         "name": "I want to make my own plan",
         "link": "https://www.addictiontoolkit.tools/",
-        "pdf_box": "Find resources to support",
+        "pdf_box": "Find resources to support.",
         "full": [
             {
                 "type": "paragraph",
@@ -3412,7 +3392,7 @@
     "substance_quitline": {
         "name": "I want information about the Utah Quit line (tobacco use)",
         "link": "https://waytoquit.org/",
-        "pdf_box": "Learn more about Way to Quit and the Utah Tobacco Quit Line",
+        "pdf_box": "Learn more about Way to Quit and the Utah Tobacco Quit Line.",
         "full": [
             {
                 "type": "paragraph",
@@ -3528,8 +3508,8 @@
     },
     "pcp_has_pcp": {
         "name": "Yes, has provider",
-        "link": null,
-        "pdf_box": null,
+        "link": "https://healthcare.utah.edu/primary-care/finding-primary-care-provider",
+        "pdf_box": "Schedule with a Primary Care Provider.",
         "full": [
             {
                 "type": "paragraph",
@@ -3630,8 +3610,8 @@
     },
     "pcp_connect_pcp": {
         "name": "No, connect to care",
-        "link": null,
-        "pdf_box": null,
+        "link": "https://healthcare.utah.edu/primary-care/finding-primary-care-provider",
+        "pdf_box": "Schedule with a Primary Care Provider.",
         "full": [
             {
                 "type": "paragraph",
@@ -3732,8 +3712,8 @@
     },
     "pcp_no_pcp": {
         "name": "No, don't connect to care",
-        "link": null,
-        "pdf_box": null,
+        "link": "https://healthcare.utah.edu/primary-care",
+        "pdf_box": "Learn more about primary care.",
         "full": [
             {
                 "type": "paragraph",

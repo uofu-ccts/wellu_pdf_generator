@@ -612,8 +612,7 @@ const createGoalBox = function (doc, goal, coordinates, width, height) {
   const imgH = 18;
   doc.addImage(img, "PNG", imgX, imgY, imgW, imgH);
 
-  // TODO: Retrieve the URL from the goal object
-  const url = PDF.goalsContent[goal.lookup_content]?.link || null;
+  const url = normalizeLinkUrl(PDF.goalsContent[goal.lookup_content]?.link);
   if (url) {
     doc.link(imgX, imgY, imgW, imgH, { url: url });
   }
@@ -811,7 +810,17 @@ const createGridSectionBox = function (
 };
 
 const normalizeLinkUrl = function (url) {
-  return typeof url === "string" ? url.trim() : "";
+  const trimmedUrl = typeof url === "string" ? url.trim() : "";
+  if (!trimmedUrl) {
+    return "";
+  }
+
+  try {
+    const parsedUrl = new URL(trimmedUrl);
+    return ["http:", "https:"].includes(parsedUrl.protocol) ? trimmedUrl : "";
+  } catch (error) {
+    return "";
+  }
 };
 
 const normalizeLinkText = function (text) {
@@ -1126,6 +1135,8 @@ const calculateIndividualData = function () {
   const record = PDF.logicRecord;
   const hasPrimaryCareProvider =
     record.provider == 1 || record.provider == 2 ? "Yes" : "No";
+
+  // this text may be replaced by user's multiple choice selection of what diabetes they chose
   let hasDiabetesHistory = "";
   if (record && record.dbt_p_score) {
     if (record.dbt_p_score == 2) {
@@ -1134,6 +1145,7 @@ const calculateIndividualData = function () {
       hasDiabetesHistory = "Diabetes";
     }
   }
+
   const fastFoodSnacks =
     record.fast_food_snacks == 7 ? "7 or more" : record.fast_food_snacks;
   const cupsFruitVeg =
